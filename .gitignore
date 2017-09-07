@@ -1,0 +1,7 @@
+*.Rproj.user/*
+.Rhistory
+
+#Ignore proprietary data for now
+devroles-city.csv
+devroles-province.csv
+
