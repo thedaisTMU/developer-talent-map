@@ -1,5 +1,6 @@
 *.Rproj.user/*
 .Rhistory
+stackoverflow_canadian_developer_talent_map.dcf
 
 #Ignore proprietary data for now
 devroles-city.csv
