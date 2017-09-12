@@ -1,4 +1,4 @@
-city,dev_role,visitors,city_visitors_share,location_quotient,cities,lat,long
+city,dev_role,visitors,share,loc_quo,cities,lat,long
 calgary,android developers,545,0.021639864999007347,0.7210608717560526,Calgary,51.048615,-114.070846
 calgary,back-end web,3527,0.14004367679174112,1.0211385561548665,Calgary,51.048615,-114.070846
 calgary,data scientists,792,0.03144729005360333,0.8343538255380755,Calgary,51.048615,-114.070846

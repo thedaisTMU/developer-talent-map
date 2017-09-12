@@ -2,9 +2,11 @@
 ##R Shiny Map Widget
 
 ##To do
-#Shiny UI - make metric and dev role single select, then dev role multiselect
+#Shiny UI - make dev role multiselect
+#Format numbers and field names
+#CSS for Brookfield colors and typography
+#Normalize size of circles
 #Add legend
-#Brookfield colors, fonts and style
 
 
 library(leaflet)
@@ -12,19 +14,28 @@ library(tidyverse)
 library(sf)
 library(shiny)
 
+#Test variables if needed
+# input <- NA
+# input$role <- "android developers"
+# input$metric <- "share"
+
 #Import data from load scripts
 provinces <- read_sf("provinces.shp")
 cities <- read_csv("cities.csv")
 
-#Dropdown choices
-role <- c(
-#put devroles here
-)
+#Change names on province fields and preserve SF object type
+names(provinces)[names(provinces)=="dev_rol"] <- "dev_role"
+names(provinces)[names(provinces)=="visitrs"] <- "visitors"
+names(provinces)[names(provinces)=="prvnc__"] <- "share"
+names(provinces)[names(provinces)=="lctn_qt"] <- "loc_quo"
+
+#Dropdown choices - properly name for next version
+role <- unique(cities$dev_role)
 
 metric <- c(
-  "Visitors" = "visitrs",
+  "Visitors" = "visitors",
   "Share" = "share",
-  "Location Quotient" = "locquo"
+  "Location Quotient" = "loc_quo"
 )
 
 # Define UI
@@ -46,7 +57,8 @@ ui <- navbarPage("StackOverflow Developer Talent Map for Canadian Cities and Pro
                 draggable = TRUE, top = 60, left = "auto", right = 20, bottom = "auto",
                 width = 330, height = "auto",
                 h2("About this app"),
-                selectInput("color", "Color", metric)
+                selectInput("metric", "Metric", metric),
+                selectInput("role", "Role", role)
   )
 )
 )
@@ -56,9 +68,22 @@ ui <- navbarPage("StackOverflow Developer Talent Map for Canadian Cities and Pro
 server <- function(input, output) {
    
    output$map <- renderLeaflet({
+     
      #Filter roles
-     cities <- filter(cities, dev_role == input$cityrole)
-     provinces <- filter(cities, provinces == input$provrole)
+     cities <- cities[cities$dev_role == input$role,]
+     provinces <- provinces[provinces$dev_role == input$role,]
+     
+     #Define metric
+     provmetric <- provinces[[input$metric]]
+     citymetric <- cities[[input$metric]]
+     
+     #Will consider preprocessing and normalize these by developer role
+     if (input$metric == "visitors") {
+       cityrad <- (citymetric*4)^(1/3)
+     } else if (input$metric == "share") {
+       cityrad <- citymetric*500
+     } else
+       cityrad <- citymetric*20
      
      #Draw map
      leaflet(provinces) %>%
@@ -67,9 +92,9 @@ server <- function(input, output) {
          urlTemplate = "//{s}.tiles.mapbox.com/v3/jcheng.map-5ebohr46/{z}/{x}/{y}.png",
          attribution = 'Base from <a href="http://www.mapbox.com/">Mapbox</a>') %>%
        addPolygons(color = "#672146", weight = 1, smoothFactor = 0.5, opacity = 1.0, fillOpacity = 0.5,
-                   fillColor = ~colorNumeric("YlOrRd", visitrs)(visitrs),
+                   fillColor = ~colorNumeric("BuGn", provmetric)(provmetric),
                    highlightOptions = highlightOptions(color = "white", weight = 1),
-                   label = ~paste0(gn_name,": ", visitrs, " visitors"),
+                   label = ~paste0(gn_name,": ", provmetric, " ", input$metric),
                    labelOptions = labelOptions(style = list(
                      "color" = "#002B49",
                      "font-family" = "sans-serif",
@@ -77,16 +102,17 @@ server <- function(input, output) {
                      "border-width" = "1px",
                      "border-color" = "rgba(0,0,0,0.5)"))) %>%
        addCircleMarkers(lng = ~cities$long, lat = ~cities$lat, weight = 1,
-                        radius = ~(cities$visitors*4)^(1/3),
-                        fillColor = ~colorNumeric("BuGn", cities$location_quotient)(cities$location_quotient),
+                        radius = ~cityrad,
+                        fillColor = ~colorNumeric("BuGn", citymetric)(citymetric),
                         fillOpacity = .9,
-                        label = ~paste0(cities$cities,": ", cities$visitors, " visitors"),
+                        label = ~paste0(cities$cities,": ", citymetric, " ", input$metric),
                         labelOptions = labelOptions(style = list(
                           "color" = "#002B49",
                           "font-family" = "sans-serif",
                           "box-shadow" = "3px 3px rgba(0,0,0,0.25)","font-family" = "sans",
                           "border-width" = "1px",
                           "border-color" = "rgba(0,0,0,0.5)")))
+     
    })
 }
 
