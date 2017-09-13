@@ -59,7 +59,7 @@ ui <- navbarPage("StackOverflow Canadian Developer Talent Map", id="nav",
   absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
                 draggable = TRUE, top = 60, left = "auto", right = 20, bottom = "auto",
                 width = 330, height = "auto",
-                h2("About this app"),
+                #h2("About this app"),
                 selectInput("metric", "Web Traffic Metric", metric),
                 selectInput("role", "Developer Role", role)
   ),
