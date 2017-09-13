@@ -42,7 +42,7 @@ metric <- c(
 )
 
 # Define UI
-ui <- navbarPage("StackOverflow Developer Talent Map for Canadian Cities and Provinces", id="nav",
+ui <- navbarPage("StackOverflow Canadian Developer Talent Map", id="nav",
   
   #tabPanel("Interactive map"),
   tabPanel("Interactive map",
