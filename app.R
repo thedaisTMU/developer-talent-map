@@ -3,6 +3,7 @@
 
 ##To do
 library(leaflet)
+library(formattable)
 library(tidyverse)
 library(sf)
 library(shiny)
@@ -21,6 +22,15 @@ names(provinces)[names(provinces)=="dev_rol"] <- "dev_role"
 names(provinces)[names(provinces)=="visitrs"] <- "visitors"
 names(provinces)[names(provinces)=="prvnc__"] <- "share"
 names(provinces)[names(provinces)=="lctn_qt"] <- "loc_quo"
+
+#Format values
+cities$visitors <- comma(cities$visitors, 0)
+cities$share <- percent(cities$share, 1)
+cities$loc_quo <- percent(cities$loc_quo ,1)
+
+provinces$visitors <- comma(provinces$visitors, 0)
+provinces$share <- percent(provinces$share)
+provinces$loc_quo <- percent(provinces$loc_quo, 1)
 
 #Dropdown choices - properly name for next version
 role <- unique(cities$dev_role)
@@ -52,6 +62,9 @@ ui <- navbarPage("StackOverflow Developer Talent Map for Canadian Cities and Pro
                 h2("About this app"),
                 selectInput("metric", "Metric", metric),
                 selectInput("role", "Role", role)
+  ),
+  tags$div(id="cite",
+           'Application developed by ', tags$a(href="https://asherzafar.github.io/", "Asher Zafar"), ' for the Brookfield Institute for Innovation and Entrepreneurship (BII+E)'
   )
 )
 )
@@ -75,9 +88,10 @@ server <- function(input, output) {
        cityrad <- (citymetric*4)^(1/3)
      } else if (input$metric == "share") {
        cityrad <- citymetric*500
-     } else
+     } else {
        cityrad <- citymetric*20
-     
+     }
+       
      #Draw map
      leaflet(provinces) %>%
        setView(lng = -96.8, lat = 62.4, zoom = 4) %>% #Set at Canadian geographic centre
