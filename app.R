@@ -37,8 +37,8 @@ role <- unique(cities$dev_role)
 
 metric <- c(
   "Visitors" = "visitors",
-  "Share" = "share",
-  "Location Quotient" = "loc_quo"
+  "Percentage of local developers in selected roles" = "share",
+  "Relative share of develeopers compared to Canadian average" = "loc_quo"
 )
 
 # Define UI
@@ -60,8 +60,8 @@ ui <- navbarPage("StackOverflow Developer Talent Map for Canadian Cities and Pro
                 draggable = TRUE, top = 60, left = "auto", right = 20, bottom = "auto",
                 width = 330, height = "auto",
                 h2("About this app"),
-                selectInput("metric", "Metric", metric),
-                selectInput("role", "Role", role)
+                selectInput("metric", "Web Traffic Metric", metric),
+                selectInput("role", "Developer Role", role)
   ),
   tags$div(id="cite",
            'Application developed by ', tags$a(href="https://asherzafar.github.io/", "Asher Zafar"), ' for the Brookfield Institute for Innovation and Entrepreneurship (BII+E)'
@@ -86,10 +86,13 @@ server <- function(input, output) {
      #Will consider preprocessing and normalize these by developer role
      if (input$metric == "visitors") {
        cityrad <- (citymetric*4)^(1/3)
+       labelmetric <- "Visitors"
      } else if (input$metric == "share") {
        cityrad <- citymetric*500
+       labelmetric <- "Percentage of local developers in selected roles"
      } else {
        cityrad <- citymetric*20
+       labelmetric <- "Relative share of develeopers compared to Canadian average"
      }
        
      #Draw map
@@ -101,7 +104,7 @@ server <- function(input, output) {
        addPolygons(color = "#672146", weight = 1, smoothFactor = 0.5, opacity = 1.0, fillOpacity = 0.5,
                    fillColor = ~colorNumeric("BuGn", provmetric)(provmetric),
                    highlightOptions = highlightOptions(color = "white", weight = 1),
-                   label = ~paste0(gn_name,": ", provmetric, " ", input$metric),
+                   label = ~paste0(gn_name," - ", labelmetric, ": ", provmetric),
                    labelOptions = labelOptions(style = list(
                      "color" = "#002B49",
                      "font-family" = "sans-serif",
@@ -112,7 +115,7 @@ server <- function(input, output) {
                         radius = ~cityrad,
                         fillColor = ~colorNumeric("BuGn", citymetric)(citymetric),
                         fillOpacity = .9,
-                        label = ~paste0(cities$cities,": ", citymetric, " ", input$metric),
+                        label = ~paste0(cities$cities," - ", labelmetric, ": ", citymetric),
                         labelOptions = labelOptions(style = list(
                           "color" = "#002B49",
                           "font-family" = "sans-serif",

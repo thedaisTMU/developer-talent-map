@@ -5,6 +5,7 @@ library(rnaturalearth)
 library(leaflet)
 library(tidyverse)
 library(sf)
+library(tools)
 
 setwd("~/GitHub/developer-talent-map")
 
@@ -24,6 +25,13 @@ cities <- read_csv("devroles-city.csv")
 citylookup <- read_csv("citylookup.csv")
 cities <- left_join(cities, citylookup)
 cities <- rename(cities, share = city_visitors_share, loc_quo = location_quotient)
+
+#Proper names for developer roles
+cities$dev_role <- toTitleCase(cities$dev_role)
+cities$dev_role[cities$dev_role=="Ios Developers"] <- "iOS Developers"
+
+provinces$dev_role <- toTitleCase(provinces$dev_role)
+provinces$dev_role[provinces$dev_role=="Ios Developers"] <- "iOS Developers"
 
 #Write files for app
 write_sf(provinces, "provinces.shp")
