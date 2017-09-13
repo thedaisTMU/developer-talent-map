@@ -83,6 +83,17 @@ server <- function(input, output) {
      provmetric <- provinces[[input$metric]]
      citymetric <- cities[[input$metric]]
      
+     #Make color palettes
+     provpal <- colorQuantile(
+       palette = "BuGn",
+       domain = provmetric, n=5
+     )
+     
+     citypal <- colorQuantile(
+       palette = "BuGn",
+       domain = citymetric, n=5
+     )
+     
      #Will consider preprocessing and normalize these by developer role
      if (input$metric == "visitors") {
        cityrad <- (citymetric*4)^(1/3)
@@ -94,12 +105,6 @@ server <- function(input, output) {
        cityrad <- citymetric*20
        labelmetric <- names(metric[3])
      }
-     
-     #Test making palette
-     pal <- colorNumeric(
-       palette = "BuGn",
-       domain = citymetric
-     )
        
      #Draw map
      leaflet(provinces) %>%
@@ -107,8 +112,8 @@ server <- function(input, output) {
        addTiles(
          urlTemplate = "//{s}.tiles.mapbox.com/v3/jcheng.map-5ebohr46/{z}/{x}/{y}.png",
          attribution = 'Base from <a href="http://www.mapbox.com/">Mapbox</a>') %>%
-       addPolygons(color = "#672146", weight = 1, smoothFactor = 0.5, opacity = 1.0, fillOpacity = 0.5,
-                   fillColor = ~colorNumeric("BuGn", provmetric)(provmetric),
+       addPolygons(color = ~provpal(provmetric), weight = 1, smoothFactor = 0.5, opacity = 1.0, fillOpacity = 0.5,
+                   #fillColor = ~colorNumeric("BuGn", provmetric)(provmetric),
                    highlightOptions = highlightOptions(color = "white", weight = 1),
                    label = ~paste0(gn_name," - ", labelmetric, ": ", provmetric),
                    labelOptions = labelOptions(style = list(
@@ -119,7 +124,8 @@ server <- function(input, output) {
                      "border-color" = "rgba(0,0,0,0.5)"))) %>%
        addCircleMarkers(lng = ~cities$long, lat = ~cities$lat, weight = 1,
                         radius = ~cityrad,
-                        fillColor = ~colorNumeric("BuGn", citymetric)(citymetric),
+                        fillColor = ~citypal(citymetric),
+                        #fillColor = ~colorNumeric("BuGn", citymetric)(citymetric),
                         fillOpacity = .9,
                         label = ~paste0(cities$cities," - ", labelmetric, ": ", citymetric),
                         labelOptions = labelOptions(style = list(
@@ -128,10 +134,17 @@ server <- function(input, output) {
                           "box-shadow" = "3px 3px rgba(0,0,0,0.25)","font-family" = "sans",
                           "border-width" = "1px",
                           "border-color" = "rgba(0,0,0,0.5)"))) %>%
-       addLegend("bottomleft", pal = pal, citymetric,
-                 title = paste0("City ", labelmetric),
+       
+       addLegend("bottomright", pal = citypal, values = ~citymetric,
+                 title = paste0("Cities: ", labelmetric),
                  #labFormat = labelFormat(prefix = "$"),
-                 #opacity = 1
+                 opacity = 1
+       ) %>%
+       
+       addLegend("bottomleft", pal = provpal, values = ~provmetric,
+                 title = paste0("Provinces: ", labelmetric),
+                 #labFormat = labelFormat(prefix = "$"),
+                 opacity = 1
        )
      
    })
