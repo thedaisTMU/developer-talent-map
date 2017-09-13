@@ -2,13 +2,6 @@
 ##R Shiny Map Widget
 
 ##To do
-#Shiny UI - make dev role multiselect
-#Format numbers and field names
-#CSS for Brookfield colors and typography
-#Normalize size of circles
-#Add legend
-
-
 library(leaflet)
 library(tidyverse)
 library(sf)

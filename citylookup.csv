@@ -2,16 +2,26 @@
 calgary,Calgary,51.048615,-114.070846
 edmonton,Edmonton,53.544389,-113.490927
 guelph,Guelph,43.544805,-80.248167
-halifax,Halifax,44.648862,-63.575320
+halifax,Halifax,44.648862,-63.57532
 hamilton,Hamilton,43.250021,-79.866091
-london,London,42.986950,-81.243177
-montreal,Montreal,45.501689,-73.567256
-ottawa,Ottawa,45.421530,-75.697193
+london,London,42.98695,-81.243177
+montreal,Montréal,45.501689,-73.567256
+ottawa,Ottawa,45.42153,-75.697193
 quebec city,Québec City,46.803283,-71.242796
 regina,Regina,50.454722,-104.606667
 saskatoon,Saskatoon,52.133214,-106.670046
 toronto,Toronto,43.653226,-79.383184
 vancouver,Vancouver,49.282729,-123.120738
 victoria,Victoria,48.428421,-123.365644
-waterloo_kitchener_cambridge,"Waterloo, Kitchener, Cambridge",43.464258,-80.520410
+waterloo_kitchener_cambridge,Waterloo,43.464258,-80.52041
 winnipeg,Winnipeg,49.899754,-97.137494
+sydney,Sydney,-33.86882,151.209296
+helsinki,Helsinki,60.169856,24.938379
+paris,Paris,48.856614,2.352222
+munich,Munich,48.135125,11.581981
+tel_aviv,Tel Aviv,32.0853,34.781768
+singapore,Singapore,1.352083,103.819836
+amsterdam,Amsterdam,52.370216,4.895168
+stockholm,Stockholm,59.329323,18.068581
+sf_silicon_valley,San Francisco & Silicon Valley,37.774929,-122.419416
+nyc_metro_area,New York City,40.712784,-74.005941

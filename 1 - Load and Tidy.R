@@ -6,6 +6,8 @@ library(leaflet)
 library(tidyverse)
 library(sf)
 
+setwd("~/GitHub/developer-talent-map")
+
 #Download and subset map from www.naturalearthdata.com
 provinces <- ne_states(country = 'canada', returnclass = c('sf'))
 provinces <- provinces[provinces$OBJECTID_1 != 5682,] #Filter out Canada as a whole
