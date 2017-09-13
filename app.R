@@ -32,13 +32,13 @@ provinces$visitors <- comma(provinces$visitors, 0)
 provinces$share <- percent(provinces$share)
 provinces$loc_quo <- percent(provinces$loc_quo, 1)
 
-#Dropdown choices - properly name for next version
+#Dropdown choices
 role <- unique(cities$dev_role)
 
 metric <- c(
   "Visitors" = "visitors",
-  "Percentage of local developers in selected roles" = "share",
-  "Relative share of develeopers compared to Canadian average" = "loc_quo"
+  "% Local developers in role" = "share",
+  "Location quotient" = "loc_quo"
 )
 
 # Define UI
@@ -86,14 +86,20 @@ server <- function(input, output) {
      #Will consider preprocessing and normalize these by developer role
      if (input$metric == "visitors") {
        cityrad <- (citymetric*4)^(1/3)
-       labelmetric <- "Visitors"
+       labelmetric <- names(metric[1])
      } else if (input$metric == "share") {
        cityrad <- citymetric*500
-       labelmetric <- "Percentage of local developers in selected roles"
+       labelmetric <- names(metric[2])
      } else {
        cityrad <- citymetric*20
-       labelmetric <- "Relative share of develeopers compared to Canadian average"
+       labelmetric <- names(metric[3])
      }
+     
+     #Test making palette
+     pal <- colorNumeric(
+       palette = "BuGn",
+       domain = citymetric
+     )
        
      #Draw map
      leaflet(provinces) %>%
@@ -121,7 +127,12 @@ server <- function(input, output) {
                           "font-family" = "sans-serif",
                           "box-shadow" = "3px 3px rgba(0,0,0,0.25)","font-family" = "sans",
                           "border-width" = "1px",
-                          "border-color" = "rgba(0,0,0,0.5)")))
+                          "border-color" = "rgba(0,0,0,0.5)"))) %>%
+       addLegend("bottomleft", pal = pal, citymetric,
+                 title = paste0("City ", labelmetric),
+                 #labFormat = labelFormat(prefix = "$"),
+                 #opacity = 1
+       )
      
    })
 }
