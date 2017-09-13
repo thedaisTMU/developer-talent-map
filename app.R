@@ -64,7 +64,7 @@ ui <- navbarPage("StackOverflow Developer Talent Map for Canadian Cities and Pro
                 selectInput("role", "Developer Role", role)
   ),
   tags$div(id="cite",
-           'Application developed by ', tags$a(href="https://asherzafar.github.io/", "Asher Zafar"), ' for the Brookfield Institute for Innovation and Entrepreneurship (BII+E)'
+           'Application developed by ', tags$a(href="https://asherzafar.github.io/", "Asher Zafar"), ' for the Brookfield Institute for Innovation and Entrepreneurship (BII+E). Full analysis and report by David Rubinger and Creig Lamb'
   )
 )
 )
