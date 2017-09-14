@@ -64,7 +64,9 @@ ui <- navbarPage("StackOverflow Canadian Developer Talent Map", id="nav",
                 selectInput("role", "Developer Role", role)
   ),
   tags$div(id="cite",
-           'Application developed by ', tags$a(href="https://asherzafar.github.io/", "Asher Zafar"), ' for the Brookfield Institute for Innovation and Entrepreneurship (BII+E). Full analysis and report by David Rubinger and Creig Lamb'
+           'Application developed by ', tags$a(href="https://asherzafar.github.io/", "Asher Zafar"),
+           ' for the Brookfield Institute for Innovation and Entrepreneurship (BII+E). 
+           Full analysis and report by David Rubinger and Creig Lamb'
   )
 )
 )
@@ -84,17 +86,14 @@ server <- function(input, output) {
      citymetric <- cities[[input$metric]]
      
      #Make color palettes
-     provpal <- colorQuantile(
-       palette = "BuGn",
-       domain = provmetric, n=5
+     metricpal <- colorBin(
+       palette = c("#FFFFFF","#E24585"),
+       #domain = provmetric, 
+       domain = c(min(provmetric, citymetric), max(provmetric, citymetric)),
+       n=5, pretty=TRUE
      )
      
-     citypal <- colorQuantile(
-       palette = "BuGn",
-       domain = citymetric, n=5
-     )
-     
-     #Will consider preprocessing and normalize these by developer role
+     #Will consider preprocessing and normalizing these by developer role
      if (input$metric == "visitors") {
        cityrad <- (citymetric*4)^(1/3)
        labelmetric <- names(metric[1])
@@ -108,11 +107,15 @@ server <- function(input, output) {
        
      #Draw map
      leaflet(provinces) %>%
+       
        setView(lng = -96.8, lat = 62.4, zoom = 4) %>% #Set at Canadian geographic centre
+       
        addTiles(
          urlTemplate = "//{s}.tiles.mapbox.com/v3/jcheng.map-5ebohr46/{z}/{x}/{y}.png",
          attribution = 'Base from <a href="http://www.mapbox.com/">Mapbox</a>') %>%
-       addPolygons(color = ~provpal(provmetric), weight = 1, smoothFactor = 0.5, opacity = 1.0, fillOpacity = 0.5,
+       
+       addPolygons(color = ~metricpal(provmetric), weight = 1, smoothFactor = 0.5, 
+                   opacity = 1.0, fillOpacity = 0.5,
                    #fillColor = ~colorNumeric("BuGn", provmetric)(provmetric),
                    highlightOptions = highlightOptions(color = "white", weight = 1),
                    label = ~paste0(gn_name," - ", labelmetric, ": ", provmetric),
@@ -122,9 +125,10 @@ server <- function(input, output) {
                      "box-shadow" = "3px 3px rgba(0,0,0,0.25)","font-family" = "sans",
                      "border-width" = "1px",
                      "border-color" = "rgba(0,0,0,0.5)"))) %>%
+       
        addCircleMarkers(lng = ~cities$long, lat = ~cities$lat, weight = 1,
                         radius = ~cityrad,
-                        fillColor = ~citypal(citymetric),
+                        fillColor = ~metricpal(citymetric),
                         #fillColor = ~colorNumeric("BuGn", citymetric)(citymetric),
                         fillOpacity = .9,
                         label = ~paste0(cities$cities," - ", labelmetric, ": ", citymetric),
@@ -135,16 +139,8 @@ server <- function(input, output) {
                           "border-width" = "1px",
                           "border-color" = "rgba(0,0,0,0.5)"))) %>%
        
-       addLegend("bottomright", pal = citypal, values = ~citymetric,
-                 title = paste0("Cities: ", labelmetric),
-                 #labFormat = labelFormat(prefix = "$"),
-                 opacity = 1
-       ) %>%
-       
-       addLegend("bottomleft", pal = provpal, values = ~provmetric,
-                 title = paste0("Provinces: ", labelmetric),
-                 #labFormat = labelFormat(prefix = "$"),
-                 opacity = 1
+       addLegend("bottomright", pal = metricpal, values = provinces[[input$metric]],
+                 title = paste0("Legend: ", labelmetric), opacity = 1
        )
      
    })
