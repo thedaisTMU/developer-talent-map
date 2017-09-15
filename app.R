@@ -27,11 +27,11 @@ names(provinces)[names(provinces)=="lctn_qt"] <- "loc_quo"
 #Format values
 cities$visitors <- comma(cities$visitors, 0)
 cities$share <- percent(cities$share, 1)
-cities$loc_quo <- percent(cities$loc_quo ,1)
+cities$loc_quo <- comma(cities$loc_quo ,2)
 
 provinces$visitors <- comma(provinces$visitors, 0)
 provinces$share <- percent(provinces$share)
-provinces$loc_quo <- percent(provinces$loc_quo, 1)
+provinces$loc_quo <- comma(provinces$loc_quo, 2)
 
 #Dropdown choices
 role <- unique(cities$dev_role)
@@ -48,7 +48,7 @@ ui <- fillPage(theme = "styles.css",
     div(style = "width: 100%; height: 100%;",
         leafletOutput("map", width = "100%", height = "100%"),
         absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
-                      draggable = TRUE, top = 90, left = "auto", right = 20, bottom = "auto",
+                      draggable = TRUE, top = 90, left = 20, right = "auto", bottom = "auto",
                       #width = 330, height = "auto",
                       selectInput("metric", "Web Traffic Metric", metric),
                       selectInput("role", "Developer Role", role)
