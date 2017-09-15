@@ -1,0 +1,103 @@
+input[type="number"] {
+  max-width: 80%;
+}
+
+/* Brookfield fonts */
+@font-face {
+    src: url("Jan Fromm - RooneyPro-Bold.otf") format("opentype");
+    font-family: 'rooneyprobold';
+    font-style: normal;
+    color: #14365D;
+}
+
+@font-face {
+    src: url("Jan Fromm - RooneySans-Medium.otf") format("opentype");
+    font-family: 'rooneysansmed';
+    font-style: normal;
+    color: #14365D;
+}
+
+
+/* Style text */
+body, label, input, button, select {
+  font-family: 'rooneysansmed', Verdana, Georgia;
+  /*font-size: calc(7px + .5vw);*/
+}
+
+h1, h2, h3, h4 {font-size: 2.5vw;}
+
+#controls {
+  /* Appearance */
+  background-color: rgba(220,221,222);
+  padding: 10px;
+  cursor: move;
+  /* Fade out while not hovering */
+  opacity: 0.65;
+  zoom: 0.9;
+  transition: opacity 500ms 1s;
+}
+
+#controls:hover {
+  /* Fade in while hovering */
+  opacity: 0.95;
+  transition-delay: 0;
+}
+
+/* Position and style citation*/
+#cite {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 80%;
+}
+
+/* Position and style title*/
+#apptitle {
+  left: 0;
+  padding: 10px;
+  position:absolute;
+  text-align:center;
+  top: 0px;
+  width: 100%;
+  font-family: 'rooneyprobold', Verdana, Georgia;
+  /*color: #14365D;*/
+  background-color: rgba(220,221,222,.5);
+}
+
+.legend {
+  /* Appearance */
+  font-family: 'rooneysansmed', Verdana, Georgia;
+  background-color: rgba(220,221,222,.5);
+  padding: 20px;
+  font-size: 1em;
+}
+
+/* If not using map tiles, show a white background */
+.leaflet-container {
+  background-color: white !important;
+}
+
+/* Media queries: Recompute break points */
+@media all and (min-width: 960px) {
+
+  h1, h2, h3, h4 {font-size: 2.25em;}
+  body, label, input, button, select {
+    font-size: 1.3em;
+  }
+}
+
+@media all and (max-width: 959px) and (min-width: 800px) {
+
+  h1, h2, h3, h4 {font-size: 2.75vw;}
+  body, label, input, button, select {
+    font-size: 1.3vw;
+  }
+}
+
+@media all and (max-width: 799px) and (min-width: 50px) {
+
+  h1, h2, h3, h4 {font-size: 18px;}
+  body, label, input, button, select {
+    font-size: 10px;
+  }
+}

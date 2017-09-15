@@ -1,6 +1,5 @@
 #StackOverflow Developer Talent Map for Canadian Cities and Provinces
 ##R Shiny Map Widget
-#setwd("~/GitHub/developer-talent-map")
 
 ##To do
 library(leaflet)
@@ -27,11 +26,11 @@ names(provinces)[names(provinces)=="lctn_qt"] <- "loc_quo"
 #Format values
 cities$visitors <- comma(cities$visitors, 0)
 cities$share <- percent(cities$share, 1)
-cities$loc_quo <- comma(cities$loc_quo ,2)
+cities$loc_quo <- percent(cities$loc_quo ,1)
 
 provinces$visitors <- comma(provinces$visitors, 0)
 provinces$share <- percent(provinces$share)
-provinces$loc_quo <- comma(provinces$loc_quo, 2)
+provinces$loc_quo <- percent(provinces$loc_quo, 1)
 
 #Dropdown choices
 role <- unique(cities$dev_role)
@@ -43,30 +42,35 @@ metric <- c(
 )
 
 # Define UI
-ui <- fillPage(theme = "styles.css",
-               title = "StackOverflow Canadian Developer Talent Map",
-    div(style = "width: 100%; height: 100%;",
-        leafletOutput("map", width = "100%", height = "100%"),
-        absolutePanel(id = "controls", class = "panel panel-default", draggable = TRUE, fixed = TRUE,
-                      top = 90, left = 20, right = "auto", bottom = "auto", 
-                      width = "30%", height = "auto",
-                      selectInput("metric", "Web Traffic Metric", metric),
-                      selectInput("role", "Developer Role", role)
-                      ),
-        h3(tags$div(id="apptitle",
-                    tags$a(href="http://brookfieldinstitute.ca/", img(src='brookfield_mark_small.png', align = "left")),
-                    "StackOverflow Canadian Developer Talent Map"
-                    )
-           ),
-        tags$div(id="cite",
-                 'Application developed by ',
-                 tags$a(href="", "Asher Zafar"),
-                 " for the ",
-                 tags$a(href="http://brookfieldinstitute.ca/"," Brookfield Institute for Innovation and Entrepreneurship (BII+E)."),
-                 tags$a(href="", "Full report"),
-                  "by David Rubinger and Creig Lamb")
-    )
+ui <- navbarPage("StackOverflow Canadian Developer Talent Map", id="nav",
+  
+  #tabPanel("Interactive map"),
+  tabPanel("Interactive map",
+           div(class="outer",
+               
+               tags$head(
+                 # Include custom CSS
+                 includeCSS("styles.css")
+               ),
+  
+  tags$style(type = "text/css", "#map {height: calc(100vh) !important;}"),
+  leafletOutput("map", width = "100%"),
+
+  absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
+                draggable = TRUE, top = 60, left = "auto", right = 20, bottom = "auto",
+                width = 330, height = "auto",
+                #h2("About this app"),
+                selectInput("metric", "Web Traffic Metric", metric),
+                selectInput("role", "Developer Role", role)
+  ),
+  tags$div(id="cite",
+           'Application developed by ', tags$a(href="https://asherzafar.github.io/", "Asher Zafar"),
+           ' for the Brookfield Institute for Innovation and Entrepreneurship (BII+E). 
+           Full analysis and report by David Rubinger and Creig Lamb'
   )
+)
+)
+)
                 
 #Draw Leaflet maps
 server <- function(input, output) {
@@ -77,13 +81,17 @@ server <- function(input, output) {
      cities <- cities[cities$dev_role == input$role,]
      provinces <- provinces[provinces$dev_role == input$role,]
      
-     if (input$metric == "loc_quo"){
-       cities <- cities[is.na(cities$loc_quo) == FALSE,]
-     }
-     
      #Define metric
      provmetric <- provinces[[input$metric]]
      citymetric <- cities[[input$metric]]
+     
+     #Make color palettes
+     metricpal <- colorBin(
+       palette = c("#FFFFFF","#E24585"),
+       #domain = provmetric, 
+       domain = c(min(provmetric, citymetric), max(provmetric, citymetric)),
+       n=5, pretty=TRUE
+     )
      
      #Will consider preprocessing and normalizing these by developer role
      if (input$metric == "visitors") {
@@ -93,48 +101,39 @@ server <- function(input, output) {
        cityrad <- citymetric*500
        labelmetric <- names(metric[2])
      } else {
-       cities <- cities[is.na(cities$loc_quo) == FALSE,]
        cityrad <- citymetric*20
        labelmetric <- names(metric[3])
      }
-     
-     #Make color palettes
-     metricpal <- colorBin(
-       palette = c("#DDDDDD","#E24585"),
-       #domain = provmetric, 
-       domain = c(min(provmetric, citymetric), max(provmetric, citymetric)),
-       n=7, pretty=TRUE
-     )
        
      #Draw map
      leaflet(provinces) %>%
        
-       fitBounds(lng1 = -124, 
-                 lat1 = 42, 
-                 lng2 = -63, 
-                 lat2 = 54) %>%
+       setView(lng = -96.8, lat = 62.4, zoom = 4) %>% #Set at Canadian geographic centre
        
        addTiles(
          urlTemplate = "//{s}.tiles.mapbox.com/v3/jcheng.map-5ebohr46/{z}/{x}/{y}.png",
          attribution = 'Base from <a href="http://www.mapbox.com/">Mapbox</a>') %>%
        
        addPolygons(color = ~metricpal(provmetric), weight = 1, smoothFactor = 0.5, 
-                   opacity = 1.0, fillOpacity = 0.7,
+                   opacity = 1.0, fillOpacity = 0.5,
+                   #fillColor = ~colorNumeric("BuGn", provmetric)(provmetric),
                    highlightOptions = highlightOptions(color = "white", weight = 1),
                    label = ~paste0(gn_name," - ", labelmetric, ": ", provmetric),
                    labelOptions = labelOptions(style = list(
+                     "color" = "#002B49",
                      "font-family" = "sans-serif",
                      "box-shadow" = "3px 3px rgba(0,0,0,0.25)","font-family" = "sans",
                      "border-width" = "1px",
                      "border-color" = "rgba(0,0,0,0.5)"))) %>%
        
        addCircleMarkers(lng = ~cities$long, lat = ~cities$lat, weight = 1,
-                        #radius = ~cityrad, #May leave off unless we figure out numbers that work
-                        color = "#E24585",
+                        radius = ~cityrad,
                         fillColor = ~metricpal(citymetric),
-                        fillOpacity = .65,
+                        #fillColor = ~colorNumeric("BuGn", citymetric)(citymetric),
+                        fillOpacity = .9,
                         label = ~paste0(cities$cities," - ", labelmetric, ": ", citymetric),
                         labelOptions = labelOptions(style = list(
+                          "color" = "#002B49",
                           "font-family" = "sans-serif",
                           "box-shadow" = "3px 3px rgba(0,0,0,0.25)","font-family" = "sans",
                           "border-width" = "1px",
