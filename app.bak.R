@@ -1,6 +1,5 @@
 #StackOverflow Developer Talent Map for Canadian Cities and Provinces
 ##R Shiny Map Widget
-#setwd("~/GitHub/developer-talent-map")
 
 ##To do
 library(leaflet)
@@ -43,31 +42,35 @@ metric <- c(
 )
 
 # Define UI
-ui <- fillPage(theme = "styles.css",
-               title = "StackOverflow Canadian Developer Talent Map",
-  # filflRow(
-  #   titlePanel("StackOverflow Canadian Developer Talent Map",
-  #              windowTitle = "StackOverflow Canadian Developer Talent Map"), height="1em"),
-  # fillCol(
-    div(style = "width: 100%; height: 100%;",
-        leafletOutput("map", width = "100%", height = "100%"),
-        absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
-                      draggable = TRUE, top = 60, left = "auto", right = 20, bottom = "auto",
-                      width = 330, height = "auto",
-                      selectInput("metric", "Web Traffic Metric", metric),
-                      selectInput("role", "Developer Role", role)
-                      ),
-        h3(tags$div(id="apptitle",
-                    img(src='brookfield_institute_esig_small.png', align = "left"),
-                    "StackOverflow Canadian Developer Talent Map"
-                    )
-           ),
-        tags$div(id="cite",
-                 'Application developed by ', tags$a(href="https://asherzafar.github.io/", "Asher Zafar"),
-                 ' for the Brookfield Institute for Innovation and Entrepreneurship (BII+E). 
-                 Full analysis and report by David Rubinger and Creig Lamb')
-    )
+ui <- navbarPage("StackOverflow Canadian Developer Talent Map", id="nav",
+  
+  #tabPanel("Interactive map"),
+  tabPanel("Interactive map",
+           div(class="outer",
+               
+               tags$head(
+                 # Include custom CSS
+                 includeCSS("styles.css")
+               ),
+  
+  tags$style(type = "text/css", "#map {height: calc(100vh) !important;}"),
+  leafletOutput("map", width = "100%"),
+
+  absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
+                draggable = TRUE, top = 60, left = "auto", right = 20, bottom = "auto",
+                width = 330, height = "auto",
+                #h2("About this app"),
+                selectInput("metric", "Web Traffic Metric", metric),
+                selectInput("role", "Developer Role", role)
+  ),
+  tags$div(id="cite",
+           'Application developed by ', tags$a(href="https://asherzafar.github.io/", "Asher Zafar"),
+           ' for the Brookfield Institute for Innovation and Entrepreneurship (BII+E). 
+           Full analysis and report by David Rubinger and Creig Lamb'
   )
+)
+)
+)
                 
 #Draw Leaflet maps
 server <- function(input, output) {
@@ -113,6 +116,7 @@ server <- function(input, output) {
        
        addPolygons(color = ~metricpal(provmetric), weight = 1, smoothFactor = 0.5, 
                    opacity = 1.0, fillOpacity = 0.5,
+                   #fillColor = ~colorNumeric("BuGn", provmetric)(provmetric),
                    highlightOptions = highlightOptions(color = "white", weight = 1),
                    label = ~paste0(gn_name," - ", labelmetric, ": ", provmetric),
                    labelOptions = labelOptions(style = list(
@@ -125,6 +129,7 @@ server <- function(input, output) {
        addCircleMarkers(lng = ~cities$long, lat = ~cities$lat, weight = 1,
                         radius = ~cityrad,
                         fillColor = ~metricpal(citymetric),
+                        #fillColor = ~colorNumeric("BuGn", citymetric)(citymetric),
                         fillOpacity = .9,
                         label = ~paste0(cities$cities," - ", labelmetric, ": ", citymetric),
                         labelOptions = labelOptions(style = list(

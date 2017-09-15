@@ -1,6 +1,7 @@
 *.Rproj.user/*
 .Rhistory
-*.dcf
+rsconnect/*
+fonts/*
 
 #Ignore proprietary data for now
 devroles-city.csv
