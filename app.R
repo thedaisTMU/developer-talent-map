@@ -47,9 +47,9 @@ ui <- fillPage(theme = "styles.css",
                title = "StackOverflow Canadian Developer Talent Map",
     div(style = "width: 100%; height: 100%;",
         leafletOutput("map", width = "100%", height = "100%"),
-        absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
-                      draggable = TRUE, top = 90, left = 20, right = "auto", bottom = "auto",
-                      #width = 330, height = "auto",
+        absolutePanel(id = "controls", class = "panel panel-default", draggable = TRUE, fixed = TRUE,
+                      top = 90, left = 20, right = "auto", bottom = "auto", 
+                      width = "30%", height = "auto",
                       selectInput("metric", "Web Traffic Metric", metric),
                       selectInput("role", "Developer Role", role)
                       ),
@@ -60,7 +60,7 @@ ui <- fillPage(theme = "styles.css",
            ),
         tags$div(id="cite",
                  'Application developed by ',
-                 tags$a(href="http://asherzafar.github.io/", "Asher Zafar"),
+                 tags$a(href="", "Asher Zafar"),
                  " for the ",
                  tags$a(href="http://brookfieldinstitute.ca/"," Brookfield Institute for Innovation and Entrepreneurship (BII+E)."),
                  tags$a(href="", "Full report"),
@@ -109,7 +109,10 @@ server <- function(input, output) {
      #Draw map
      leaflet(provinces) %>%
        
-       setView(lng = -96.8, lat = 55, zoom = 3) %>% #Set south of Canadian geographic centre
+       fitBounds(lng1 = -124, 
+                 lat1 = 42, 
+                 lng2 = -63, 
+                 lat2 = 54) %>%
        
        addTiles(
          urlTemplate = "//{s}.tiles.mapbox.com/v3/jcheng.map-5ebohr46/{z}/{x}/{y}.png",
