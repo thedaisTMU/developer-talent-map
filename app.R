@@ -77,17 +77,13 @@ server <- function(input, output) {
      cities <- cities[cities$dev_role == input$role,]
      provinces <- provinces[provinces$dev_role == input$role,]
      
+     if (input$metric == "loc_quo"){
+       cities <- cities[is.na(cities$loc_quo) == FALSE,]
+     }
+     
      #Define metric
      provmetric <- provinces[[input$metric]]
      citymetric <- cities[[input$metric]]
-     
-     #Make color palettes
-     metricpal <- colorBin(
-       palette = c("#DDDDDD","#E24585"),
-       #domain = provmetric, 
-       domain = c(min(provmetric, citymetric), max(provmetric, citymetric)),
-       n=5, pretty=TRUE
-     )
      
      #Will consider preprocessing and normalizing these by developer role
      if (input$metric == "visitors") {
@@ -97,14 +93,23 @@ server <- function(input, output) {
        cityrad <- citymetric*500
        labelmetric <- names(metric[2])
      } else {
+       cities <- cities[is.na(cities$loc_quo) == FALSE,]
        cityrad <- citymetric*20
        labelmetric <- names(metric[3])
      }
+     
+     #Make color palettes
+     metricpal <- colorBin(
+       palette = c("#DDDDDD","#E24585"),
+       #domain = provmetric, 
+       domain = c(min(provmetric, citymetric), max(provmetric, citymetric)),
+       n=7, pretty=TRUE
+     )
        
      #Draw map
      leaflet(provinces) %>%
        
-       setView(lng = -96.8, lat = 62.4, zoom = 4) %>% #Set at Canadian geographic centre
+       setView(lng = -96.8, lat = 55, zoom = 3) %>% #Set south of Canadian geographic centre
        
        addTiles(
          urlTemplate = "//{s}.tiles.mapbox.com/v3/jcheng.map-5ebohr46/{z}/{x}/{y}.png",
@@ -121,7 +126,7 @@ server <- function(input, output) {
                      "border-color" = "rgba(0,0,0,0.5)"))) %>%
        
        addCircleMarkers(lng = ~cities$long, lat = ~cities$lat, weight = 1,
-                        radius = ~cityrad,
+                        #radius = ~cityrad, #May leave off unless we figure out numbers that work
                         color = "#E24585",
                         fillColor = ~metricpal(citymetric),
                         fillOpacity = .65,
