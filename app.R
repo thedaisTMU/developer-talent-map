@@ -45,27 +45,26 @@ metric <- c(
 # Define UI
 ui <- fillPage(theme = "styles.css",
                title = "StackOverflow Canadian Developer Talent Map",
-  # filflRow(
-  #   titlePanel("StackOverflow Canadian Developer Talent Map",
-  #              windowTitle = "StackOverflow Canadian Developer Talent Map"), height="1em"),
-  # fillCol(
     div(style = "width: 100%; height: 100%;",
         leafletOutput("map", width = "100%", height = "100%"),
         absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
-                      draggable = TRUE, top = 60, left = "auto", right = 20, bottom = "auto",
-                      width = 330, height = "auto",
+                      draggable = TRUE, top = 90, left = "auto", right = 20, bottom = "auto",
+                      #width = 330, height = "auto",
                       selectInput("metric", "Web Traffic Metric", metric),
                       selectInput("role", "Developer Role", role)
                       ),
         h3(tags$div(id="apptitle",
-                    img(src='brookfield_institute_esig_small.png', align = "left"),
+                    tags$a(href="http://brookfieldinstitute.ca/", img(src='brookfield_mark_small.png', align = "left")),
                     "StackOverflow Canadian Developer Talent Map"
                     )
            ),
         tags$div(id="cite",
-                 'Application developed by ', tags$a(href="https://asherzafar.github.io/", "Asher Zafar"),
-                 ' for the Brookfield Institute for Innovation and Entrepreneurship (BII+E). 
-                 Full analysis and report by David Rubinger and Creig Lamb')
+                 'Application developed by ',
+                 tags$a(href="http://asherzafar.github.io/", "Asher Zafar"),
+                 " for the ",
+                 tags$a(href="http://brookfieldinstitute.ca/"," Brookfield Institute for Innovation and Entrepreneurship (BII+E)."),
+                 tags$a(href="", "Full report"),
+                  "by David Rubinger and Creig Lamb")
     )
   )
                 
@@ -84,7 +83,7 @@ server <- function(input, output) {
      
      #Make color palettes
      metricpal <- colorBin(
-       palette = c("#FFFFFF","#E24585"),
+       palette = c("#DDDDDD","#E24585"),
        #domain = provmetric, 
        domain = c(min(provmetric, citymetric), max(provmetric, citymetric)),
        n=5, pretty=TRUE
@@ -112,11 +111,10 @@ server <- function(input, output) {
          attribution = 'Base from <a href="http://www.mapbox.com/">Mapbox</a>') %>%
        
        addPolygons(color = ~metricpal(provmetric), weight = 1, smoothFactor = 0.5, 
-                   opacity = 1.0, fillOpacity = 0.5,
+                   opacity = 1.0, fillOpacity = 0.7,
                    highlightOptions = highlightOptions(color = "white", weight = 1),
                    label = ~paste0(gn_name," - ", labelmetric, ": ", provmetric),
                    labelOptions = labelOptions(style = list(
-                     "color" = "#002B49",
                      "font-family" = "sans-serif",
                      "box-shadow" = "3px 3px rgba(0,0,0,0.25)","font-family" = "sans",
                      "border-width" = "1px",
@@ -124,11 +122,11 @@ server <- function(input, output) {
        
        addCircleMarkers(lng = ~cities$long, lat = ~cities$lat, weight = 1,
                         radius = ~cityrad,
+                        color = "#E24585",
                         fillColor = ~metricpal(citymetric),
-                        fillOpacity = .9,
+                        fillOpacity = .65,
                         label = ~paste0(cities$cities," - ", labelmetric, ": ", citymetric),
                         labelOptions = labelOptions(style = list(
-                          "color" = "#002B49",
                           "font-family" = "sans-serif",
                           "box-shadow" = "3px 3px rgba(0,0,0,0.25)","font-family" = "sans",
                           "border-width" = "1px",

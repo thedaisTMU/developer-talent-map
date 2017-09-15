@@ -2,42 +2,33 @@ input[type="number"] {
   max-width: 80%;
 }
 
-div.outer {
-  position: fixed;
-  top: 0px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
-}
-
-/* Customize fonts */
+/* Brookfield fonts */
 @font-face {
-    src: url("Jan Fromm - RooneySans-Bold.otf") format("opentype");
-    font-family: 'rooneysansbold';
+    src: url("Jan Fromm - RooneyPro-Bold.otf") format("opentype");
+    font-family: 'rooneyprobold';
     font-style: normal;
     color: #14365D;
 }
 
 @font-face {
-    src: url("Jan Fromm - RooneyPro-Medium.otf") format("opentype");
+    src: url("Jan Fromm - RooneySans-Medium.otf") format("opentype");
     font-family: 'rooneysansmed';
     font-style: normal;
     color: #14365D;
 }
 
+
+/* Style text */
 body, label, input, button, select {
-  font-family: 'rooneysansmed', 'Helvetica Neue', Helvetica;
-  font-weight: 200;
-  font-size: 1.5vw;
+  font-family: 'rooneysansmed', Verdana, Georgia;
+  /*font-size: calc(7px + .5vw);*/
 }
-h1, h2, h3, h4 { font-weight: 400; font-size: 2.5vw; }
 
-
+h1, h2, h3, h4 {font-size: 2.5vw;}
 
 #controls {
   /* Appearance */
-  background-color: #EEE;
+  background-color: rgba(220,221,222);
   padding: 10px;
   cursor: move;
   /* Fade out while not hovering */
@@ -57,33 +48,56 @@ h1, h2, h3, h4 { font-weight: 400; font-size: 2.5vw; }
   position: absolute;
   bottom: 10px;
   left: 10px;
+  width: 80%;
 }
 
 /* Position and style title*/
 #apptitle {
   left: 0;
-  padding: 5px;
+  padding: 10px;
   position:absolute;
   text-align:center;
   top: 0px;
   width: 100%;
-  font-family: 'rooneysansbold', 'Helvetica Neue', Helvetica;
-  font-weight: 400;
-  color: #14365D;
-  background-color: rgba(238,238,238,.35);
+  font-family: 'rooneyprobold', Verdana, Georgia;
+  /*color: #14365D;*/
+  background-color: rgba(220,221,222,.5);
 }
 
 .legend {
   /* Appearance */
-  font-family: 'rooneysansmed', 'Helvetica Neue', Helvetica;
-  font-size: 1.5vw;
-  background-color: #EEE;
-  padding: 10px;
-  /* Fade out while not hovering */
-  opacity: 0.65;
+  font-family: 'rooneysansmed', Verdana, Georgia;
+  background-color: rgba(220,221,222,.5);
+  padding: 20px;
+  font-size: 1em;
 }
 
 /* If not using map tiles, show a white background */
 .leaflet-container {
   background-color: white !important;
+}
+
+/* Media queries: Recompute break points */
+@media all and (min-width: 960px) {
+
+  h1, h2, h3, h4 {font-size: 2.25em;}
+  body, label, input, button, select {
+    font-size: 1.3em;
+  }
+}
+
+@media all and (max-width: 959px) and (min-width: 800px) {
+
+  h1, h2, h3, h4 {font-size: 2.75vw;}
+  body, label, input, button, select {
+    font-size: 1.3vw;
+  }
+}
+
+@media all and (max-width: 799px) and (min-width: 50px) {
+
+  h1, h2, h3, h4 {font-size: 18px;}
+  body, label, input, button, select {
+    font-size: 10px;
+  }
 }
