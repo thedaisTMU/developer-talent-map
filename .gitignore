@@ -1,5 +1,6 @@
 *.Rproj.user/*
 .Rhistory
+*.history
 rsconnect/*
 fonts/*
 Jan Fromm*
@@ -9,3 +10,6 @@ devroles-city.csv
 devroles-province.csv
 
 .RData
+report/data/*
+report/figures/*
+.Rproj.user
