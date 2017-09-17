@@ -10,6 +10,20 @@ devroles-city.csv
 devroles-province.csv
 
 .RData
-report/data/*
 report/figures/*
 .Rproj.user
+
+report/data/2014 Stack Overflow Survey Responses.zip
+report/data/2014 Stack Overflow Survey Responses.csv
+report/data/2015 Stack Overflow Developer Survey Responses.zip
+report/data/2015 Stack Overflow Developer Survey Responses.csv
+report/data/2016 Stack Overflow Survey Results.zip
+report/data/2016 Stack Overflow Survey Results/2016 Stack Overflow Survey Responses.csv
+report/data/2016 Stack Overflow Survey Results/READ_ME_-_The_Public_2016_Stack_Overflow_Developer_Survey_Results.txt
+report/data/dev_survey_2017_private_file.zip
+report/data/layout_usable_private_file.xlsx
+report/data/dev_survey_2017_usable_private_label_encoding.csv
+report/data/dev_survey_2017_usable_private_value_encoding.csv
+report/data/Brookfield_report_data_with_additions_4-19-2017.xlsx
+report/data/flipped_Victoria_BC_city_report_08102017.csv
+report/data/global_developer_counts_3-year_trend_with_countries.xlsx
