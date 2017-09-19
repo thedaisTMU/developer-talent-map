@@ -1,4 +1,4 @@
-#StackOverflow Developer Talent Map for Canadian Cities and Provinces
+#Stack Overflow Developer Talent Map for Canadian Cities and Provinces
 ##R Shiny Map Widget
 #setwd("~/GitHub/developer-talent-map")
 
@@ -43,19 +43,21 @@ metric <- c(
 )
 
 # Define UI
-ui <- fillPage(theme = "styles.css",
-               title = "StackOverflow Canadian Developer Talent Map",
+ui <- function(request) {
+  fillPage(theme = "styles.css",
+               title = "Stack Overflow Canadian Developer Talent Map",
     div(style = "width: 100%; height: 100%;",
         leafletOutput("map", width = "100%", height = "100%"),
         absolutePanel(id = "controls", class = "panel panel-default", draggable = TRUE, fixed = TRUE,
                       top = 90, left = 20, right = "auto", bottom = "auto", 
                       width = "30%", height = "auto",
                       selectInput("metric", "Web Traffic Metric", metric),
-                      selectInput("role", "Developer Role", role)
+                      selectInput("role", "Developer Role", role),
+                      bookmarkButton(title = "Bookmark your choices and get a URL for sharing")
                       ),
         h3(tags$div(id="apptitle",
                     tags$a(href="http://brookfieldinstitute.ca/", img(src='brookfield_mark_small.png', align = "left")),
-                    "StackOverflow Canadian Developer Talent Map"
+                    "Stack Overflow Canadian Developer Talent Map"
                     )
            ),
         tags$div(id="cite",
@@ -67,6 +69,7 @@ ui <- fillPage(theme = "styles.css",
                   "by David Rubinger and Creig Lamb")
     )
   )
+}
                 
 #Draw Leaflet maps
 server <- function(input, output) {
@@ -141,12 +144,13 @@ server <- function(input, output) {
                           "border-color" = "rgba(0,0,0,0.5)"))) %>%
        
        addLegend("bottomright", pal = metricpal, values = provinces[[input$metric]],
-                 title = paste0("Legend: ", labelmetric), opacity = .65
+                 title = labelmetric, opacity = .65
        )
      
    })
 }
 
-# Run the application 
+# Run the application
+enableBookmarking()
 shinyApp(ui = ui, server = server)
 
