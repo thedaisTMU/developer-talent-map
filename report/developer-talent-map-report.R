@@ -134,13 +134,14 @@ respondents_2017_private <- respondents_2017_private_raw %>%
     select(respondent_id, country = q0003, gender, industry = q0022,
            pro_status = q0001, web_dev_role = q0030, company_size = q0023,
            company_type = q0024, employment_status = q0017,
-           salary_usd = current_salary_USD, usd_cad = salary_conversion,
+           salary_usd = current_salary_USD, local_currency_per_usd = salary_conversion,
+           local_currency = q0063, local_currency_other = q0063_other,
            contains("q0029"), job_seeking_status = q0041, job_discovery_channel = q0061,
            educ_level = q0018,
            educ_level_group = ed_level, major = ed_major,
            unemployed_time_post_bootcamp = q0071, pro_experience = q0027) %>%
     mutate_all(funs(stri_trans_general(., "latin-ascii"))) %>%
-    mutate_at(vars(respondent_id, salary_usd), funs(as.numeric)) %>%
+    mutate_at(vars(respondent_id, salary_usd, local_currency_per_usd), funs(as.numeric)) %>%
     left_join(respondent_devroles_2017, by = "respondent_id") %>%
     # left_join(respondent_mobiledevroles_2017, by = "respondent_id") %>%
     left_join(respondent_languages_2017, by = "respondent_id") %>%
@@ -161,22 +162,31 @@ industry_consolidations <- read_csv(
 employment_status_consolidations <- read_csv(
     paste(mappings_dir, "employment-status-consolidations.csv", sep = "/"),
     col_types = cols(.default = col_character()))
+currency_mappings <- read_csv("mappings/currency-mappings.csv") %>%
+    mutate(currency_name = tolower(trimws(gsub("\\(.*\\)", "", currency_name))))
+country_ppps <- read_csv(paste(data_dir, "world-bank-ppp-rates.csv", sep = "/")) %>%
+    setNames(c("country", "local_currency_per_intl_dollar")) %>%
+    mutate(country = tolower(stri_trans_general(country, "latin-ascii")))
 
 respondents <- bind_rows(
     respondents_2014, respondents_2015, respondents_2016, respondents_2017_private) %>%
     mutate_at(vars(country, pro_status, dev_roles, web_dev_role,
-                   employment_status,
+                   employment_status, local_currency,
                    industry, company_size, company_type, languages, 
                    educ_level, job_seeking_status, job_discovery_channel,
                    educ_level_group, unemployed_time_post_bootcamp,
                    pro_experience, major, gender),
               funs(tolower)) %>%
+    mutate(local_currency = trimws(gsub("\\(.*\\)", "", local_currency))) %>%
     left_join(country_label_corrections,
               by = c("country" = "original_country_label")) %>%
     left_join(industry_consolidations,
               by = c("industry" = "industry_original")) %>%
     left_join(employment_status_consolidations,
               by = c("employment_status" = "employment_status_original")) %>%
+    left_join(currency_mappings %>% rename(local_currency_code = currency_code),
+              by = c("local_currency" = "currency_name")) %>%
+    left_join(country_ppps, by = "country") %>%
     rename(industry_original = industry,
            employment_status_original = employment_status) %>%
     mutate(country = ifelse(
@@ -204,6 +214,7 @@ respondents <- bind_rows(
                           industry_consolidated == "n/a", NA,
                           industry_consolidated)))) %>%
     left_join(country_metadata, by = "country") %>%
+    rename(country_currency_code = currency_code) %>%
     replace_na(list(is_eu = FALSE)) %>%
     mutate(region = factor(ifelse(country == "canada", "Canada",
                                   ifelse(country == "united states", "US",
@@ -211,7 +222,9 @@ respondents <- bind_rows(
                            levels = c("Canada", "US", "EU", "ROW")),
            region_carow = factor(ifelse(country == "canada", "Canada", "ROW"),
                                  levels = c("ROW", "Canada")),
-           salary_cad = salary_usd * 1.32) %>%
+           salary_cad = salary_usd * 1.32,
+           salary_local_currency = salary_usd * local_currency_per_usd,
+           salary_ppp = salary_local_currency / local_currency_per_intl_dollar) %>%
     select(-contains("q0029"))
 
 # Web traffic by developer role in Canada
