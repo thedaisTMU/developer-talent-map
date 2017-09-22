@@ -171,7 +171,7 @@ country_ppps <- read_csv(paste(data_dir, "world-bank-ppp-rates.csv", sep = "/"))
 respondents <- bind_rows(
     respondents_2014, respondents_2015, respondents_2016, respondents_2017_private) %>%
     mutate_at(vars(country, pro_status, dev_roles, web_dev_role,
-                   employment_status, local_currency,
+                   employment_status, local_currency, local_currency_other,
                    industry, company_size, company_type, languages, 
                    educ_level, job_seeking_status, job_discovery_channel,
                    educ_level_group, unemployed_time_post_bootcamp,
@@ -184,8 +184,12 @@ respondents <- bind_rows(
               by = c("industry" = "industry_original")) %>%
     left_join(employment_status_consolidations,
               by = c("employment_status" = "employment_status_original")) %>%
-    left_join(currency_mappings %>% rename(local_currency_code = currency_code),
+    left_join(currency_mappings %>%
+                  select(currency_name, local_currency_code_name = currency_code),
               by = c("local_currency" = "currency_name")) %>%
+    left_join(currency_mappings %>%
+                  select(currency_per_usd, local_currency_code_rate = currency_code),
+              by = c("local_currency_per_usd" = "currency_per_usd")) %>%
     left_join(country_ppps, by = "country") %>%
     rename(industry_original = industry,
            employment_status_original = employment_status) %>%
@@ -212,7 +216,14 @@ respondents <- bind_rows(
                   industry_original), NA, ifelse(
                       is.na(industry_consolidated), industry_original, ifelse(
                           industry_consolidated == "n/a", NA,
-                          industry_consolidated)))) %>%
+                          industry_consolidated))),
+        local_currency_code = ifelse(!is.na(local_currency_code_rate),
+                                     local_currency_code_rate,
+                                     ifelse(!is.na(local_currency_code_name),
+                                            local_currency_code_name,
+                                            ifelse(is.na(local_currency) &
+                                                       nchar(local_currency_other) == 3,
+                                                   local_currency_other, NA)))) %>%
     left_join(country_metadata, by = "country") %>%
     rename(country_currency_code = currency_code) %>%
     replace_na(list(is_eu = FALSE)) %>%
