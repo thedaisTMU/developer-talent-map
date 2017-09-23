@@ -188,8 +188,9 @@ respondents <- bind_rows(
                   select(currency_name, local_currency_code_name = currency_code),
               by = c("local_currency" = "currency_name")) %>%
     left_join(currency_mappings %>%
-                  select(currency_per_usd, local_currency_code_rate = currency_code),
-              by = c("local_currency_per_usd" = "currency_per_usd")) %>%
+                  left_join(country_metadata, by = "currency_code") %>%
+                  select(country, local_currency_code_rate = currency_code, currency_per_usd),
+              by = c("country", "local_currency_per_usd" = "currency_per_usd")) %>%
     left_join(country_ppps, by = "country") %>%
     rename(industry_original = industry,
            employment_status_original = employment_status) %>%
