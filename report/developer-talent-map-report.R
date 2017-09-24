@@ -165,8 +165,13 @@ employment_status_consolidations <- read_csv(
 currency_mappings <- read_csv("mappings/currency-mappings.csv") %>%
     mutate(currency_name = tolower(trimws(gsub("\\(.*\\)", "", currency_name))))
 country_ppps <- read_csv(paste(data_dir, "world-bank-ppp-rates.csv", sep = "/")) %>%
-    setNames(c("country", "local_currency_per_intl_dollar")) %>%
-    mutate(country = tolower(stri_trans_general(country, "latin-ascii")))
+    setNames(c("original_country_label", "local_currency_per_intl_dollar")) %>%
+    mutate(original_country_label = tolower(
+        trimws(stri_trans_general(original_country_label, "latin-ascii")))) %>%
+    left_join(country_label_corrections, by = "original_country_label") %>%
+    mutate(country = ifelse(!is.na(corrected_country_label),
+                            corrected_country_label, original_country_label)) %>%
+    select(country, local_currency_per_intl_dollar)
 
 respondents <- bind_rows(
     respondents_2014, respondents_2015, respondents_2016, respondents_2017_private) %>%
@@ -191,7 +196,6 @@ respondents <- bind_rows(
                   left_join(country_metadata, by = "currency_code") %>%
                   select(country, local_currency_code_rate = currency_code, currency_per_usd),
               by = c("country", "local_currency_per_usd" = "currency_per_usd")) %>%
-    left_join(country_ppps, by = "country") %>%
     rename(industry_original = industry,
            employment_status_original = employment_status) %>%
     mutate(country = ifelse(
@@ -226,6 +230,7 @@ respondents <- bind_rows(
                                                        nchar(local_currency_other) == 3,
                                                    local_currency_other, NA)))) %>%
     left_join(country_metadata, by = "country") %>%
+    left_join(country_ppps, by = "country") %>%
     rename(country_currency_code = currency_code) %>%
     replace_na(list(is_eu = FALSE)) %>%
     mutate(region = factor(ifelse(country == "canada", "Canada",
@@ -236,7 +241,9 @@ respondents <- bind_rows(
                                  levels = c("ROW", "Canada")),
            salary_cad = salary_usd * 1.32,
            salary_local_currency = salary_usd * local_currency_per_usd,
-           salary_ppp = salary_local_currency / local_currency_per_intl_dollar) %>%
+           salary_intl_dollar = ifelse(
+               country_currency_code == local_currency_code,
+               salary_local_currency / local_currency_per_intl_dollar, NA)) %>%
     select(-contains("q0029"))
 
 # Web traffic by developer role in Canada
@@ -284,6 +291,8 @@ country_years_prodevs <- respondents %>%
               mean_salary_usd = mean(salary_usd, na.rm = TRUE),
               median_salary_usd = median(salary_usd, na.rm = TRUE),
               n_salary_responses = sum(ifelse(!is.na(salary_cad), TRUE, FALSE)),
+              median_salary_intl_dollar = median(salary_intl_dollar, na.rm = TRUE),
+              n_salary_intl_dollar_responses = sum(ifelse(!is.na(salary_intl_dollar), TRUE, FALSE)),
               mean_pro_experience_years = mean(pro_experience_mid_year, na.rm = TRUE),
               median_pro_experience_years = median(pro_experience_mid_year, na.rm = TRUE),
               respondents_share_pro_experience_bin_above_15 = sum(pro_experience_bin_above_15) /
@@ -1449,9 +1458,10 @@ ggsave(paste(output_dir, "employmentstatusoriginal-respondentshares-2017-ca-prod
 #        width = plot_width, height = plot_height, scale = plot_scale)
 
 #### Salary ####
-# Plot of median salaries by country
-min_n_salary_responses_country <- 50
+min_n_salary_responses_country <- 25
 n_top_countries_salary <- 20
+
+# Plot of median salaries by country
 top_countries_salary <- country_years_prodevs %>%
     filter(year == 2017) %>%
     arrange(median_salary_cad) %>%
@@ -1480,6 +1490,11 @@ country_years_prodevs %>%
 ggsave(paste(output_dir, "country-salaries-2017-prodevs.png", sep = "/"),
        width = plot_width, height = plot_height, scale = plot_scale)
 
+# Sample size of median salary plot
+country_years_prodevs %>%
+    filter(year == 2017 & n_salary_responses >= min_n_salary_responses_country) %>%
+    nrow()
+
 # Canada's salary rank
 country_years_prodevs %>%
     filter(year == 2017 &
@@ -1492,6 +1507,77 @@ country_years_prodevs %>%
 country_years_prodevs %>%
     filter(year == 2017 & country == "united states") %>%
     select(country, mean_salary_cad, median_salary_cad, n_salary_responses)
+
+# Comparing country salary ranks between market and PPP valuations
+# Plot of country salary rankings measured in market and PPP rates, 2017
+median_salary_cad_ca <- country_years_prodevs %>%
+    filter(year == 2017 & country == "canada") %>%
+    pull(median_salary_cad)
+median_salary_intl_dollar_ca <- country_years_prodevs %>%
+    filter(year == 2017 & country == "canada") %>%
+    pull(median_salary_intl_dollar)
+country_years_prodevs %>%
+    filter(year == 2017 & n_salary_responses >= min_n_salary_responses_country &
+               n_salary_intl_dollar_responses >= min_n_salary_responses_country) %>%
+    mutate(median_salary_cad_ind = median_salary_cad / median_salary_cad_ca,
+           median_salary_intl_dollar_ind = median_salary_intl_dollar /
+               median_salary_intl_dollar_ca) %>%
+    select(country, region_carow, `Market Exchange Rates` = median_salary_cad_ind,
+           `PPP Exchange Rates` = median_salary_intl_dollar_ind) %>%
+    gather(currency, median_salary_ind, -country, -region_carow) %>%
+    group_by(currency) %>%
+    mutate(median_salary_rank = rank(-median_salary_ind)) %>%
+    top_n(n_top_countries_salary, median_salary_ind) %>%
+    ungroup() %>%
+    arrange(median_salary_ind) %>%
+    mutate(country_currency = factor(
+        paste(country, currency, sep = "_"),
+        levels = paste(country, currency, sep = "_"),
+        labels = paste0(median_salary_rank, ". ", toTitleCase(country)))) %>%
+    ggplot(aes(country_currency, median_salary_ind, fill = region_carow,
+               label = paste0(format(round(median_salary_ind, 2), n.small = 2), "x"))) +
+    facet_wrap(~ currency, scales = "free_y") +
+    geom_col(width = plot_bar_width) +
+    geom_text(hjust = "inward") +
+    coord_flip() +
+    scale_fill_manual(values = plot_colors_regioncarow) +
+    scale_y_continuous(labels = comma_format()) +
+    labs(x = "", y = "Salary Relative to Canada",
+         title = paste("Average Salary of Professional Developers Among Top",
+                       n_top_countries_salary, "Countries, 2017"),
+         subtitle = paste("Median Annual Salary of Survey Respondents by Country",
+                          "Relative to Canadian Median Salary\nMeasured at Market",
+                          "and Purchasing Power Parity (PPP) Exchange Rates")) +
+    theme(panel.grid.major.x = element_line(plot_grid_color),
+          panel.grid.major.y = element_line(NA),
+          axis.text.y = element_text(hjust = 0)) +
+    guides(fill = "none")
+ggsave(paste(output_dir, "country-salaryinds-2017-prodevs.png", sep = "/"),
+       width = plot_width, height = plot_height, scale = plot_scale)
+
+# Sample size of PPP plot
+country_years_prodevs %>%
+    filter(year == 2017 & n_salary_responses >= min_n_salary_responses_country &
+               n_salary_intl_dollar_responses >= min_n_salary_responses_country) %>%
+    nrow()
+
+# Canada PPP rank
+country_years_prodevs %>%
+    filter(year == 2017 & n_salary_responses >= min_n_salary_responses_country &
+               n_salary_intl_dollar_responses >= min_n_salary_responses_country) %>%
+    mutate(median_salary_intl_dollar_rank = rank(-median_salary_intl_dollar)) %>%
+    filter(country == "canada") %>%
+    select(median_salary_intl_dollar_rank)
+
+# Proportion of respondents omitted because of home currency not matching salary currency
+(respondents %>%
+        filter(year == 2017 & !is.na(salary_usd) & !is.na(country) & (
+            is.na(country_currency_code) | is.na(local_currency_code) |
+                country_currency_code != local_currency_code)) %>%
+        nrow()) /
+    (respondents %>%
+         filter(year == 2017 & !is.na(salary_usd) & !is.na(country)) %>%
+         nrow())
 
 # Plot of salaries by company type in Canada, 2017
 min_n_salaries_company_type <- 25
