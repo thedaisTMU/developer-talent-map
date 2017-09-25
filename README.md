@@ -28,5 +28,5 @@ https://asherzafar.shinyapps.io/stackoverflow_canadian_developer_talent_map/
 * `cansim-0510056-population-city.csv`
 * `cansim-2820135-employment-city.csv`
 
-### _From Stack Overflow Insights (https://insights.stackoverflow.com/survey)_ ###
+### _From World Bank (https://data.worldbank.org/indicator/PA.NUS.PRVT.PP)_ ###
 * `world-bank-ppp-rates.csv`
