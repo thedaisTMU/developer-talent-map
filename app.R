@@ -52,7 +52,10 @@ ui <- function(request) {
                       top = 90, left = 20, right = "auto", bottom = "auto", 
                       width = "30%", height = "auto",
                       selectInput("metric", "Web Traffic Metric", metric),
-                      selectInput("role", "Developer Role", role),
+                      selectInput("role", "Developer Role",
+                                  list("Role Groups" = c("All Developers", "Mobile Developers",
+                                                         "Web Developers", "Other Developers"),
+                                       "Roles" = role)),
                       bookmarkButton(title = "Bookmark your choices and get a URL for sharing")
                       ),
         h3(tags$div(id="apptitle",
