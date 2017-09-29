@@ -269,8 +269,7 @@ devroles_visitors_2017_intl <- left_join(
     read_excel(paste(data_dir, "Brookfield_report_data_with_additions_4-19-2017.xlsx",
                      sep = "/"), sheet = "USA Data", skip = 1), by = "") %>%
     setNames(gsub(" ", "_", gsub("\\+ ", "", tolower(c("dev_role", names(.)[-1]))))) %>%
-    select(dev_role, sydney, helsinki, paris, munich, tel_aviv, singapore,
-           amsterdam, stockholm, sf_silicon_valley, nyc_metro_area) %>%
+    select(-matches("%|\\.")) %>%
     slice(1:20) %>%
     mutate(dev_role = tolower(dev_role))
 
@@ -843,19 +842,29 @@ devrole_cities_2017_ca %>%
 ggsave(paste(output_dir, "devrole-city-visitorlocationquotients-2017-ca.png", sep = "/"),
        width = plot_width, height = 6, scale = 1.5)
 
+# Developers roles by international city
+devrole_cities_2017_intl <- devroles_visitors_2017_intl %>%
+    gather(city, visitors, -dev_role) %>%
+    inner_join(read_csv("mappings/intl-city-country-mappings.csv"), by = "city") %>%
+    group_by(city) %>%
+    mutate(visitors_share = visitors / visitors[dev_role == "all developers"]) %>%
+    inner_join(devroles_visitors_2017_intl %>%
+                   gather(country, visitors, -dev_role) %>%
+                   inner_join(read_csv("mappings/intl-city-country-mappings.csv"),
+                              by = "country") %>%
+                   group_by(country) %>%
+                   mutate(visitors_share = visitors / visitors[dev_role == "all developers"]),
+               by = c("dev_role", "city", "country"),
+               suffix = c("_city", "_country")) %>%
+    mutate(location_quotient = visitors_share_city / visitors_share_country)
+
 # Developer roles by city -- for interactive web viz
 bind_rows(devrole_cities_2017_ca %>%
-              rename(city = city_consolidated) %>%
-              mutate(region = "canada"),
-          devroles_visitors_2017_intl %>%
-              gather(city, visitors, -dev_role) %>%
-              inner_join(devroles_visitors_2017_intl %>%
-                             filter(dev_role == "all developers") %>%
-                             gather(city, visitors, -dev_role) %>%
-                             select(city, total_visitors_city = visitors),
-                         by = "city") %>%
-              mutate(visitors_share = visitors / total_visitors_city,
-                     region = "international")) %>%
+              mutate(region = "canada") %>%
+              rename(city = city_consolidated),
+          devrole_cities_2017_intl %>%
+              mutate(region = "international") %>%
+              rename(visitors_share = visitors_share_city)) %>%
     mutate(dev_role_parent_group = ifelse(
         dev_role %in% c("all developers"),
         "-", ifelse(
