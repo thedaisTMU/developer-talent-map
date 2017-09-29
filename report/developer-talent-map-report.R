@@ -785,13 +785,12 @@ ggsave(paste(output_dir, "webdevrole-respondentshares-2017-ca.png", sep = "/"),
        width = plot_width, height = plot_height, scale = plot_scale)
 
 # Developers and cities
-omit_dev_roles <- c(
-    "all developers", "mobile developers", "web developers",
-    "other kinds of developers", "biz intel developers",
-    "highly technical designers", "highly technical product managers",
-    "qa engineers")
+dev_role_groups <- c("all developers", "mobile developers", "web developers",
+                     "other kinds of developers")
+unusable_dev_roles <- c("biz intel developers", "highly technical designers",
+                        "highly technical product managers", "qa engineers")
 devrole_cities_2017_ca <- devroles_visitors_2017_ca %>%
-    filter(!(dev_role %in% omit_dev_roles)) %>%
+    filter(!(dev_role %in% unusable_dev_roles)) %>%
     select(dev_role, calgary:waterloo_kitchener_cambridge, victoria_bc) %>%
     gather(city, visitors, -dev_role) %>%
     inner_join(city_so_mappings, by = c("city" = "city_so")) %>%
@@ -809,23 +808,24 @@ devrole_cities_2017_ca <- devroles_visitors_2017_ca %>%
            location_quotient = visitors_share / visitors_share_ca) %>%
     ungroup()
 n_top_cities_dev_role <- 5
-dev_roles <- c("front-end web", "back-end web", "full-stack web",
-                 "android developers", "ios developers", "desktop developers",
-                 "database administrators", "systems administrators",
-                 "embedded developers", "graphics programmers", "data scientists",
-                 "machine learning specialists")
+dev_role_plot_order <- c(
+    "front-end web", "back-end web", "full-stack web", "android developers",
+    "ios developers", "desktop developers", "database administrators",
+    "systems administrators", "embedded developers", "graphics programmers",
+    "data scientists", "machine learning specialists")
 
 # Plot of top developer roles by Canadian city
 devrole_cities_2017_ca %>%
+    filter(dev_role %in% dev_role_plot_order) %>%
     arrange(location_quotient) %>%
     mutate(dev_role_city = factor(
         paste(dev_role, city_consolidated, sep = "_"),
         levels = paste(dev_role, city_consolidated, sep = "_"),
         labels = toTitleCase(gsub("_", "-", city_consolidated))),
         dev_role = factor(
-            dev_role, levels = dev_roles,
-            labels = toTitleCase(ifelse(dev_roles == "ios developers",
-                                        "iOS Developers", dev_roles)))) %>%
+            dev_role, levels = dev_role_plot_order,
+            labels = toTitleCase(ifelse(dev_role_plot_order == "ios developers",
+                                        "iOS Developers", dev_role_plot_order)))) %>%
     group_by(dev_role) %>%
     top_n(n_top_cities_dev_role, location_quotient) %>%
     ggplot(aes(dev_role_city, location_quotient,
@@ -843,29 +843,36 @@ devrole_cities_2017_ca %>%
 ggsave(paste(output_dir, "devrole-city-visitorlocationquotients-2017-ca.png", sep = "/"),
        width = plot_width, height = 6, scale = 1.5)
 
-# Developer roles by Canadian city -- for interactive web viz
-devrole_cities_2017_ca %>%
-    select(city = city_consolidated, dev_role, visitors,
+# Developer roles by city -- for interactive web viz
+bind_rows(devrole_cities_2017_ca %>%
+              rename(city = city_consolidated) %>%
+              mutate(region = "canada"),
+          devroles_visitors_2017_intl %>%
+              gather(city, visitors, -dev_role) %>%
+              inner_join(devroles_visitors_2017_intl %>%
+                             filter(dev_role == "all developers") %>%
+                             gather(city, visitors, -dev_role) %>%
+                             select(city, total_visitors_city = visitors),
+                         by = "city") %>%
+              mutate(visitors_share = visitors / total_visitors_city,
+                     region = "international")) %>%
+    mutate(dev_role_parent_group = ifelse(
+        dev_role %in% c("all developers"),
+        "-", ifelse(
+            dev_role %in% c("mobile developers", "web developers", "other kinds of developers"),
+            "all developers", ifelse(
+                dev_role %in% c("android developers", "ios developers"),
+                "mobile developers", ifelse(
+                    dev_role %in% c("back-end developers", "front-end developers", "full-stack developers"),
+                    "web developers", "other kinds of developers"))))) %>%
+    select(city, region, dev_role, dev_role_parent_group, visitors,
            city_visitors_share = visitors_share, location_quotient) %>%
-    arrange(city, dev_role) %>%
-    write_csv(paste(data_dir, "devroles-city-ca.csv", sep = "/"))
-
-# Developer roles by international city -- for interactive web viz
-devroles_visitors_2017_intl %>%
-    filter(!(dev_role %in% omit_dev_roles)) %>%
-    gather(city, visitors, -dev_role) %>%
-    inner_join(devroles_visitors_2017_intl %>%
-                   filter(dev_role == "all developers") %>%
-                   gather(city, visitors, -dev_role) %>%
-                   select(city, total_visitors_city = visitors),
-               by = "city") %>%
-    mutate(visitors_share = visitors / total_visitors_city) %>%
-    select(-total_visitors_city) %>%
-    write_csv(paste(data_dir, "devroles-city-intl.csv", sep = "/"))
+    arrange(region, city, dev_role_parent_group, dev_role) %>%
+    write_csv(paste(data_dir, "devroles-city.csv", sep = "/"))
 
 # Developer roles by province -- for interactive web viz
-devrole_province_2017 <- devroles_visitors_2017_ca %>%
-    filter(!(dev_role %in% omit_dev_roles)) %>%
+devroles_visitors_2017_ca %>%
+    filter(!(dev_role %in% unusable_dev_roles)) %>%
     select(dev_role, alberta:yukon) %>%
     gather(province, visitors, -dev_role) %>%
     inner_join(devroles_visitors_2017_ca %>%
@@ -880,11 +887,19 @@ devrole_province_2017 <- devroles_visitors_2017_ca %>%
                               visitors_ca[dev_role == "all developers"]),
                by = "dev_role") %>%
     mutate(visitors_share = visitors / visitors_province,
-           location_quotient = visitors_share / visitors_share_ca)
-devrole_province_2017 %>%
-    select(province, dev_role, visitors,
+           location_quotient = visitors_share / visitors_share_ca,
+           dev_role_parent_group = ifelse(
+               dev_role %in% c("all developers"),
+               "-", ifelse(
+                   dev_role %in% c("mobile developers", "web developers", "other kinds of developers"),
+                   "all developers", ifelse(
+                       dev_role %in% c("android developers", "ios developers"),
+                       "mobile developers", ifelse(
+                           dev_role %in% c("back-end developers", "front-end developers", "full-stack developers"),
+                           "web developers", "other kinds of developers"))))) %>%
+    select(province, dev_role, dev_role_parent_group, visitors,
            province_visitors_share = visitors_share, location_quotient) %>%
-    arrange(province, dev_role) %>%
+    arrange(province, dev_role_parent_group, dev_role) %>%
     write_csv(paste(data_dir, "devroles-province.csv", sep = "/"))
 
 #### Languages ####
