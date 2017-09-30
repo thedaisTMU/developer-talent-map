@@ -418,14 +418,14 @@ provincesconsolidated_2017 <- devroles_visitors_2017_ca %>%
            visitor_employee_ratio = visitors_share / employees_share)
 
 # Plot of province visitor shares
-provinces_consolidated_order <- c("british columbia", "alberta", "saskatchewan",
-                                  "manitoba", "ontario", "quebec", "atlantic canada")
+provinces_consolidated_plot_order <- c(
+    "territories", "british columbia", "alberta", "saskatchewan", "manitoba",
+    "ontario", "quebec", "atlantic canada")
 provincesconsolidated_2017 %>%
-    filter(province_consolidated != "territories") %>%
     mutate(province_consolidated = factor(
         province_consolidated,
-        levels = provinces_consolidated_order,
-        labels = toTitleCase(provinces_consolidated_order))) %>%
+        levels = provinces_consolidated_plot_order,
+        labels = toTitleCase(provinces_consolidated_plot_order))) %>%
     ggplot(aes(province_consolidated, visitors_share,
                label = percent(visitors_share))) +
     geom_col(fill = plot_color, width = plot_bar_width) +
@@ -439,11 +439,10 @@ ggsave(paste(output_dir, "province-visitorshares-2017-ca.png", sep = "/"),
 
 # Plot of province visitor share-employee share ratios
 provincesconsolidated_2017 %>%
-    filter(province_consolidated != "territories") %>%
     mutate(province_consolidated = factor(
         province_consolidated,
-        levels = provinces_consolidated_order,
-        labels = toTitleCase(provinces_consolidated_order))) %>%
+        levels = provinces_consolidated_plot_order,
+        labels = toTitleCase(provinces_consolidated_plot_order))) %>%
     ggplot(aes(province_consolidated, visitor_employee_ratio,
                label = format(round(visitor_employee_ratio, 2), n.small = 2))) +
     geom_col(fill = plot_color, width = plot_bar_width) +
