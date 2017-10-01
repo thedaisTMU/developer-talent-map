@@ -1420,7 +1420,7 @@ ggsave(paste(output_dir, "employmentstatusoriginal-respondentshares-2017-ca-prod
        width = plot_width, height = plot_height, scale = plot_scale)
 
 #### Salary ####
-min_n_salary_responses_country <- 25
+min_n_salary_responses_country <- 20
 n_top_countries_salary <- 20
 
 # Plot of median salaries by country
@@ -1542,7 +1542,7 @@ country_years_prodevs %>%
          nrow())
 
 # Plot of salaries by company type in Canada, 2017
-min_n_salaries_company_type <- 25
+min_n_salaries_company_type <- 20
 companytype_regionscarow_2017_prodevs %>%
     filter(region_carow == "Canada" &
                n_salary_responses >= min_n_salaries_company_type) %>%
@@ -1564,7 +1564,7 @@ ggsave(paste(output_dir, "companytype-salaries-2017-ca-prodevs.png", sep = "/"),
        width = plot_width, height = plot_height, scale = plot_scale)
 
 # Median salary for pro devs in industries in Canada, 2017
-min_n_salaries_industry <- 25
+min_n_salaries_industry <- 20
 omit_industries <- c("other (please specify)")
 industry_regionscarow_2017_prodevs %>%
     filter(region_carow == "Canada" &
