@@ -935,7 +935,7 @@ png(filename = paste(output_dir, "language-respondentshares-2017-ca-prodevs-word
     width = 300, height = 300, res = 100)
 language_regionscarow_2017_prodevs %>%
     filter(region_carow == "Canada") %>%
-    with(wordcloud(language, respondents, scale = c(3, 1), max.words = 20,
+    with(wordcloud(language_label, respondents, scale = c(3, 1), max.words = 20,
                    colors = brewer.pal(9, "Blues")[6:9]))
 dev.off()
 
