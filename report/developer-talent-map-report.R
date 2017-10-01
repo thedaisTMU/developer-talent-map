@@ -143,7 +143,6 @@ respondents_2017_private <- respondents_2017_private_raw %>%
     mutate_all(funs(stri_trans_general(., "latin-ascii"))) %>%
     mutate_at(vars(respondent_id, salary_usd, local_currency_per_usd), funs(as.numeric)) %>%
     left_join(respondent_devroles_2017, by = "respondent_id") %>%
-    # left_join(respondent_mobiledevroles_2017, by = "respondent_id") %>%
     left_join(respondent_languages_2017, by = "respondent_id") %>%
     left_join(respondent_informaleduc_2017, by = "respondent_id") %>%
     left_join(respondent_ethnicities_2017, by = "respondent_id") %>%
@@ -979,34 +978,6 @@ language_regionscarow_2017_prodevs %>%
     filter(region_carow == "Canada" & language == "javascript") %>%
     select(respondents_share)
 
-# Plot of web development language types
-# respondents %>%
-#     filter(year == 2017 & country == "canada" & !is.na(languages) &
-#                pro_status == "pro dev") %>%
-#     separate_rows(languages, sep = ";") %>%
-#     left_join(language_metadata, by = c("languages" = "language")) %>%
-#     group_by(respondent_id) %>%
-#     summarise(uses_back_end_language = sum(is_back_end_language, na.rm = TRUE) > 0,
-#               uses_front_end_language = sum(is_front_end_language, na.rm = TRUE) > 0) %>%
-#     summarise_at(vars(uses_front_end_language, uses_back_end_language),
-#                  funs(sum(.) / n())) %>%
-#     gather(web_dev_language_type, respondents_share) %>%
-#     mutate(web_dev_language_type = factor(
-#         web_dev_language_type, levels = c("uses_front_end_language", "uses_back_end_language"),
-#         labels = c("Front-End Languages", "Back-End Languages"))) %>%
-#     ggplot(aes(web_dev_language_type, respondents_share, label = percent(respondents_share))) +
-#     geom_col(width = plot_bar_width, fill = plot_color) +
-#     geom_text(vjust = "inward") +
-#     scale_y_continuous(labels = percent_format()) +
-#     labs(x = "", y = plot_ylab_respondents_share,
-#          title = paste("Share of Canadian Professional Developers Using Types",
-#                        "of Web Development Languages, 2017"),
-#          subtitle = plot_subtitle_respondents_share) +
-#     theme(panel.grid.major.y = element_line(plot_grid_color),
-#           panel.grid.major.x = element_line(NA))
-# ggsave(paste(output_dir, "webdevlanguagetype-respondentshares-2017-ca-prodevs.png", sep = "/"),
-#        width = plot_width, height = plot_height, scale = plot_scale)
-
 # Plot of number of languages used, 2017
 y_lim <- 10.5
 respondents %>%
@@ -1448,38 +1419,6 @@ employmentstatusoriginal_2017_ca_prodevs %>%
 ggsave(paste(output_dir, "employmentstatusoriginal-respondentshares-2017-ca-prodevs.png", sep = "/"),
        width = plot_width, height = plot_height, scale = plot_scale)
 
-# # Employment status over time in Canada
-# employmentstatus_year_ca <- respondents %>%
-#     filter(country == "canada" & !(is.na(employment_status_original)) &
-#                !(employment_status_consolidated %in% c("retired", "did not disclose"))) %>%
-#     group_by(year, employment_status_consolidated) %>%
-#     summarise(respondents = n()) %>%
-#     group_by(year) %>%
-#     mutate(respondents_share = respondents / sum(respondents))
-# 
-# # Plot
-# employmentstatus_year_ca %>%
-#     mutate(employment_status_label = factor(
-#         employment_status_consolidated,
-#         levels = c("employed full-time",
-#                    "independent contractor, freelancer, or self-employed",
-#                    "employed part-time", "unemployed, student, or other"),
-#         labels = c("Employed full-time",
-#                    "Independent contractor, freelancer,\nor self-employed",
-#                    "Employed part-time", "Unemployed, student, or other"))) %>%
-#     ggplot(aes(year, respondents_share)) +
-#     geom_line(aes(color = employment_status_label)) +
-#     geom_point(aes(color = employment_status_label)) +
-#     geom_text(aes(label = percent(respondents_share)), nudge_y = 0.02) +
-#     scale_color_brewer(palette = "Set1") +
-#     scale_x_continuous(breaks = 2015:2017) +
-#     scale_y_continuous(limits = c(0, 0.8), labels = percent_format()) +
-#     labs(x = "", y = plot_ylab_respondents_share, color = "Employment Staus",
-#          title = "Share of Canadian Developers by Employment Status Over Time, 2015-2017",
-#          subtitle = plot_subtitle_respondents_share)
-# ggsave(paste(output_dir, "employmentstatus-respondentshares-ca.png", sep = "/"),
-#        width = plot_width, height = plot_height, scale = plot_scale)
-
 #### Salary ####
 min_n_salary_responses_country <- 25
 n_top_countries_salary <- 20
@@ -1875,33 +1814,6 @@ educlevel_regions_2017_prodevs %>%
          subtitle = "Median Annual Salary in C$ of Survey Respondents")
 ggsave(paste(output_dir, "educlevel-salaries-2017-ca-prodevs.png", sep = "/"),
        width = plot_width, height = plot_height, scale = plot_scale)
-
-# # Plot of share of developers by degree type
-# major_mappings <- read_csv(paste(mappings_dir, "major-mappings.csv", sep = "/"))
-# majors_2017_ca_prodevs <- respondents %>%
-#     left_join(major_mappings, by = "major") %>%
-#     filter(year == 2017 & country == "canada" & !is.na(major_group) &
-#                pro_status == "pro dev") %>%
-#     group_by(major_group) %>%
-#     summarise(respondents = n()) %>%
-#     mutate(respondents_share = respondents / sum(respondents))
-# major_groups <- c("computer science or software engineering",
-#                   "computer programming or web development",
-#                   "computer engineering or electrical/electronics engineering",
-#                   "other")
-# majors_2017_ca_prodevs %>%
-#     mutate(major_group = factor(major_group, levels = major_groups,
-#                                 labels = toTitleCase(major_groups))) %>%
-#     ggplot(aes(major_group, respondents_share)) +
-#     geom_col(fill = plot_color, width = plot_bar_width) +
-#     scale_y_continuous(labels = percent_format()) +
-#     labs(x = "", y = plot_ylab_respondents_share, fill = "",
-#          title = "Share of Canadian Professional Developers by Major in University/College, 2017",
-#          subtitle = plot_subtitle_respondents_share) +
-#     guides(fill = "none") +
-#     theme(axis.text.x = element_text(angle = 20, hjust = 1))
-# ggsave(paste(output_dir, "major-respondentshares-2017-ca-prodevs.png", sep = "/"),
-#        width = plot_width, height = plot_height, scale = plot_scale)
 
 #### Informal Education ####
 n_pro_dev_respondents_2017_ca <- respondents %>%
