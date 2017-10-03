@@ -1688,6 +1688,11 @@ jobdiscoverychannels_2017_ca %>%
 ggsave(paste(output_dir, "jobdiscoverychannel-respondentshares-2017-ca-prodevs.png", sep = "/"),
        width = plot_width, height = plot_height, scale = plot_scale)
 
+# Channels included under "job board"
+jobdiscoverychannels_2017_ca %>%
+    filter(grepl("job board", job_discovery_channel)) %>%
+    select(job_discovery_channel)
+
 # Contacted by someone from company or external recruiter
 jobdiscoverychannels_2017_ca %>%
     filter(grepl("recruiter|contacted directly", job_discovery_channel)) %>%
