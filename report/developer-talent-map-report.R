@@ -16,22 +16,22 @@ theme_set(theme_bw() +
               theme(text = element_text(color = "#0b2b48"),
                     axis.text = element_text(color = "#0b2b48"),
                     plot.subtitle = element_text(face = "italic"),
-                    panel.grid.major.x = element_line(color = "gray90"),
-                    panel.grid.major.y = element_line(NA),
+                    panel.grid.major = element_line(color = "gray90"),
                     panel.grid.minor = element_line(NA),
                     panel.border = element_blank(),
                     axis.ticks = element_line(NA),
                     legend.position = "none"))
+update_geom_defaults("text", list(colour = "#0b2b48"))
 plot_width <- 8
 plot_height <- 4
 plot_scale <- 1.2
 plot_bar_width <- 0.75
 plot_axis_padding = c(0.01, 0)
 plot_grid_color <- "grey90"
-plot_color <- "red4"
+plot_color <- "#e24585"
 plot_colors_2_emphasis <- c("#e24585", "#99daea")
-plot_colors_region <- c("red4", "gray50", "gray70", "gray90")
-plot_colors_countryeu <- c("red4", "gray30", "gray50", "gray70", "gray90")
+plot_colors_4_emphasis <- c("#e24585", "#4d8e9e", "#99daea", "#b3f4ff")
+plot_sizes_4_emphasis <- c(3, 1, 1, 1)
 plot_subtitle_respondents_share <- "% of Survey Respondents"
 plot_subtitle_visitors_share <- "% of Web Traffic to Stack Overflow"
 plot_ylab_respondents_share <- "% of Respondents"
@@ -327,6 +327,9 @@ country_years_prodevs <- respondents %>%
            salary_pc_diff_females_males = median_salary_cad_females /
                median_salary_cad_males - 1) %>%
     ungroup()
+region_years <- country_years %>%
+    group_by(year, region) %>%
+    summarise_at(vars(respondents, respondents_share), funs(sum))
 
 # Plot of top country survey respondent shares in 2017
 n_top_countries <- 10
@@ -339,51 +342,41 @@ country_years %>%
     ggplot(aes(country, respondents_share, fill = region_carow_label,
                label = percent(respondents_share))) +
     geom_col(width = plot_bar_width) +
-    geom_text(color = "#0b2b48", hjust = "inward") +
+    geom_text(hjust = 0, nudge_y = 0.001) +
     coord_flip() +
     scale_fill_manual(values = plot_colors_2_emphasis) +
-    scale_y_continuous(limits = c(0, 0.23), labels = percent_format(),
+    scale_y_continuous(limits = c(0, 0.24), labels = percent_format(),
                        expand = plot_axis_padding) +
     labs(x = "", y = plot_ylab_respondents_share,
          title = paste("Share of Developers Among Top", n_top_countries, "Countries, 2017"),
-         subtitle = plot_subtitle_respondents_share)
+         subtitle = plot_subtitle_respondents_share) +
+    theme(panel.grid.major.y = element_line(NA))
 ggsave(paste(output_dir, "country-respondentshares-2017.png", sep = "/"),
        width = plot_width, height = plot_height, scale = plot_scale)
 ggsave(paste(output_dir, "country-respondentshares-2017.svg", sep = "/"),
        width = plot_width, height = plot_height, scale = plot_scale)
 
-# Respondents share indexed
-countryeu_years <- country_years %>%
-    mutate(country_eu = ifelse(region == "EU", "eu", country)) %>%
-    group_by(year, country_eu) %>%
-    summarise_at(vars(respondents, respondents_share), funs(sum))
-
-# Plot of respondent share indices by country, 2014-2017
-n_top_countrieseu <- 5
-countryeu_years %>%
-    inner_join(countryeu_years %>%
-                   group_by(country_eu) %>%
-                   summarise(mean_respondents_share = mean(respondents_share)) %>%
-                   top_n(n_top_countrieseu, mean_respondents_share) %>%
-                   select(country_eu),
-               by = "country_eu") %>%
-    group_by(country_eu) %>%
+# Plot of respondent share indices by country/region, 2014-2017
+region_years %>%
+    group_by(region) %>% 
     mutate(respondents_share_ind = respondents_share /
-               respondents_share[year == min(year)] * 100,
-           country_eu_label = factor(
-               country_eu,
-               levels = c("canada", "united states", "eu", "india", "russia"),
-               labels = c("Canada", "US", "EU", "India", "Russia"))) %>%
-    ggplot(aes(year, respondents_share_ind, color = country_eu_label,
-               size = country_eu_label)) +
+               respondents_share[year == min(year)] * 100) %>%
+    ungroup() %>% 
+    mutate(region = factor(region, levels = c("ROW", "EU", "US", "Canada"))) %>%
+    ggplot(aes(year, respondents_share_ind, color = region, size = region)) +
     geom_line() +
-    scale_color_manual(values = plot_colors_countryeu) +
-    scale_size_manual(values = c(3, rep(1, 4))) +
+    scale_color_manual(values = rev(plot_colors_4_emphasis)) +
+    scale_size_manual(values = rev(plot_sizes_4_emphasis)) +
     lims(y = c(60, 140)) +
     labs(x = "", y = "Index, 2014 = 100", color = "", size = "",
          title = "Share of Developers Among Top Countries/Regions Over Time, 2014-2017",
-         subtitle = "Index of % of Survey Responents, 2014 = 100")
-ggsave(paste(output_dir, "countryeu-respondentshareinds.png", sep = "/"),
+         subtitle = "Index of % of Survey Responents, 2014 = 100") +
+    theme(panel.grid.major.x = element_line(NA),
+          legend.position = "right") +
+    guides(color = guide_legend(reverse = TRUE), size = guide_legend(reverse = TRUE))
+ggsave(paste(output_dir, "region-respondentshareinds.png", sep = "/"),
+       width = plot_width, height = plot_height, scale = plot_scale)
+ggsave(paste(output_dir, "region-respondentshareinds.svg", sep = "/"),
        width = plot_width, height = plot_height, scale = plot_scale)
 
 # Growth from 2015 to 2017 among top countries
@@ -436,12 +429,15 @@ provincesconsolidated_2017 %>%
     ggplot(aes(province_consolidated, visitors_share,
                label = percent(visitors_share))) +
     geom_col(fill = plot_color, width = plot_bar_width) +
-    geom_text(vjust = "inward") +
+    geom_text(vjust = 0, nudge_y = 0.004) +
     scale_y_continuous(labels = percent_format(), limit = c(0, 0.5)) +
     labs(x = "", y = plot_ylab_visitors_share,
          title = "Share of Canadian Developers by Province, 2017",
-         subtitle = plot_subtitle_visitors_share)
+         subtitle = plot_subtitle_visitors_share) +
+    theme(panel.grid.major.x = element_line(NA))
 ggsave(paste(output_dir, "province-visitorshares-2017-ca.png", sep = "/"),
+       width = plot_width, height = plot_height, scale = plot_scale)
+ggsave(paste(output_dir, "province-visitorshares-2017-ca.svg", sep = "/"),
        width = plot_width, height = plot_height, scale = plot_scale)
 
 # Plot of province visitor share-employee share ratios
@@ -453,11 +449,15 @@ provincesconsolidated_2017 %>%
     ggplot(aes(province_consolidated, visitor_employee_ratio,
                label = format(round(visitor_employee_ratio, 2), n.small = 2))) +
     geom_col(fill = plot_color, width = plot_bar_width) +
-    geom_text(vjust = "inward") +
+    geom_text(vjust = 0, nudge_y = 0.01) +
+    scale_y_continuous(limits = c(0, 1.25), breaks = seq(0, 2, by = 0.25)) +
     labs(x = "", y = "Ratio of % of Traffic to % of Employment",
          title = "Concentration of Canadian Developers by Province, 2017",
-         subtitle = "Ratio of % of Web Traffic to Stack Overflow to % of National Employment")
-ggsave(paste(output_dir, "provinceconsolidated-visitoremployeeratios-2017.png", sep = "/"),
+         subtitle = "Ratio of % of Web Traffic to Stack Overflow to % of National Employment") +
+    theme(panel.grid.major.x = element_line(NA))
+ggsave(paste(output_dir, "provinceconsolidated-visitoremployeeratios-2017-ca.png", sep = "/"),
+       width = plot_width, height = plot_height, scale = plot_scale)
+ggsave(paste(output_dir, "provinceconsolidated-visitoremployeeratios-2017-ca.svg", sep = "/"),
        width = plot_width, height = plot_height, scale = plot_scale)
 
 #### City ####
@@ -1184,7 +1184,7 @@ companysize_regions_2017_prodevs %>%
         labels = toTitleCase(company_sizes))) %>%
     ggplot(aes(company_size, respondents_share, fill = region)) +
     geom_col(width = plot_bar_width, position = position_dodge()) +
-    scale_fill_manual(values = plot_colors_region) +
+    scale_fill_manual(values = plot_colors_4_emphasis) +
     scale_y_continuous(labels = percent_format(), limits = c(0, 0.3)) +
     labs(x = "Number of Employees", y = plot_ylab_respondents_share, fill = "",
          title = "Share of Professional Developers by Company Size, 2017",
@@ -1720,7 +1720,7 @@ proexperiencebin_regions_2017_prodevs <- respondents %>%
 proexperiencebin_regions_2017_prodevs %>%
     ggplot(aes(pro_experience_bin, respondents_share, fill = region)) +
     geom_col(position = position_dodge(), width = plot_bar_width) +
-    scale_fill_manual(values = plot_colors_region) +
+    scale_fill_manual(values = plot_colors_4_emphasis) +
     scale_y_continuous(labels = percent_format()) +
     labs(x = "Years of Experience", y = plot_ylab_respondents_share, fill = "",
          title = "Share of Professional Developers by Years of Experience, 2017",
@@ -1799,7 +1799,7 @@ educlevel_regions_2017_prodevs <- respondents %>%
 educlevel_regions_2017_prodevs %>%
     ggplot(aes(educ_level_group, respondents_share, fill = region)) +
     geom_col(position = position_dodge(), width = plot_bar_width) +
-    scale_fill_manual(values = plot_colors_region) +
+    scale_fill_manual(values = plot_colors_4_emphasis) +
     scale_y_continuous(labels = percent_format()) +
     labs(x = "", y = plot_ylab_respondents_share, fill = "",
          title = paste0("Share of Professional Developers by Highest Level of ",
