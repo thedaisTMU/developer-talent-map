@@ -38,7 +38,7 @@ save_plot <- function (file_name, file_path = "figures/",
                        file_formats = c("png", "svg"), plot_width = 8,
                        plot_height = 4, plot_scale = 1.2) {
     for (i in 1:length(file_formats)) {
-        ggsave(paste0(file_path, file_name, ".", file_formats[i]),
+        ggsave(paste0(file_path, gsub("[[:cntrl:]]", " ", file_name), ".", file_formats[i]),
                width = plot_width, height = plot_height, scale = plot_scale)
     }
 }
@@ -257,7 +257,15 @@ respondents <- bind_rows(
            salary_local_currency = salary_usd * local_currency_per_usd,
            salary_intl_dollar = ifelse(
                country_currency_code == local_currency_code,
-               salary_local_currency / local_currency_per_intl_dollar, NA)) %>%
+               salary_local_currency / local_currency_per_intl_dollar, NA),
+           educ_level_group_label = factor(
+               ifelse(educ_level_group == "hs or lower", "High School or Lower",
+                      ifelse(educ_level_group == "bachelor's", "Bachelor's Degree",
+                             ifelse(educ_level_group == "grad degree", "Graduate Degree",
+                                    ifelse(educ_level_group == "some college", "Some College",
+                                           toTitleCase(educ_level_group))))),
+               levels = c("High School or Lower", "Some College",
+                          "Bachelor's Degree", "Graduate Degree"))) %>%
     select(-contains("q0029"))
 
 # Web traffic by developer role in Canada
@@ -591,7 +599,7 @@ visitors_2017_to <- city_years %>%
     filter(year == 2017 & city == "toronto") %>%
     pull(visitors)
 n_top_cities <- 20
-plot_title <- "Developers Among Top 20 and Other Canadian Cities, 2017"
+plot_title <- paste("Developers Among Top", n_top_cities, "and Other Canadian Cities, 2017")
 bind_rows(city_years %>%
               filter(year == 2017) %>%
               top_n(n_top_cities, visitors) %>%
@@ -1118,8 +1126,7 @@ language_regionscarow_2017_prodevs %>%
     labs(x = "", y = "% Difference", title = plot_title,
          subtitle = "% Difference Between Canada and Rest of World in Share of Survey Respondents") +
     guides(fill = "none") +
-    theme(panel.grid.major.x = element_line(plot_grid_color),
-          panel.grid.major.y = element_line(NA))
+    theme(panel.grid.major.y = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 #### Company Type and Size ####
@@ -1654,12 +1661,13 @@ respondents %>%
     ggplot(aes(employment_status_original_label, respondents_share,
                fill = job_seeking_status_label, label = percent(respondents_share))) +
     geom_col(width = plot_bar_width) +
-    geom_text(vjust = "inward", position = position_fill()) +
-    scale_fill_manual(values = c("red1", "red3", "red4")) +
-    scale_y_continuous(labels = percent_format()) +
+    geom_text(vjust = 1, position = position_fill()) +
+    scale_fill_manual(values = plot_colors_6) +
+    scale_y_continuous(labels = percent_format(), expand = plot_axis_padding) +
     labs(x = "Employment Status", y = plot_ylab_respondents_share, fill = "",
          title = plot_title, subtitle = "% of Survey Respondents per Employment Status") +
-    theme(axis.text.x = element_text(angle = 20, hjust = 1))
+    theme(axis.text.x = element_text(angle = 20, hjust = 1),
+          legend.position = "right")
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 # Sample size per employment status
@@ -1677,44 +1685,57 @@ respondents %>%
     summarise(respondents = n())
 
 # Job discovery channels
-jobdiscoverychannels_2017_ca <- respondents %>%
+jobdiscoverychannels_2017_ca_prodevs <- respondents %>%
     filter(year == 2017 & country == "canada" & !is.na(job_discovery_channel) &
                pro_status == "pro dev") %>%
     group_by(job_discovery_channel) %>%
     summarise(respondents = n()) %>%
-    mutate(respondents_share = respondents / sum(respondents))
+    mutate(respondents_share = respondents / sum(respondents),
+           job_discovery_channel_label = ifelse(
+               grepl("job board", job_discovery_channel),
+               "Job Board",
+               ifelse(grepl("friend", job_discovery_channel),
+                      "Friend, family member,\nor former colleague",
+                      ifelse(grepl("someone at the company", job_discovery_channel),
+                             "Contacted directly by\nsomeone at the company",
+                             ifelse(grepl("career fair", job_discovery_channel),
+                                    "Career fair or\non-campus recruiting event",
+                                    ifelse(grepl("headhunter", job_discovery_channel),
+                                           "External recruiter or headhunter",
+                                           ifelse(grepl("web site", job_discovery_channel),
+                                                  "Job listing on company's website",
+                                                  ifelse(grepl("other", job_discovery_channel),
+                                                         "Other",
+                                                         toTitleCase(job_discovery_channel)))))))))
 
 # Plot of job discovery channels among Canadian professional developers, 2017
 plot_title <- "Share of Canadian Professional Developers by Job Discovery Channel, 2017"
-jobdiscoverychannels_2017_ca %>%
-    mutate(job_discovery_channel_consolidated = ifelse(
-        grepl("job board", job_discovery_channel), "job board", job_discovery_channel)) %>%
-    group_by(job_discovery_channel_consolidated) %>%
+jobdiscoverychannels_2017_ca_prodevs %>%
+    group_by(job_discovery_channel_label) %>%
     summarise(respondents_share = sum(respondents_share)) %>%
     arrange(respondents_share) %>%
-    mutate(job_discovery_channel_consolidated_label = factor(
-        job_discovery_channel_consolidated,
-        levels = job_discovery_channel_consolidated,
-        labels = toTitleCase(job_discovery_channel_consolidated))) %>%
-    ggplot(aes(job_discovery_channel_consolidated_label, respondents_share,
+    mutate(job_discovery_channel_label = factor(
+        job_discovery_channel_label,
+        levels = job_discovery_channel_label)) %>%
+    ggplot(aes(job_discovery_channel_label, respondents_share,
                label = percent(respondents_share))) +
     geom_col(width = plot_bar_width, fill = plot_color) +
-    geom_text(hjust = "inward") +
+    geom_text(hjust = 0, nudge_y = 0.002) +
     coord_flip() +
-    scale_y_continuous(labels = percent_format()) +
-    labs(x = "", y = plot_ylab_respondents_share, fill = "", title = plot_title,
+    scale_y_continuous(limits = c(0, 0.3), labels = percent_format(),
+                       expand = plot_axis_padding) +
+    labs(x = "", y = plot_ylab_respondents_share, title = plot_title,
          subtitle = "% of Survey Respondents") +
-    theme(panel.grid.major.x = element_line(plot_grid_color),
-          panel.grid.major.y = element_line(NA))
+    theme(panel.grid.major.y = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 # Channels included under "job board"
-jobdiscoverychannels_2017_ca %>%
+jobdiscoverychannels_2017_ca_prodevs %>%
     filter(grepl("job board", job_discovery_channel)) %>%
     select(job_discovery_channel)
 
 # Contacted by someone from company or external recruiter
-jobdiscoverychannels_2017_ca %>%
+jobdiscoverychannels_2017_ca_prodevs %>%
     filter(grepl("recruiter|contacted directly", job_discovery_channel)) %>%
     summarise(sum(respondents_share))
 
@@ -1734,9 +1755,12 @@ proexperiencebin_regions_2017_prodevs %>%
     ggplot(aes(pro_experience_bin, respondents_share, fill = region)) +
     geom_col(position = position_dodge(), width = plot_bar_width) +
     scale_fill_manual(values = plot_colors_4_emphasis) +
-    scale_y_continuous(labels = percent_format()) +
+    scale_y_continuous(limits = c(0, 0.6), labels = percent_format(),
+                       expand = plot_axis_padding) +
     labs(x = "Years of Experience", y = plot_ylab_respondents_share, fill = "",
-         title = plot_title, subtitle = plot_subtitle_respondents_share)
+         title = plot_title, subtitle = plot_subtitle_respondents_share) +
+    theme(panel.grid.major.x = element_blank(),
+          legend.position = "right")
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 # Share of developers with over 15 years experience by region, 2017
@@ -1762,16 +1786,15 @@ respondents %>%
     mutate(country_label = factor(country, levels = country,
                                   labels = toTitleCase(country))) %>%
     ggplot(aes(country_label, pro_experience_bin_above_15_share,
-               fill = country == "canada")) +
+               fill = country != "canada")) +
     geom_col(width = plot_bar_width) +
     coord_flip() +
     scale_fill_manual(values = plot_colors_2_emphasis) +
-    scale_y_continuous(labels = percent_format()) +
-    labs(x = "", y = plot_ylab_respondents_share, fill = "", title = plot_title,
+    scale_y_continuous(limits = c(0, 0.32), labels = percent_format(),
+                       expand = plot_axis_padding) +
+    labs(x = "", y = plot_ylab_respondents_share, title = plot_title,
          subtitle = plot_subtitle_respondents_share) +
-    theme(panel.grid.major.x = element_line(plot_grid_color),
-          panel.grid.major.y = element_line(NA)) +
-    guides(fill = "none")
+    theme(panel.grid.major.y = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 # Canada's rank
@@ -1787,39 +1810,35 @@ respondents %>%
 
 #### Formal Education ####
 # Education level by region, 2017
-educ_level_groups <- c("hs or lower", "some college", "bachelor's", "grad degree")
 educlevel_regions_2017_prodevs <- respondents %>%
-    filter(year == 2017 & !is.na(region) & !is.na(educ_level_group) &
-               educ_level_group != "prefer not say" & pro_status == "pro dev") %>%
-    group_by(educ_level_group, region) %>%
+    filter(year == 2017 & !is.na(region) & !is.na(educ_level_group_label) &
+               pro_status == "pro dev") %>%
+    group_by(educ_level_group_label, region) %>%
     summarise(respondents = n(),
               median_salary_cad = median(salary_cad, na.rm = TRUE),
               mean_salary_cad = mean(salary_cad, na.rm = TRUE),
               n_salary_responses = sum(ifelse(!is.na(salary_cad), TRUE, FALSE))) %>%
     group_by(region) %>%
-    mutate(respondents_share = respondents / sum(respondents),
-           educ_level_group = factor(
-               educ_level_group, levels = educ_level_groups,
-               labels = ifelse(educ_level_groups == "hs or lower",
-                               "High School or Lower",
-                               ifelse(educ_level_groups == "some college",
-                                      "Some College", toTitleCase(educ_level_groups)))))
+    mutate(respondents_share = respondents / sum(respondents))
 
 # Plot of educational attainment by region, 2017
 educlevel_regions_2017_prodevs %>%
-    ggplot(aes(educ_level_group, respondents_share, fill = region)) +
+    ggplot(aes(educ_level_group_label, respondents_share, fill = region)) +
     geom_col(position = position_dodge(), width = plot_bar_width) +
     scale_fill_manual(values = plot_colors_4_emphasis) +
-    scale_y_continuous(labels = percent_format()) +
+    scale_y_continuous(limits = c(0, 0.6), labels = percent_format(),
+                       expand = plot_axis_padding) +
     labs(x = "", y = plot_ylab_respondents_share, fill = "",
          title = paste0("Share of Professional Developers by Highest Level of ",
                         "Formal Education and Country/Region, 2017"),
-         subtitle = plot_subtitle_respondents_share)
+         subtitle = plot_subtitle_respondents_share) +
+    theme(panel.grid.major.x = element_blank(),
+          legend.position = "right")
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 # Regional shares attaining bachelor's degree or above
 educlevel_regions_2017_prodevs %>%
-    filter(educ_level_group %in% c("Bachelor's", "Grad Degree")) %>%
+    filter(educ_level_group_label %in% c("Bachelor's Degree", "Graduate Degree")) %>%
     summarise(respondents_share = sum(respondents_share))
 
 # Plot of salary by educational attainment in Canada, 2017
@@ -1827,13 +1846,17 @@ plot_title <- paste("Average Salary of Canadian Professional Developers by",
                     "Formal Education Level, 2017")
 educlevel_regions_2017_prodevs %>%
     filter(region == "Canada") %>%
-    ggplot(aes(educ_level_group, median_salary_cad,
+    ggplot(aes(educ_level_group_label, median_salary_cad,
                label = paste0("C$", comma(median_salary_cad)))) +
     geom_col(width = plot_bar_width, fill = plot_color) +
-    geom_text(nudge_y = 3000) +
-    scale_y_continuous(labels = comma_format()) +
-    labs(x = "", y = "C$", fill = "", title = plot_title,
-         subtitle = "Median Annual Salary in C$ of Survey Respondents")
+    geom_text(vjust = 0, nudge_y = 1000) +
+    scale_y_continuous(limits = c(0, 90000), breaks = seq(0, 100000, by = 20000),
+                       labels = paste0("C$", comma(seq(0, 100000, by = 20000))),
+                       expand = plot_axis_padding) +
+    labs(x = "", y = "C$", title = plot_title,
+         subtitle = "Median Annual Salary in C$ of Survey Respondents") +
+    theme(panel.grid.major.x = element_blank(),
+          legend.position = "right")
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 #### Informal Education ####
@@ -1861,36 +1884,38 @@ informaleduc_2017_ca_prodevs %>%
                                informal_educ))))) %>%
     ggplot(aes(informal_educ_label, respondents_share, label = percent(respondents_share))) +
     geom_col(width = plot_bar_width, fill = plot_color) +
-    geom_text(vjust = "inward") +
-    scale_y_continuous(labels = percent_format()) +
+    geom_text(vjust = 0, nudge_y = 0.005) +
+    scale_y_continuous(limits = c(0, 0.65), labels = percent_format(),
+                       expand = plot_axis_padding) +
     labs(x = "", y = plot_ylab_respondents_share, fill = "", title = plot_title,
-         subtitle = plot_subtitle_respondents_share)
+         subtitle = plot_subtitle_respondents_share) +
+    theme(panel.grid.major.x = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 # Formal education and self-taught
 plot_title <- paste("Share of Canadian Professional Developers Partially",
                     "Self-Taught\nAt Each Level of Formal Education, 2017")
 respondents %>%
-    filter(year == 2017 & country == "canada" & !is.na(educ_level_group) &
-               !grepl("prefer not", educ_level_group) & pro_status == "pro dev") %>%
+    filter(year == 2017 & country == "canada" & !is.na(educ_level_group_label) &
+               pro_status == "pro dev") %>%
     mutate(is_self_taught = ifelse(
         grepl("self-taught", informal_educ, ignore.case = TRUE), "Partially Self-Taught",
-        "Not Partially Self-Taught"),
-        educ_level_group = factor(educ_level_group, levels = educ_level_groups,
-                                  labels = toTitleCase(educ_level_groups))) %>%
-    group_by(educ_level_group, is_self_taught) %>%
+        "Not Partially Self-Taught")) %>%
+    group_by(educ_level_group_label, is_self_taught) %>%
     summarise(respondents = n()) %>%
-    group_by(educ_level_group) %>%
+    group_by(educ_level_group_label) %>%
     mutate(respondents_share = respondents / sum(respondents)) %>%
-    ggplot(aes(educ_level_group, respondents_share, fill = is_self_taught,
+    ggplot(aes(educ_level_group_label, respondents_share, fill = is_self_taught,
                label = percent(respondents_share))) +
     geom_col(width = plot_bar_width) +
-    geom_text(vjust = "inward", position = position_fill()) +
-    scale_fill_manual(values = c("red3", "red4")) +
-    scale_y_continuous(labels = percent_format()) +
+    geom_text(vjust = 1, position = position_fill()) +
+    scale_fill_manual(values = plot_colors_6) +
+    scale_y_continuous(labels = percent_format(), expand = plot_axis_padding) +
     labs(x = "Highest Level of Education", y = plot_ylab_respondents_share,
          fill = "", title = plot_title,
-         subtitle = "% of Survey Respondents per Formal Education Level")
+         subtitle = "% of Survey Respondents per Formal Education Level") +
+    theme(panel.grid.major.x = element_blank(),
+          legend.position = "right")
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 # Unemployed time since bootcamp
@@ -1914,10 +1939,12 @@ respondents %>%
     ggplot(aes(unemployed_time_post_bootcamp_group, respondents_share,
                label = percent(respondents_share))) +
     geom_col(width = plot_bar_width, fill = plot_color) +
-    geom_text(vjust = "inward") +
-    scale_y_continuous(labels = percent_format()) +
+    geom_text(vjust = 0, nudge_y = 0.005) +
+    scale_y_continuous(limits = c(0, 0.6), labels = percent_format(),
+                       expand = plot_axis_padding) +
     labs(x = "", y = plot_ylab_respondents_share, fill = "",
-         title = plot_title, subtitle = plot_subtitle_respondents_share)
+         title = plot_title, subtitle = plot_subtitle_respondents_share) +
+    theme(panel.grid.major.x = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 #### Gender ####
