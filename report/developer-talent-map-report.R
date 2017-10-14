@@ -100,14 +100,14 @@ respondents_2017_private_raw <- read_csv(
                      q0074_0014_0001 = col_character(),
                      q0074_0018_0001 = col_character()))
 response_mappings_2017 <- read_excel(
-    paste(data_dir, "layout_usable_private_file.xlsx", sep = "/"), skip = 2)
+    paste(data_dir, "layout_usable_private_file.xlsx", sep = "/"), skip = 7)
 respondent_devroles_2017 <- respondents_2017_private_raw %>%
     setNames(gsub("^.*RespondentID.*$", "respondent_id", names(.))) %>%
     select(respondent_id, contains("q0029")) %>%
     gather(dev_role_code, selection, -respondent_id) %>%
     filter(selection == "Selected") %>%
     inner_join(response_mappings_2017 %>%
-                   filter(grepl("q0029", Variable) & !is.na(Position)),
+                   filter(grepl("q0029", Variable) & !is.na(`Measurement Level`)),
                by = c("dev_role_code" = "Variable")) %>%
     group_by(respondent_id) %>%
     summarise(dev_roles = paste(Label, collapse = ";"))
@@ -116,7 +116,7 @@ respondent_languages_2017 <- respondents_2017_private_raw %>%
     select(respondent_id, contains("q0074")) %>%
     gather(language_code, selection, -respondent_id) %>%
     inner_join(response_mappings_2017 %>%
-                   filter(grepl("q0074", Variable) & !is.na(Position)),
+                   filter(grepl("q0074", Variable) & !is.na(`Measurement Level`)),
                by = c("language_code" = "Variable")) %>%
     mutate(language = ifelse(selection == "Worked with last year", Label,
                              ifelse(selection == 0, "", NA))) %>%
@@ -129,7 +129,7 @@ respondent_informaleduc_2017 <- respondents_2017_private_raw %>%
     gather(informal_educ_code, selection, -respondent_id) %>%
     filter(selection == "Selected") %>%
     inner_join(response_mappings_2017 %>%
-                   filter(grepl("q0069", Variable) & !is.na(Position)),
+                   filter(grepl("q0069", Variable) & !is.na(`Measurement Level`)),
                by = c("informal_educ_code" = "Variable")) %>%
     group_by(respondent_id) %>%
     summarise(informal_educ = paste(Label, collapse = ";"))
@@ -139,7 +139,7 @@ respondent_ethnicities_2017 <- respondents_2017_private_raw %>%
     gather(ethnicity_code, selection, -respondent_id) %>%
     filter(selection == "Selected") %>%
     inner_join(response_mappings_2017 %>%
-                   filter(grepl("q0103", Variable) & !is.na(Position)),
+                   filter(grepl("q0103", Variable) & !is.na(`Measurement Level`)),
                by = c("ethnicity_code" = "Variable")) %>%
     group_by(respondent_id) %>%
     summarise(ethnicities = paste(Label, collapse = ";"))
@@ -279,12 +279,14 @@ devroles_visitors_2017_ca <- full_join(
 # Web traffic by developer role internationally
 devroles_visitors_2017_intl <- left_join(
     read_excel(paste(data_dir, "Brookfield_report_data_with_additions_4-19-2017.xlsx",
-                     sep = "/"), sheet = "Rest of World Data", skip = 3),
+                     sep = "/"), sheet = "Rest of World Data", skip = 3) %>% 
+        setNames(gsub(" ", "_", gsub("\\+ ", "", tolower(c("dev_role", names(.)[-1]))))),
     read_excel(paste(data_dir, "Brookfield_report_data_with_additions_4-19-2017.xlsx",
-                     sep = "/"), sheet = "USA Data", skip = 1), by = "") %>%
-    setNames(gsub(" ", "_", gsub("\\+ ", "", tolower(c("dev_role", names(.)[-1]))))) %>%
-    select(-matches("%|\\.")) %>%
+                     sep = "/"), sheet = "USA Data", skip = 8) %>% 
+        setNames(gsub(" ", "_", gsub("\\+ ", "", tolower(c("dev_role", names(.)[-1]))))),
+    by = "dev_role") %>%
     slice(1:20) %>%
+    select(-matches("(%|__)")) %>%
     mutate(dev_role = tolower(dev_role))
 
 #### Country ####
@@ -336,7 +338,8 @@ country_years_prodevs <- respondents %>%
     ungroup()
 region_years <- country_years %>%
     group_by(year, region) %>%
-    summarise_at(vars(respondents, respondents_share), funs(sum))
+    summarise_at(vars(respondents, respondents_share), funs(sum)) %>% 
+    ungroup()
 
 # Plot of top country survey respondent shares in 2017
 n_top_countries <- 10
@@ -757,22 +760,14 @@ respondent_devroles_2017_ca_prodevs %>%
     summarise(n_dev_roles = n()) %>%
     summarise(sum(n_dev_roles > 1) / nrow(.))
  
-# Web developer types
-respondent_webdevroles_2017_ca_prodevs <- respondents %>%
-    filter(year == 2017 & country == "canada" & !is.na(web_dev_role) &
-               pro_status == "pro dev") %>%
-    separate_rows(dev_roles, sep = ";") %>%
-    select(respondent_id, web_dev_role)
-n_respondents_webdevrole_2017_ca_prodevs <- length(unique(
-    respondent_webdevroles_2017_ca_prodevs$respondent_id))
-webdevroles_2017_ca_prodevs <- respondent_webdevroles_2017_ca_prodevs %>%
-    group_by(web_dev_role) %>%
-    summarise(respondents = n()) %>%
-    mutate(respondents_share = respondents / n_respondents_webdevrole_2017_ca_prodevs)
-
 # Plot of web developer roles
 plot_title <- "Share of Canadian Professional Web Developers by Type, 2017"
-webdevroles_2017_ca_prodevs %>%
+respondents %>%
+    filter(year == 2017 & country == "canada" & !is.na(web_dev_role) &
+               pro_status == "pro dev") %>%
+    group_by(web_dev_role) %>%
+    summarise(respondents = n()) %>%
+    mutate(respondents_share = respondents / sum(respondents)) %>%
     arrange(respondents_share) %>%
     mutate(web_dev_role_label = factor(
         web_dev_role, levels = web_dev_role,
