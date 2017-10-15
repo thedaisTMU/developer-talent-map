@@ -28,7 +28,8 @@ plot_grid_color <- "grey90"
 plot_color <- "#e24585"
 plot_colors_2_emphasis <- c("#e24585", "#99daea")
 plot_colors_4_emphasis <- c("#e24585", "#4d8e9e", "#99daea", "#b3f4ff")
-plot_colors_6 <- c("#960039", "#e24585", "#ffabeb", "#4d8e9e", "#99daea", "#b3f4ff")
+plot_colors_7 <- c("#960039", "#e24585", "#ffabeb", "#4d8e9e", "#99daea",
+                   "#b3f4ff", "#0b2b48")
 plot_sizes_4_emphasis <- c(3, 1, 1, 1)
 plot_subtitle_respondents_share <- "% of Survey Respondents"
 plot_subtitle_visitors_share <- "% of Web Traffic to Stack Overflow"
@@ -649,7 +650,7 @@ city_years %>%
 
 # International city growth from 2016 to 2017
 min_visitors_city_2016 <- 1e5
-plot_title <- "Growth in Developers Among Large Developer Centres, 2017"
+plot_title <- "Growth in Developers Among Developer-Populous Cities, 2017"
 city_years %>%
     spread(year, visitors) %>%
     mutate(pc_growth_2017 = `2017` / `2016` - 1) %>%
@@ -1379,7 +1380,7 @@ industry_years_20152017_ca %>%
               "media and advertising", "health care", "telecommunications")))) %>%
     ggplot(aes(year, respondents_share_ind, color = industry_consolidated_label)) +
     geom_line(size = plot_sizes_4_emphasis[1]) +
-    scale_color_manual(values = plot_colors_6) +
+    scale_color_manual(values = plot_colors_7) +
     scale_x_continuous(breaks = seq(2015, 2017, by = 1)) +
     scale_y_continuous(breaks = seq(40, 160, by = 20), limits = c(40, 160),
                        expand = plot_axis_padding) +
@@ -1662,7 +1663,7 @@ respondents %>%
                fill = job_seeking_status_label, label = percent(respondents_share))) +
     geom_col(width = plot_bar_width) +
     geom_text(vjust = 1, position = position_fill()) +
-    scale_fill_manual(values = plot_colors_6) +
+    scale_fill_manual(values = plot_colors_7) +
     scale_y_continuous(labels = percent_format(), expand = plot_axis_padding) +
     labs(x = "Employment Status", y = plot_ylab_respondents_share, fill = "",
          title = plot_title, subtitle = "% of Survey Respondents per Employment Status") +
@@ -1909,7 +1910,7 @@ respondents %>%
                label = percent(respondents_share))) +
     geom_col(width = plot_bar_width) +
     geom_text(vjust = 1, position = position_fill()) +
-    scale_fill_manual(values = plot_colors_6) +
+    scale_fill_manual(values = plot_colors_7) +
     scale_y_continuous(labels = percent_format(), expand = plot_axis_padding) +
     labs(x = "Highest Level of Education", y = plot_ylab_respondents_share,
          fill = "", title = plot_title,
@@ -1979,19 +1980,21 @@ plot_title <- paste("Share of Developers by Gender Among Top",
                     n_top_female_countries, "Most Female-Represented Countries, 2017")
 gender_country_years %>%
     filter(year == 2017 & country %in% top_female_countries) %>%
-    mutate(gender = factor(
+    mutate(gender_label = factor(
         gender,
         levels = c("male", "transgendered or non-conforming", "female"),
         labels = c("Male", "Transgendered\nor non-conforming", "Female")),
            country = factor(country, levels = top_female_countries,
                             labels = toTitleCase(top_female_countries))) %>%
-    ggplot(aes(country, respondents_share, fill = gender)) +
+    ggplot(aes(country, respondents_share, fill = gender_label)) +
     geom_col(width = plot_bar_width) +
     coord_flip() +
-    scale_y_continuous(labels = percent_format()) +
-    scale_fill_manual(values = c("darkseagreen", "dodgerblue4", "red4")) +
+    scale_fill_manual(values = plot_colors_7[c(5, 7, 4)]) +
+    scale_y_continuous(labels = percent_format(), expand = plot_axis_padding) +
     labs(x = "", y = plot_ylab_respondents_share, fill = "",
          title = plot_title, subtitle = plot_subtitle_respondents_share) +
+    theme(panel.grid.major.y = element_blank(),
+          legend.position = "right") +
     guides(fill = guide_legend(reverse = TRUE))
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
@@ -2018,19 +2021,21 @@ gender_country_years %>%
     mutate(male_female_ratio = male / female) %>%
     ggplot(aes(year, male_female_ratio)) +
     geom_line(aes(color = region_carow_label, size = region_carow_label)) +
-    geom_text(aes(label = paste0(round(male_female_ratio), ":1")), nudge_y = 1) +
+    geom_text(aes(label = paste0(round(male_female_ratio), ":1")), vjust = 0,
+              nudge_y = 0.3) +
     scale_color_manual(values = plot_colors_2_emphasis) +
-    scale_size_manual(values = c(1, 3)) +
-    lims(y = c(5, 25)) +
+    scale_size_manual(values = plot_sizes_4_emphasis) +
+    scale_y_continuous(limits = c(5, 25), expand = plot_axis_padding) +
     labs(x = "", y = "Males:Females", color = "", size = "", title = plot_title,
          subtitle = "Number of Male Survey Respondents to Female Respondents") +
-    guides(color = guide_legend(reverse = TRUE), size = guide_legend(reverse = TRUE))
+    theme(panel.grid.major.x = element_blank(),
+          legend.position = "right")
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 # Plot of gender pay gap among Canada and other large countries, 2017
 min_n_salary_responses_gender_country <- 20
 plot_title <- paste("Salary Gap Between Male and Female Professional Developers",
-                    "Among Most-Represented Countries, 2017")
+                    "\nAmong Developer-Populous Countries, 2017")
 country_years_prodevs %>%
     filter(year == 2017 &
                n_salary_responses_males >= min_n_salary_responses_gender_country &
@@ -2038,15 +2043,16 @@ country_years_prodevs %>%
     arrange(desc(salary_pc_diff_females_males)) %>%
     mutate(country_label = factor(country, levels = country, labels = toTitleCase(country))) %>%
     ggplot(aes(country_label, salary_pc_diff_females_males,
-               fill = country_label == "Canada",
+               fill = country_label != "Canada",
                label = percent(round(salary_pc_diff_females_males, 3)))) +
     geom_col(width = plot_bar_width) +
-    geom_text(nudge_y = -0.01) +
+    geom_text(vjust = 1, nudge_y = -0.005) +
     scale_fill_manual(values = plot_colors_2_emphasis) +
-    scale_y_continuous(labels = percent_format()) +
+    scale_y_continuous(limits = c(-0.32, 0.02), labels = percent_format(),
+                       expand = plot_axis_padding) +
     labs(x = "", y = "% Difference", title = plot_title,
          subtitle = "% Difference Between Median Female and Male Respondents' Salary") +
-    guides(fill = "none")
+    theme(panel.grid.major.x = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 # Salary comparison in Canada, 2017
@@ -2067,14 +2073,17 @@ plot_title <- paste("Share of Canadian Professional Developers by Years of",
                     "Experience and Gender, 2017")
 gender_proexperience_2017_ca_prodevs %>%
     filter(gender %in% c("male", "female")) %>%
-    mutate(gender_label = factor(gender, levels = c("male", "female"),
-                                 labels = c("Male", "Female"))) %>%
+    mutate(gender_label = factor(gender, levels = c("female", "male"),
+                                 labels = c("Female", "Male"))) %>%
     ggplot(aes(pro_experience_bin, respondents_share, fill = gender_label)) +
     geom_col(position = position_dodge(), width = plot_bar_width) +
-    scale_fill_manual(values = c("red3", "red4")) +
-    scale_y_continuous(labels = percent_format(), limits = c(0, 0.6)) +
+    scale_fill_manual(values = plot_colors_7[c(4, 5)]) +
+    scale_y_continuous(labels = percent_format(), limits = c(0, 0.6),
+                       expand = plot_axis_padding) +
     labs(x = "Years of Experience", y = plot_ylab_respondents_share, fill = "",
-         title = plot_title, subtitle = plot_subtitle_respondents_share)
+         title = plot_title, subtitle = plot_subtitle_respondents_share) +
+    theme(panel.grid.major.x = element_blank(),
+          legend.position = "right")
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 # Gender breakdown under different experience bins
@@ -2113,16 +2122,19 @@ ethnicities_2017_ca %>%
     mutate(ethnicity_label = factor(
         ethnicity,
         levels = ethnicity,
-        labels = ifelse(grepl("Native", ethnicity), "Native American, Pacific Islander\nor Indigenous Australian", ethnicity))) %>%
+        labels = gsub("descent", "Descent",
+                      ifelse(grepl("Native", ethnicity),
+                             "Native American, Pacific Islander\nor Indigenous Australian",
+                             ethnicity)))) %>%
     ggplot(aes(ethnicity_label, respondents_share, label = percent(respondents_share))) +
-    geom_col(fill = plot_color, width = plot_bar_width) +
-    geom_text(hjust = "inward") +
+    geom_col(width = plot_bar_width, fill = plot_color) +
+    geom_text(hjust = 0, nudge_y = 0.005) +
     coord_flip() +
-    scale_y_continuous(labels = percent_format()) +
+    scale_y_continuous(limits = c(0, 1), labels = percent_format(),
+                       expand = plot_axis_padding) +
     labs(x = "", y = plot_ylab_respondents_share, title = plot_title,
          subtitle = plot_subtitle_respondents_share) +
-    theme(panel.grid.major.x = element_line(plot_grid_color),
-          panel.grid.major.y = element_line(NA))
+    theme(panel.grid.major.y = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 # Share of East and South Asians
