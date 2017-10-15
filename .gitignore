@@ -10,7 +10,7 @@ devroles-city.csv
 devroles-province.csv
 
 .RData
-report/figures/*
+report/figures/*.png
 .Rproj.user
 
 report/data/2014 Stack Overflow Survey Responses.zip
