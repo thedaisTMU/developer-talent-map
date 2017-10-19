@@ -1323,6 +1323,8 @@ industry_2017_prodevs <- industry_regionscarow_2017_prodevs %>%
 
 # % diff between CA and ROW
 min_respondents_industry <- 50
+plot_title <- paste("Difference in Share of Professional Developers by",
+                    "Industry\nBetween Canada and Rest of the World, 2017")
 industry_2017_prodevs %>%
     filter(respondents_ca >= min_respondents_industry &
                !grepl("Other", industry_original_label)) %>%
@@ -1335,9 +1337,7 @@ industry_2017_prodevs %>%
     coord_flip() +
     scale_y_continuous(limits = c(-0.25, 1.05), labels = percent_format(),
                        expand = plot_axis_padding) +
-    labs(x = "", y = "% Difference",
-         title = paste("Difference in Share of Professional Developers by",
-                       "Industry\nBetween Canada and Rest of the World, 2017"),
+    labs(x = "", y = "% Difference", title = plot_title,
          subtitle = paste("% Difference Between Canada and Rest of World in",
                           "Share of Survey Respondents")) +
     theme(panel.grid.major.y = element_line(NA))
@@ -1510,7 +1510,7 @@ median_salary_intl_dollar_ca <- country_years_prodevs %>%
     filter(year == 2017 & country == "canada") %>%
     pull(median_salary_intl_dollar)
 plot_title <- paste("Average Salary of Professional Developers Among Top",
-                    n_top_countries_salary, "Countries, 2017")
+                    n_top_countries_salary, "Countries\nRelative to Canada, 2017")
 country_years_prodevs %>%
     filter(year == 2017 & n_salary_responses >= min_n_salary_responses_country &
                n_salary_intl_dollar_responses >= min_n_salary_responses_country) %>%
@@ -1823,15 +1823,15 @@ educlevel_regions_2017_prodevs <- respondents %>%
     mutate(respondents_share = respondents / sum(respondents))
 
 # Plot of educational attainment by region, 2017
+plot_title <- paste0("Share of Professional Developers by Highest Level of ",
+                     "Formal Education and Country/Region, 2017")
 educlevel_regions_2017_prodevs %>%
     ggplot(aes(educ_level_group_label, respondents_share, fill = region)) +
     geom_col(position = position_dodge(), width = plot_bar_width) +
     scale_fill_manual(values = plot_colors_4_emphasis) +
     scale_y_continuous(limits = c(0, 0.6), labels = percent_format(),
                        expand = plot_axis_padding) +
-    labs(x = "", y = plot_ylab_respondents_share, fill = "",
-         title = paste0("Share of Professional Developers by Highest Level of ",
-                        "Formal Education and Country/Region, 2017"),
+    labs(x = "", y = plot_ylab_respondents_share, fill = "", title = plot_title,
          subtitle = plot_subtitle_respondents_share) +
     theme(panel.grid.major.x = element_blank(),
           legend.position = "right")
