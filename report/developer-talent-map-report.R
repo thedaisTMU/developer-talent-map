@@ -1837,9 +1837,10 @@ educlevel_regions_2017_prodevs %>%
           legend.position = "right")
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
-# Regional shares attaining bachelor's degree or above
+# Regional shares attaining some college education or above
 educlevel_regions_2017_prodevs %>%
-    filter(educ_level_group_label %in% c("Bachelor's Degree", "Graduate Degree")) %>%
+    filter(educ_level_group_label %in% c("Some College", "Bachelor's Degree",
+                                         "Graduate Degree")) %>%
     summarise(respondents_share = sum(respondents_share))
 
 # Plot of salary by educational attainment in Canada, 2017
