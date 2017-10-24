@@ -1922,7 +1922,7 @@ save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 # Unemployed time since bootcamp
 plot_title <- paste("Share of Canadian Developers by Employment Status",
-                    "Relative to Taking Bootcamp, 2017")
+                    "Relative to Participating in a Bootcamp, 2017")
 respondents %>%
     filter(year == 2017 & country == "canada" &
                !is.na(unemployed_time_post_bootcamp)) %>%
