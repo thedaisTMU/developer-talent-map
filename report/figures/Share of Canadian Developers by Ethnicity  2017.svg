@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 691.20 345.60'>
+<defs>
+  <style type='text/css'><![CDATA[
+    line, polyline, path, rect, circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<rect x='0.00' y='0.00' width='691.20' height='345.60' style='stroke-width: 1.07; stroke: #FFFFFF; fill: #FFFFFF;' />
+<defs>
+  <clipPath id='cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ=='>
+    <rect x='152.88' y='38.57' width='532.84' height='274.58' />
+  </clipPath>
+</defs>
+<rect x='152.88' y='38.57' width='532.84' height='274.58' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<polyline points='158.11,313.15 158.11,38.57 ' style='stroke-width: 1.07; stroke: #E5E5E5; stroke-linecap: butt;' clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<polyline points='288.70,313.15 288.70,38.57 ' style='stroke-width: 1.07; stroke: #E5E5E5; stroke-linecap: butt;' clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<polyline points='419.30,313.15 419.30,38.57 ' style='stroke-width: 1.07; stroke: #E5E5E5; stroke-linecap: butt;' clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<polyline points='549.90,313.15 549.90,38.57 ' style='stroke-width: 1.07; stroke: #E5E5E5; stroke-linecap: butt;' clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<polyline points='680.50,313.15 680.50,38.57 ' style='stroke-width: 1.07; stroke: #E5E5E5; stroke-linecap: butt;' clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<rect x='158.11' y='275.97' width='9.52' height='28.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; fill: #E24585;' clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<rect x='158.11' y='237.83' width='11.56' height='28.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; fill: #E24585;' clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<rect x='158.11' y='199.70' width='13.26' height='28.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; fill: #E24585;' clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<rect x='158.11' y='161.56' width='14.62' height='28.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; fill: #E24585;' clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<rect x='158.11' y='123.43' width='23.81' height='28.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; fill: #E24585;' clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<rect x='158.11' y='85.29' width='34.69' height='28.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; fill: #E24585;' clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<rect x='158.11' y='47.15' width='434.31' height='28.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; fill: #E24585;' clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<g clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)'><text x='170.24' y='294.22' style='font-size: 11.04px; fill: #0B2B48; font-family: Arial;' textLength='25.16px' lengthAdjust='spacingAndGlyphs'>1.8%</text></g>
+<g clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)'><text x='172.28' y='256.09' style='font-size: 11.04px; fill: #0B2B48; font-family: Arial;' textLength='25.16px' lengthAdjust='spacingAndGlyphs'>2.2%</text></g>
+<g clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)'><text x='173.98' y='217.95' style='font-size: 11.04px; fill: #0B2B48; font-family: Arial;' textLength='25.16px' lengthAdjust='spacingAndGlyphs'>2.5%</text></g>
+<g clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)'><text x='175.34' y='179.81' style='font-size: 11.04px; fill: #0B2B48; font-family: Arial;' textLength='25.16px' lengthAdjust='spacingAndGlyphs'>2.8%</text></g>
+<g clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)'><text x='184.52' y='141.68' style='font-size: 11.04px; fill: #0B2B48; font-family: Arial;' textLength='25.16px' lengthAdjust='spacingAndGlyphs'>4.6%</text></g>
+<g clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)'><text x='195.41' y='103.54' style='font-size: 11.04px; fill: #0B2B48; font-family: Arial;' textLength='25.16px' lengthAdjust='spacingAndGlyphs'>6.6%</text></g>
+<g clip-path='url(#cpMTUyLjg4MXw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)'><text x='595.02' y='65.41' style='font-size: 11.04px; fill: #0B2B48; font-family: Arial;' textLength='31.30px' lengthAdjust='spacingAndGlyphs'>83.1%</text></g>
+<defs>
+  <clipPath id='cpMHw2OTEuMnwzNDUuNnww'>
+    <rect x='0.00' y='0.00' width='691.20' height='345.60' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='41.82' y='293.42' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='106.13px' lengthAdjust='spacingAndGlyphs'>Black or of African Descent</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='89.25' y='255.28' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='58.70px' lengthAdjust='spacingAndGlyphs'>Middle Eastern</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='18.83' y='212.40' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='129.12px' lengthAdjust='spacingAndGlyphs'>Native American, Pacific Islander</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='53.04' y='221.90' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='94.91px' lengthAdjust='spacingAndGlyphs'>or Indigenous Australian</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='51.09' y='179.01' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='96.86px' lengthAdjust='spacingAndGlyphs'>Hispanic or Latino/Latina</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='100.50' y='140.88' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='47.45px' lengthAdjust='spacingAndGlyphs'>South Asian</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='105.88' y='102.74' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='42.07px' lengthAdjust='spacingAndGlyphs'>East Asian</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='30.06' y='64.60' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='117.88px' lengthAdjust='spacingAndGlyphs'>White or of European Descent</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='151.75' y='324.38' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='12.72px' lengthAdjust='spacingAndGlyphs'>0%</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='279.90' y='324.38' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='17.61px' lengthAdjust='spacingAndGlyphs'>25%</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='410.49' y='324.38' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='17.61px' lengthAdjust='spacingAndGlyphs'>50%</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='541.09' y='324.38' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='17.61px' lengthAdjust='spacingAndGlyphs'>75%</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='669.24' y='324.38' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='22.51px' lengthAdjust='spacingAndGlyphs'>100%</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='374.36' y='337.74' style='font-size: 11.00px; fill: #0B2B48; font-family: Arial;' textLength='89.89px' lengthAdjust='spacingAndGlyphs'>% of Respondents</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='152.88' y='31.12' style='font-size: 9.90px; font-style: italic; fill: #0B2B48; font-family: Arial;' textLength='114.46px' lengthAdjust='spacingAndGlyphs'>% of Survey Respondents</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='152.88' y='14.93' style='font-size: 13.20px; fill: #0B2B48; font-family: Arial;' textLength='288.38px' lengthAdjust='spacingAndGlyphs'>Share of Canadian Developers by Ethnicity, 2017</text></g>
+</svg>

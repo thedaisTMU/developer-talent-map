@@ -54,6 +54,13 @@ ui <- function(request) {
                       selectInput("metric", "Web Traffic Metric", metric),
                       selectInput("role", "Developer Role", role),
                       bookmarkButton(title = "Bookmark this view and get a URL to share")
+# =======
+#                       selectInput("role", "Developer Role",
+#                                   list("Role Groups" = c("All Developers", "Mobile Developers",
+#                                                          "Web Developers", "Other Developers"),
+#                                        "Roles" = role)),
+#                       bookmarkButton(title = "Bookmark your choices and get a URL for sharing")
+# >>>>>>> d364f20374a8c85497deb7d1d7e204e3a256f0a5
                       ),
         h3(tags$div(id="apptitle",
                     tags$a(href="http://brookfieldinstitute.ca/", img(src='brookfield_mark_small.png', align = "left")),

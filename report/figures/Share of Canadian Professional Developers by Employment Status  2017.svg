@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 691.20 345.60'>
+<defs>
+  <style type='text/css'><![CDATA[
+    line, polyline, path, rect, circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<rect x='0.00' y='0.00' width='691.20' height='345.60' style='stroke-width: 1.07; stroke: #FFFFFF; fill: #FFFFFF;' />
+<defs>
+  <clipPath id='cpMTgyLjI0Nnw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ=='>
+    <rect x='182.25' y='38.57' width='503.47' height='274.58' />
+  </clipPath>
+</defs>
+<rect x='182.25' y='38.57' width='503.47' height='274.58' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' clip-path='url(#cpMTgyLjI0Nnw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<polyline points='187.18,313.15 187.18,38.57 ' style='stroke-width: 1.07; stroke: #E5E5E5; stroke-linecap: butt;' clip-path='url(#cpMTgyLjI0Nnw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<polyline points='310.58,313.15 310.58,38.57 ' style='stroke-width: 1.07; stroke: #E5E5E5; stroke-linecap: butt;' clip-path='url(#cpMTgyLjI0Nnw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<polyline points='433.98,313.15 433.98,38.57 ' style='stroke-width: 1.07; stroke: #E5E5E5; stroke-linecap: butt;' clip-path='url(#cpMTgyLjI0Nnw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<polyline points='557.38,313.15 557.38,38.57 ' style='stroke-width: 1.07; stroke: #E5E5E5; stroke-linecap: butt;' clip-path='url(#cpMTgyLjI0Nnw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<polyline points='680.78,313.15 680.78,38.57 ' style='stroke-width: 1.07; stroke: #E5E5E5; stroke-linecap: butt;' clip-path='url(#cpMTgyLjI0Nnw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<rect x='187.18' y='261.67' width='2.47' height='39.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; fill: #E24585;' clip-path='url(#cpMTgyLjI0Nnw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<rect x='187.18' y='208.86' width='9.90' height='39.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; fill: #E24585;' clip-path='url(#cpMTgyLjI0Nnw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<rect x='187.18' y='156.06' width='14.54' height='39.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; fill: #E24585;' clip-path='url(#cpMTgyLjI0Nnw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<rect x='187.18' y='103.26' width='48.56' height='39.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; fill: #E24585;' clip-path='url(#cpMTgyLjI0Nnw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<rect x='187.18' y='50.45' width='418.14' height='39.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; fill: #E24585;' clip-path='url(#cpMTgyLjI0Nnw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)' />
+<g clip-path='url(#cpMTgyLjI0Nnw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)'><text x='607.79' y='74.21' style='font-size: 11.04px; fill: #0B2B48; font-family: Arial;' textLength='31.30px' lengthAdjust='spacingAndGlyphs'>84.7%</text></g>
+<g clip-path='url(#cpMTgyLjI0Nnw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)'><text x='204.19' y='179.81' style='font-size: 11.04px; fill: #0B2B48; font-family: Arial;' textLength='25.16px' lengthAdjust='spacingAndGlyphs'>2.9%</text></g>
+<g clip-path='url(#cpMTgyLjI0Nnw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)'><text x='238.21' y='127.01' style='font-size: 11.04px; fill: #0B2B48; font-family: Arial;' textLength='25.16px' lengthAdjust='spacingAndGlyphs'>9.8%</text></g>
+<g clip-path='url(#cpMTgyLjI0Nnw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)'><text x='192.12' y='285.42' style='font-size: 11.04px; fill: #0B2B48; font-family: Arial;' textLength='25.16px' lengthAdjust='spacingAndGlyphs'>0.5%</text></g>
+<g clip-path='url(#cpMTgyLjI0Nnw2ODUuNzIxfDMxMy4xNTJ8MzguNTcyNQ==)'><text x='199.55' y='232.62' style='font-size: 11.04px; fill: #0B2B48; font-family: Arial;' textLength='25.16px' lengthAdjust='spacingAndGlyphs'>2.0%</text></g>
+<defs>
+  <clipPath id='cpMHw2OTEuMnwzNDUuNnww'>
+    <rect x='0.00' y='0.00' width='691.20' height='345.60' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='18.83' y='284.62' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='158.48px' lengthAdjust='spacingAndGlyphs'>Not Employed, and not Looking for Work</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='35.96' y='231.82' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='141.35px' lengthAdjust='spacingAndGlyphs'>Not Employed, but Looking for Work</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='97.11' y='179.01' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='80.20px' lengthAdjust='spacingAndGlyphs'>Employed Part-Time</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='35.45' y='121.46' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='141.86px' lengthAdjust='spacingAndGlyphs'>Independent Contractor, Freelancer,</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='109.82' y='130.96' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='67.50px' lengthAdjust='spacingAndGlyphs'>or Self-Employed</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='99.07' y='73.40' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='78.24px' lengthAdjust='spacingAndGlyphs'>Employed Full-Time</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='180.82' y='324.38' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='12.72px' lengthAdjust='spacingAndGlyphs'>0%</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='301.78' y='324.38' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='17.61px' lengthAdjust='spacingAndGlyphs'>25%</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='425.18' y='324.38' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='17.61px' lengthAdjust='spacingAndGlyphs'>50%</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='548.58' y='324.38' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='17.61px' lengthAdjust='spacingAndGlyphs'>75%</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='669.53' y='324.38' style='font-size: 8.80px; fill: #0B2B48; font-family: Arial;' textLength='22.51px' lengthAdjust='spacingAndGlyphs'>100%</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='389.04' y='337.74' style='font-size: 11.00px; fill: #0B2B48; font-family: Arial;' textLength='89.89px' lengthAdjust='spacingAndGlyphs'>% of Respondents</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='182.25' y='31.12' style='font-size: 9.90px; font-style: italic; fill: #0B2B48; font-family: Arial;' textLength='114.46px' lengthAdjust='spacingAndGlyphs'>% of Survey Respondents</text></g>
+<g clip-path='url(#cpMHw2OTEuMnwzNDUuNnww)'><text x='182.25' y='14.93' style='font-size: 13.20px; fill: #0B2B48; font-family: Arial;' textLength='429.24px' lengthAdjust='spacingAndGlyphs'>Share of Canadian Professional Developers by Employment Status, 2017</text></g>
+</svg>
