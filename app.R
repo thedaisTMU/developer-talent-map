@@ -9,11 +9,7 @@ library(tidyverse)
 library(sf)
 library(shiny)
 
-#Test variables if needed
-# input <- NA
-# input$role <- "android developers"
-# input$metric <- "share"
-
+#Preprocessing ===================
 #Import data from load scripts
 provinces <- read_sf("provinces.shp")
 cities <- read_csv("cities.csv")
@@ -25,6 +21,8 @@ names(provinces)[names(provinces)=="prvnc__"] <- "share"
 names(provinces)[names(provinces)=="lctn_qt"] <- "loc_quo"
 
 #Format values
+cities <- st_as_sf(cities, coords = c("long", "lat"), crs = 4326)
+
 cities$visitors <- comma(cities$visitors, 0)
 cities$share <- percent(cities$share, 1)
 cities$loc_quo <- comma(cities$loc_quo ,2)
@@ -42,7 +40,7 @@ metric <- c(
   "Location quotient" = "loc_quo"
 )
 
-# Define UI
+#DefineUI ===================
 ui <- function(request) {
   fillPage(theme = "styles.css",
                title = "Stack Overflow Canadian Developer Talent Map",
@@ -53,14 +51,11 @@ ui <- function(request) {
                       width = "250px", height = "auto",
                       selectInput("metric", "Web Traffic Metric", metric),
                       selectInput("role", "Developer Role", role),
+                                  # list("Role Groups" = c("All Developers", "Mobile Developers",
+                                  #                        "Web Developers", "Other Developers"),
+                                  #      "Roles" = role))
+                      radioButtons("juris", "Jurisdiction", choices = c("Cities", "Provinces"), selected = "Cities", inline = TRUE),
                       bookmarkButton(title = "Bookmark this view and get a URL to share")
-# =======
-#                       selectInput("role", "Developer Role",
-#                                   list("Role Groups" = c("All Developers", "Mobile Developers",
-#                                                          "Web Developers", "Other Developers"),
-#                                        "Roles" = role)),
-#                       bookmarkButton(title = "Bookmark your choices and get a URL for sharing")
-# >>>>>>> d364f20374a8c85497deb7d1d7e204e3a256f0a5
                       ),
         h3(tags$div(id="apptitle",
                     tags$a(href="http://brookfieldinstitute.ca/", img(src='brookfield_mark_small.png', align = "left")),
@@ -78,58 +73,67 @@ ui <- function(request) {
   )
 }
                 
-#Draw Leaflet maps
-server <- function(input, output) {
-   
+#Server ===================
+server <- function(input, output, session) {
+  
+  #If metric changes, set metric label name
+  labelmetric <- reactive({
+    if (input$metric == "visitors") {
+      labelmetric <- names(metric[1])
+    } else if (input$metric == "share") {
+      labelmetric <- names(metric[2])
+    } else {
+      labelmetric <- names(metric[3])
+    }
+    })
+  
+  
+  metricpal <- reactive({
+    mapmetric = 5
+    metricpal <- colorBin(
+      palette = c("#DDDDDD","#E24585"),
+      domain = c(min(mapmetric), max(mapmetric)), #generalize metric
+      n=7, pretty=TRUE)
+    })
+  
+  # #Group roles - need input from team
+  # if(input$role == "All Developers"){
+  #   input$role <- role
+  # } else if(input$role == "Mobile Developers"){
+  #   input$role <- c("android developers", "embedded developers", "ios developers")
+  # } else if(input$role == "Web Developers"){
+  #   input$role <- c("back-end web", "front-end web", "full-stack web", "graphics programmers")
+  # } else if(input$role == "Other Developers"){
+  #   input$role <- c("data scientists", "database administrators", "desktop developers", 
+  #                   "machine learning specialists", "systems administrators")
+  # }
+  
+  #Draw base map
    output$map <- renderLeaflet({
+     labelmetric <- labelmetric()
+     metricpal <- metricpal()
      
-     #Filter roles
-     cities <- cities[cities$dev_role == input$role,]
-     provinces <- provinces[provinces$dev_role == input$role,]
-     
-     if (input$metric == "loc_quo"){
-       cities <- cities[is.na(cities$loc_quo) == FALSE,]
-     }
-     
-     #Define metric
-     provmetric <- provinces[[input$metric]]
-     citymetric <- cities[[input$metric]]
-     
-     #Will consider preprocessing and normalizing these by developer role
-     if (input$metric == "visitors") {
-       labelmetric <- names(metric[1])
-     } else if (input$metric == "share") {
-       labelmetric <- names(metric[2])
-     } else {
-       cities <- cities[is.na(cities$loc_quo) == FALSE,]
-       labelmetric <- names(metric[3])
-     }
-     
-     cityrad <- (citymetric/mean(citymetric)*500)^.4 #Normalized bubble size exponentially
-     
-     #Make color palettes
-     metricpal <- colorBin(
-       palette = c("#DDDDDD","#E24585"),
-       #domain = provmetric, 
-       domain = c(min(provmetric, citymetric), max(provmetric, citymetric)),
-       n=7, pretty=TRUE
-     )
-       
-     #Draw map
-     leaflet(provinces) %>%
-       
+     leaflet() %>%
        fitBounds(lng1 = -124, 
                  lat1 = 42, 
                  lng2 = -63, 
                  lat2 = 54) %>%
-       
        addProviderTiles(providers$Stamen.TonerLite) %>% #CartoDB Positron looks good, too, but a little busier
-       
-       # addTiles(
-       #   urlTemplate = "//{s}.tiles.mapbox.com/v3/jcheng.map-5ebohr46/{z}/{x}/{y}.png",
-       #   attribution = 'Base from <a href="http://www.mapbox.com/">Mapbox</a>') %>%
-       
-       addPolygons(color = ~metricpal(provmetric), weight = 1, smoothFactor = 0.5, 
+       addLegend("bottomright", pal = metricpal, values = provinces[[input$metric]], #change to mapdata
+                 title = labelmetric, opacity = .95)
+     })
+   
+   observe({
+     if (input$juris == "Provinces") {
+
+     #Select and filter jurisdictional data for role and metric
+     provinces <- provinces[provinces$dev_role == input$role,]
+     provmetric <- provinces[[input$metric]]
+
+     #Add province polygons
+     leafletProxy("map", data = provinces) %>%
+       clearShapes() %>%
+       addPolygons(color = ~metricpal(provmetric), weight = 1, smoothFactor = 0.5,
                    opacity = 1.0, fillOpacity = 0.7,
                    highlightOptions = highlightOptions(color = "white", weight = 1),
                    label = ~paste0(gn_name," - ", labelmetric, ": ", provmetric),
@@ -137,27 +141,33 @@ server <- function(input, output) {
                      "font-family" = "sans-serif",
                      "box-shadow" = "3px 3px rgba(0,0,0,0.25)","font-family" = "sans",
                      "border-width" = "1px",
-                     "border-color" = "rgba(0,0,0,0.5)"))) %>%
-       
-       addCircleMarkers(lng = ~cities$long, lat = ~cities$lat, weight = 1,
-                        radius = ~cityrad, #May leave off unless we figure out numbers that work
-                        #clusterOptions = markerClusterOptions(),
-                        color = "#E24585",
-                        fillColor = ~metricpal(citymetric),
-                        fillOpacity = .8,
-                        label = ~paste0(cities$cities," - ", labelmetric, ": ", citymetric),
-                        labelOptions = labelOptions(style = list(
-                          "font-family" = "sans-serif",
-                          "box-shadow" = "3px 3px rgba(0,0,0,0.25)","font-family" = "sans",
-                          "border-width" = "1px",
-                          "border-color" = "rgba(0,0,0,0.5)"))) %>%
-       
-       addLegend("bottomright", pal = metricpal, values = provinces[[input$metric]],
-                 title = labelmetric, opacity = .65
-       )
-     
-   })
-}
+                     "border-color" = "rgba(0,0,0,0.5)"))) #%>%
+   } else if (input$juris == "Cities") {
+     #Select and filter jurisdictional data for role and metric
+     cities <- cities[cities$dev_role == input$role,]
+     if (input$metric == "loc_quo") {cities <- cities[is.na(cities$loc_quo) == FALSE,]}
+
+     citymetric <- cities[[input$metric]]
+     cityrad <- (citymetric/mean(citymetric)*500)^.4
+
+     #Add city markers
+     leafletProxy("map", data = cities) %>%
+       addCircleMarkers(
+         #lng = ~cities$long, lat = ~cities$lat,
+         weight = 1,
+         radius = ~cityrad,
+         color = "#E24585",
+         fillColor = ~metricpal(citymetric),
+         fillOpacity = .8,
+         label = ~paste0(cities$cities," - ", labelmetric, ": ", citymetric),
+         labelOptions = labelOptions(style = list(
+           "font-family" = "sans-serif",
+           "box-shadow" = "3px 3px rgba(0,0,0,0.25)","font-family" = "sans",
+           "border-width" = "1px",
+           "border-color" = "rgba(0,0,0,0.5)")))
+   } #Else close
+   }) #Observe close
+   } #Server close
 
 # Run the application
 enableBookmarking()
