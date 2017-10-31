@@ -50,10 +50,10 @@ ui <- function(request) {
         leafletOutput("map", width = "100%", height = "100%"),
         absolutePanel(id = "controls", class = "panel panel-default", draggable = TRUE, fixed = TRUE,
                       top = 90, left = 20, right = "auto", bottom = "auto", 
-                      width = "30%", height = "auto",
+                      width = "250px", height = "auto",
                       selectInput("metric", "Web Traffic Metric", metric),
                       selectInput("role", "Developer Role", role),
-                      bookmarkButton(title = "Bookmark your choices and get a URL for sharing")
+                      bookmarkButton(title = "Bookmark this view and get a URL to share")
                       ),
         h3(tags$div(id="apptitle",
                     tags$a(href="http://brookfieldinstitute.ca/", img(src='brookfield_mark_small.png', align = "left")),
@@ -90,16 +90,15 @@ server <- function(input, output) {
      
      #Will consider preprocessing and normalizing these by developer role
      if (input$metric == "visitors") {
-       cityrad <- (citymetric*4)^(1/3)
        labelmetric <- names(metric[1])
      } else if (input$metric == "share") {
-       cityrad <- citymetric*500
        labelmetric <- names(metric[2])
      } else {
        cities <- cities[is.na(cities$loc_quo) == FALSE,]
-       cityrad <- citymetric*20
        labelmetric <- names(metric[3])
      }
+     
+     cityrad <- (citymetric/mean(citymetric)*500)^.4 #Normalized bubble size exponentially
      
      #Make color palettes
      metricpal <- colorBin(
@@ -117,9 +116,11 @@ server <- function(input, output) {
                  lng2 = -63, 
                  lat2 = 54) %>%
        
-       addTiles(
-         urlTemplate = "//{s}.tiles.mapbox.com/v3/jcheng.map-5ebohr46/{z}/{x}/{y}.png",
-         attribution = 'Base from <a href="http://www.mapbox.com/">Mapbox</a>') %>%
+       addProviderTiles(providers$Stamen.TonerLite) %>% #CartoDB Positron looks good, too, but a little busier
+       
+       # addTiles(
+       #   urlTemplate = "//{s}.tiles.mapbox.com/v3/jcheng.map-5ebohr46/{z}/{x}/{y}.png",
+       #   attribution = 'Base from <a href="http://www.mapbox.com/">Mapbox</a>') %>%
        
        addPolygons(color = ~metricpal(provmetric), weight = 1, smoothFactor = 0.5, 
                    opacity = 1.0, fillOpacity = 0.7,
@@ -132,10 +133,11 @@ server <- function(input, output) {
                      "border-color" = "rgba(0,0,0,0.5)"))) %>%
        
        addCircleMarkers(lng = ~cities$long, lat = ~cities$lat, weight = 1,
-                        #radius = ~cityrad, #May leave off unless we figure out numbers that work
+                        radius = ~cityrad, #May leave off unless we figure out numbers that work
+                        #clusterOptions = markerClusterOptions(),
                         color = "#E24585",
                         fillColor = ~metricpal(citymetric),
-                        fillOpacity = .65,
+                        fillOpacity = .8,
                         label = ~paste0(cities$cities," - ", labelmetric, ": ", citymetric),
                         labelOptions = labelOptions(style = list(
                           "font-family" = "sans-serif",

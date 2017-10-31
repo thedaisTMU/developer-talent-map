@@ -17,9 +17,12 @@ input[type="number"] {
     color: #14365D;
 }
 
+* {
+  font-family: 'rooneysansmed', Verdana, Georgia;
+}
 
 /* Style text */
-body, label, input, button, select {
+body, label, input, button, select, "panel panel-default draggable ui-draggable ui-draggable-handle", map, cite, "btn btn-default action-button shiny-bound-input" {
   font-family: 'rooneysansmed', Verdana, Georgia;
   /*font-size: calc(7px + .5vw);*/
 }
