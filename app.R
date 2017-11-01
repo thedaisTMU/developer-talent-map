@@ -47,8 +47,8 @@ ui <- function(request) {
         absolutePanel(id = "controls", class = "panel panel-default", draggable = TRUE, fixed = TRUE,
                       top = 90, left = 20, right = "auto", bottom = "auto", 
                       width = "250px", height = "auto",
-                      selectInput("metric", "Web Traffic Metric", metric),
-                      selectInput("role", "Developer Role", role),
+                      selectInput("metric", "Web Traffic Metric", metric, selectize = FALSE), #Draggable and selectize seem incompatible for scrolling
+                      selectInput("role", "Developer Role", role, selectize = FALSE),
                                   # list("Role Groups" = c("All Developers", "Mobile Developers",
                                   #                        "Web Developers", "Other Developers"),
                                   #      "Roles" = role))
@@ -64,7 +64,7 @@ ui <- function(request) {
                  'Application developed by ',
                  tags$a(href="", "Asher Zafar"),
                  " for the ",
-                 tags$a(href="http://brookfieldinstitute.ca/"," Brookfield Institute for Innovation and Entrepreneurship (BII+E)."),
+                 tags$a(href="http://brookfieldinstitute.ca/"," Brookfield Institute for Innovation + Entrepreneurship (BII+E)."),
                  tags$a(href="", "Full report"),
                   "by David Rubinger and Creig Lamb")
     )
@@ -131,7 +131,7 @@ server <- function(input, output, session) {
          #Add legend - put in own observe function later
          clearControls() %>%
          addLegend("bottomright", pal = metricpal.c, values = citymetric,
-                   title = labelmetric, opacity = .95)
+                   title = labelmetric)
        }
        })
      
@@ -167,7 +167,7 @@ server <- function(input, output, session) {
            #Add legend - put in own observe function later
            clearControls() %>%
            addLegend("bottomright", pal = metricpal.p, values = provmetric,
-                     title = labelmetric, opacity = .95)
+                     title = labelmetric)
        }
      })
    } #Server close
