@@ -86,87 +86,92 @@ server <- function(input, output, session) {
       labelmetric <- names(metric[3])
     }
     })
-  
-  
-  metricpal <- reactive({
-    mapmetric = 5
-    metricpal <- colorBin(
-      palette = c("#DDDDDD","#E24585"),
-      domain = c(min(mapmetric), max(mapmetric)), #generalize metric
-      n=7, pretty=TRUE)
-    })
-  
-  # #Group roles - need input from team
-  # if(input$role == "All Developers"){
-  #   input$role <- role
-  # } else if(input$role == "Mobile Developers"){
-  #   input$role <- c("android developers", "embedded developers", "ios developers")
-  # } else if(input$role == "Web Developers"){
-  #   input$role <- c("back-end web", "front-end web", "full-stack web", "graphics programmers")
-  # } else if(input$role == "Other Developers"){
-  #   input$role <- c("data scientists", "database administrators", "desktop developers", 
-  #                   "machine learning specialists", "systems administrators")
-  # }
-  
+
   #Draw base map
    output$map <- renderLeaflet({
-     labelmetric <- labelmetric()
-     metricpal <- metricpal()
-     
      leaflet() %>%
        fitBounds(lng1 = -124, 
                  lat1 = 42, 
                  lng2 = -63, 
                  lat2 = 54) %>%
-       addProviderTiles(providers$Stamen.TonerLite) %>% #CartoDB Positron looks good, too, but a little busier
-       addLegend("bottomright", pal = metricpal, values = provinces[[input$metric]], #change to mapdata
-                 title = labelmetric, opacity = .95)
+       addProviderTiles(providers$Stamen.TonerLite) #CartoDB Positron looks good, too, but a little busier
      })
    
-   observe({
-     if (input$juris == "Provinces") {
-
-     #Select and filter jurisdictional data for role and metric
-     provinces <- provinces[provinces$dev_role == input$role,]
-     provmetric <- provinces[[input$metric]]
-
-     #Add province polygons
-     leafletProxy("map", data = provinces) %>%
-       clearShapes() %>%
-       addPolygons(color = ~metricpal(provmetric), weight = 1, smoothFactor = 0.5,
-                   opacity = 1.0, fillOpacity = 0.7,
-                   highlightOptions = highlightOptions(color = "white", weight = 1),
-                   label = ~paste0(gn_name," - ", labelmetric, ": ", provmetric),
-                   labelOptions = labelOptions(style = list(
-                     "font-family" = "sans-serif",
-                     "box-shadow" = "3px 3px rgba(0,0,0,0.25)","font-family" = "sans",
-                     "border-width" = "1px",
-                     "border-color" = "rgba(0,0,0,0.5)"))) #%>%
-   } else if (input$juris == "Cities") {
-     #Select and filter jurisdictional data for role and metric
-     cities <- cities[cities$dev_role == input$role,]
-     if (input$metric == "loc_quo") {cities <- cities[is.na(cities$loc_quo) == FALSE,]}
-
-     citymetric <- cities[[input$metric]]
-     cityrad <- (citymetric/mean(citymetric)*500)^.4
-
      #Add city markers
-     leafletProxy("map", data = cities) %>%
-       addCircleMarkers(
-         #lng = ~cities$long, lat = ~cities$lat,
-         weight = 1,
-         radius = ~cityrad,
-         color = "#E24585",
-         fillColor = ~metricpal(citymetric),
-         fillOpacity = .8,
-         label = ~paste0(cities$cities," - ", labelmetric, ": ", citymetric),
-         labelOptions = labelOptions(style = list(
-           "font-family" = "sans-serif",
-           "box-shadow" = "3px 3px rgba(0,0,0,0.25)","font-family" = "sans",
-           "border-width" = "1px",
-           "border-color" = "rgba(0,0,0,0.5)")))
-   } #Else close
-   }) #Observe close
+     observe({
+       if (input$juris == "Cities") {
+         labelmetric <- labelmetric()
+         
+       #Select and filter jurisdictional data for role and metric
+       cities.c <- cities[cities$dev_role == input$role,]
+       if (input$metric == "loc_quo") {cities.c <- cities.c[is.na(cities.c$loc_quo) == FALSE,]}
+       citymetric <- cities.c[[input$metric]]
+       cityrad <- (citymetric/mean(citymetric)*500)^.4
+       
+       
+       #Create color palette based on metrics - put in its own observe function later
+       metricpal.c <- colorBin(
+         palette = c("#DDDDDD","#E24585"),
+         domain = c(min(citymetric), max(citymetric)),
+         n=7, pretty=TRUE)
+       
+       #Draw city markers
+       leafletProxy("map", data = cities.c) %>% clearShapes() %>% clearMarkers() %>%
+         
+         addCircleMarkers(
+           weight = 1,
+           radius = ~cityrad,
+           color = "#E24585",
+           fillColor = ~metricpal.c(citymetric),
+           fillOpacity = .8,
+           label = ~paste0(cities.c$cities," - ", labelmetric, ": ", citymetric),
+           labelOptions = labelOptions(style = list(
+             "font-family" = "rooneysansmed",
+             "box-shadow" = "3px 3px rgba(0,0,0,0.25)",
+             "border-width" = "1px",
+             "border-color" = "rgba(0,0,0,0.5)")))%>%
+         #Add legend - put in own observe function later
+         clearControls() %>%
+         addLegend("bottomright", pal = metricpal.c, values = citymetric,
+                   title = labelmetric, opacity = .95)
+       }
+       })
+     
+     #Add province polygons
+     observe({
+       if (input$juris == "Provinces") {
+         
+         labelmetric <- labelmetric()
+         
+         #Select and filter jurisdictional data for role and metric
+         provinces.p <- provinces[provinces$dev_role == input$role,]
+         provmetric <- provinces.p[[input$metric]]
+         
+         
+         #Create color palette based on metrics - put in its own observe function later
+         metricpal.p <- colorBin(
+           palette = c("#DDDDDD","#E24585"),
+           domain = c(min(provmetric), max(provmetric)),
+           n=7, pretty=TRUE)
+         
+         #Add province polygons
+         leafletProxy("map", data = provinces.p) %>% clearShapes() %>% clearMarkers() %>%
+           addPolygons(color = ~metricpal.p(provmetric), weight = 1, smoothFactor = 0.5,
+                         opacity = 1.0, fillOpacity = 0.7,
+                         highlightOptions = highlightOptions(color = "white", weight = 1),
+                         label = ~paste0(gn_name," - ", labelmetric, ": ", provmetric),
+                         labelOptions = labelOptions(style = list(
+                           "font-family" = "rooneysansmed",
+                           "box-shadow" = "3px 3px rgba(0,0,0,0.25)",
+                           "border-width" = "1px",
+                           "border-color" = "rgba(0,0,0,0.5)"))) %>%
+           
+           #Add legend - put in own observe function later
+           clearControls() %>%
+           addLegend("bottomright", pal = metricpal.p, values = provmetric,
+                     title = labelmetric, opacity = .95)
+       }
+     })
    } #Server close
 
 # Run the application
