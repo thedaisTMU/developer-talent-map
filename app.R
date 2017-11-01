@@ -9,19 +9,17 @@ library(tidyverse)
 library(sf)
 library(shiny)
 
-#Preprocessing ===================
+#Preprocessing - move some to load script ===================
 #Import data from load scripts
 provinces <- read_sf("provinces.shp")
-cities <- read_csv("cities.csv")
+cities <- read_sf("cities.shp")
+#cities <- read_csv("cities.csv")
 
 #Change names on province fields and preserve SF object type
 names(provinces)[names(provinces)=="dev_rol"] <- "dev_role"
 names(provinces)[names(provinces)=="visitrs"] <- "visitors"
 names(provinces)[names(provinces)=="prvnc__"] <- "share"
 names(provinces)[names(provinces)=="lctn_qt"] <- "loc_quo"
-
-#Format values
-cities <- st_as_sf(cities, coords = c("long", "lat"), crs = 4326)
 
 cities$visitors <- comma(cities$visitors, 0)
 cities$share <- percent(cities$share, 1)
