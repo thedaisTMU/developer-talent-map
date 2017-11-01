@@ -33,7 +33,15 @@ cities$dev_role[cities$dev_role=="Ios Developers"] <- "iOS Developers"
 provinces$dev_role <- toTitleCase(provinces$dev_role)
 provinces$dev_role[provinces$dev_role=="Ios Developers"] <- "iOS Developers"
 
+#Simplify province polygons
+provinces <- rmapshaper::ms_simplify(provinces)
+
+#Reformat cities to shapefile
+cities <- st_as_sf(cities, coords = c("long", "lat"), crs = 4326)
+
 #Write files for app
 write_sf(provinces, "provinces.shp")
-write_csv(cities, "cities.csv")
+write_sf(cities, "cities.shp")
+#write_csv(cities, "cities.csv")
+
 rm(list=ls())
