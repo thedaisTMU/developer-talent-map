@@ -41,12 +41,13 @@ metric <- c(
 #DefineUI ===================
 ui <- function(request) {
   fillPage(theme = "styles.css",
-               title = "Stack Overflow Canadian Developer Talent Map",
+               #title = "Stack Overflow Canadian Developer Talent Map",
     div(style = "width: 100%; height: 100%;",
         leafletOutput("map", width = "100%", height = "100%"),
         absolutePanel(id = "controls", class = "panel panel-default", draggable = TRUE, fixed = TRUE,
-                      top = 90, left = 20, right = "auto", bottom = "auto", 
+                      top = 10, left = 65, right = "auto", bottom = "auto", 
                       width = "250px", height = "auto",
+                      h1("Canadian Developer Talent Map"),
                       selectInput("metric", "Web Traffic Metric", metric, selectize = FALSE), #Draggable and selectize seem incompatible for scrolling
                       selectInput("role", "Developer Role", role, selectize = FALSE),
                                   # list("Role Groups" = c("All Developers", "Mobile Developers",
@@ -55,11 +56,11 @@ ui <- function(request) {
                       radioButtons("juris", "Jurisdiction", choices = c("Cities", "Provinces"), selected = "Cities", inline = TRUE),
                       bookmarkButton(title = "Bookmark this view and get a URL to share")
                       ),
-        h3(tags$div(id="apptitle",
-                    tags$a(href="http://brookfieldinstitute.ca/", img(src='brookfield_mark_small.png', align = "left")),
-                    "Stack Overflow Canadian Developer Talent Map"
-                    )
-           ),
+        # h3(tags$div(id="apptitle",
+        #             tags$a(href="http://brookfieldinstitute.ca/", img(src='brookfield_mark_small.png', align = "left")),
+        #             "Stack Overflow Canadian Developer Talent Map"
+        #             )
+        #    ),
         tags$div(id="cite",
                  'Application developed by ',
                  tags$a(href="", "Asher Zafar"),
@@ -109,7 +110,7 @@ server <- function(input, output, session) {
        
        #Create color palette based on metrics - put in its own observe function later
        metricpal.c <- colorBin(
-         palette = c("#DDDDDD","#E24585"),
+         palette = c("#F48EBD","#79133E"),
          domain = c(min(citymetric), max(citymetric)),
          n=7, pretty=TRUE)
        
@@ -148,7 +149,7 @@ server <- function(input, output, session) {
          
          #Create color palette based on metrics - put in its own observe function later
          metricpal.p <- colorBin(
-           palette = c("#DDDDDD","#E24585"),
+           palette = c("#F48EBD","#79133E"),
            domain = c(min(provmetric), max(provmetric)),
            n=7, pretty=TRUE)
          
