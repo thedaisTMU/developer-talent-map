@@ -20,11 +20,16 @@ provincelookup <- read_csv("provincelookup.csv")
 provincedev <- left_join(provincedev, provincelookup)
 provinces <- sp::merge(provinces, provincedev)
 
-#Process city data
+#Process and filter city data
 cities <- read_csv("devroles-city.csv")
 citylookup <- read_csv("citylookup.csv")
 cities <- left_join(cities, citylookup)
 cities <- rename(cities, share = city_visitors_share, loc_quo = location_quotient)
+cities <- filter(cities, city %in% c("calgary", "edmonton", "guelph", "halifax", "hamilton", "kitchener_waterloo",
+                                     "london", "montreal", "ottawa", "quebec city", "regina", "saskatoon", 
+                                     "toronto", "vancouver", "victoria", "winnipeg", "nyc_metro_area", "sf_silicon_valley"),
+                 !(dev_role %in% c("biz intel developers", "highly technical designers", "highly technical product managers", "qa engineers")))
+                                       #"biz intel developers" "highly technical designers", dev_role != "highly technical product managers", dev_role != "qa engineers")
 
 #Proper names for developer roles
 cities$dev_role <- toTitleCase(cities$dev_role)
@@ -42,6 +47,5 @@ cities <- st_as_sf(cities, coords = c("long", "lat"), crs = 4326)
 #Write files for app
 write_sf(provinces, "provinces.shp")
 write_sf(cities, "cities.shp")
-#write_csv(cities, "cities.csv")
 
 rm(list=ls())

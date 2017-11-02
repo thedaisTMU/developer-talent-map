@@ -8,6 +8,8 @@ Jan Fromm*
 #Ignore proprietary data for now
 devroles-city.csv
 devroles-province.csv
+devroles-city.bak.csv
+devroles-province.bak.csv
 
 .RData
 report/figures/*.png

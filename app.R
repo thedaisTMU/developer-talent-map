@@ -13,13 +13,15 @@ library(shiny)
 #Import data from load scripts
 provinces <- read_sf("provinces.shp")
 cities <- read_sf("cities.shp")
-#cities <- read_csv("cities.csv")
 
-#Change names on province fields and preserve SF object type
+#Change names on fields and preserve SF object type
 names(provinces)[names(provinces)=="dev_rol"] <- "dev_role"
 names(provinces)[names(provinces)=="visitrs"] <- "visitors"
 names(provinces)[names(provinces)=="prvnc__"] <- "share"
 names(provinces)[names(provinces)=="lctn_qt"] <- "loc_quo"
+
+names(cities)[names(cities)=="dev_rol"] <- "dev_role"
+names(cities)[names(cities)=="visitrs"] <- "visitors"
 
 cities$visitors <- comma(cities$visitors, 0)
 cities$share <- percent(cities$share, 1)
