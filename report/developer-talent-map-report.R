@@ -1102,7 +1102,7 @@ language_years_ca %>%
 # Difference between Canada and ROW in language usage plot
 min_respondents_language <- 50
 plot_title <- paste("Difference in Share of Professional Developers Using",
-                    "Lanuage Between Canada and Rest of World")
+                    "Language Between Canada and Rest of World")
 language_regionscarow_2017_prodevs %>%
     select(language, region_carow_label, respondents_share) %>%
     spread(region_carow_label, respondents_share) %>%
