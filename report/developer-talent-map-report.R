@@ -1100,34 +1100,69 @@ language_years_ca %>%
     select(language, respondents_share, respondents_share_pc_growth_yoy)
 
 # Difference between Canada and ROW in language usage plot
+# min_respondents_language <- 50
+# plot_title <- paste("Difference in Share of Professional Developers Using",
+#                     "Language Between Canada and Rest of World")
+# language_regionscarow_2017_prodevs %>%
+#     select(language, region_carow_label, respondents_share) %>%
+#     spread(region_carow_label, respondents_share) %>%
+#     mutate(respondents_share_pc_diff = Canada / ROW - 1) %>%
+#     inner_join(language_regionscarow_2017_prodevs %>%
+#                    filter(region_carow_label == "Canada" &
+#                               respondents >= min_respondents_language) %>%
+#                    select(language),
+#                by = "language") %>%
+#     left_join(language_metadata, by = "language") %>%
+#     arrange(respondents_share_pc_diff) %>%
+#     ungroup() %>%
+#     mutate(language_label = factor(language_label, levels = language_label)) %>%
+#     ggplot(aes(language_label, respondents_share_pc_diff,
+#                label = percent(respondents_share_pc_diff))) +
+#     geom_col(width = plot_bar_width, fill = plot_color) +
+#     geom_text(hjust = 0, nudge_y = 0.001) +
+#     coord_flip() +
+#     scale_fill_manual(values = plot_colors_2_emphasis) +
+#     scale_y_continuous(limits = c(-0.15, 0.35), labels = percent_format(),
+#                        expand = plot_axis_padding) +
+#     labs(x = "", y = "% Difference", title = plot_title,
+#          subtitle = "% Difference Between Canada and Rest of World in Share of Survey Respondents") +
+#     guides(fill = "none") +
+#     theme(panel.grid.major.y = element_blank())
+# save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
+
+# Plot of difference between Canada and ROW in language usage, 2017
 min_respondents_language <- 50
 plot_title <- paste("Difference in Share of Professional Developers Using",
-                    "Language Between Canada and Rest of World")
+                    "Language\nBetween Canada and Rest of the World, 2017")
 language_regionscarow_2017_prodevs %>%
     select(language, region_carow_label, respondents_share) %>%
     spread(region_carow_label, respondents_share) %>%
-    mutate(respondents_share_pc_diff = Canada / ROW - 1) %>%
+    mutate(carow_ratio = Canada / ROW) %>%
     inner_join(language_regionscarow_2017_prodevs %>%
                    filter(region_carow_label == "Canada" &
                               respondents >= min_respondents_language) %>%
                    select(language),
                by = "language") %>%
     left_join(language_metadata, by = "language") %>%
-    arrange(respondents_share_pc_diff) %>%
-    ungroup() %>%
+    arrange(carow_ratio) %>%
     mutate(language_label = factor(language_label, levels = language_label)) %>%
-    ggplot(aes(language_label, respondents_share_pc_diff,
-               label = percent(respondents_share_pc_diff))) +
-    geom_col(width = plot_bar_width, fill = plot_color) +
-    geom_text(hjust = 0, nudge_y = 0.001) +
+    ggplot(aes(language_label, carow_ratio, fill = ROW,
+               label = paste0(format(round(carow_ratio, 2), n.small = 2), "x"))) +
+    geom_col(width = plot_bar_width) +
+    geom_text(hjust = 0, nudge_y = 0.005) +
+    geom_hline(yintercept = 1, col = "gray50", linetype = "dashed") +
     coord_flip() +
-    scale_fill_manual(values = plot_colors_2_emphasis) +
-    scale_y_continuous(limits = c(-0.15, 0.35), labels = percent_format(),
+    scale_fill_gradient(low = "#ffdeff", high = "#960039", limits = c(0, 1),
+                        labels = percent_format()) +
+    scale_y_continuous(limits = c(0, 1.5), breaks = seq(0, 2, by = 0.5),
+                       labels = paste0(seq(0, 2, by = 0.5), "x"),
                        expand = plot_axis_padding) +
-    labs(x = "", y = "% Difference", title = plot_title,
-         subtitle = "% Difference Between Canada and Rest of World in Share of Survey Respondents") +
-    guides(fill = "none") +
-    theme(panel.grid.major.y = element_blank())
+    labs(x = "", y = "Canadian Share Relative to Rest of World Share",
+         fill = "Share of Rest of World\nUsing Language", title = plot_title,
+         subtitle = paste("Ratio of Canadian Share of Survey Respondents to",
+                          "Rest of World Share per Language")) +
+    theme(panel.grid.major.y = element_blank(),
+          legend.position = "right")
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 #### Company Type and Size ####
@@ -1322,25 +1357,52 @@ industry_2017_prodevs <- industry_regionscarow_2017_prodevs %>%
            diff_median_salary_carow = median_salary_cad_ca - median_salary_cad_row) 
 
 # % diff between CA and ROW
+# min_respondents_industry <- 50
+# plot_title <- paste("Difference in Share of Professional Developers by",
+#                     "Industry\nBetween Canada and Rest of the World, 2017")
+# industry_2017_prodevs %>%
+#     filter(respondents_ca >= min_respondents_industry &
+#                !grepl("Other", industry_original_label)) %>%
+#     arrange(pc_diff_carow) %>%
+#     mutate(industry_original_label = factor(
+#         industry_original_label, levels = industry_original_label)) %>%
+#     ggplot(aes(industry_original_label, pc_diff_carow, label = percent(pc_diff_carow))) +
+#     geom_col(width = plot_bar_width, fill = plot_color) +
+#     geom_text(hjust = 0, nudge_y = 0.005) +
+#     coord_flip() +
+#     scale_y_continuous(limits = c(-0.25, 1.05), labels = percent_format(),
+#                        expand = plot_axis_padding) +
+#     labs(x = "", y = "% Difference", title = plot_title,
+#          subtitle = paste("% Difference Between Canada and Rest of World in",
+#                           "Share of Survey Respondents")) +
+#     theme(panel.grid.major.y = element_line(NA))
+# save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
+
+# Plot of ratio of Canadian to ROW professional developers shares by industry, 2017
 min_respondents_industry <- 50
 plot_title <- paste("Difference in Share of Professional Developers by",
                     "Industry\nBetween Canada and Rest of the World, 2017")
 industry_2017_prodevs %>%
     filter(respondents_ca >= min_respondents_industry &
                !grepl("Other", industry_original_label)) %>%
-    arrange(pc_diff_carow) %>%
+    mutate(carow_ratio = respondents_share_ca / respondents_share_row) %>% 
+    arrange(carow_ratio) %>%
     mutate(industry_original_label = factor(
         industry_original_label, levels = industry_original_label)) %>%
-    ggplot(aes(industry_original_label, pc_diff_carow, label = percent(pc_diff_carow))) +
+    ggplot(aes(industry_original_label, carow_ratio,
+               label = paste0(format(round(carow_ratio, 2), n.small = 2), "x"))) +
     geom_col(width = plot_bar_width, fill = plot_color) +
     geom_text(hjust = 0, nudge_y = 0.005) +
+    geom_hline(yintercept = 1, col = "gray50", linetype = "dashed") +
     coord_flip() +
-    scale_y_continuous(limits = c(-0.25, 1.05), labels = percent_format(),
+    scale_y_continuous(limits = c(0, 2.15), breaks = seq(0, 2, by = 0.5),
+                       labels = paste0(seq(0, 2, by = 0.5), "x"),
                        expand = plot_axis_padding) +
-    labs(x = "", y = "% Difference", title = plot_title,
-         subtitle = paste("% Difference Between Canada and Rest of World in",
-                          "Share of Survey Respondents")) +
-    theme(panel.grid.major.y = element_line(NA))
+    labs(x = "", y = "Canadian Share Relative to Rest of World Share",
+         title = plot_title,
+         subtitle = paste("Ratio of Canadian Share of Survey Respondents to",
+                          "Rest of World Share per Industry")) +
+    theme(panel.grid.major.y = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 # Industry growth over time in Canada
