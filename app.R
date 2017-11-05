@@ -58,8 +58,8 @@ ui <- function(request) {
                           shiny_iconlink() %>%
                             bs_embed_tooltip(
                               title = "'Visitors' are visitors to Stack Overflow.
-                              '% Local Developers' is the number of visitors from a selected role divided by traffic from city/province.
-                              Location quotient is share of a city/province's developers in a role relative to other cities/province.",
+'% Local Developers' is the number of visitors from a selected role divided by traffic from city/province.
+Location quotient is share of a city/province's developers in a role relative to other cities/province.",
                               placement = "left")),
                       selectInput("role", "Developer Role", list("Role Groups" = rolegroups, "Roles" = role), selectize=FALSE) %>%
                         shinyInput_label_embed(
@@ -82,8 +82,7 @@ ui <- function(request) {
                  tags$a(href="https://www.linkedin.com/company/the-brookfield-institute-for-innovation-entrepreneurship", icon("linkedin-square", "fa-2x"))
                  ),
         tags$div(id="cite", #Set links
-                 'Developed by ',
-                 tags$a(href="", "Asher Zafar"),
+                 'Developed by Asher Zafar',
                  " for the ",
                  tags$a(href="http://brookfieldinstitute.ca/"," Brookfield Institute for Innovation + Entrepreneurship (BII+E)."),
                  tags$a(href="", "Full report"),
