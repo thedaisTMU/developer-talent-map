@@ -1,0 +1,313 @@
+﻿city,dev_role,visitors,city_visitors_share,location_quotient
+calgary,android developers,545,0.021639865,0.721060872
+calgary,back-end web,3527,0.140043677,1.021138556
+calgary,data scientists,792,0.03144729,0.834353826
+calgary,database administrators,1712,0.06797697,1.149738598
+calgary,desktop developers,985,0.039110582,1.072284272
+calgary,embedded developers,1247,0.049513599,0.67972822
+calgary,front-end web,2266,0.089974191,0.919567319
+calgary,full-stack web,14826,0.58868374,1.02337908
+calgary,graphics programmers,425,0.016875124,1.038419409
+calgary,ios developers,535,0.021242803,1.031348835
+calgary,machine learning specialists,788,0.031288465,0.803675843
+calgary,systems administrators,2665,0.105816955,1.045231392
+edmonton,android developers,528,0.029521946,0.983699295
+edmonton,back-end web,2318,0.129605815,0.945030135
+edmonton,data scientists,823,0.046016215,1.220893906
+edmonton,database administrators,1131,0.06323735,1.069574319
+edmonton,desktop developers,496,0.027732737,0.76034097
+edmonton,embedded developers,1128,0.063069611,0.865826666
+edmonton,front-end web,1602,0.089572267,0.91545952
+edmonton,full-stack web,10107,0.565110428,0.982398782
+edmonton,graphics programmers,252,0.01409002,0.867036575
+edmonton,ios developers,282,0.015767403,0.765515378
+edmonton,machine learning specialists,817,0.045680738,1.173355907
+edmonton,systems administrators,1742,0.097400056,0.962091534
+guelph,android developers,78,0.023179792,0.772372702
+guelph,back-end web,346,0.10282318,0.749742621
+guelph,data scientists,321,0.095393759,2.530970009
+guelph,database administrators,152,0.045170877,0.76400434
+guelph,desktop developers,100,0.029717682,0.814761674
+guelph,embedded developers,779,0.231500743,3.178068043
+guelph,front-end web,190,0.056463596,0.577077459
+guelph,full-stack web,1440,0.427934621,0.743929735
+guelph,graphics programmers,39,0.011589896,0.71319019
+guelph,ios developers,55,0.016344725,0.793544666
+guelph,machine learning specialists,318,0.094502229,2.427385221
+guelph,systems administrators,289,0.085884101,0.848340031
+halifax,android developers,83,0.014449861,0.481483095
+halifax,back-end web,916,0.159470752,1.162792475
+halifax,data scientists,307,0.053447075,1.418048156
+halifax,database administrators,380,0.066155989,1.118939156
+halifax,desktop developers,234,0.040738162,1.11690719
+halifax,embedded developers,421,0.073293872,1.006186455
+halifax,front-end web,533,0.092792479,0.948371198
+halifax,full-stack web,3419,0.595229805,1.034758884
+halifax,graphics programmers,143,0.024895543,1.531960009
+halifax,ios developers,183,0.031859331,1.546786647
+halifax,machine learning specialists,302,0.052576602,1.350483131
+halifax,systems administrators,534,0.092966574,0.918298791
+hamilton,android developers,159,0.021685761,0.722590172
+hamilton,back-end web,1174,0.160120022,1.167526672
+hamilton,data scientists,528,0.072013093,1.910638398
+hamilton,database administrators,382,0.052100382,0.881207557
+hamilton,desktop developers,189,0.025777414,0.706732411
+hamilton,embedded developers,538,0.073376978,1.00732734
+hamilton,front-end web,619,0.084424441,0.862846955
+hamilton,full-stack web,4499,0.613611566,1.066714089
+hamilton,graphics programmers,132,0.018003273,1.107840651
+hamilton,ios developers,129,0.017594108,0.854202837
+hamilton,machine learning specialists,517,0.070512821,1.811193032
+hamilton,systems administrators,497,0.067785052,0.669562495
+london,android developers,230,0.025324818,0.843847019
+london,back-end web,1435,0.158004845,1.152103706
+london,data scientists,518,0.057035895,1.51326608
+london,database administrators,468,0.0515305,0.871568773
+london,desktop developers,245,0.026976437,0.739605696
+london,embedded developers,938,0.103281216,1.417856058
+london,front-end web,855,0.094142259,0.962166419
+london,full-stack web,5337,0.587645893,1.021574866
+london,graphics programmers,195,0.021471042,1.32123155
+london,ios developers,132,0.014534244,0.705644871
+london,machine learning specialists,511,0.05626514,1.44522696
+london,systems administrators,792,0.087205461,0.861392073
+montreal,android developers,5395,0.04410238,1.469533212
+montreal,back-end web,16581,0.135544311,0.988331105
+montreal,data scientists,5168,0.042246728,1.120882567
+montreal,database administrators,7297,0.059650614,1.008909536
+montreal,desktop developers,4794,0.039189399,1.074445187
+montreal,embedded developers,8279,0.067678147,0.929093152
+montreal,front-end web,10418,0.08516378,0.870403253
+montreal,full-stack web,72471,0.59242698,1.029886399
+montreal,graphics programmers,2713,0.022177897,1.364728277
+montreal,ios developers,1996,0.016316654,0.792181812
+montreal,machine learning specialists,5098,0.041674501,1.070451654
+montreal,systems administrators,11195,0.091515503,0.903965507
+ottawa,android developers,1231,0.028983119,0.965745065
+ottawa,back-end web,6312,0.148612059,1.083615535
+ottawa,data scientists,1374,0.032349964,0.858303395
+ottawa,database administrators,2361,0.055588256,0.940200236
+ottawa,desktop developers,1426,0.033574271,0.920496727
+ottawa,embedded developers,3248,0.076472112,1.049817686
+ottawa,front-end web,3667,0.086337202,0.88239604
+ottawa,full-stack web,24347,0.573234761,0.996522278
+ottawa,graphics programmers,529,0.012454971,0.766423048
+ottawa,ios developers,812,0.019118028,0.928189919
+ottawa,machine learning specialists,1364,0.03211452,0.824893886
+ottawa,systems administrators,5357,0.126127187,1.245850398
+quebec city,android developers,270,0.018461538,0.61515601
+quebec city,back-end web,1932,0.132102564,0.963235361
+quebec city,data scientists,681,0.046564103,1.235430367
+quebec city,database administrators,1197,0.081846154,1.384317095
+quebec city,desktop developers,494,0.033777778,0.926076225
+quebec city,embedded developers,879,0.060102564,0.82509471
+quebec city,front-end web,1189,0.081299145,0.830905355
+quebec city,full-stack web,8385,0.573333333,0.996693639
+quebec city,graphics programmers,236,0.016136752,0.992983313
+quebec city,ios developers,219,0.014974359,0.727012697
+quebec city,machine learning specialists,671,0.045880342,1.178482933
+quebec city,systems administrators,1573,0.107555556,1.062404825
+regina,android developers,75,0.021150592,0.704757838
+regina,back-end web,320,0.090242527,0.658009884
+regina,data scientists,87,0.024534687,0.650949888
+regina,database administrators,297,0.083756345,1.4166254
+regina,desktop developers,105,0.029610829,0.811832117
+regina,embedded developers,571,0.161026509,2.210589888
+regina,front-end web,319,0.089960519,0.919427586
+regina,full-stack web,1600,0.451212634,0.784396678
+regina,graphics programmers,57,0.01607445,0.989149524
+regina,ios developers,65,0.018330513,0.889955684
+regina,machine learning specialists,85,0.023970671,0.615710906
+regina,systems administrators,412,0.116187253,1.147666411
+saskatoon,android developers,52,0.013121373,0.437216611
+saskatoon,back-end web,641,0.161746152,1.179383717
+saskatoon,data scientists,204,0.051476154,1.365756041
+saskatoon,database administrators,229,0.057784507,0.977346847
+saskatoon,desktop developers,108,0.027252082,0.747162977
+saskatoon,embedded developers,284,0.071662882,0.98379604
+saskatoon,front-end web,282,0.071158213,0.727261528
+saskatoon,full-stack web,2242,0.565733031,0.983481127
+saskatoon,graphics programmers,82,0.020691395,1.273255621
+saskatoon,ios developers,60,0.015140045,0.735056858
+saskatoon,machine learning specialists,204,0.051476154,1.322217032
+saskatoon,systems administrators,537,0.135503407,1.338466174
+toronto,android developers,5481,0.027247916,0.907926454
+toronto,back-end web,29790,0.148096225,1.079854293
+toronto,data scientists,6636,0.032989814,0.875279785
+toronto,database administrators,10826,0.053819729,0.910287995
+toronto,desktop developers,7708,0.03831909,1.05058417
+toronto,embedded developers,13415,0.066690529,0.915535029
+toronto,front-end web,20459,0.10170865,1.039497541
+toronto,full-stack web,116322,0.578276237,1.005286478
+toronto,graphics programmers,2524,0.012547663,0.772126857
+toronto,ios developers,5264,0.026169135,1.270524728
+toronto,machine learning specialists,7448,0.037026542,0.951064138
+toronto,systems administrators,20291,0.100873464,0.996400928
+vancouver,android developers,1862,0.02922664,0.973859422
+vancouver,back-end web,9082,0.142554427,1.039445873
+vancouver,data scientists,2782,0.0436673,1.158572918
+vancouver,database administrators,2893,0.045409597,0.768041968
+vancouver,desktop developers,2634,0.041344237,1.133523799
+vancouver,embedded developers,5241,0.082264672,1.129338603
+vancouver,front-end web,7363,0.115572368,1.181189534
+vancouver,full-stack web,36449,0.572116969,0.994579088
+vancouver,graphics programmers,1053,0.016528277,1.017075997
+vancouver,ios developers,1766,0.027719788,1.345809738
+vancouver,machine learning specialists,2732,0.042882481,1.101479855
+vancouver,systems administrators,6006,0.094272395,0.931197339
+victoria,android developers,149,0.018860759,0.628458435
+victoria,back-end web,1178,0.149113924,1.087274917
+victoria,data scientists,392,0.049620253,1.316515604
+victoria,database administrators,462,0.058481013,0.989127305
+victoria,desktop developers,252,0.031898734,0.874558993
+victoria,embedded developers,682,0.086329114,1.185135713
+victoria,front-end web,792,0.100253165,1.024621981
+victoria,full-stack web,4702,0.595189873,1.034689466
+victoria,graphics programmers,150,0.018987342,1.168395807
+victoria,ios developers,175,0.022151899,1.07548588
+victoria,machine learning specialists,377,0.047721519,1.225775427
+victoria,systems administrators,743,0.094050633,0.929006835
+waterloo_kitchener_cambridge,android developers,417,0.027139603,0.90431737
+waterloo_kitchener_cambridge,back-end web,2535,0.164985356,1.203002609
+waterloo_kitchener_cambridge,data scientists,1082,0.070419785,1.868365035
+waterloo_kitchener_cambridge,database administrators,535,0.034819395,0.588923011
+waterloo_kitchener_cambridge,desktop developers,593,0.038594208,1.058126983
+waterloo_kitchener_cambridge,embedded developers,2382,0.15502766,2.128237027
+waterloo_kitchener_cambridge,front-end web,971,0.063195574,0.645880605
+waterloo_kitchener_cambridge,full-stack web,8246,0.53667426,0.932964803
+waterloo_kitchener_cambridge,graphics programmers,246,0.016010413,0.985208986
+waterloo_kitchener_cambridge,ios developers,412,0.026814188,1.301842385
+waterloo_kitchener_cambridge,machine learning specialists,1062,0.069118126,1.775368885
+waterloo_kitchener_cambridge,systems administrators,1192,0.077578913,0.766303621
+winnipeg,android developers,267,0.025577163,0.852255369
+winnipeg,back-end web,1514,0.145033049,1.057518924
+winnipeg,data scientists,363,0.034773446,0.922602788
+winnipeg,database administrators,682,0.065331928,1.105001286
+winnipeg,desktop developers,286,0.02739726,0.751143297
+winnipeg,embedded developers,567,0.054315547,0.745649899
+winnipeg,front-end web,1178,0.112846058,1.153325703
+winnipeg,full-stack web,6182,0.592202318,1.029495843
+winnipeg,graphics programmers,193,0.018488361,1.137690767
+winnipeg,ios developers,153,0.014656576,0.711584188
+winnipeg,machine learning specialists,355,0.034007089,0.873506432
+winnipeg,systems administrators,932,0.089280582,0.88188956
+sydney,android developers,2508,0.023145713,
+sydney,ios developers,2742,0.025305241,
+sydney,back-end web,15080,0.139169597,
+sydney,front-end web,11592,0.106979706,
+sydney,full-stack web,62162,0.57367775,
+sydney,desktop developers,4305,0.039729782,
+sydney,embedded developers,3531,0.032586727,
+sydney,graphics programmers,1268,0.011702059,
+sydney,data scientists,3316,0.030602545,
+sydney,machine learning specialists,3497,0.03227295,
+sydney,database administrators,7011,0.064702788,
+sydney,systems administrators,14589,0.134638279,
+helsinki,android developers,922,0.027285372,
+helsinki,ios developers,664,0.019650203,
+helsinki,back-end web,5256,0.155544376,
+helsinki,front-end web,3720,0.110088485,
+helsinki,full-stack web,20457,0.605397887,
+helsinki,desktop developers,1149,0.034003137,
+helsinki,embedded developers,1376,0.040720902,
+helsinki,graphics programmers,613,0.018140925,
+helsinki,data scientists,1631,0.04826729,
+helsinki,machine learning specialists,1615,0.047793791,
+helsinki,database administrators,1808,0.053505371,
+helsinki,systems administrators,4209,0.124559794,
+paris,android developers,4352,0.027688177,
+paris,ios developers,3415,0.021726821,
+paris,back-end web,22780,0.144930302,
+paris,front-end web,13162,0.083738922,
+paris,full-stack web,97424,0.619828349,
+paris,desktop developers,5744,0.036544322,
+paris,embedded developers,8194,0.052131646,
+paris,graphics programmers,1704,0.010841143,
+paris,data scientists,4678,0.029762246,
+paris,machine learning specialists,5069,0.032249855,
+paris,database administrators,13669,0.086964544,
+paris,systems administrators,19991,0.127186202,
+munich,android developers,2169,0.02996146,
+munich,ios developers,1698,0.023455306,
+munich,back-end web,9503,0.131269598,
+munich,front-end web,4946,0.068321523,
+munich,full-stack web,40634,0.561297363,
+munich,desktop developers,3142,0.043401986,
+munich,embedded developers,6071,0.083861699,
+munich,graphics programmers,930,0.012846546,
+munich,data scientists,3439,0.047504593,
+munich,machine learning specialists,3463,0.047836117,
+munich,database administrators,4199,0.058002846,
+munich,systems administrators,9121,0.125992845,
+tel_aviv,android developers,4808,0.053769934,
+tel_aviv,ios developers,2126,0.023775974,
+tel_aviv,back-end web,15632,0.174819388,
+tel_aviv,front-end web,7533,0.084244783,
+tel_aviv,full-stack web,53765,0.601277148,
+tel_aviv,desktop developers,3727,0.041680646,
+tel_aviv,embedded developers,7457,0.083394842,
+tel_aviv,graphics programmers,707,0.007906685,
+tel_aviv,data scientists,1630,0.018228992,
+tel_aviv,machine learning specialists,1729,0.019336152,
+tel_aviv,database administrators,3623,0.040517569,
+tel_aviv,systems administrators,8492,0.094969693,
+singapore,android developers,6739,0.046434871,
+singapore,ios developers,4113,0.028340499,
+singapore,back-end web,22212,0.1530511,
+singapore,front-end web,11011,0.075870955,
+singapore,full-stack web,82913,0.571309465,
+singapore,desktop developers,6483,0.044670911,
+singapore,embedded developers,8559,0.058975525,
+singapore,graphics programmers,1668,0.011493302,
+singapore,data scientists,4268,0.029408522,
+singapore,machine learning specialists,4725,0.032557467,
+singapore,database administrators,10484,0.072239678,
+singapore,systems administrators,14154,0.0975277,
+amsterdam,android developers,3231,0.04139601,
+amsterdam,ios developers,2019,0.025867702,
+amsterdam,back-end web,13036,0.167019,
+amsterdam,front-end web,8034,0.102932698,
+amsterdam,full-stack web,48613,0.622836351,
+amsterdam,desktop developers,3039,0.03893608,
+amsterdam,embedded developers,2458,0.031492229,
+amsterdam,graphics programmers,824,0.0105572,
+amsterdam,data scientists,3005,0.038500468,
+amsterdam,machine learning specialists,3170,0.04061447,
+amsterdam,database administrators,6118,0.078384646,
+amsterdam,systems administrators,8185,0.10486733,
+stockholm,android developers,1321,0.02336895,
+stockholm,ios developers,1534,0.027136994,
+stockholm,back-end web,8602,0.152172375,
+stockholm,front-end web,5822,0.102993207,
+stockholm,full-stack web,34730,0.614385791,
+stockholm,desktop developers,2543,0.044986555,
+stockholm,embedded developers,2605,0.046083357,
+stockholm,graphics programmers,717,0.01268398,
+stockholm,data scientists,1892,0.033470139,
+stockholm,machine learning specialists,1914,0.033859326,
+stockholm,database administrators,2524,0.044650439,
+stockholm,systems administrators,6104,0.107981885,
+sf_silicon_valley,android developers,22895,0.043306789,
+sf_silicon_valley,ios developers,23266,0.04400855,
+sf_silicon_valley,back-end web,107339,0.20303592,
+sf_silicon_valley,front-end web,36752,0.069517847,
+sf_silicon_valley,full-stack web,310469,0.587264267,
+sf_silicon_valley,desktop developers,35041,0.066281423,
+sf_silicon_valley,embedded developers,29437,0.055681238,
+sf_silicon_valley,graphics programmers,7780,0.014716175,
+sf_silicon_valley,data scientists,11446,0.021650557,
+sf_silicon_valley,machine learning specialists,14408,0.027253296,
+sf_silicon_valley,database administrators,22674,0.042888759,
+sf_silicon_valley,systems administrators,60292,0.114044678,
+nyc_metro_area,android developers,8486,0.02324091,
+nyc_metro_area,ios developers,10094,0.027644797,
+nyc_metro_area,back-end web,57913,0.158608394,
+nyc_metro_area,front-end web,34962,0.095751673,
+nyc_metro_area,full-stack web,216632,0.593297766,
+nyc_metro_area,desktop developers,14555,0.039862296,
+nyc_metro_area,embedded developers,15661,0.042891338,
+nyc_metro_area,graphics programmers,2858,0.007827306,
+nyc_metro_area,data scientists,14628,0.040062224,
+nyc_metro_area,machine learning specialists,16018,0.043869067,
+nyc_metro_area,database administrators,19353,0.05300275,
+nyc_metro_area,systems administrators,37248,0.102012423,

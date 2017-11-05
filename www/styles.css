@@ -18,11 +18,13 @@ input[type="number"] {
 }
 
 /* Set BII+E fonts as default */
-* {
-  font-family: 'rooneysansmed', Verdana, Georgia; !important;
+h1, h2, h3, h4 {
+  font-family: 'rooneyprobold', Verdana, Georgia; !important;
 }
 
-h1, h2, h3, h4 {font-size: 2.5vw;}
+* {font-family: 'rooneysansmed', Verdana, Georgia; !important;}
+
+/* h1, h2, h3, h4 {font-size: 2.5vw;} */
 
 #controls {
   /* Appearance */
@@ -44,12 +46,42 @@ h1, h2, h3, h4 {font-size: 2.5vw;}
 /* Position and style citation*/
 #cite {
   position: absolute;
-  bottom: 10px;
+  bottom: 15px;
   left: 10px;
-  width: 80%;
+  width: 60%;
+  font-size: 1.3vw;
 }
 
-/* Position and style title*/
+/* Position and style logos and social icons*/
+#icons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  text-align:left;
+  align-content: left;
+}
+
+/* unvisited link */
+a:link {
+    color: black;
+}
+
+/* visited link
+a:visited {
+    color: white;
+} */
+
+/* mouse over link */
+a:hover {
+    color: grey;
+}
+
+/* selected link */
+a:active {
+    color: white;
+}
+
+/* Position and style title - now unused*/
 #apptitle {
   left: 0;
   padding: 10px;
@@ -78,24 +110,25 @@ h1, h2, h3, h4 {font-size: 2.5vw;}
 /* Media queries: Recompute break points */
 @media all and (min-width: 960px) {
 
-  h1, h2, h3, h4 {font-size: 2.25em;}
+  h1, h2, h3, h4 {font-size: 1.2em;} /*2.25em*/
   body, label, input, button, select {
-    font-size: 1.3em;
+    font-size: 1.2em;
   }
 }
 
 @media all and (max-width: 959px) and (min-width: 800px) {
 
-  h1, h2, h3, h4 {font-size: 2.75vw;}
+  h1, h2, h3, h4 {font-size: 1.5vw;} /*2.75vw*/
   body, label, input, button, select {
-    font-size: 1.3vw;
+    font-size: 1.5vw;
   }
 }
 
 @media all and (max-width: 799px) and (min-width: 50px) {
 
-  h1, h2, h3, h4 {font-size: 18px;}
+  h1, h2, h3, h4 {font-size: 13px;} /*18px*/
+  cite {font-size: 7px;}
   body, label, input, button, select {
-    font-size: 10px;
+    font-size: 13px;
   }
 }

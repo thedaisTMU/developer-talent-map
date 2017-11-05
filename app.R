@@ -8,18 +8,21 @@ library(formattable)
 library(tidyverse)
 library(sf)
 library(shiny)
+library(bsplus)
 
 #Preprocessing - move some to load script ===================
 #Import data from load scripts
 provinces <- read_sf("provinces.shp")
 cities <- read_sf("cities.shp")
-#cities <- read_csv("cities.csv")
 
-#Change names on province fields and preserve SF object type
+#Change names on fields and preserve SF object type
 names(provinces)[names(provinces)=="dev_rol"] <- "dev_role"
 names(provinces)[names(provinces)=="visitrs"] <- "visitors"
 names(provinces)[names(provinces)=="prvnc__"] <- "share"
 names(provinces)[names(provinces)=="lctn_qt"] <- "loc_quo"
+
+names(cities)[names(cities)=="dev_rol"] <- "dev_role"
+names(cities)[names(cities)=="visitrs"] <- "visitors"
 
 cities$visitors <- comma(cities$visitors, 0)
 cities$share <- percent(cities$share, 1)
@@ -30,7 +33,9 @@ provinces$share <- percent(provinces$share)
 provinces$loc_quo <- comma(provinces$loc_quo, 2)
 
 #Dropdown choices
+rolegroups <- c("All Developers", "Mobile Developers", "Web Developers", "Other Kinds of Developers")
 role <- unique(cities$dev_role)
+role <- role[(!role %in% rolegroups)]
 
 metric <- c(
   "Visitors" = "visitors",
@@ -41,27 +46,43 @@ metric <- c(
 #DefineUI ===================
 ui <- function(request) {
   fillPage(theme = "styles.css",
-               title = "Stack Overflow Canadian Developer Talent Map",
+               #title = "Stack Overflow Canadian Developer Talent Map",
     div(style = "width: 100%; height: 100%;",
         leafletOutput("map", width = "100%", height = "100%"),
         absolutePanel(id = "controls", class = "panel panel-default", draggable = TRUE, fixed = TRUE,
-                      top = 90, left = 20, right = "auto", bottom = "auto", 
-                      width = "250px", height = "auto",
-                      selectInput("metric", "Web Traffic Metric", metric, selectize = FALSE), #Draggable and selectize seem incompatible for scrolling
-                      selectInput("role", "Developer Role", role, selectize = FALSE),
-                                  # list("Role Groups" = c("All Developers", "Mobile Developers",
-                                  #                        "Web Developers", "Other Developers"),
-                                  #      "Roles" = role))
+                      top = 85, left = 10, right = "auto", bottom = "auto", 
+                      width = "200px", height = "auto",
+                      h1("Canadian Developer Talent Map"),
+                      selectInput("metric", "Web Traffic Metric", metric, selectize = FALSE) %>% #Draggable and selectize seem incompatible for scrolling
+                        shinyInput_label_embed(
+                          shiny_iconlink() %>%
+                            bs_embed_tooltip(
+                              title = "'Visitors' are visitors to Stack Overflow.
+                              '% Local Developers' is the number of visitors from a selected role divided by traffic from city/province.
+                              Location quotient is share of a city/province's developers in a role relative to other cities/province.",
+                              placement = "left")),
+                      selectInput("role", "Developer Role", list("Role Groups" = rolegroups, "Roles" = role), selectize=FALSE) %>%
+                        shinyInput_label_embed(
+                          shiny_iconlink() %>%
+                            bs_embed_tooltip(
+                              title = "Select the developer role you'd like to view the metrics for. Groups are aggreated from other roles.",
+                              placement = "left")),
                       radioButtons("juris", "Jurisdiction", choices = c("Cities", "Provinces"), selected = "Cities", inline = TRUE),
-                      bookmarkButton(title = "Bookmark this view and get a URL to share")
+                      bookmarkButton(title = "Bookmark your selections and get a URL to share")
                       ),
-        h3(tags$div(id="apptitle",
-                    tags$a(href="http://brookfieldinstitute.ca/", img(src='brookfield_mark_small.png', align = "left")),
-                    "Stack Overflow Canadian Developer Talent Map"
-                    )
-           ),
-        tags$div(id="cite",
-                 'Application developed by ',
+        tags$div(id="icons",
+                 tags$a(href="http://brookfieldinstitute.ca/", img(src='brookfield_institute_esig_small.png', hspace = "5px", align = "left")),
+                 #tags$br(),
+                 tags$a(href="https://stackoverflow.com/", img(src='so-logo-small.png', hspace = "5px", align = "left")),
+                 #tags$br(),
+                 tags$a(href="https://github.com/BrookfieldIIE/", icon("github-square", "fa-2x")),
+                 tags$a(href="https://twitter.com/BrookfieldIIE", icon("twitter-square", "fa-2x")),
+                 tags$a(href="https://www.facebook.com/BrookfieldIIE/", icon("facebook-square", "fa-2x")),
+                 tags$a(href="https://www.youtube.com/channel/UC7yVYTU2QPmY8OYh85ym-2w", icon("youtube-square", "fa-2x")),
+                 tags$a(href="https://www.linkedin.com/company/the-brookfield-institute-for-innovation-entrepreneurship", icon("linkedin-square", "fa-2x"))
+                 ),
+        tags$div(id="cite", #Set links
+                 'Developed by ',
                  tags$a(href="", "Asher Zafar"),
                  " for the ",
                  tags$a(href="http://brookfieldinstitute.ca/"," Brookfield Institute for Innovation + Entrepreneurship (BII+E)."),
@@ -95,23 +116,30 @@ server <- function(input, output, session) {
        addProviderTiles(providers$Stamen.TonerLite) #CartoDB Positron looks good, too, but a little busier
      })
    
+   #Select and filter city data for role and metric
+   cities.r <- reactive({
+     cities.r <- cities[cities$dev_role == input$role,]
+     if (input$metric == "loc_quo") {cities.r <- cities.r[is.na(cities.r$loc_quo) == FALSE,]}
+     if (input$metric == "share") {cities.r <- cities.r[is.na(cities.r$share) == FALSE,]}
+     if (input$metric == "visitors") {cities.r <- cities.r[is.na(cities.r$visitors) == FALSE,]}
+     return(cities.r)
+   })
+   
      #Add city markers
      observe({
        if (input$juris == "Cities") {
          labelmetric <- labelmetric()
          
-       #Select and filter jurisdictional data for role and metric
-       cities.c <- cities[cities$dev_role == input$role,]
-       if (input$metric == "loc_quo") {cities.c <- cities.c[is.na(cities.c$loc_quo) == FALSE,]}
+       #Create metrics for shading/sizing markers
+       cities.c <- cities.r()
        citymetric <- cities.c[[input$metric]]
-       cityrad <- (citymetric/mean(citymetric)*500)^.4
-       
+       cityrad <- (citymetric/mean(citymetric)*100)^.55 #300^.5
        
        #Create color palette based on metrics - put in its own observe function later
        metricpal.c <- colorBin(
-         palette = c("#DDDDDD","#E24585"),
+         palette = c("#F48EBD","#79133E"),
          domain = c(min(citymetric), max(citymetric)),
-         n=7, pretty=TRUE)
+         pretty=TRUE)
        
        #Draw city markers
        leafletProxy("map", data = cities.c) %>% clearShapes() %>% clearMarkers() %>%
@@ -148,7 +176,7 @@ server <- function(input, output, session) {
          
          #Create color palette based on metrics - put in its own observe function later
          metricpal.p <- colorBin(
-           palette = c("#DDDDDD","#E24585"),
+           palette = c("#F48EBD","#79133E"),
            domain = c(min(provmetric), max(provmetric)),
            n=7, pretty=TRUE)
          
