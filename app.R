@@ -32,7 +32,9 @@ provinces$share <- percent(provinces$share)
 provinces$loc_quo <- comma(provinces$loc_quo, 2)
 
 #Dropdown choices
+rolegroups <- c("All Developers", "Mobile Developers", "Web Developers", "Other Kinds of Developers")
 role <- unique(cities$dev_role)
+role <- role[(!role %in% rolegroups)]
 
 metric <- c(
   "Visitors" = "visitors",
@@ -51,10 +53,7 @@ ui <- function(request) {
                       width = "250px", height = "auto",
                       h1("Canadian Developer Talent Map"),
                       selectInput("metric", "Web Traffic Metric", metric, selectize = FALSE), #Draggable and selectize seem incompatible for scrolling
-                      selectInput("role", "Developer Role",
-                                  list("Role Groups" = c("All Developers", "Mobile Developers",
-                                                         "Web Developers", "Other Kinds of Developers"),
-                                       "Roles" = role), selectize=FALSE),
+                      selectInput("role", "Developer Role", list("Role Groups" = rolegroups, "Roles" = role), selectize=FALSE),
                       radioButtons("juris", "Jurisdiction", choices = c("Cities", "Provinces"), selected = "Cities", inline = TRUE),
                       bookmarkButton(title = "Bookmark this view and get a URL to share")
                       ),
@@ -98,17 +97,22 @@ server <- function(input, output, session) {
        addProviderTiles(providers$Stamen.TonerLite) #CartoDB Positron looks good, too, but a little busier
      })
    
+   #Select and filter city data for role and metric
+   cities.r <- reactive({
+     cities.r <- cities[cities$dev_role == input$role,]
+     if (input$metric == "loc_quo") {cities.r <- cities.r[is.na(cities.r$loc_quo) == FALSE,]}
+     if (input$metric == "share") {cities.r <- cities.r[is.na(cities.r$share) == FALSE,]}
+     if (input$metric == "visitors") {cities.r <- cities.r[is.na(cities.r$visitors) == FALSE,]}
+     return(cities.r)
+   })
+   
      #Add city markers
      observe({
        if (input$juris == "Cities") {
          labelmetric <- labelmetric()
          
-       #Select and filter jurisdictional data for role and metric
-       cities.c <- cities[cities$dev_role == input$role,]
-       if (input$metric == "loc_quo") {cities.c <- cities.c[is.na(cities.c$loc_quo) == FALSE,]}
-       if (input$metric == "share") {cities.c <- cities.c[is.na(cities.c$share) == FALSE,]}
-       if (input$metric == "visitors") {cities.c <- cities.c[is.na(cities.c$visitors) == FALSE,]}
-       
+       #Create metrics for shading/sizing markers
+       cities.c <- cities.r()
        citymetric <- cities.c[[input$metric]]
        cityrad <- (citymetric/mean(citymetric)*100)^.55 #300^.5
        
@@ -116,7 +120,7 @@ server <- function(input, output, session) {
        metricpal.c <- colorBin(
          palette = c("#F48EBD","#79133E"),
          domain = c(min(citymetric), max(citymetric)),
-         n=7, pretty=TRUE)
+         pretty=TRUE)
        
        #Draw city markers
        leafletProxy("map", data = cities.c) %>% clearShapes() %>% clearMarkers() %>%
