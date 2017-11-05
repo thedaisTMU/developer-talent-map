@@ -8,6 +8,7 @@ library(formattable)
 library(tidyverse)
 library(sf)
 library(shiny)
+library(bsplus)
 
 #Preprocessing - move some to load script ===================
 #Import data from load scripts
@@ -49,21 +50,39 @@ ui <- function(request) {
     div(style = "width: 100%; height: 100%;",
         leafletOutput("map", width = "100%", height = "100%"),
         absolutePanel(id = "controls", class = "panel panel-default", draggable = TRUE, fixed = TRUE,
-                      top = 10, left = 65, right = "auto", bottom = "auto", 
-                      width = "250px", height = "auto",
+                      top = 85, left = 10, right = "auto", bottom = "auto", 
+                      width = "200px", height = "auto",
                       h1("Canadian Developer Talent Map"),
-                      selectInput("metric", "Web Traffic Metric", metric, selectize = FALSE), #Draggable and selectize seem incompatible for scrolling
-                      selectInput("role", "Developer Role", list("Role Groups" = rolegroups, "Roles" = role), selectize=FALSE),
+                      selectInput("metric", "Web Traffic Metric", metric, selectize = FALSE) %>% #Draggable and selectize seem incompatible for scrolling
+                        shinyInput_label_embed(
+                          shiny_iconlink() %>%
+                            bs_embed_tooltip(
+                              title = "'Visitors' are visitors to Stack Overflow.
+                              '% Local Developers' is the number of visitors from a selected role divided by traffic from city/province.
+                              Location quotient is share of a city/province's developers in a role relative to other cities/province.",
+                              placement = "left")),
+                      selectInput("role", "Developer Role", list("Role Groups" = rolegroups, "Roles" = role), selectize=FALSE) %>%
+                        shinyInput_label_embed(
+                          shiny_iconlink() %>%
+                            bs_embed_tooltip(
+                              title = "Select the developer role you'd like to view the metrics for. Groups are aggreated from other roles.",
+                              placement = "left")),
                       radioButtons("juris", "Jurisdiction", choices = c("Cities", "Provinces"), selected = "Cities", inline = TRUE),
-                      bookmarkButton(title = "Bookmark this view and get a URL to share")
+                      bookmarkButton(title = "Bookmark your selections and get a URL to share")
                       ),
-        # h3(tags$div(id="apptitle",
-        #             tags$a(href="http://brookfieldinstitute.ca/", img(src='brookfield_mark_small.png', align = "left")),
-        #             "Stack Overflow Canadian Developer Talent Map"
-        #             )
-        #    ),
-        tags$div(id="cite",
-                 'Application developed by ',
+        tags$div(id="icons",
+                 tags$a(href="http://brookfieldinstitute.ca/", img(src='brookfield_institute_esig_small.png', hspace = "5px", align = "left")),
+                 #tags$br(),
+                 tags$a(href="https://stackoverflow.com/", img(src='so-logo-small.png', hspace = "5px", align = "left")),
+                 #tags$br(),
+                 tags$a(href="https://github.com/BrookfieldIIE/", icon("github-square", "fa-2x")),
+                 tags$a(href="https://twitter.com/BrookfieldIIE", icon("twitter-square", "fa-2x")),
+                 tags$a(href="https://www.facebook.com/BrookfieldIIE/", icon("facebook-square", "fa-2x")),
+                 tags$a(href="https://www.youtube.com/channel/UC7yVYTU2QPmY8OYh85ym-2w", icon("youtube-square", "fa-2x")),
+                 tags$a(href="https://www.linkedin.com/company/the-brookfield-institute-for-innovation-entrepreneurship", icon("linkedin-square", "fa-2x"))
+                 ),
+        tags$div(id="cite", #Set links
+                 'Developed by ',
                  tags$a(href="", "Asher Zafar"),
                  " for the ",
                  tags$a(href="http://brookfieldinstitute.ca/"," Brookfield Institute for Innovation + Entrepreneurship (BII+E)."),
