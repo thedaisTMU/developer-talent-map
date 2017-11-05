@@ -1,5 +1,5 @@
 city,region,dev_role,dev_role_parent_group,visitors,city_visitors_share,location_quotient
-calgary,canada,all developers,-,25185,,
+calgary,canada,all developers,-,25185,1,1
 calgary,canada,mobile developers,all developers,1082,0.042962081,0.843612499
 calgary,canada,other kinds of developers,all developers,8576,0.340520151,0.947595666
 calgary,canada,web developers,all developers,16463,0.653682748,1.016153812
@@ -15,7 +15,7 @@ calgary,canada,full-stack web,other kinds of developers,14826,0.58868374,1.02337
 calgary,canada,graphics programmers,other kinds of developers,425,0.016875124,1.038419409
 calgary,canada,machine learning specialists,other kinds of developers,788,0.031288465,0.803675843
 calgary,canada,systems administrators,other kinds of developers,2665,0.105816955,1.045231392
-edmonton,canada,all developers,-,17885,,
+edmonton,canada,all developers,-,17885,1,1
 edmonton,canada,mobile developers,all developers,812,0.045401174,0.891507056
 edmonton,canada,other kinds of developers,all developers,6115,0.341906626,0.951453932
 edmonton,canada,web developers,all developers,11268,0.630025161,0.979377949
@@ -31,7 +31,7 @@ edmonton,canada,full-stack web,other kinds of developers,10107,0.565110428,0.982
 edmonton,canada,graphics programmers,other kinds of developers,252,0.01409002,0.867036575
 edmonton,canada,machine learning specialists,other kinds of developers,817,0.045680738,1.173355907
 edmonton,canada,systems administrators,other kinds of developers,1742,0.097400056,0.962091534
-guelph,canada,all developers,-,3365,,
+guelph,canada,all developers,-,3365,1,1
 guelph,canada,mobile developers,all developers,132,0.03922734,0.770276348
 guelph,canada,other kinds of developers,all developers,1786,0.530757801,1.47698687
 guelph,canada,web developers,all developers,1589,0.472213967,0.734059488
@@ -47,7 +47,7 @@ guelph,canada,full-stack web,other kinds of developers,1440,0.427934621,0.743929
 guelph,canada,graphics programmers,other kinds of developers,39,0.011589896,0.71319019
 guelph,canada,machine learning specialists,other kinds of developers,318,0.094502229,2.427385221
 guelph,canada,systems administrators,other kinds of developers,289,0.085884101,0.848340031
-halifax,canada,all developers,-,5744,,
+halifax,canada,all developers,-,5744,1,1
 halifax,canada,mobile developers,all developers,268,0.046657382,0.916174211
 halifax,canada,other kinds of developers,all developers,2158,0.375696379,1.045483679
 halifax,canada,web developers,all developers,3799,0.661385794,1.028128244
@@ -63,7 +63,7 @@ halifax,canada,full-stack web,other kinds of developers,3419,0.595229805,1.03475
 halifax,canada,graphics programmers,other kinds of developers,143,0.024895543,1.531960009
 halifax,canada,machine learning specialists,other kinds of developers,302,0.052576602,1.350483131
 halifax,canada,systems administrators,other kinds of developers,534,0.092966574,0.918298791
-hamilton,canada,all developers,-,7332,,
+hamilton,canada,all developers,-,7332,1,1
 hamilton,canada,mobile developers,all developers,288,0.039279869,0.771307815
 hamilton,canada,other kinds of developers,all developers,2448,0.333878887,0.929114431
 hamilton,canada,web developers,all developers,5002,0.682214948,1.060507292
@@ -79,7 +79,7 @@ hamilton,canada,full-stack web,other kinds of developers,4499,0.613611566,1.0667
 hamilton,canada,graphics programmers,other kinds of developers,132,0.018003273,1.107840651
 hamilton,canada,machine learning specialists,other kinds of developers,517,0.070512821,1.811193032
 hamilton,canada,systems administrators,other kinds of developers,497,0.067785052,0.669562495
-kitchener_waterloo,canada,all developers,-,15365,,
+kitchener_waterloo,canada,all developers,-,15365,1,1
 kitchener_waterloo,canada,mobile developers,all developers,823,0.053563293,1.051780151
 kitchener_waterloo,canada,other kinds of developers,all developers,6540,0.425642694,1.184473728
 kitchener_waterloo,canada,web developers,all developers,9121,0.593621868,0.922788809
@@ -95,7 +95,7 @@ kitchener_waterloo,canada,full-stack web,other kinds of developers,8246,0.536674
 kitchener_waterloo,canada,graphics programmers,other kinds of developers,246,0.016010413,0.985208986
 kitchener_waterloo,canada,machine learning specialists,other kinds of developers,1062,0.069118126,1.775368885
 kitchener_waterloo,canada,systems administrators,other kinds of developers,1192,0.077578913,0.766303621
-london,canada,all developers,-,9082,,
+london,canada,all developers,-,9082,1,1
 london,canada,mobile developers,all developers,363,0.03996917,0.784843069
 london,canada,other kinds of developers,all developers,3442,0.378991412,1.05465306
 london,canada,web developers,all developers,5942,0.654261176,1.017052982
@@ -111,7 +111,7 @@ london,canada,full-stack web,other kinds of developers,5337,0.587645893,1.021574
 london,canada,graphics programmers,other kinds of developers,195,0.021471042,1.32123155
 london,canada,machine learning specialists,other kinds of developers,511,0.05626514,1.44522696
 london,canada,systems administrators,other kinds of developers,792,0.087205461,0.861392073
-montreal,canada,all developers,-,122329,,
+montreal,canada,all developers,-,122329,1,1
 montreal,canada,mobile developers,all developers,7395,0.060451733,1.187043004
 montreal,canada,other kinds of developers,all developers,43909,0.35894187,0.998859419
 montreal,canada,web developers,all developers,79629,0.650941314,1.011892237
@@ -127,7 +127,7 @@ montreal,canada,full-stack web,other kinds of developers,72471,0.59242698,1.0298
 montreal,canada,graphics programmers,other kinds of developers,2713,0.022177897,1.364728277
 montreal,canada,machine learning specialists,other kinds of developers,5098,0.041674501,1.070451654
 montreal,canada,systems administrators,other kinds of developers,11195,0.091515503,0.903965507
-ottawa,canada,all developers,-,42473,,
+ottawa,canada,all developers,-,42473,1,1
 ottawa,canada,mobile developers,all developers,2032,0.047842159,0.939438741
 ottawa,canada,other kinds of developers,all developers,15945,0.37541497,1.044700577
 ottawa,canada,web developers,all developers,27101,0.638075954,0.991892957
@@ -143,7 +143,7 @@ ottawa,canada,full-stack web,other kinds of developers,24347,0.573234761,0.99652
 ottawa,canada,graphics programmers,other kinds of developers,529,0.012454971,0.766423048
 ottawa,canada,machine learning specialists,other kinds of developers,1364,0.03211452,0.824893886
 ottawa,canada,systems administrators,other kinds of developers,5357,0.126127187,1.245850398
-quebec city,canada,all developers,-,14625,,
+quebec city,canada,all developers,-,14625,1,1
 quebec city,canada,mobile developers,all developers,490,0.033504274,0.657896999
 quebec city,canada,other kinds of developers,all developers,5450,0.372649573,1.037005061
 quebec city,canada,web developers,all developers,9226,0.630837607,0.980640902
@@ -159,7 +159,7 @@ quebec city,canada,full-stack web,other kinds of developers,8385,0.573333333,0.9
 quebec city,canada,graphics programmers,other kinds of developers,236,0.016136752,0.992983313
 quebec city,canada,machine learning specialists,other kinds of developers,671,0.045880342,1.178482933
 quebec city,canada,systems administrators,other kinds of developers,1573,0.107555556,1.062404825
-regina,canada,all developers,-,3546,,
+regina,canada,all developers,-,3546,1,1
 regina,canada,mobile developers,all developers,140,0.039481105,0.775259335
 regina,canada,other kinds of developers,all developers,1634,0.460800902,1.282311595
 regina,canada,web developers,all developers,1846,0.520586576,0.809255003
@@ -175,7 +175,7 @@ regina,canada,full-stack web,other kinds of developers,1600,0.451212634,0.784396
 regina,canada,graphics programmers,other kinds of developers,57,0.01607445,0.989149524
 regina,canada,machine learning specialists,other kinds of developers,85,0.023970671,0.615710906
 regina,canada,systems administrators,other kinds of developers,412,0.116187253,1.147666411
-saskatoon,canada,all developers,-,3963,,
+saskatoon,canada,all developers,-,3963,1,1
 saskatoon,canada,mobile developers,all developers,112,0.028261418,0.554947182
 saskatoon,canada,other kinds of developers,all developers,1543,0.389351501,1.083483002
 saskatoon,canada,web developers,all developers,2498,0.630330558,0.979852691
@@ -191,7 +191,7 @@ saskatoon,canada,full-stack web,other kinds of developers,2242,0.565733031,0.983
 saskatoon,canada,graphics programmers,other kinds of developers,82,0.020691395,1.273255621
 saskatoon,canada,machine learning specialists,other kinds of developers,204,0.051476154,1.322217032
 saskatoon,canada,systems administrators,other kinds of developers,537,0.135503407,1.338466174
-toronto,canada,all developers,-,201153,,
+toronto,canada,all developers,-,201153,1,1
 toronto,canada,mobile developers,all developers,10798,0.053680532,1.054082272
 toronto,canada,other kinds of developers,all developers,69889,0.347441997,0.966857701
 toronto,canada,web developers,all developers,131578,0.654119004,1.016831975
@@ -207,7 +207,7 @@ toronto,canada,full-stack web,other kinds of developers,116322,0.578276237,1.005
 toronto,canada,graphics programmers,other kinds of developers,2524,0.012547663,0.772126857
 toronto,canada,machine learning specialists,other kinds of developers,7448,0.037026542,0.951064138
 toronto,canada,systems administrators,other kinds of developers,20291,0.100873464,0.996400928
-vancouver,canada,all developers,-,63709,,
+vancouver,canada,all developers,-,63709,1,1
 vancouver,canada,mobile developers,all developers,3642,0.057166177,1.122527148
 vancouver,canada,other kinds of developers,all developers,23156,0.363465131,1.011446698
 vancouver,canada,web developers,all developers,41346,0.64898209,1.008846612
@@ -223,7 +223,7 @@ vancouver,canada,full-stack web,other kinds of developers,36449,0.572116969,0.99
 vancouver,canada,graphics programmers,other kinds of developers,1053,0.016528277,1.017075997
 vancouver,canada,machine learning specialists,other kinds of developers,2732,0.042882481,1.101479855
 vancouver,canada,systems administrators,other kinds of developers,6006,0.094272395,0.931197339
-victoria,canada,all developers,-,7900,,
+victoria,canada,all developers,-,7900,1,1
 victoria,canada,mobile developers,all developers,325,0.041139241,0.807818825
 victoria,canada,other kinds of developers,all developers,2911,0.368481013,1.025404839
 victoria,canada,web developers,all developers,5202,0.658481013,1.023612744
@@ -239,7 +239,7 @@ victoria,canada,full-stack web,other kinds of developers,4702,0.595189873,1.0346
 victoria,canada,graphics programmers,other kinds of developers,150,0.018987342,1.168395807
 victoria,canada,machine learning specialists,other kinds of developers,377,0.047721519,1.225775427
 victoria,canada,systems administrators,other kinds of developers,743,0.094050633,0.929006835
-winnipeg,canada,all developers,-,10439,,
+winnipeg,canada,all developers,-,10439,1,1
 winnipeg,canada,mobile developers,all developers,420,0.040233739,0.790038204
 winnipeg,canada,other kinds of developers,all developers,3292,0.315355877,0.877568806
 winnipeg,canada,web developers,all developers,7058,0.676118402,1.051030174
@@ -255,7 +255,7 @@ winnipeg,canada,full-stack web,other kinds of developers,6182,0.592202318,1.0294
 winnipeg,canada,graphics programmers,other kinds of developers,193,0.018488361,1.137690767
 winnipeg,canada,machine learning specialists,other kinds of developers,355,0.034007089,0.873506432
 winnipeg,canada,systems administrators,other kinds of developers,932,0.089280582,0.88188956
-amsterdam,international,all developers,-,,,
+amsterdam,international,all developers,-,,1,1
 amsterdam,international,mobile developers,all developers,,0.067225276,1.459866681
 amsterdam,international,other kinds of developers,all developers,,0.337830393,0.940717568
 amsterdam,international,web developers,all developers,,0.686640786,0.997960025
@@ -275,7 +275,7 @@ amsterdam,international,highly technical product managers,other kinds of develop
 amsterdam,international,machine learning specialists,other kinds of developers,,0.04061447,0.931017554
 amsterdam,international,qa engineers,other kinds of developers,,0.023049032,1.23422359
 amsterdam,international,systems administrators,other kinds of developers,,0.10486733,0.983566064
-helsinki,international,all developers,-,,,
+helsinki,international,all developers,-,,1,1
 helsinki,international,mobile developers,all developers,,0.0468172,1.053788629
 helsinki,international,other kinds of developers,all developers,,0.351513717,0.953100214
 helsinki,international,web developers,all developers,,0.670859104,1.016985424
@@ -295,7 +295,7 @@ helsinki,international,highly technical product managers,other kinds of develope
 helsinki,international,machine learning specialists,other kinds of developers,,0.047793791,1.216941795
 helsinki,international,qa engineers,other kinds of developers,,0.024769909,1.085873284
 helsinki,international,systems administrators,other kinds of developers,,0.124559794,0.960714958
-munich,international,all developers,-,,,
+munich,international,all developers,-,,1,1
 munich,international,mobile developers,all developers,,0.053029989,1.021561138
 munich,international,other kinds of developers,all developers,,0.407525589,1.04109139
 munich,international,web developers,all developers,,0.611730416,0.95448834
@@ -315,7 +315,7 @@ munich,international,highly technical product managers,other kinds of developers
 munich,international,machine learning specialists,other kinds of developers,,0.047836117,1.150265269
 munich,international,qa engineers,other kinds of developers,,0.018952109,1.147415584
 munich,international,systems administrators,other kinds of developers,,0.125992845,1.083687015
-nyc_metro_area,international,all developers,-,,,
+nyc_metro_area,international,all developers,-,,1,1
 nyc_metro_area,international,mobile developers,all developers,,0.05103086,1.030545476
 nyc_metro_area,international,other kinds of developers,all developers,,0.332548229,0.918657485
 nyc_metro_area,international,web developers,all developers,,0.659065763,1.024958934
@@ -335,7 +335,7 @@ nyc_metro_area,international,highly technical product managers,other kinds of de
 nyc_metro_area,international,machine learning specialists,other kinds of developers,,0.043869067,1.037323924
 nyc_metro_area,international,qa engineers,other kinds of developers,,0.027025843,1.068789419
 nyc_metro_area,international,systems administrators,other kinds of developers,,0.102012423,0.873663853
-paris,international,all developers,-,,,
+paris,international,all developers,-,,1,1
 paris,international,mobile developers,all developers,,0.049294117,0.954784824
 paris,international,other kinds of developers,all developers,,0.371544545,0.967075912
 paris,international,web developers,all developers,,0.677316944,0.995484149
@@ -355,7 +355,7 @@ paris,international,highly technical product managers,other kinds of developers,
 paris,international,machine learning specialists,other kinds of developers,,0.032249855,1.010110651
 paris,international,qa engineers,other kinds of developers,,0.018940189,1.171733414
 paris,international,systems administrators,other kinds of developers,,0.127186202,1.012789078
-sf_silicon_valley,international,all developers,-,,,
+sf_silicon_valley,international,all developers,-,,1,1
 sf_silicon_valley,international,mobile developers,all developers,,0.087529082,1.767610809
 sf_silicon_valley,international,other kinds of developers,all developers,,0.365409424,1.009435843
 sf_silicon_valley,international,web developers,all developers,,0.650963739,1.012358915
@@ -375,7 +375,7 @@ sf_silicon_valley,international,highly technical product managers,other kinds of
 sf_silicon_valley,international,machine learning specialists,other kinds of developers,,0.027253296,0.644428938
 sf_silicon_valley,international,qa engineers,other kinds of developers,,0.034775947,1.375282348
 sf_silicon_valley,international,systems administrators,other kinds of developers,,0.114044678,0.976711562
-singapore,international,all developers,-,,,
+singapore,international,all developers,-,,1,1
 singapore,international,mobile developers,all developers,,0.074265476,1
 singapore,international,other kinds of developers,all developers,,0.352344138,1
 singapore,international,web developers,all developers,,0.632662202,1
@@ -395,7 +395,7 @@ singapore,international,highly technical product managers,other kinds of develop
 singapore,international,machine learning specialists,other kinds of developers,,0.032557467,1
 singapore,international,qa engineers,other kinds of developers,,0.020478474,1
 singapore,international,systems administrators,other kinds of developers,,0.0975277,1
-stockholm,international,all developers,-,,,
+stockholm,international,all developers,-,,1,1
 stockholm,international,mobile developers,all developers,,0.05032904,1.013784674
 stockholm,international,other kinds of developers,all developers,,0.32014223,0.900385062
 stockholm,international,web developers,all developers,,0.680282338,1.019053447
@@ -415,7 +415,7 @@ stockholm,international,highly technical product managers,other kinds of develop
 stockholm,international,machine learning specialists,other kinds of developers,,0.033859326,0.945433284
 stockholm,international,qa engineers,other kinds of developers,,0.0243773,1.249023405
 stockholm,international,systems administrators,other kinds of developers,,0.107981885,0.925360918
-sydney,international,all developers,-,,,
+sydney,international,all developers,-,,1,1
 sydney,international,mobile developers,all developers,,0.048561699,0.999105742
 sydney,international,other kinds of developers,all developers,,0.359589136,0.981674343
 sydney,international,web developers,all developers,,0.644425372,1.00371203
@@ -435,7 +435,7 @@ sydney,international,highly technical product managers,other kinds of developers
 sydney,international,machine learning specialists,other kinds of developers,,0.03227295,0.869145901
 sydney,international,qa engineers,other kinds of developers,,0.029707356,1.180217267
 sydney,international,systems administrators,other kinds of developers,,0.134638279,1.016453195
-tel_aviv,international,all developers,-,,,
+tel_aviv,international,all developers,-,,1,1
 tel_aviv,international,mobile developers,all developers,,0.077724843,1.053953259
 tel_aviv,international,other kinds of developers,all developers,,0.319756649,0.967366129
 tel_aviv,international,web developers,all developers,,0.662428146,1.015238011

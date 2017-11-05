@@ -51,10 +51,10 @@ ui <- function(request) {
                       width = "250px", height = "auto",
                       h1("Canadian Developer Talent Map"),
                       selectInput("metric", "Web Traffic Metric", metric, selectize = FALSE), #Draggable and selectize seem incompatible for scrolling
-                      selectInput("role", "Developer Role", role, selectize = FALSE),
-                                  # list("Role Groups" = c("All Developers", "Mobile Developers",
-                                  #                        "Web Developers", "Other Developers"),
-                                  #      "Roles" = role))
+                      selectInput("role", "Developer Role",
+                                  list("Role Groups" = c("All Developers", "Mobile Developers",
+                                                         "Web Developers", "Other Kinds of Developers"),
+                                       "Roles" = role), selectize=FALSE),
                       radioButtons("juris", "Jurisdiction", choices = c("Cities", "Provinces"), selected = "Cities", inline = TRUE),
                       bookmarkButton(title = "Bookmark this view and get a URL to share")
                       ),
@@ -106,9 +106,11 @@ server <- function(input, output, session) {
        #Select and filter jurisdictional data for role and metric
        cities.c <- cities[cities$dev_role == input$role,]
        if (input$metric == "loc_quo") {cities.c <- cities.c[is.na(cities.c$loc_quo) == FALSE,]}
-       citymetric <- cities.c[[input$metric]]
-       cityrad <- (citymetric/mean(citymetric)*500)^.4
+       if (input$metric == "share") {cities.c <- cities.c[is.na(cities.c$share) == FALSE,]}
+       if (input$metric == "visitors") {cities.c <- cities.c[is.na(cities.c$visitors) == FALSE,]}
        
+       citymetric <- cities.c[[input$metric]]
+       cityrad <- (citymetric/mean(citymetric)*100)^.55 #300^.5
        
        #Create color palette based on metrics - put in its own observe function later
        metricpal.c <- colorBin(
