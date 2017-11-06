@@ -1,0 +1,619 @@
+city,country,year,visitors
+san francisco,united states,2015,432e3
+bengaluru,india,2015,336e3
+new york,united states,2015,299e3
+london,united kingdom,2015,304e3
+delhi,india,2015,235e3
+paris,france,2015,188e3
+washington,united states,2015,178e3
+los angeles,united states,2015,137e3
+mumbai,india,2015,185e3
+hyderabad,india,2015,152e3
+chennai,india,2015,152e3
+seattle,united states,2015,154e3
+toronto,canada,2015,143e3
+tokyo,japan,2015,125e3
+seoul,republic of korea,2015,135e3
+chicago,united states,2015,125e3
+pune,india,2015,13e4
+boston,united states,2015,13e4
+central district,hong kong,2015,91e3
+moscow,russia,2015,106e3
+singapore,singapore,2015,99e3
+taipei,taiwan,2015,84e3
+amsterdam,netherlands,2015,9e4
+sydney,australia,2015,92e3
+dallas,united states,2015,79e3
+beijing,china,2015,49e3
+tel aviv,israel,2015,82e3
+atlanta,united states,2015,77e3
+madrid,spain,2015,77e3
+jakarta,indonesia,2015,72e3
+são paulo,brazil,2015,8e4
+montreal,canada,2015,78e3
+hanoi,vietnam,2015,63e3
+quezon city,philippines,2015,8e4
+melbourne,australia,2015,69e3
+philadelphia,united states,2015,69e3
+denver,united states,2015,64e3
+istanbul,turkey,2015,64e3
+minneapolis,united states,2015,63e3
+berlin,germany,2015,61e3
+frankfurt am main,germany,2015,42e3
+copenhagen,denmark,2015,56e3
+austin,united states,2015,54e3
+warsaw,poland,2015,54e3
+bangkok,thailand,2015,61e3
+kiev,ukraine,2015,49e3
+ho chi minh city,vietnam,2015,53e3
+shanghai,china,2015,29e3
+kuala lumpur,malaysia,2015,59e3
+stockholm,sweden,2015,56e3
+munich,germany,2015,56e3
+mexico city,mexico,2015,51e3
+san diego,united states,2015,54e3
+barcelona,spain,2015,5e4
+vancouver,canada,2015,55e3
+brussels,belgium,2015,53e3
+houston,united states,2015,59e3
+guangzhou,china,2015,16e3
+zurich,switzerland,2015,48e3
+cologne,germany,2015,5e4
+saint petersburg,russia,2015,44e3
+dublin,ireland,2015,39e3
+phoenix,united states,2015,46e3
+ahmedabad,india,2015,45e3
+budapest,hungary,2015,46e3
+milan,italy,2015,46e3
+buenos aires,argentina,2015,43e3
+kolkata,india,2015,45e3
+portland,united states,2015,46e3
+manchester,united kingdom,2015,45e3
+prague,czech republic,2015,38e3
+bucharest,romania,2015,37e3
+vienna,austria,2015,39e3
+raleigh,united states,2015,49e3
+helsinki,finland,2015,37e3
+lisbon,portugal,2015,34e3
+birmingham,united kingdom,2015,38e3
+santiago,chile,2015,32e3
+st louis,united states,2015,3e4
+athens,greece,2015,35e3
+cairo,egypt,2015,36e3
+minsk,belarus,2015,3e4
+ann arbor,united states,2015,32e3
+islamabad,pakistan,2015,27e3
+stuttgart,germany,2015,32e3
+rome,italy,2015,35e3
+johannesburg,south africa,2015,35e3
+salt lake city,united states,2015,33e3
+ottawa,canada,2015,34e3
+auckland,new zealand,2015,31e3
+miami,united states,2015,3e4
+pittsburgh,united states,2015,32e3
+karachi,pakistan,2015,26e3
+hamburg,germany,2015,31e3
+dhaka,bangladesh,2015,27e3
+lahore,pakistan,2015,25e3
+brisbane,australia,2015,31e3
+oslo,norway,2015,28e3
+sofia,bulgaria,2015,28e3
+rio de janeiro,brazil,2015,3e4
+belgrade,serbia,2015,25e3
+bogotá,colombia,2015,26e3
+lima,peru,2015,26e3
+dubai,united arab emirates,2015,24e3
+colombo,sri lanka,2015,21e3
+bristol,united kingdom,2015,25e3
+tampa,united states,2015,25e3
+columbus,united states,2015,27e3
+sacramento,united states,2015,26e3
+krakow,poland,2015,23e3
+orlando,united states,2015,25e3
+charlotte,united states,2015,22e3
+kochi,india,2015,23e3
+hangzhou,china,2015,1e4
+kansas city,united states,2015,24e3
+ankara,turkey,2015,21e3
+coimbatore,india,2015,2e4
+kharkiv,ukraine,2015,18e3
+cape town,south africa,2015,23e3
+calgary,canada,2015,23e3
+chandigarh,india,2015,22e3
+wrocław,poland,2015,18e3
+zagreb,croatia,2015,18e3
+cleveland,united states,2015,21e3
+chengdu,china,2015,7e3
+cincinnati,united states,2015,22e3
+porto,portugal,2015,17e3
+eindhoven,netherlands,2015,22e3
+poznan,poland,2015,15e3
+riyadh,saudi arabia,2015,16e3
+medellín,colombia,2015,16e3
+richmond,united states,2015,12e3
+madison,united states,2015,17e3
+edinburgh,united kingdom,2015,18e3
+ringoen,sweden,2015,17e3
+monterrey,mexico,2015,13e3
+indianapolis,united states,2015,18e3
+edmonton,canada,2015,16e3
+lviv,ukraine,2015,12e3
+osaka,japan,2015,13e3
+nuremberg,germany,2015,17e3
+lyon,france,2015,17e3
+belo horizonte,brazil,2015,17e3
+san josé,costa rica,2015,16e3
+san antonio,united states,2015,17e3
+cluj-napoca,romania,2015,14e3
+perth,australia,2015,17e3
+brno,czech republic,2015,14e3
+rochester,united states,2015,17e3
+milwaukee,united states,2015,18e3
+jalalpur,india,2015,11e3
+porto alegre,brazil,2015,16e3
+curitiba,brazil,2015,14e3
+nashville,united states,2015,16e3
+toulouse,france,2015,16e3
+gdańsk,poland,2015,13e3
+brasília,brazil,2015,14e3
+omaha,united states,2015,15e3
+riga,latvia,2015,14e3
+vilnius,republic of lithuania,2015,12e3
+surabaya,indonesia,2015,11e3
+turin,italy,2015,13e3
+ljubljana,slovenia,2015,14e3
+amman,hashemite kingdom of jordan,2015,12e3
+tallinn,estonia,2015,12e3
+jaipur,india,2015,14e3
+indore,india,2015,14e3
+kathmandu,nepal,2015,11e3
+newcastle upon tyne,united kingdom,2015,11e3
+hanover,germany,2015,11e3
+lille,france,2015,13e3
+bologna,italy,2015,11e3
+montevideo,uruguay,2015,12e3
+campinas,brazil,2015,13e3
+las vegas,united states,2015,13e3
+beirut,lebanon,2015,11e3
+thiruvananthapuram,india,2015,15e3
+novosibirsk,russia,2015,1e4
+bandung,indonesia,2015,12e3
+valencia,spain,2015,11e3
+lausanne,switzerland,2015,12e3
+padua,italy,2015,11e3
+urbana,united states,2015,11e3
+nairobi,kenya,2015,11e3
+vadodara,india,2015,8e3
+oxford,united kingdom,2015,12e3
+bremen,germany,2015,11e3
+waterloo,canada,2015,11e3
+québec,canada,2015,12e3
+dnipro,ukraine,2015,9e3
+vijayawada,india,2015,6e3
+valbonne,france,2015,1e4
+yerevan,armenia,2015,7e3
+łódź,poland,2015,8e3
+trondheim,norway,2015,8e3
+odesa,ukraine,2015,7e3
+chişinău,republic of moldova,2015,7e3
+iași,romania,2015,8e3
+skopje,macedonia,2015,7e3
+rajkot,india,2015,6e3
+victoria,canada,2015,7300
+winnipeg,canada,2015,8800
+halifax,canada,2015,6200
+london,canada,2015,7300
+saskatoon,canada,2015,3600
+regina,canada,2015,2900
+san francisco,united states,2016,573e3
+bengaluru,india,2016,432e3
+new york,united states,2016,382e3
+london,united kingdom,2016,376e3
+delhi,india,2016,276e3
+paris,france,2016,239e3
+washington,united states,2016,228e3
+los angeles,united states,2016,227e3
+mumbai,india,2016,22e4
+hyderabad,india,2016,208e3
+chennai,india,2016,22e4
+seattle,united states,2016,191e3
+toronto,canada,2016,174e3
+tokyo,japan,2016,162e3
+seoul,republic of korea,2016,162e3
+chicago,united states,2016,163e3
+pune,india,2016,177e3
+boston,united states,2016,156e3
+central district,hong kong,2016,13e4
+moscow,russia,2016,135e3
+singapore,singapore,2016,132e3
+taipei,taiwan,2016,11e4
+amsterdam,netherlands,2016,115e3
+sydney,australia,2016,111e3
+dallas,united states,2016,105e3
+beijing,china,2016,83e3
+tel aviv,israel,2016,114e3
+atlanta,united states,2016,98e3
+madrid,spain,2016,9e4
+jakarta,indonesia,2016,86e3
+são paulo,brazil,2016,99e3
+montreal,canada,2016,91e3
+hanoi,vietnam,2016,72e3
+quezon city,philippines,2016,9e4
+melbourne,australia,2016,86e3
+philadelphia,united states,2016,82e3
+denver,united states,2016,8e4
+istanbul,turkey,2016,83e3
+minneapolis,united states,2016,77e3
+berlin,germany,2016,77e3
+frankfurt am main,germany,2016,63e3
+copenhagen,denmark,2016,7e4
+austin,united states,2016,73e3
+warsaw,poland,2016,68e3
+bangkok,thailand,2016,75e3
+kiev,ukraine,2016,66e3
+ho chi minh city,vietnam,2016,7e4
+shanghai,china,2016,52e3
+kuala lumpur,malaysia,2016,71e3
+stockholm,sweden,2016,66e3
+munich,germany,2016,69e3
+mexico city,mexico,2016,6e4
+san diego,united states,2016,66e3
+barcelona,spain,2016,59e3
+vancouver,canada,2016,68e3
+brussels,belgium,2016,63e3
+houston,united states,2016,63e3
+guangzhou,china,2016,27e3
+zurich,switzerland,2016,6e4
+cologne,germany,2016,58e3
+saint petersburg,russia,2016,56e3
+dublin,ireland,2016,51e3
+phoenix,united states,2016,59e3
+ahmedabad,india,2016,6e4
+budapest,hungary,2016,53e3
+milan,italy,2016,58e3
+buenos aires,argentina,2016,53e3
+kolkata,india,2016,49e3
+portland,united states,2016,59e3
+manchester,united kingdom,2016,5e4
+prague,czech republic,2016,47e3
+bucharest,romania,2016,48e3
+vienna,austria,2016,46e3
+raleigh,united states,2016,48e3
+helsinki,finland,2016,43e3
+lisbon,portugal,2016,41e3
+birmingham,united kingdom,2016,43e3
+santiago,chile,2016,41e3
+st louis,united states,2016,38e3
+athens,greece,2016,42e3
+cairo,egypt,2016,46e3
+minsk,belarus,2016,4e4
+ann arbor,united states,2016,38e3
+islamabad,pakistan,2016,34e3
+stuttgart,germany,2016,41e3
+rome,italy,2016,41e3
+johannesburg,south africa,2016,4e4
+salt lake city,united states,2016,4e4
+ottawa,canada,2016,4e4
+auckland,new zealand,2016,38e3
+miami,united states,2016,37e3
+pittsburgh,united states,2016,38e3
+karachi,pakistan,2016,32e3
+hamburg,germany,2016,38e3
+dhaka,bangladesh,2016,34e3
+lahore,pakistan,2016,38e3
+brisbane,australia,2016,37e3
+oslo,norway,2016,32e3
+sofia,bulgaria,2016,35e3
+rio de janeiro,brazil,2016,37e3
+belgrade,serbia,2016,32e3
+bogotá,colombia,2016,3e4
+lima,peru,2016,31e3
+dubai,united arab emirates,2016,31e3
+colombo,sri lanka,2016,3e4
+bristol,united kingdom,2016,3e4
+tampa,united states,2016,32e3
+columbus,united states,2016,34e3
+sacramento,united states,2016,32e3
+krakow,poland,2016,32e3
+orlando,united states,2016,3e4
+charlotte,united states,2016,28e3
+kochi,india,2016,3e4
+hangzhou,china,2016,2e4
+kansas city,united states,2016,29e3
+ankara,turkey,2016,27e3
+coimbatore,india,2016,27e3
+kharkiv,ukraine,2016,24e3
+cape town,south africa,2016,26e3
+calgary,canada,2016,26e3
+chandigarh,india,2016,27e3
+wrocław,poland,2016,23e3
+zagreb,croatia,2016,23e3
+cleveland,united states,2016,25e3
+chengdu,china,2016,12e3
+cincinnati,united states,2016,23e3
+porto,portugal,2016,22e3
+eindhoven,netherlands,2016,24e3
+poznan,poland,2016,2e4
+riyadh,saudi arabia,2016,21e3
+medellín,colombia,2016,2e4
+richmond,united states,2016,19e3
+madison,united states,2016,22e3
+edinburgh,united kingdom,2016,22e3
+ringoen,sweden,2016,21e3
+monterrey,mexico,2016,15e3
+indianapolis,united states,2016,21e3
+edmonton,canada,2016,2e4
+lviv,ukraine,2016,19e3
+osaka,japan,2016,16e3
+nuremberg,germany,2016,2e4
+lyon,france,2016,21e3
+belo horizonte,brazil,2016,2e4
+san josé,costa rica,2016,18e3
+san antonio,united states,2016,2e4
+cluj-napoca,romania,2016,19e3
+perth,australia,2016,2e4
+brno,czech republic,2016,18e3
+rochester,united states,2016,19e3
+milwaukee,united states,2016,2e4
+jalalpur,india,2016,17e3
+porto alegre,brazil,2016,19e3
+curitiba,brazil,2016,17e3
+nashville,united states,2016,19e3
+toulouse,france,2016,2e4
+gdańsk,poland,2016,15e3
+brasília,brazil,2016,18e3
+omaha,united states,2016,17e3
+riga,latvia,2016,17e3
+vilnius,republic of lithuania,2016,16e3
+surabaya,indonesia,2016,14e3
+turin,italy,2016,16e3
+ljubljana,slovenia,2016,16e3
+amman,hashemite kingdom of jordan,2016,15e3
+tallinn,estonia,2016,15e3
+jaipur,india,2016,18e3
+indore,india,2016,2e4
+kathmandu,nepal,2016,14e3
+newcastle upon tyne,united kingdom,2016,13e3
+hanover,germany,2016,14e3
+lille,france,2016,16e3
+bologna,italy,2016,15e3
+montevideo,uruguay,2016,14e3
+campinas,brazil,2016,15e3
+las vegas,united states,2016,16e3
+beirut,lebanon,2016,14e3
+thiruvananthapuram,india,2016,15e3
+novosibirsk,russia,2016,14e3
+bandung,indonesia,2016,14e3
+valencia,spain,2016,12e3
+lausanne,switzerland,2016,14e3
+padua,italy,2016,14e3
+urbana,united states,2016,13e3
+nairobi,kenya,2016,13e3
+vadodara,india,2016,1e4
+oxford,united kingdom,2016,14e3
+bremen,germany,2016,13e3
+waterloo,canada,2016,13e3
+québec,canada,2016,14e3
+dnipro,ukraine,2016,12e3
+vijayawada,india,2016,5e3
+valbonne,france,2016,12e3
+yerevan,armenia,2016,1e4
+łódź,poland,2016,1e4
+trondheim,norway,2016,9e3
+odesa,ukraine,2016,1e4
+chişinău,republic of moldova,2016,9e3
+iași,romania,2016,1e4
+skopje,macedonia,2016,9e3
+rajkot,india,2016,7e3
+victoria,canada,2016,9e3
+winnipeg,canada,2016,10500
+halifax,canada,2016,7800
+london,canada,2016,8700
+saskatoon,canada,2016,4300
+regina,canada,2016,3300
+san francisco,united states,2017,661e3
+bengaluru,india,2017,437e3
+new york,united states,2017,432e3
+london,united kingdom,2017,418e3
+delhi,india,2017,301e3
+paris,france,2017,26e4
+washington,united states,2017,252e3
+los angeles,united states,2017,252e3
+mumbai,india,2017,248e3
+hyderabad,india,2017,242e3
+chennai,india,2017,222e3
+seattle,united states,2017,206e3
+toronto,canada,2017,199e3
+tokyo,japan,2017,181e3
+seoul,republic of korea,2017,179e3
+chicago,united states,2017,173e3
+pune,india,2017,168e3
+boston,united states,2017,162e3
+central district,hong kong,2017,16e4
+moscow,russia,2017,151e3
+singapore,singapore,2017,148e3
+taipei,taiwan,2017,128e3
+amsterdam,netherlands,2017,128e3
+sydney,australia,2017,122e3
+dallas,united states,2017,117e3
+beijing,china,2017,116e3
+tel aviv,israel,2017,114e3
+atlanta,united states,2017,107e3
+madrid,spain,2017,105e3
+jakarta,indonesia,2017,104e3
+são paulo,brazil,2017,102e3
+montreal,canada,2017,102e3
+hanoi,vietnam,2017,99e3
+quezon city,philippines,2017,96e3
+melbourne,australia,2017,96e3
+philadelphia,united states,2017,91e3
+denver,united states,2017,88e3
+istanbul,turkey,2017,87e3
+minneapolis,united states,2017,83e3
+berlin,germany,2017,82e3
+frankfurt am main,germany,2017,8e4
+copenhagen,denmark,2017,79e3
+austin,united states,2017,79e3
+warsaw,poland,2017,78e3
+bangkok,thailand,2017,77e3
+kiev,ukraine,2017,76e3
+ho chi minh city,vietnam,2017,76e3
+shanghai,china,2017,76e3
+kuala lumpur,malaysia,2017,75e3
+stockholm,sweden,2017,73e3
+munich,germany,2017,73e3
+mexico city,mexico,2017,7e4
+san diego,united states,2017,7e4
+barcelona,spain,2017,69e3
+vancouver,canada,2017,69e3
+brussels,belgium,2017,68e3
+houston,united states,2017,67e3
+guangzhou,china,2017,66e3
+zurich,switzerland,2017,65e3
+cologne,germany,2017,63e3
+saint petersburg,russia,2017,62e3
+dublin,ireland,2017,62e3
+phoenix,united states,2017,62e3
+ahmedabad,india,2017,6e4
+budapest,hungary,2017,6e4
+milan,italy,2017,6e4
+buenos aires,argentina,2017,59e3
+kolkata,india,2017,58e3
+portland,united states,2017,56e3
+manchester,united kingdom,2017,54e3
+prague,czech republic,2017,54e3
+bucharest,romania,2017,52e3
+vienna,austria,2017,51e3
+raleigh,united states,2017,51e3
+helsinki,finland,2017,49e3
+lisbon,portugal,2017,47e3
+birmingham,united kingdom,2017,47e3
+santiago,chile,2017,47e3
+st louis,united states,2017,47e3
+athens,greece,2017,46e3
+cairo,egypt,2017,46e3
+minsk,belarus,2017,46e3
+ann arbor,united states,2017,46e3
+islamabad,pakistan,2017,45e3
+stuttgart,germany,2017,45e3
+rome,italy,2017,44e3
+johannesburg,south africa,2017,43e3
+salt lake city,united states,2017,43e3
+ottawa,canada,2017,43e3
+auckland,new zealand,2017,42e3
+miami,united states,2017,42e3
+pittsburgh,united states,2017,42e3
+karachi,pakistan,2017,41e3
+hamburg,germany,2017,41e3
+dhaka,bangladesh,2017,39e3
+lahore,pakistan,2017,38e3
+brisbane,australia,2017,38e3
+oslo,norway,2017,38e3
+sofia,bulgaria,2017,37e3
+rio de janeiro,brazil,2017,37e3
+belgrade,serbia,2017,36e3
+bogotá,colombia,2017,36e3
+lima,peru,2017,36e3
+dubai,united arab emirates,2017,34e3
+colombo,sri lanka,2017,34e3
+bristol,united kingdom,2017,34e3
+tampa,united states,2017,34e3
+columbus,united states,2017,34e3
+sacramento,united states,2017,34e3
+krakow,poland,2017,33e3
+orlando,united states,2017,31e3
+charlotte,united states,2017,31e3
+kochi,india,2017,3e4
+hangzhou,china,2017,3e4
+kansas city,united states,2017,3e4
+ankara,turkey,2017,29e3
+coimbatore,india,2017,29e3
+kharkiv,ukraine,2017,27e3
+cape town,south africa,2017,27e3
+calgary,canada,2017,27e3
+chandigarh,india,2017,26e3
+wrocław,poland,2017,26e3
+zagreb,croatia,2017,26e3
+cleveland,united states,2017,26e3
+chengdu,china,2017,25e3
+cincinnati,united states,2017,25e3
+porto,portugal,2017,24e3
+eindhoven,netherlands,2017,24e3
+poznan,poland,2017,24e3
+riyadh,saudi arabia,2017,23e3
+medellín,colombia,2017,23e3
+richmond,united states,2017,23e3
+madison,united states,2017,23e3
+edinburgh,united kingdom,2017,22e3
+ringoen,sweden,2017,22e3
+monterrey,mexico,2017,22e3
+indianapolis,united states,2017,22e3
+edmonton,canada,2017,22e3
+lviv,ukraine,2017,21e3
+osaka,japan,2017,21e3
+nuremberg,germany,2017,21e3
+lyon,france,2017,21e3
+belo horizonte,brazil,2017,21e3
+san josé,costa rica,2017,21e3
+san antonio,united states,2017,21e3
+cluj-napoca,romania,2017,2e4
+perth,australia,2017,2e4
+brno,czech republic,2017,2e4
+rochester,united states,2017,2e4
+milwaukee,united states,2017,2e4
+jalalpur,india,2017,19e3
+porto alegre,brazil,2017,19e3
+curitiba,brazil,2017,19e3
+nashville,united states,2017,19e3
+toulouse,france,2017,18e3
+gdańsk,poland,2017,18e3
+brasília,brazil,2017,18e3
+omaha,united states,2017,18e3
+riga,latvia,2017,17e3
+vilnius,republic of lithuania,2017,17e3
+surabaya,indonesia,2017,17e3
+turin,italy,2017,17e3
+ljubljana,slovenia,2017,17e3
+amman,hashemite kingdom of jordan,2017,16e3
+tallinn,estonia,2017,16e3
+jaipur,india,2017,16e3
+indore,india,2017,16e3
+kathmandu,nepal,2017,16e3
+newcastle upon tyne,united kingdom,2017,16e3
+hanover,germany,2017,16e3
+lille,france,2017,16e3
+bologna,italy,2017,16e3
+montevideo,uruguay,2017,16e3
+campinas,brazil,2017,16e3
+las vegas,united states,2017,16e3
+beirut,lebanon,2017,15e3
+thiruvananthapuram,india,2017,15e3
+novosibirsk,russia,2017,15e3
+bandung,indonesia,2017,15e3
+valencia,spain,2017,15e3
+lausanne,switzerland,2017,15e3
+padua,italy,2017,15e3
+urbana,united states,2017,15e3
+nairobi,kenya,2017,14e3
+vadodara,india,2017,14e3
+oxford,united kingdom,2017,14e3
+bremen,germany,2017,14e3
+waterloo,canada,2017,14e3
+québec,canada,2017,14e3
+dnipro,ukraine,2017,13e3
+vijayawada,india,2017,13e3
+valbonne,france,2017,13e3
+yerevan,armenia,2017,12e3
+łódź,poland,2017,12e3
+trondheim,norway,2017,12e3
+odesa,ukraine,2017,11e3
+chişinău,republic of moldova,2017,1e4
+iași,romania,2017,1e4
+skopje,macedonia,2017,1e4
+rajkot,india,2017,7e3
+victoria,canada,2017,9500
+winnipeg,canada,2017,11500
+halifax,canada,2017,8500
+london,canada,2017,9300
+saskatoon,canada,2017,4600
+regina,canada,2017,3700
