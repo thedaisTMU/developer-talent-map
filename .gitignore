@@ -8,6 +8,8 @@ Jan Fromm*
 #Ignore proprietary data for now
 devroles-city.csv
 devroles-province.csv
+report/data/cities-ca.csv
+report/data/city-years-intl.csv
 
 .RData
 report/figures/*.png
