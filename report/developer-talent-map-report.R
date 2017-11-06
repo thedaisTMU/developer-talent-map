@@ -30,6 +30,7 @@ plot_colors_2_emphasis <- c("#e24585", "#99daea")
 plot_colors_4_emphasis <- c("#e24585", "#4d8e9e", "#99daea", "#b3f4ff")
 plot_colors_7 <- c("#960039", "#e24585", "#ffabeb", "#4d8e9e", "#99daea",
                    "#b3f4ff", "#0b2b48")
+plot_color_hline <- "gray50"
 plot_sizes_4_emphasis <- c(3, 1, 1, 1)
 plot_subtitle_respondents_share <- "% of Survey Respondents"
 plot_subtitle_visitors_share <- "% of Web Traffic to Stack Overflow"
@@ -305,7 +306,16 @@ country_years <- respondents %>%
     summarise(respondents = n()) %>%
     group_by(year) %>%
     mutate(respondents_share = respondents / sum(respondents)) %>%
-    ungroup()
+    ungroup() %>% 
+    left_join(read_csv(paste(data_dir, "world-bank-population.csv", sep = "/")) %>% 
+                  select(country = `Country Name`, population_2016 = `2016`) %>% 
+                  mutate(country = str_to_lower(country)) %>% 
+                  left_join(read_csv(paste(mappings_dir, "country-wb-so-mappings.csv", sep = "/")),
+                            by = c("country" = "country_wb")) %>% 
+                  mutate(country_so = ifelse(is.na(country_so), country, country_so)) %>% 
+                  select(country_so, population_2016),
+              by = c("country" = "country_so")) %>% 
+    mutate(respondents_per_capita = respondents / population_2016)
 country_years_prodevs <- respondents %>%
     filter(!is.na(country) & pro_status == "pro dev") %>%
     group_by(year, country, region, region_carow_label) %>%
@@ -372,6 +382,44 @@ country_years %>%
          subtitle = plot_subtitle_respondents_share) +
     theme(panel.grid.major.y = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
+
+# Plot of top countries by respondents per capita, 2017
+n_top_countries <- 10
+min_n_respondents_country <- 50
+plot_title <- paste("Developers per Capita Relative to Canada Among Top",
+                    n_top_countries, "Countries, 2017")
+country_years %>%
+    filter(year == 2017 & respondents >= min_n_respondents_country) %>%
+    top_n(n_top_countries, respondents_per_capita) %>%
+    arrange(respondents_per_capita) %>%
+    mutate(country_label = factor(
+        country, levels = country, labels = toTitleCase(country)),
+        respondents_per_capita_ind = respondents_per_capita /
+            respondents_per_capita[country == "canada"]) %>%
+    ggplot(aes(x = country_label,
+               y = respondents_per_capita_ind,
+               fill = region_carow_label,
+               label = paste0(format(round(respondents_per_capita_ind, 2),
+                                     n.small = 2), "x"))) +
+    geom_col(width = plot_bar_width) +
+    geom_text(hjust = 0, nudge_y = 0.005) +
+    geom_hline(yintercept = 1, color = plot_color_hline, linetype = "dashed") +
+    coord_flip() +
+    scale_fill_manual(values = plot_colors_2_emphasis) +
+    scale_y_continuous(limits = c(0, 2.6), breaks = seq(0, 2.5, by = 0.5),
+                       labels = paste0(seq(0, 2.5, by = 0.5), "x"),
+                       expand = plot_axis_padding) +
+    labs(x = "", y = "Survey Respondents per Capita Relative to Canada",
+         title = plot_title,
+         subtitle = paste("Ratio of Country's Survey Respondents per Capita", 
+                          "to Canada's Survey Respondents per Capita")) +
+    theme(panel.grid.major.y = element_blank())
+save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
+
+# Sample size for previous plot
+country_years %>%
+    filter(year == 2017 & respondents >= min_n_respondents_country) %>% 
+    nrow()
 
 # Plot of respondent share indices by country/region, 2014-2017
 plot_title <- "Share of Developers Among Countries/Regions Over Time, 2014-2017"
@@ -573,7 +621,7 @@ cities_2017_ca %>%
                label = format(round(visitor_employee_ratio, 2), n.small = 2))) +
     geom_col(fill = plot_color, width = plot_bar_width) +
     geom_text(hjust = 0, nudge_y = 0.005) +
-    geom_hline(yintercept = 1, color = "gray50", linetype = "dashed") +
+    geom_hline(yintercept = 1, color = plot_color_hline, linetype = "dashed") +
     scale_y_continuous(limits = c(0, 2), expand = plot_axis_padding) +
     coord_flip() +
     labs(x = "", y = "Ratio of % of Traffic to % of Employment",
@@ -628,7 +676,7 @@ bind_rows(city_years %>%
     facet_grid(city_group ~ ., scales = "free_y", space = "free") +
     geom_col(width = plot_bar_width) +
     geom_text(hjust = 0, nudge_y = 0.005) +
-    geom_hline(yintercept = 1, col = "gray50", linetype = "dashed") +
+    geom_hline(yintercept = 1, col = plot_color_hline, linetype = "dashed") +
     coord_flip() +
     scale_fill_manual(values = rev(plot_colors_2_emphasis)) +
     scale_y_continuous(limits = c(0, 3.5), breaks = seq(0, 4),
@@ -842,7 +890,7 @@ devrole_cities_2017_ca %>%
     facet_wrap(~ dev_role_label, scales = "free_y", nrow = 4) +
     geom_col(width = plot_bar_width, fill = plot_color) +
     geom_text(hjust = 0, nudge_y = 0.005) +
-    geom_hline(yintercept = 1, color = "gray50", linetype = "dashed") +
+    geom_hline(yintercept = 1, color = plot_color_hline, linetype = "dashed") +
     coord_flip() +
     scale_y_continuous(limits = c(0, 4), expand = plot_axis_padding) +
     labs(x = "", y = "Location Quotient", title = plot_title,
@@ -1150,7 +1198,7 @@ language_regionscarow_2017_prodevs %>%
                label = paste0(format(round(carow_ratio, 2), n.small = 2), "x"))) +
     geom_col(width = plot_bar_width) +
     geom_text(hjust = 0, nudge_y = 0.005) +
-    geom_hline(yintercept = 1, col = "gray50", linetype = "dashed") +
+    geom_hline(yintercept = 1, col = plot_color_hline, linetype = "dashed") +
     coord_flip() +
     scale_fill_gradient(low = "#ffdeff", high = "#960039", limits = c(0, 1),
                         labels = percent_format()) +
@@ -1393,7 +1441,7 @@ industry_2017_prodevs %>%
                label = paste0(format(round(carow_ratio, 2), n.small = 2), "x"))) +
     geom_col(width = plot_bar_width, fill = plot_color) +
     geom_text(hjust = 0, nudge_y = 0.005) +
-    geom_hline(yintercept = 1, col = "gray50", linetype = "dashed") +
+    geom_hline(yintercept = 1, col = plot_color_hline, linetype = "dashed") +
     coord_flip() +
     scale_y_continuous(limits = c(0, 2.15), breaks = seq(0, 2, by = 0.5),
                        labels = paste0(seq(0, 2, by = 0.5), "x"),
