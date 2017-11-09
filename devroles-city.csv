@@ -1,457 +1,457 @@
 city,region,dev_role,dev_role_parent_group,visitors,city_visitors_share,location_quotient
-calgary,canada,all developers,-,25185,1,1
-calgary,canada,mobile developers,all developers,1082,0.042962081,0.843612499
-calgary,canada,other kinds of developers,all developers,8576,0.340520151,0.947595666
-calgary,canada,web developers,all developers,16463,0.653682748,1.016153812
-calgary,canada,android developers,mobile developers,545,0.021639865,0.721060872
-calgary,canada,ios developers,mobile developers,535,0.021242803,1.031348835
-calgary,canada,back-end web,other kinds of developers,3527,0.140043677,1.021138556
-calgary,canada,data scientists,other kinds of developers,792,0.03144729,0.834353826
-calgary,canada,database administrators,other kinds of developers,1712,0.06797697,1.149738598
-calgary,canada,desktop developers,other kinds of developers,985,0.039110582,1.072284272
-calgary,canada,embedded developers,other kinds of developers,1247,0.049513599,0.67972822
-calgary,canada,front-end web,other kinds of developers,2266,0.089974191,0.919567319
-calgary,canada,full-stack web,other kinds of developers,14826,0.58868374,1.02337908
-calgary,canada,graphics programmers,other kinds of developers,425,0.016875124,1.038419409
-calgary,canada,machine learning specialists,other kinds of developers,788,0.031288465,0.803675843
-calgary,canada,systems administrators,other kinds of developers,2665,0.105816955,1.045231392
-edmonton,canada,all developers,-,17885,1,1
-edmonton,canada,mobile developers,all developers,812,0.045401174,0.891507056
-edmonton,canada,other kinds of developers,all developers,6115,0.341906626,0.951453932
-edmonton,canada,web developers,all developers,11268,0.630025161,0.979377949
-edmonton,canada,android developers,mobile developers,528,0.029521946,0.983699295
-edmonton,canada,ios developers,mobile developers,282,0.015767403,0.765515378
-edmonton,canada,back-end web,other kinds of developers,2318,0.129605815,0.945030135
-edmonton,canada,data scientists,other kinds of developers,823,0.046016215,1.220893906
-edmonton,canada,database administrators,other kinds of developers,1131,0.06323735,1.069574319
-edmonton,canada,desktop developers,other kinds of developers,496,0.027732737,0.76034097
-edmonton,canada,embedded developers,other kinds of developers,1128,0.063069611,0.865826666
-edmonton,canada,front-end web,other kinds of developers,1602,0.089572267,0.91545952
-edmonton,canada,full-stack web,other kinds of developers,10107,0.565110428,0.982398782
-edmonton,canada,graphics programmers,other kinds of developers,252,0.01409002,0.867036575
-edmonton,canada,machine learning specialists,other kinds of developers,817,0.045680738,1.173355907
-edmonton,canada,systems administrators,other kinds of developers,1742,0.097400056,0.962091534
-guelph,canada,all developers,-,3365,1,1
-guelph,canada,mobile developers,all developers,132,0.03922734,0.770276348
-guelph,canada,other kinds of developers,all developers,1786,0.530757801,1.47698687
-guelph,canada,web developers,all developers,1589,0.472213967,0.734059488
-guelph,canada,android developers,mobile developers,78,0.023179792,0.772372702
-guelph,canada,ios developers,mobile developers,55,0.016344725,0.793544666
-guelph,canada,back-end web,other kinds of developers,346,0.10282318,0.749742621
-guelph,canada,data scientists,other kinds of developers,321,0.095393759,2.530970009
-guelph,canada,database administrators,other kinds of developers,152,0.045170877,0.76400434
-guelph,canada,desktop developers,other kinds of developers,100,0.029717682,0.814761674
-guelph,canada,embedded developers,other kinds of developers,779,0.231500743,3.178068043
-guelph,canada,front-end web,other kinds of developers,190,0.056463596,0.577077459
-guelph,canada,full-stack web,other kinds of developers,1440,0.427934621,0.743929735
-guelph,canada,graphics programmers,other kinds of developers,39,0.011589896,0.71319019
-guelph,canada,machine learning specialists,other kinds of developers,318,0.094502229,2.427385221
-guelph,canada,systems administrators,other kinds of developers,289,0.085884101,0.848340031
-halifax,canada,all developers,-,5744,1,1
-halifax,canada,mobile developers,all developers,268,0.046657382,0.916174211
-halifax,canada,other kinds of developers,all developers,2158,0.375696379,1.045483679
-halifax,canada,web developers,all developers,3799,0.661385794,1.028128244
-halifax,canada,android developers,mobile developers,83,0.014449861,0.481483095
-halifax,canada,ios developers,mobile developers,183,0.031859331,1.546786647
-halifax,canada,back-end web,other kinds of developers,916,0.159470752,1.162792475
-halifax,canada,data scientists,other kinds of developers,307,0.053447075,1.418048156
-halifax,canada,database administrators,other kinds of developers,380,0.066155989,1.118939156
-halifax,canada,desktop developers,other kinds of developers,234,0.040738162,1.11690719
-halifax,canada,embedded developers,other kinds of developers,421,0.073293872,1.006186455
-halifax,canada,front-end web,other kinds of developers,533,0.092792479,0.948371198
-halifax,canada,full-stack web,other kinds of developers,3419,0.595229805,1.034758884
-halifax,canada,graphics programmers,other kinds of developers,143,0.024895543,1.531960009
-halifax,canada,machine learning specialists,other kinds of developers,302,0.052576602,1.350483131
-halifax,canada,systems administrators,other kinds of developers,534,0.092966574,0.918298791
-hamilton,canada,all developers,-,7332,1,1
-hamilton,canada,mobile developers,all developers,288,0.039279869,0.771307815
-hamilton,canada,other kinds of developers,all developers,2448,0.333878887,0.929114431
-hamilton,canada,web developers,all developers,5002,0.682214948,1.060507292
-hamilton,canada,android developers,mobile developers,159,0.021685761,0.722590172
-hamilton,canada,ios developers,mobile developers,129,0.017594108,0.854202837
-hamilton,canada,back-end web,other kinds of developers,1174,0.160120022,1.167526672
-hamilton,canada,data scientists,other kinds of developers,528,0.072013093,1.910638398
-hamilton,canada,database administrators,other kinds of developers,382,0.052100382,0.881207557
-hamilton,canada,desktop developers,other kinds of developers,189,0.025777414,0.706732411
-hamilton,canada,embedded developers,other kinds of developers,538,0.073376978,1.00732734
-hamilton,canada,front-end web,other kinds of developers,619,0.084424441,0.862846955
-hamilton,canada,full-stack web,other kinds of developers,4499,0.613611566,1.066714089
-hamilton,canada,graphics programmers,other kinds of developers,132,0.018003273,1.107840651
-hamilton,canada,machine learning specialists,other kinds of developers,517,0.070512821,1.811193032
-hamilton,canada,systems administrators,other kinds of developers,497,0.067785052,0.669562495
-kitchener_waterloo,canada,all developers,-,15365,1,1
-kitchener_waterloo,canada,mobile developers,all developers,823,0.053563293,1.051780151
-kitchener_waterloo,canada,other kinds of developers,all developers,6540,0.425642694,1.184473728
-kitchener_waterloo,canada,web developers,all developers,9121,0.593621868,0.922788809
-kitchener_waterloo,canada,android developers,mobile developers,417,0.027139603,0.90431737
-kitchener_waterloo,canada,ios developers,mobile developers,412,0.026814188,1.301842385
-kitchener_waterloo,canada,back-end web,other kinds of developers,2535,0.164985356,1.203002609
-kitchener_waterloo,canada,data scientists,other kinds of developers,1082,0.070419785,1.868365035
-kitchener_waterloo,canada,database administrators,other kinds of developers,535,0.034819395,0.588923011
-kitchener_waterloo,canada,desktop developers,other kinds of developers,593,0.038594208,1.058126983
-kitchener_waterloo,canada,embedded developers,other kinds of developers,2382,0.15502766,2.128237027
-kitchener_waterloo,canada,front-end web,other kinds of developers,971,0.063195574,0.645880605
-kitchener_waterloo,canada,full-stack web,other kinds of developers,8246,0.53667426,0.932964803
-kitchener_waterloo,canada,graphics programmers,other kinds of developers,246,0.016010413,0.985208986
-kitchener_waterloo,canada,machine learning specialists,other kinds of developers,1062,0.069118126,1.775368885
-kitchener_waterloo,canada,systems administrators,other kinds of developers,1192,0.077578913,0.766303621
-london,canada,all developers,-,9082,1,1
-london,canada,mobile developers,all developers,363,0.03996917,0.784843069
-london,canada,other kinds of developers,all developers,3442,0.378991412,1.05465306
-london,canada,web developers,all developers,5942,0.654261176,1.017052982
-london,canada,android developers,mobile developers,230,0.025324818,0.843847019
-london,canada,ios developers,mobile developers,132,0.014534244,0.705644871
-london,canada,back-end web,other kinds of developers,1435,0.158004845,1.152103706
-london,canada,data scientists,other kinds of developers,518,0.057035895,1.51326608
-london,canada,database administrators,other kinds of developers,468,0.0515305,0.871568773
-london,canada,desktop developers,other kinds of developers,245,0.026976437,0.739605696
-london,canada,embedded developers,other kinds of developers,938,0.103281216,1.417856058
-london,canada,front-end web,other kinds of developers,855,0.094142259,0.962166419
-london,canada,full-stack web,other kinds of developers,5337,0.587645893,1.021574866
-london,canada,graphics programmers,other kinds of developers,195,0.021471042,1.32123155
-london,canada,machine learning specialists,other kinds of developers,511,0.05626514,1.44522696
-london,canada,systems administrators,other kinds of developers,792,0.087205461,0.861392073
-montreal,canada,all developers,-,122329,1,1
-montreal,canada,mobile developers,all developers,7395,0.060451733,1.187043004
-montreal,canada,other kinds of developers,all developers,43909,0.35894187,0.998859419
-montreal,canada,web developers,all developers,79629,0.650941314,1.011892237
-montreal,canada,android developers,mobile developers,5395,0.04410238,1.469533212
-montreal,canada,ios developers,mobile developers,1996,0.016316654,0.792181812
-montreal,canada,back-end web,other kinds of developers,16581,0.135544311,0.988331105
-montreal,canada,data scientists,other kinds of developers,5168,0.042246728,1.120882567
-montreal,canada,database administrators,other kinds of developers,7297,0.059650614,1.008909536
-montreal,canada,desktop developers,other kinds of developers,4794,0.039189399,1.074445187
-montreal,canada,embedded developers,other kinds of developers,8279,0.067678147,0.929093152
-montreal,canada,front-end web,other kinds of developers,10418,0.08516378,0.870403253
-montreal,canada,full-stack web,other kinds of developers,72471,0.59242698,1.029886399
-montreal,canada,graphics programmers,other kinds of developers,2713,0.022177897,1.364728277
-montreal,canada,machine learning specialists,other kinds of developers,5098,0.041674501,1.070451654
-montreal,canada,systems administrators,other kinds of developers,11195,0.091515503,0.903965507
-ottawa,canada,all developers,-,42473,1,1
-ottawa,canada,mobile developers,all developers,2032,0.047842159,0.939438741
-ottawa,canada,other kinds of developers,all developers,15945,0.37541497,1.044700577
-ottawa,canada,web developers,all developers,27101,0.638075954,0.991892957
-ottawa,canada,android developers,mobile developers,1231,0.028983119,0.965745065
-ottawa,canada,ios developers,mobile developers,812,0.019118028,0.928189919
-ottawa,canada,back-end web,other kinds of developers,6312,0.148612059,1.083615535
-ottawa,canada,data scientists,other kinds of developers,1374,0.032349964,0.858303395
-ottawa,canada,database administrators,other kinds of developers,2361,0.055588256,0.940200236
-ottawa,canada,desktop developers,other kinds of developers,1426,0.033574271,0.920496727
-ottawa,canada,embedded developers,other kinds of developers,3248,0.076472112,1.049817686
-ottawa,canada,front-end web,other kinds of developers,3667,0.086337202,0.88239604
-ottawa,canada,full-stack web,other kinds of developers,24347,0.573234761,0.996522278
-ottawa,canada,graphics programmers,other kinds of developers,529,0.012454971,0.766423048
-ottawa,canada,machine learning specialists,other kinds of developers,1364,0.03211452,0.824893886
-ottawa,canada,systems administrators,other kinds of developers,5357,0.126127187,1.245850398
-quebec city,canada,all developers,-,14625,1,1
-quebec city,canada,mobile developers,all developers,490,0.033504274,0.657896999
-quebec city,canada,other kinds of developers,all developers,5450,0.372649573,1.037005061
-quebec city,canada,web developers,all developers,9226,0.630837607,0.980640902
-quebec city,canada,android developers,mobile developers,270,0.018461538,0.61515601
-quebec city,canada,ios developers,mobile developers,219,0.014974359,0.727012697
-quebec city,canada,back-end web,other kinds of developers,1932,0.132102564,0.963235361
-quebec city,canada,data scientists,other kinds of developers,681,0.046564103,1.235430367
-quebec city,canada,database administrators,other kinds of developers,1197,0.081846154,1.384317095
-quebec city,canada,desktop developers,other kinds of developers,494,0.033777778,0.926076225
-quebec city,canada,embedded developers,other kinds of developers,879,0.060102564,0.82509471
-quebec city,canada,front-end web,other kinds of developers,1189,0.081299145,0.830905355
-quebec city,canada,full-stack web,other kinds of developers,8385,0.573333333,0.996693639
-quebec city,canada,graphics programmers,other kinds of developers,236,0.016136752,0.992983313
-quebec city,canada,machine learning specialists,other kinds of developers,671,0.045880342,1.178482933
-quebec city,canada,systems administrators,other kinds of developers,1573,0.107555556,1.062404825
-regina,canada,all developers,-,3546,1,1
-regina,canada,mobile developers,all developers,140,0.039481105,0.775259335
-regina,canada,other kinds of developers,all developers,1634,0.460800902,1.282311595
-regina,canada,web developers,all developers,1846,0.520586576,0.809255003
-regina,canada,android developers,mobile developers,75,0.021150592,0.704757838
-regina,canada,ios developers,mobile developers,65,0.018330513,0.889955684
-regina,canada,back-end web,other kinds of developers,320,0.090242527,0.658009884
-regina,canada,data scientists,other kinds of developers,87,0.024534687,0.650949888
-regina,canada,database administrators,other kinds of developers,297,0.083756345,1.4166254
-regina,canada,desktop developers,other kinds of developers,105,0.029610829,0.811832117
-regina,canada,embedded developers,other kinds of developers,571,0.161026509,2.210589888
-regina,canada,front-end web,other kinds of developers,319,0.089960519,0.919427586
-regina,canada,full-stack web,other kinds of developers,1600,0.451212634,0.784396678
-regina,canada,graphics programmers,other kinds of developers,57,0.01607445,0.989149524
-regina,canada,machine learning specialists,other kinds of developers,85,0.023970671,0.615710906
-regina,canada,systems administrators,other kinds of developers,412,0.116187253,1.147666411
-saskatoon,canada,all developers,-,3963,1,1
-saskatoon,canada,mobile developers,all developers,112,0.028261418,0.554947182
-saskatoon,canada,other kinds of developers,all developers,1543,0.389351501,1.083483002
-saskatoon,canada,web developers,all developers,2498,0.630330558,0.979852691
-saskatoon,canada,android developers,mobile developers,52,0.013121373,0.437216611
-saskatoon,canada,ios developers,mobile developers,60,0.015140045,0.735056858
-saskatoon,canada,back-end web,other kinds of developers,641,0.161746152,1.179383717
-saskatoon,canada,data scientists,other kinds of developers,204,0.051476154,1.365756041
-saskatoon,canada,database administrators,other kinds of developers,229,0.057784507,0.977346847
-saskatoon,canada,desktop developers,other kinds of developers,108,0.027252082,0.747162977
-saskatoon,canada,embedded developers,other kinds of developers,284,0.071662882,0.98379604
-saskatoon,canada,front-end web,other kinds of developers,282,0.071158213,0.727261528
-saskatoon,canada,full-stack web,other kinds of developers,2242,0.565733031,0.983481127
-saskatoon,canada,graphics programmers,other kinds of developers,82,0.020691395,1.273255621
-saskatoon,canada,machine learning specialists,other kinds of developers,204,0.051476154,1.322217032
-saskatoon,canada,systems administrators,other kinds of developers,537,0.135503407,1.338466174
-toronto,canada,all developers,-,201153,1,1
-toronto,canada,mobile developers,all developers,10798,0.053680532,1.054082272
-toronto,canada,other kinds of developers,all developers,69889,0.347441997,0.966857701
-toronto,canada,web developers,all developers,131578,0.654119004,1.016831975
-toronto,canada,android developers,mobile developers,5481,0.027247916,0.907926454
-toronto,canada,ios developers,mobile developers,5264,0.026169135,1.270524728
-toronto,canada,back-end web,other kinds of developers,29790,0.148096225,1.079854293
-toronto,canada,data scientists,other kinds of developers,6636,0.032989814,0.875279785
-toronto,canada,database administrators,other kinds of developers,10826,0.053819729,0.910287995
-toronto,canada,desktop developers,other kinds of developers,7708,0.03831909,1.05058417
-toronto,canada,embedded developers,other kinds of developers,13415,0.066690529,0.915535029
-toronto,canada,front-end web,other kinds of developers,20459,0.10170865,1.039497541
-toronto,canada,full-stack web,other kinds of developers,116322,0.578276237,1.005286478
-toronto,canada,graphics programmers,other kinds of developers,2524,0.012547663,0.772126857
-toronto,canada,machine learning specialists,other kinds of developers,7448,0.037026542,0.951064138
-toronto,canada,systems administrators,other kinds of developers,20291,0.100873464,0.996400928
-vancouver,canada,all developers,-,63709,1,1
-vancouver,canada,mobile developers,all developers,3642,0.057166177,1.122527148
-vancouver,canada,other kinds of developers,all developers,23156,0.363465131,1.011446698
-vancouver,canada,web developers,all developers,41346,0.64898209,1.008846612
-vancouver,canada,android developers,mobile developers,1862,0.02922664,0.973859422
-vancouver,canada,ios developers,mobile developers,1766,0.027719788,1.345809738
-vancouver,canada,back-end web,other kinds of developers,9082,0.142554427,1.039445873
-vancouver,canada,data scientists,other kinds of developers,2782,0.0436673,1.158572918
-vancouver,canada,database administrators,other kinds of developers,2893,0.045409597,0.768041968
-vancouver,canada,desktop developers,other kinds of developers,2634,0.041344237,1.133523799
-vancouver,canada,embedded developers,other kinds of developers,5241,0.082264672,1.129338603
-vancouver,canada,front-end web,other kinds of developers,7363,0.115572368,1.181189534
-vancouver,canada,full-stack web,other kinds of developers,36449,0.572116969,0.994579088
-vancouver,canada,graphics programmers,other kinds of developers,1053,0.016528277,1.017075997
-vancouver,canada,machine learning specialists,other kinds of developers,2732,0.042882481,1.101479855
-vancouver,canada,systems administrators,other kinds of developers,6006,0.094272395,0.931197339
-victoria,canada,all developers,-,7900,1,1
-victoria,canada,mobile developers,all developers,325,0.041139241,0.807818825
-victoria,canada,other kinds of developers,all developers,2911,0.368481013,1.025404839
-victoria,canada,web developers,all developers,5202,0.658481013,1.023612744
-victoria,canada,android developers,mobile developers,149,0.018860759,0.628458435
-victoria,canada,ios developers,mobile developers,175,0.022151899,1.07548588
-victoria,canada,back-end web,other kinds of developers,1178,0.149113924,1.087274917
-victoria,canada,data scientists,other kinds of developers,392,0.049620253,1.316515604
-victoria,canada,database administrators,other kinds of developers,462,0.058481013,0.989127305
-victoria,canada,desktop developers,other kinds of developers,252,0.031898734,0.874558993
-victoria,canada,embedded developers,other kinds of developers,682,0.086329114,1.185135713
-victoria,canada,front-end web,other kinds of developers,792,0.100253165,1.024621981
-victoria,canada,full-stack web,other kinds of developers,4702,0.595189873,1.034689466
-victoria,canada,graphics programmers,other kinds of developers,150,0.018987342,1.168395807
-victoria,canada,machine learning specialists,other kinds of developers,377,0.047721519,1.225775427
-victoria,canada,systems administrators,other kinds of developers,743,0.094050633,0.929006835
-winnipeg,canada,all developers,-,10439,1,1
-winnipeg,canada,mobile developers,all developers,420,0.040233739,0.790038204
-winnipeg,canada,other kinds of developers,all developers,3292,0.315355877,0.877568806
-winnipeg,canada,web developers,all developers,7058,0.676118402,1.051030174
-winnipeg,canada,android developers,mobile developers,267,0.025577163,0.852255369
-winnipeg,canada,ios developers,mobile developers,153,0.014656576,0.711584188
-winnipeg,canada,back-end web,other kinds of developers,1514,0.145033049,1.057518924
-winnipeg,canada,data scientists,other kinds of developers,363,0.034773446,0.922602788
-winnipeg,canada,database administrators,other kinds of developers,682,0.065331928,1.105001286
-winnipeg,canada,desktop developers,other kinds of developers,286,0.02739726,0.751143297
-winnipeg,canada,embedded developers,other kinds of developers,567,0.054315547,0.745649899
-winnipeg,canada,front-end web,other kinds of developers,1178,0.112846058,1.153325703
-winnipeg,canada,full-stack web,other kinds of developers,6182,0.592202318,1.029495843
-winnipeg,canada,graphics programmers,other kinds of developers,193,0.018488361,1.137690767
-winnipeg,canada,machine learning specialists,other kinds of developers,355,0.034007089,0.873506432
-winnipeg,canada,systems administrators,other kinds of developers,932,0.089280582,0.88188956
-amsterdam,international,all developers,-,,1,1
-amsterdam,international,mobile developers,all developers,,0.067225276,1.459866681
-amsterdam,international,other kinds of developers,all developers,,0.337830393,0.940717568
-amsterdam,international,web developers,all developers,,0.686640786,0.997960025
-amsterdam,international,android developers,mobile developers,,0.04139601,1.518343934
-amsterdam,international,ios developers,mobile developers,,0.025867702,1.383526117
-amsterdam,international,back-end web,other kinds of developers,,0.167019,1.118155942
-amsterdam,international,biz intel developers,other kinds of developers,,0.001306838,1.236767733
-amsterdam,international,data scientists,other kinds of developers,,0.038500468,0.890118794
-amsterdam,international,database administrators,other kinds of developers,,0.078384646,0.82791561
-amsterdam,international,desktop developers,other kinds of developers,,0.03893608,1.185339011
-amsterdam,international,embedded developers,other kinds of developers,,0.031492229,0.894296632
-amsterdam,international,front-end web,other kinds of developers,,0.102932698,0.883793166
-amsterdam,international,full-stack web,other kinds of developers,,0.622836351,1.01304524
-amsterdam,international,graphics programmers,other kinds of developers,,0.0105572,0.803308
-amsterdam,international,highly technical designers,other kinds of developers,,0.019141331,0.898884012
-amsterdam,international,highly technical product managers,other kinds of developers,,0.002383057,0.993151855
-amsterdam,international,machine learning specialists,other kinds of developers,,0.04061447,0.931017554
-amsterdam,international,qa engineers,other kinds of developers,,0.023049032,1.23422359
-amsterdam,international,systems administrators,other kinds of developers,,0.10486733,0.983566064
-helsinki,international,all developers,-,,1,1
-helsinki,international,mobile developers,all developers,,0.0468172,1.053788629
-helsinki,international,other kinds of developers,all developers,,0.351513717,0.953100214
-helsinki,international,web developers,all developers,,0.670859104,1.016985424
-helsinki,international,android developers,mobile developers,,0.027285372,0.916771806
-helsinki,international,ios developers,mobile developers,,0.019650203,1.339933451
-helsinki,international,back-end web,other kinds of developers,,0.155544376,1.071872085
-helsinki,international,biz intel developers,other kinds of developers,,0.001538871,1.380210526
-helsinki,international,data scientists,other kinds of developers,,0.04826729,1.237241683
-helsinki,international,database administrators,other kinds of developers,,0.053505371,0.934785949
-helsinki,international,desktop developers,other kinds of developers,,0.034003137,1.176669183
-helsinki,international,embedded developers,other kinds of developers,,0.040720902,0.646065777
-helsinki,international,front-end web,other kinds of developers,,0.110088485,1.05798573
-helsinki,international,full-stack web,other kinds of developers,,0.605397887,1.028391332
-helsinki,international,graphics programmers,other kinds of developers,,0.018140925,0.869419167
-helsinki,international,highly technical designers,other kinds of developers,,0.018407268,0.869852283
-helsinki,international,highly technical product managers,other kinds of developers,,0.002101151,1.168878388
-helsinki,international,machine learning specialists,other kinds of developers,,0.047793791,1.216941795
-helsinki,international,qa engineers,other kinds of developers,,0.024769909,1.085873284
-helsinki,international,systems administrators,other kinds of developers,,0.124559794,0.960714958
-munich,international,all developers,-,,1,1
-munich,international,mobile developers,all developers,,0.053029989,1.021561138
-munich,international,other kinds of developers,all developers,,0.407525589,1.04109139
-munich,international,web developers,all developers,,0.611730416,0.95448834
-munich,international,android developers,mobile developers,,0.02996146,0.877353141
-munich,international,ios developers,mobile developers,,0.023455306,1.304819023
-munich,international,back-end web,other kinds of developers,,0.131269598,1.013566722
-munich,international,biz intel developers,other kinds of developers,,7.74E-04,1.326307303
-munich,international,data scientists,other kinds of developers,,0.047504593,1.141152635
-munich,international,database administrators,other kinds of developers,,0.058002846,0.8325315
-munich,international,desktop developers,other kinds of developers,,0.043401986,1.077401552
-munich,international,embedded developers,other kinds of developers,,0.083861699,1.13555979
-munich,international,front-end web,other kinds of developers,,0.068321523,0.853878556
-munich,international,full-stack web,other kinds of developers,,0.561297363,0.964035172
-munich,international,graphics programmers,other kinds of developers,,0.012846546,0.817881861
-munich,international,highly technical designers,other kinds of developers,,0.024090727,0.897418224
-munich,international,highly technical product managers,other kinds of developers,,0.001823381,1.218262881
-munich,international,machine learning specialists,other kinds of developers,,0.047836117,1.150265269
-munich,international,qa engineers,other kinds of developers,,0.018952109,1.147415584
-munich,international,systems administrators,other kinds of developers,,0.125992845,1.083687015
-nyc_metro_area,international,all developers,-,,1,1
-nyc_metro_area,international,mobile developers,all developers,,0.05103086,1.030545476
-nyc_metro_area,international,other kinds of developers,all developers,,0.332548229,0.918657485
-nyc_metro_area,international,web developers,all developers,,0.659065763,1.024958934
-nyc_metro_area,international,android developers,mobile developers,,0.02324091,0.918797141
-nyc_metro_area,international,ios developers,mobile developers,,0.027644797,1.132851754
-nyc_metro_area,international,back-end web,other kinds of developers,,0.158608394,1.030961207
-nyc_metro_area,international,biz intel developers,other kinds of developers,,0.001739097,1.036172078
-nyc_metro_area,international,data scientists,other kinds of developers,,0.040062224,1.019820666
-nyc_metro_area,international,database administrators,other kinds of developers,,0.05300275,0.970159466
-nyc_metro_area,international,desktop developers,other kinds of developers,,0.039862296,1.037713606
-nyc_metro_area,international,embedded developers,other kinds of developers,,0.042891338,0.667031847
-nyc_metro_area,international,front-end web,other kinds of developers,,0.095751673,1.084028136
-nyc_metro_area,international,full-stack web,other kinds of developers,,0.593297766,1.032172772
-nyc_metro_area,international,graphics programmers,other kinds of developers,,0.007827306,0.679850497
-nyc_metro_area,international,highly technical designers,other kinds of developers,,0.018467294,0.848748937
-nyc_metro_area,international,highly technical product managers,other kinds of developers,,0.002193727,0.935884981
-nyc_metro_area,international,machine learning specialists,other kinds of developers,,0.043869067,1.037323924
-nyc_metro_area,international,qa engineers,other kinds of developers,,0.027025843,1.068789419
-nyc_metro_area,international,systems administrators,other kinds of developers,,0.102012423,0.873663853
-paris,international,all developers,-,,1,1
-paris,international,mobile developers,all developers,,0.049294117,0.954784824
-paris,international,other kinds of developers,all developers,,0.371544545,0.967075912
-paris,international,web developers,all developers,,0.677316944,0.995484149
-paris,international,android developers,mobile developers,,0.027688177,0.825149255
-paris,international,ios developers,mobile developers,,0.021726821,1.194847898
-paris,international,back-end web,other kinds of developers,,0.144930302,1.055953216
-paris,international,biz intel developers,other kinds of developers,,9.92E-04,1.24890651
-paris,international,data scientists,other kinds of developers,,0.029762246,0.97845662
-paris,international,database administrators,other kinds of developers,,0.086964544,0.953993638
-paris,international,desktop developers,other kinds of developers,,0.036544322,1.094957148
-paris,international,embedded developers,other kinds of developers,,0.052131646,0.838582321
-paris,international,front-end web,other kinds of developers,,0.083738922,0.935786764
-paris,international,full-stack web,other kinds of developers,,0.619828349,0.999071502
-paris,international,graphics programmers,other kinds of developers,,0.010841143,0.717022206
-paris,international,highly technical designers,other kinds of developers,,0.018335783,0.798735359
-paris,international,highly technical product managers,other kinds of developers,,0.001673252,1.221143458
-paris,international,machine learning specialists,other kinds of developers,,0.032249855,1.010110651
-paris,international,qa engineers,other kinds of developers,,0.018940189,1.171733414
-paris,international,systems administrators,other kinds of developers,,0.127186202,1.012789078
-sf_silicon_valley,international,all developers,-,,1,1
-sf_silicon_valley,international,mobile developers,all developers,,0.087529082,1.767610809
-sf_silicon_valley,international,other kinds of developers,all developers,,0.365409424,1.009435843
-sf_silicon_valley,international,web developers,all developers,,0.650963739,1.012358915
-sf_silicon_valley,international,android developers,mobile developers,,0.043306789,1.712073815
-sf_silicon_valley,international,ios developers,mobile developers,,0.04400855,1.803419388
-sf_silicon_valley,international,back-end web,other kinds of developers,,0.20303592,1.319741993
-sf_silicon_valley,international,biz intel developers,other kinds of developers,,0.00100819,0.600690271
-sf_silicon_valley,international,data scientists,other kinds of developers,,0.021650557,0.551134792
-sf_silicon_valley,international,database administrators,other kinds of developers,,0.042888759,0.78503352
-sf_silicon_valley,international,desktop developers,other kinds of developers,,0.066281423,1.725468449
-sf_silicon_valley,international,embedded developers,other kinds of developers,,0.055681238,0.865936124
-sf_silicon_valley,international,front-end web,other kinds of developers,,0.069517847,0.787028561
-sf_silicon_valley,international,full-stack web,other kinds of developers,,0.587264267,1.021676164
-sf_silicon_valley,international,graphics programmers,other kinds of developers,,0.014716175,1.278191783
-sf_silicon_valley,international,highly technical designers,other kinds of developers,,0.018922958,0.869691041
-sf_silicon_valley,international,highly technical product managers,other kinds of developers,,0.001715626,0.731918085
-sf_silicon_valley,international,machine learning specialists,other kinds of developers,,0.027253296,0.644428938
-sf_silicon_valley,international,qa engineers,other kinds of developers,,0.034775947,1.375282348
-sf_silicon_valley,international,systems administrators,other kinds of developers,,0.114044678,0.976711562
-singapore,international,all developers,-,,1,1
-singapore,international,mobile developers,all developers,,0.074265476,1
-singapore,international,other kinds of developers,all developers,,0.352344138,1
-singapore,international,web developers,all developers,,0.632662202,1
-singapore,international,android developers,mobile developers,,0.046434871,1
-singapore,international,ios developers,mobile developers,,0.028340499,1
-singapore,international,back-end web,other kinds of developers,,0.1530511,1
-singapore,international,biz intel developers,other kinds of developers,,0.001577917,1
-singapore,international,data scientists,other kinds of developers,,0.029408522,1
-singapore,international,database administrators,other kinds of developers,,0.072239678,1
-singapore,international,desktop developers,other kinds of developers,,0.044670911,1
-singapore,international,embedded developers,other kinds of developers,,0.058975525,1
-singapore,international,front-end web,other kinds of developers,,0.075870955,1
-singapore,international,full-stack web,other kinds of developers,,0.571309465,1
-singapore,international,graphics programmers,other kinds of developers,,0.011493302,1
-singapore,international,highly technical designers,other kinds of developers,,0.020382008,1
-singapore,international,highly technical product managers,other kinds of developers,,0.001963784,1
-singapore,international,machine learning specialists,other kinds of developers,,0.032557467,1
-singapore,international,qa engineers,other kinds of developers,,0.020478474,1
-singapore,international,systems administrators,other kinds of developers,,0.0975277,1
-stockholm,international,all developers,-,,1,1
-stockholm,international,mobile developers,all developers,,0.05032904,1.013784674
-stockholm,international,other kinds of developers,all developers,,0.32014223,0.900385062
-stockholm,international,web developers,all developers,,0.680282338,1.019053447
-stockholm,international,android developers,mobile developers,,0.02336895,0.836751998
-stockholm,international,ios developers,mobile developers,,0.027136994,1.254136824
-stockholm,international,back-end web,other kinds of developers,,0.152172375,1.067567585
-stockholm,international,biz intel developers,other kinds of developers,,0.001309086,1.217126165
-stockholm,international,data scientists,other kinds of developers,,0.033470139,0.925509452
-stockholm,international,database administrators,other kinds of developers,,0.044650439,0.864164309
-stockholm,international,desktop developers,other kinds of developers,,0.044986555,1.162206519
-stockholm,international,embedded developers,other kinds of developers,,0.046083357,0.693517435
-stockholm,international,front-end web,other kinds of developers,,0.102993207,1.012772654
-stockholm,international,full-stack web,other kinds of developers,,0.614385791,1.027687675
-stockholm,international,graphics programmers,other kinds of developers,,0.01268398,0.679555808
-stockholm,international,highly technical designers,other kinds of developers,,0.020220068,0.843331745
-stockholm,international,highly technical product managers,other kinds of developers,,0.002175913,0.997520411
-stockholm,international,machine learning specialists,other kinds of developers,,0.033859326,0.945433284
-stockholm,international,qa engineers,other kinds of developers,,0.0243773,1.249023405
-stockholm,international,systems administrators,other kinds of developers,,0.107981885,0.925360918
-sydney,international,all developers,-,,1,1
-sydney,international,mobile developers,all developers,,0.048561699,0.999105742
-sydney,international,other kinds of developers,all developers,,0.359589136,0.981674343
-sydney,international,web developers,all developers,,0.644425372,1.00371203
-sydney,international,android developers,mobile developers,,0.023145713,0.984477568
-sydney,international,ios developers,mobile developers,,0.025305241,1.006861192
-sydney,international,back-end web,other kinds of developers,,0.139169597,1.031071741
-sydney,international,biz intel developers,other kinds of developers,,0.002122613,1.044129432
-sydney,international,data scientists,other kinds of developers,,0.030602545,0.842402798
-sydney,international,database administrators,other kinds of developers,,0.064702788,0.944771207
-sydney,international,desktop developers,other kinds of developers,,0.039729782,0.981201292
-sydney,international,embedded developers,other kinds of developers,,0.032586727,0.911254694
-sydney,international,front-end web,other kinds of developers,,0.106979706,0.965792654
-sydney,international,full-stack web,other kinds of developers,,0.57367775,1.013079466
-sydney,international,graphics programmers,other kinds of developers,,0.011702059,0.858232647
-sydney,international,highly technical designers,other kinds of developers,,0.020644721,0.909057555
-sydney,international,highly technical product managers,other kinds of developers,,0.002953201,1.064464068
-sydney,international,machine learning specialists,other kinds of developers,,0.03227295,0.869145901
-sydney,international,qa engineers,other kinds of developers,,0.029707356,1.180217267
-sydney,international,systems administrators,other kinds of developers,,0.134638279,1.016453195
-tel_aviv,international,all developers,-,,1,1
-tel_aviv,international,mobile developers,all developers,,0.077724843,1.053953259
-tel_aviv,international,other kinds of developers,all developers,,0.319756649,0.967366129
-tel_aviv,international,web developers,all developers,,0.662428146,1.015238011
-tel_aviv,international,android developers,mobile developers,,0.053769934,1.025785758
-tel_aviv,international,ios developers,mobile developers,,0.023775974,1.113955658
-tel_aviv,international,back-end web,other kinds of developers,,0.174819388,1.053887773
-tel_aviv,international,biz intel developers,other kinds of developers,,6.26E-04,1.056715711
-tel_aviv,international,data scientists,other kinds of developers,,0.018228992,0.870730742
-tel_aviv,international,database administrators,other kinds of developers,,0.040517569,0.978731709
-tel_aviv,international,desktop developers,other kinds of developers,,0.041680646,1.047983716
-tel_aviv,international,embedded developers,other kinds of developers,,0.083394842,0.954073978
-tel_aviv,international,front-end web,other kinds of developers,,0.084244783,1.021052984
-tel_aviv,international,full-stack web,other kinds of developers,,0.601277148,1.014760839
-tel_aviv,international,graphics programmers,other kinds of developers,,0.007906685,0.947444004
-tel_aviv,international,highly technical designers,other kinds of developers,,0.017401418,0.957162317
-tel_aviv,international,highly technical product managers,other kinds of developers,,0.001409112,1.053551891
-tel_aviv,international,machine learning specialists,other kinds of developers,,0.019336152,0.882108593
-tel_aviv,international,qa engineers,other kinds of developers,,0.02493905,1.04739817
-tel_aviv,international,systems administrators,other kinds of developers,,0.094969693,1.002198346
+calgary,canada,All Developers,-,25185,1,1
+calgary,canada,Mobile Developers,All Developers,1082,0.04296208060353385,0.8436124989800862
+calgary,canada,Other Kinds of Developers,All Developers,8576,0.3405201508834624,0.9475956658584792
+calgary,canada,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,16463,0.6536827476672623,1.016153812131361
+calgary,canada,Android Developers,Mobile Developers,545,0.021639864999007347,0.7210608717560526
+calgary,canada,iOS Developers,Mobile Developers,535,0.021242803255906294,1.0313488353026732
+calgary,canada,Back-End Web Developers,Other Kinds of Developers,3527,0.14004367679174112,1.0211385561548665
+calgary,canada,Data Scientists,Other Kinds of Developers,792,0.03144729005360333,0.8343538255380755
+calgary,canada,Database Administrators,Other Kinds of Developers,1712,0.06797697041890013,1.1497385984500015
+calgary,canada,Desktop Developers,Other Kinds of Developers,985,0.039110581695453644,1.0722842720063377
+calgary,canada,Embedded Developers,Other Kinds of Developers,1247,0.04951359936470121,0.6797282195927494
+calgary,canada,Front-End Web Developers,Other Kinds of Developers,2266,0.08997419098669843,0.9195673193322079
+calgary,canada,Full-Stack Web Developers,Other Kinds of Developers,14826,0.58868374032162,1.0233790798348308
+calgary,canada,Graphics Programmers,Other Kinds of Developers,425,0.01687512408179472,1.0384194090445793
+calgary,canada,Machine Learning Specialists,Other Kinds of Developers,788,0.03128846535636291,0.803675842645498
+calgary,canada,Systems Administrators,Other Kinds of Developers,2665,0.10581695453643042,1.0452313924104095
+edmonton,canada,All Developers,-,17885,1,1
+edmonton,canada,Mobile Developers,All Developers,812,0.045401174168297455,0.891507055959415
+edmonton,canada,Other Kinds of Developers,All Developers,6115,0.34190662566396424,0.9514539323646376
+edmonton,canada,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,11268,0.6300251607492312,0.979377949194218
+edmonton,canada,Android Developers,Mobile Developers,528,0.02952194576460721,0.9836992952561882
+edmonton,canada,iOS Developers,Mobile Developers,282,0.01576740285155158,0.7655153781163233
+edmonton,canada,Back-End Web Developers,Other Kinds of Developers,2318,0.1296058149287112,0.9450301345800134
+edmonton,canada,Data Scientists,Other Kinds of Developers,823,0.04601621470506011,1.2208939056594181
+edmonton,canada,Database Administrators,Other Kinds of Developers,1131,0.06323734973441432,1.0695743191450466
+edmonton,canada,Desktop Developers,Other Kinds of Developers,496,0.027732736930388593,0.7603409701677178
+edmonton,canada,Embedded Developers,Other Kinds of Developers,1128,0.06306961140620632,0.8658266662413117
+edmonton,canada,Front-End Web Developers,Other Kinds of Developers,1602,0.0895722672630696,0.9154595200059765
+edmonton,canada,Full-Stack Web Developers,Other Kinds of Developers,10107,0.5651104277327369,0.982398782107073
+edmonton,canada,Graphics Programmers,Other Kinds of Developers,252,0.014090019569471625,0.8670365754846169
+edmonton,canada,Machine Learning Specialists,Other Kinds of Developers,817,0.045680738048644115,1.1733559069060047
+edmonton,canada,Systems Administrators,Other Kinds of Developers,1742,0.09740005591277608,0.9620915335218164
+guelph,canada,All Developers,-,3365,1,1
+guelph,canada,Mobile Developers,All Developers,132,0.03922734026745914,0.7702763480372812
+guelph,canada,Other Kinds of Developers,All Developers,1786,0.5307578008915305,1.4769868697653563
+guelph,canada,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,1589,0.47221396731054976,0.7340594879345634
+guelph,canada,Android Developers,Mobile Developers,78,0.023179791976225855,0.7723727024298934
+guelph,canada,iOS Developers,Mobile Developers,55,0.01634472511144131,0.7935446656429604
+guelph,canada,Back-End Web Developers,Other Kinds of Developers,346,0.10282317979197622,0.7497426214263955
+guelph,canada,Data Scientists,Other Kinds of Developers,321,0.09539375928677563,2.530970009107657
+guelph,canada,Database Administrators,Other Kinds of Developers,152,0.04517087667161961,0.7640043402220528
+guelph,canada,Desktop Developers,Other Kinds of Developers,100,0.029717682020802376,0.8147616744625433
+guelph,canada,Embedded Developers,Other Kinds of Developers,779,0.23150074294205053,3.1780680429906436
+guelph,canada,Front-End Web Developers,Other Kinds of Developers,190,0.05646359583952452,0.5770774585090163
+guelph,canada,Full-Stack Web Developers,Other Kinds of Developers,1440,0.4279346210995542,0.7439297347181121
+guelph,canada,Graphics Programmers,Other Kinds of Developers,39,0.011589895988112928,0.7131901895671507
+guelph,canada,Machine Learning Specialists,Other Kinds of Developers,318,0.09450222882615156,2.42738522067813
+guelph,canada,Systems Administrators,Other Kinds of Developers,289,0.08588410104011887,0.8483400312298193
+halifax,canada,All Developers,-,5744,1,1
+halifax,canada,Mobile Developers,All Developers,268,0.04665738161559889,0.9161742110172683
+halifax,canada,Other Kinds of Developers,All Developers,2158,0.37569637883008355,1.045483679407715
+halifax,canada,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,3799,0.6613857938718662,1.0281282443674349
+halifax,canada,Android Developers,Mobile Developers,83,0.014449860724233984,0.48148309479045487
+halifax,canada,iOS Developers,Mobile Developers,183,0.03185933147632312,1.5467866465548452
+halifax,canada,Back-End Web Developers,Other Kinds of Developers,916,0.1594707520891365,1.1627924749461795
+halifax,canada,Data Scientists,Other Kinds of Developers,307,0.05344707520891365,1.4180481557668794
+halifax,canada,Database Administrators,Other Kinds of Developers,380,0.06615598885793872,1.1189391560094044
+halifax,canada,Desktop Developers,Other Kinds of Developers,234,0.04073816155988858,1.1169071902655838
+halifax,canada,Embedded Developers,Other Kinds of Developers,421,0.07329387186629527,1.0061864552358346
+halifax,canada,Front-End Web Developers,Other Kinds of Developers,533,0.0927924791086351,0.9483711976997082
+halifax,canada,Full-Stack Web Developers,Other Kinds of Developers,3419,0.5952298050139275,1.0347588839681894
+halifax,canada,Graphics Programmers,Other Kinds of Developers,143,0.024895543175487464,1.5319600085206642
+halifax,canada,Machine Learning Specialists,Other Kinds of Developers,302,0.05257660167130919,1.350483130775639
+halifax,canada,Systems Administrators,Other Kinds of Developers,534,0.09296657381615599,0.9182987908051334
+hamilton,canada,All Developers,-,7332,1,1
+hamilton,canada,Mobile Developers,All Developers,288,0.03927986906710311,0.7713078146542036
+hamilton,canada,Other Kinds of Developers,All Developers,2448,0.33387888707037644,0.9291144312273553
+hamilton,canada,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,5002,0.682214948172395,1.060507291575712
+hamilton,canada,Android Developers,Mobile Developers,159,0.021685761047463174,0.7225901717175465
+hamilton,canada,iOS Developers,Mobile Developers,129,0.017594108019639936,0.8542028373397423
+hamilton,canada,Back-End Web Developers,Other Kinds of Developers,1174,0.1601200218221495,1.1675266719689403
+hamilton,canada,Data Scientists,Other Kinds of Developers,528,0.07201309328968904,1.9106383975428654
+hamilton,canada,Database Administrators,Other Kinds of Developers,382,0.05210038188761593,0.8812075572217976
+hamilton,canada,Desktop Developers,Other Kinds of Developers,189,0.025777414075286414,0.7067324107106664
+hamilton,canada,Embedded Developers,Other Kinds of Developers,538,0.07337697763229678,1.007327340469122
+hamilton,canada,Front-End Web Developers,Other Kinds of Developers,619,0.08442444080741954,0.8628469549770852
+hamilton,canada,Full-Stack Web Developers,Other Kinds of Developers,4499,0.6136115657392253,1.0667140885853947
+hamilton,canada,Graphics Programmers,Other Kinds of Developers,132,0.01800327332242226,1.1078406507544625
+hamilton,canada,Machine Learning Specialists,Other Kinds of Developers,517,0.07051282051282051,1.8111930322407874
+hamilton,canada,Systems Administrators,Other Kinds of Developers,497,0.06778505182760503,0.6695624951291423
+kitchener_waterloo,canada,All Developers,-,15365,1,1
+kitchener_waterloo,canada,Mobile Developers,All Developers,823,0.05356329319882851,1.051780151107252
+kitchener_waterloo,canada,Other Kinds of Developers,All Developers,6540,0.42564269443540514,1.1844737276336716
+kitchener_waterloo,canada,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,9121,0.593621867881549,0.9227888087378768
+kitchener_waterloo,canada,Android Developers,Mobile Developers,417,0.027139602993817118,0.9043173695738221
+kitchener_waterloo,canada,iOS Developers,Mobile Developers,412,0.026814188089814513,1.3018423850594176
+kitchener_waterloo,canada,Back-End Web Developers,Other Kinds of Developers,2535,0.16498535632931988,1.2030026089600163
+kitchener_waterloo,canada,Data Scientists,Other Kinds of Developers,1082,0.07041978522616336,1.8683650354885415
+kitchener_waterloo,canada,Database Administrators,Other Kinds of Developers,535,0.03481939472827855,0.5889230109413294
+kitchener_waterloo,canada,Desktop Developers,Other Kinds of Developers,593,0.038594207614708755,1.0581269830770645
+kitchener_waterloo,canada,Embedded Developers,Other Kinds of Developers,2382,0.15502766026684023,2.1282370268547495
+kitchener_waterloo,canada,Front-End Web Developers,Other Kinds of Developers,971,0.06319557435730556,0.6458806049614597
+kitchener_waterloo,canada,Full-Stack Web Developers,Other Kinds of Developers,8246,0.5366742596810934,0.9329648033822308
+kitchener_waterloo,canada,Graphics Programmers,Other Kinds of Developers,246,0.016010413276928082,0.9852089864940994
+kitchener_waterloo,canada,Machine Learning Specialists,Other Kinds of Developers,1062,0.06911812561015294,1.7753688846397997
+kitchener_waterloo,canada,Systems Administrators,Other Kinds of Developers,1192,0.07757891311422063,0.7663036205426441
+london,canada,All Developers,-,9082,1,1
+london,canada,Mobile Developers,All Developers,363,0.03996916978639066,0.7848430693294417
+london,canada,Other Kinds of Developers,All Developers,3442,0.3789914115833517,1.054653059685968
+london,canada,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,5942,0.6542611759524334,1.0170529824232475
+london,canada,Android Developers,Mobile Developers,230,0.025324818321955517,0.8438470192457552
+london,canada,iOS Developers,Mobile Developers,132,0.014534243558687513,0.7056448711443016
+london,canada,Back-End Web Developers,Other Kinds of Developers,1435,0.1580048447478529,1.1521037059833281
+london,canada,Data Scientists,Other Kinds of Developers,518,0.05703589517727373,1.5132660796218338
+london,canada,Database Administrators,Other Kinds of Developers,468,0.05153049988989209,0.8715687733026671
+london,canada,Desktop Developers,Other Kinds of Developers,245,0.026976436908170007,0.7396056963981307
+london,canada,Embedded Developers,Other Kinds of Developers,938,0.10328121559127945,1.4178560575679717
+london,canada,Front-End Web Developers,Other Kinds of Developers,855,0.09414225941422594,0.9621664187924223
+london,canada,Full-Stack Web Developers,Other Kinds of Developers,5337,0.5876458929751156,1.0215748661463493
+london,canada,Graphics Programmers,Other Kinds of Developers,195,0.021471041620788372,1.3212315502606597
+london,canada,Machine Learning Specialists,Other Kinds of Developers,511,0.0562651398370403,1.445226960001868
+london,canada,Systems Administrators,Other Kinds of Developers,792,0.08720546135212508,0.8613920726993988
+montreal,canada,All Developers,-,122329,1,1
+montreal,canada,Mobile Developers,All Developers,7395,0.060451732622681456,1.187043004181261
+montreal,canada,Other Kinds of Developers,All Developers,43909,0.3589418698754997,0.9988594193521501
+montreal,canada,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,79629,0.6509413139974985,1.0118922367965724
+montreal,canada,Android Developers,Mobile Developers,5395,0.04410237964832542,1.469533211838274
+montreal,canada,iOS Developers,Mobile Developers,1996,0.016316654268407327,0.7921818120251822
+montreal,canada,Back-End Web Developers,Other Kinds of Developers,16581,0.13554431083389876,0.9883311052005763
+montreal,canada,Data Scientists,Other Kinds of Developers,5168,0.042246728085736006,1.1208825668195146
+montreal,canada,Database Administrators,Other Kinds of Developers,7297,0.05965061432693801,1.0089095364253944
+montreal,canada,Desktop Developers,Other Kinds of Developers,4794,0.03918939907953143,1.074445186972149
+montreal,canada,Embedded Developers,Other Kinds of Developers,8279,0.06767814663734682,0.9290931523741462
+montreal,canada,Front-End Web Developers,Other Kinds of Developers,10418,0.08516377964342062,0.870403253333802
+montreal,canada,Full-Stack Web Developers,Other Kinds of Developers,72471,0.5924269797022783,1.02988639880866
+montreal,canada,Graphics Programmers,Other Kinds of Developers,2713,0.022177897309713968,1.364728277349368
+montreal,canada,Machine Learning Specialists,Other Kinds of Developers,5098,0.04167450073163355,1.0704516540155211
+montreal,canada,Systems Administrators,Other Kinds of Developers,11195,0.09151550327395794,0.9039655065979677
+ottawa,canada,All Developers,-,42473,1,1
+ottawa,canada,Mobile Developers,All Developers,2032,0.0478421585477833,0.939438741376439
+ottawa,canada,Other Kinds of Developers,All Developers,15945,0.37541496951004166,1.0447005767005417
+ottawa,canada,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,27101,0.6380759541355685,0.9918929565420527
+ottawa,canada,Android Developers,Mobile Developers,1231,0.028983118687165965,0.9657450648484026
+ottawa,canada,iOS Developers,Mobile Developers,812,0.019118027923622067,0.9281899189472295
+ottawa,canada,Back-End Web Developers,Other Kinds of Developers,6312,0.14861205942598826,1.083615535281378
+ottawa,canada,Data Scientists,Other Kinds of Developers,1374,0.032349963506227486,0.8583033947100088
+ottawa,canada,Database Administrators,Other Kinds of Developers,2361,0.0555882560685612,0.940200235884261
+ottawa,canada,Desktop Developers,Other Kinds of Developers,1426,0.033574270713158945,0.9204967266950226
+ottawa,canada,Embedded Developers,Other Kinds of Developers,3248,0.07647211169448827,1.0498176864041453
+ottawa,canada,Front-End Web Developers,Other Kinds of Developers,3667,0.08633720245803216,0.8823960399345185
+ottawa,canada,Full-Stack Web Developers,Other Kinds of Developers,24347,0.5732347609069292,0.9965222783727148
+ottawa,canada,Graphics Programmers,Other Kinds of Developers,529,0.012454971393591223,0.7664230480031305
+ottawa,canada,Machine Learning Specialists,Other Kinds of Developers,1364,0.03211451981258682,0.8248938858961173
+ottawa,canada,Systems Administrators,Other Kinds of Developers,5357,0.1261271866833047,1.245850398316003
+quebec city,canada,All Developers,-,14625,1,1
+quebec city,canada,Mobile Developers,All Developers,490,0.033504273504273506,0.6578969989439374
+quebec city,canada,Other Kinds of Developers,All Developers,5450,0.37264957264957266,1.0370050612587671
+quebec city,canada,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,9226,0.6308376068376068,0.9806409015863381
+quebec city,canada,Android Developers,Mobile Developers,270,0.018461538461538463,0.6151560103376548
+quebec city,canada,iOS Developers,Mobile Developers,219,0.014974358974358974,0.7270126970325967
+quebec city,canada,Back-End Web Developers,Other Kinds of Developers,1932,0.1321025641025641,0.963235361012767
+quebec city,canada,Data Scientists,Other Kinds of Developers,681,0.046564102564102566,1.2354303674778686
+quebec city,canada,Database Administrators,Other Kinds of Developers,1197,0.08184615384615385,1.3843170949177273
+quebec city,canada,Desktop Developers,Other Kinds of Developers,494,0.033777777777777775,0.9260762250091147
+quebec city,canada,Embedded Developers,Other Kinds of Developers,879,0.0601025641025641,0.8250947096267824
+quebec city,canada,Front-End Web Developers,Other Kinds of Developers,1189,0.0812991452991453,0.8309053550455048
+quebec city,canada,Full-Stack Web Developers,Other Kinds of Developers,8385,0.5733333333333334,0.9966936385651596
+quebec city,canada,Graphics Programmers,Other Kinds of Developers,236,0.016136752136752138,0.992983312983313
+quebec city,canada,Machine Learning Specialists,Other Kinds of Developers,671,0.04588034188034188,1.1784829329780058
+quebec city,canada,Systems Administrators,Other Kinds of Developers,1573,0.10755555555555556,1.0624048252693252
+regina,canada,All Developers,-,3546,1,1
+regina,canada,Mobile Developers,All Developers,140,0.03948110547095319,0.7752593352312532
+regina,canada,Other Kinds of Developers,All Developers,1634,0.4608009024252679,1.282311595448862
+regina,canada,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,1846,0.5205865764241399,0.8092550033874742
+regina,canada,Android Developers,Mobile Developers,75,0.021150592216582064,0.7047578375625274
+regina,canada,iOS Developers,Mobile Developers,65,0.01833051325437112,0.8899556837038224
+regina,canada,Back-End Web Developers,Other Kinds of Developers,320,0.09024252679075014,0.6580098839300674
+regina,canada,Data Scientists,Other Kinds of Developers,87,0.024534686971235193,0.6509498878261426
+regina,canada,Database Administrators,Other Kinds of Developers,297,0.08375634517766498,1.4166254000794458
+regina,canada,Desktop Developers,Other Kinds of Developers,105,0.02961082910321489,0.8118321168343997
+regina,canada,Embedded Developers,Other Kinds of Developers,571,0.16102650874224478,2.210589888414242
+regina,canada,Front-End Web Developers,Other Kinds of Developers,319,0.08996051889452905,0.9194275858263216
+regina,canada,Full-Stack Web Developers,Other Kinds of Developers,1600,0.4512126339537507,0.7843966777359301
+regina,canada,Graphics Programmers,Other Kinds of Developers,57,0.016074450084602367,0.9891495242738465
+regina,canada,Machine Learning Specialists,Other Kinds of Developers,85,0.023970671178793007,0.6157109062070667
+regina,canada,Systems Administrators,Other Kinds of Developers,412,0.1161872532430908,1.1476664114899158
+saskatoon,canada,All Developers,-,3963,1,1
+saskatoon,canada,Mobile Developers,All Developers,112,0.028261418117587686,0.5549471819793135
+saskatoon,canada,Other Kinds of Developers,All Developers,1543,0.3893515013878375,1.08348300167667
+saskatoon,canada,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,2498,0.6303305576583397,0.979852690549273
+saskatoon,canada,Android Developers,Mobile Developers,52,0.013121372697451426,0.4372166109305394
+saskatoon,canada,iOS Developers,Mobile Developers,60,0.01514004542013626,0.7350568577217154
+saskatoon,canada,Back-End Web Developers,Other Kinds of Developers,641,0.16174615190512237,1.1793837165930705
+saskatoon,canada,Data Scientists,Other Kinds of Developers,204,0.05147615442846329,1.3657560412413283
+saskatoon,canada,Database Administrators,Other Kinds of Developers,229,0.05778450668685339,0.9773468473345727
+saskatoon,canada,Desktop Developers,Other Kinds of Developers,108,0.02725208175624527,0.7471629768689818
+saskatoon,canada,Embedded Developers,Other Kinds of Developers,284,0.07166288165531164,0.9837960395417685
+saskatoon,canada,Front-End Web Developers,Other Kinds of Developers,282,0.07115821347464042,0.7272615279532528
+saskatoon,canada,Full-Stack Web Developers,Other Kinds of Developers,2242,0.565733030532425,0.9834811267288206
+saskatoon,canada,Graphics Programmers,Other Kinds of Developers,82,0.020691395407519558,1.2732556209506132
+saskatoon,canada,Machine Learning Specialists,Other Kinds of Developers,204,0.05147615442846329,1.3222170315883472
+saskatoon,canada,Systems Administrators,Other Kinds of Developers,537,0.13550340651021953,1.3384661738140424
+toronto,canada,All Developers,-,201153,1,1
+toronto,canada,Mobile Developers,All Developers,10798,0.05368053173455032,1.0540822717845477
+toronto,canada,Other Kinds of Developers,All Developers,69889,0.34744199688794103,0.9668577014724261
+toronto,canada,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,131578,0.6541190039422728,1.0168319751676353
+toronto,canada,Android Developers,Mobile Developers,5481,0.027247915765611253,0.9079264540877863
+toronto,canada,iOS Developers,Mobile Developers,5264,0.02616913493708769,1.2705247284507892
+toronto,canada,Back-End Web Developers,Other Kinds of Developers,29790,0.1480962252613682,1.0798542933164248
+toronto,canada,Data Scientists,Other Kinds of Developers,6636,0.03298981372388182,0.8752797852340023
+toronto,canada,Database Administrators,Other Kinds of Developers,10826,0.053819729260811425,0.9102879947129755
+toronto,canada,Desktop Developers,Other Kinds of Developers,7708,0.03831909044359269,1.0505841697831135
+toronto,canada,Embedded Developers,Other Kinds of Developers,13415,0.06669052909973999,0.91553502856393
+toronto,canada,Front-End Web Developers,Other Kinds of Developers,20459,0.10170864963485506,1.0394975411498766
+toronto,canada,Full-Stack Web Developers,Other Kinds of Developers,116322,0.5782762374908652,1.0052864777451291
+toronto,canada,Graphics Programmers,Other Kinds of Developers,2524,0.012547662724393869,0.7721268565493136
+toronto,canada,Machine Learning Specialists,Other Kinds of Developers,7448,0.03702654198545386,0.9510641379014455
+toronto,canada,Systems Administrators,Other Kinds of Developers,20291,0.10087346447728843,0.9964009283272167
+vancouver,canada,All Developers,-,63709,1,1
+vancouver,canada,Mobile Developers,All Developers,3642,0.05716617746315277,1.1225271483444532
+vancouver,canada,Other Kinds of Developers,All Developers,23156,0.3634651305153118,1.0114466984506523
+vancouver,canada,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,41346,0.6489820904424807,1.0088466118487613
+vancouver,canada,Android Developers,Mobile Developers,1862,0.029226639878196174,0.9738594224150219
+vancouver,canada,iOS Developers,Mobile Developers,1766,0.027719788412940087,1.345809738485129
+vancouver,canada,Back-End Web Developers,Other Kinds of Developers,9082,0.14255442716099767,1.0394458733123602
+vancouver,canada,Data Scientists,Other Kinds of Developers,2782,0.043667299753567,1.1585729179908066
+vancouver,canada,Database Administrators,Other Kinds of Developers,2893,0.04540959676026935,0.7680419679429508
+vancouver,canada,Desktop Developers,Other Kinds of Developers,2634,0.041344237077963863,1.1335237993137628
+vancouver,canada,Embedded Developers,Other Kinds of Developers,5241,0.08226467218132447,1.1293386034273474
+vancouver,canada,Front-End Web Developers,Other Kinds of Developers,7363,0.11557236811125586,1.1811895341037786
+vancouver,canada,Full-Stack Web Developers,Other Kinds of Developers,36449,0.5721169693449905,0.9945790881302274
+vancouver,canada,Graphics Programmers,Other Kinds of Developers,1053,0.016528277009527696,1.0170759966900043
+vancouver,canada,Machine Learning Specialists,Other Kinds of Developers,2732,0.04288248128207946,1.101479854846776
+vancouver,canada,Systems Administrators,Other Kinds of Developers,6006,0.0942723947950839,0.9311973389255449
+victoria,canada,All Developers,-,7900,1,1
+victoria,canada,Mobile Developers,All Developers,325,0.04113924050632911,0.8078188253953505
+victoria,canada,Other Kinds of Developers,All Developers,2911,0.36848101265822786,1.0254048391561368
+victoria,canada,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,5202,0.6584810126582279,1.023612744280918
+victoria,canada,Android Developers,Mobile Developers,149,0.018860759493670887,0.628458434611834
+victoria,canada,iOS Developers,Mobile Developers,175,0.022151898734177215,1.0754858802773264
+victoria,canada,Back-End Web Developers,Other Kinds of Developers,1178,0.14911392405063292,1.0872749173394267
+victoria,canada,Data Scientists,Other Kinds of Developers,392,0.04962025316455696,1.3165156037752783
+victoria,canada,Database Administrators,Other Kinds of Developers,462,0.058481012658227846,0.9891273046630662
+victoria,canada,Desktop Developers,Other Kinds of Developers,252,0.03189873417721519,0.8745589933047437
+victoria,canada,Embedded Developers,Other Kinds of Developers,682,0.08632911392405063,1.1851357134106557
+victoria,canada,Front-End Web Developers,Other Kinds of Developers,792,0.10025316455696202,1.0246219807616317
+victoria,canada,Full-Stack Web Developers,Other Kinds of Developers,4702,0.5951898734177216,1.0346894661171726
+victoria,canada,Graphics Programmers,Other Kinds of Developers,150,0.0189873417721519,1.1683958071535845
+victoria,canada,Machine Learning Specialists,Other Kinds of Developers,377,0.047721518987341775,1.2257754270672636
+victoria,canada,Systems Administrators,Other Kinds of Developers,743,0.0940506329113924,0.9290068347337558
+winnipeg,canada,All Developers,-,10439,1,1
+winnipeg,canada,Mobile Developers,All Developers,420,0.04023373886387585,0.7900382036775622
+winnipeg,canada,Other Kinds of Developers,All Developers,3292,0.3153558769997126,0.8775688060534108
+winnipeg,canada,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,7058,0.6761184021457994,1.0510301736498269
+winnipeg,canada,Android Developers,Mobile Developers,267,0.025577162563463932,0.8522553692411468
+winnipeg,canada,iOS Developers,Mobile Developers,153,0.014656576300411917,0.7115841875884139
+winnipeg,canada,Back-End Web Developers,Other Kinds of Developers,1514,0.14503304914263818,1.0575189240174625
+winnipeg,canada,Data Scientists,Other Kinds of Developers,363,0.03477344573234984,0.9226027878546027
+winnipeg,canada,Database Administrators,Other Kinds of Developers,682,0.06533192834562697,1.105001285983354
+winnipeg,canada,Desktop Developers,Other Kinds of Developers,286,0.0273972602739726,0.7511432971414954
+winnipeg,canada,Embedded Developers,Other Kinds of Developers,567,0.0543155474662324,0.7456498992022009
+winnipeg,canada,Front-End Web Developers,Other Kinds of Developers,1178,0.11284605805153751,1.1533257033119655
+winnipeg,canada,Full-Stack Web Developers,Other Kinds of Developers,6182,0.5922023182297155,1.0294958430054029
+winnipeg,canada,Graphics Programmers,Other Kinds of Developers,193,0.01848836095411438,1.1376907667829423
+winnipeg,canada,Machine Learning Specialists,Other Kinds of Developers,355,0.034007088801609346,0.8735064323950814
+winnipeg,canada,Systems Administrators,Other Kinds of Developers,932,0.08928058243126737,0.8818895601244914
+amsterdam,international,All Developers,-,NA,1,1
+amsterdam,international,Mobile Developers,All Developers,NA,0.06722527578121996,1.459866681250717
+amsterdam,international,Other Kinds of Developers,All Developers,NA,0.33783039294820055,0.9407175676706985
+amsterdam,international,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,NA,0.6866407861526438,0.997960024914107
+amsterdam,international,Android Developers,Mobile Developers,NA,0.04139601030095707,1.5183439342764442
+amsterdam,international,iOS Developers,Mobile Developers,NA,0.025867701887227583,1.383526116754116
+amsterdam,international,Back-End Web Developers,Other Kinds of Developers,NA,0.1670190003971762,1.1181559419889358
+amsterdam,international,Business Intelligence Developers,Other Kinds of Developers,NA,0.001306837836799016,1.2367677330634244
+amsterdam,international,Data Scientists,Other Kinds of Developers,NA,0.038500467642951404,0.8901187937761939
+amsterdam,international,Database Administrators,Other Kinds of Developers,NA,0.07838464593663118,0.8279156104319443
+amsterdam,international,Desktop Developers,Other Kinds of Developers,NA,0.03893608025521774,1.1853390106334902
+amsterdam,international,Embedded Developers,Other Kinds of Developers,NA,0.03149222943972531,0.8942966317600178
+amsterdam,international,Front-End Web Developers,Other Kinds of Developers,NA,0.10293269785140485,0.8837931659835938
+amsterdam,international,Full-Stack Web Developers,Other Kinds of Developers,NA,0.6228363505912801,1.0130452402502677
+amsterdam,international,Graphics Programmers,Other Kinds of Developers,NA,0.010557199779631267,0.8033080004290171
+amsterdam,international,Highly Technical Designers,Other Kinds of Developers,NA,0.019141330668409118,0.8988840117712358
+amsterdam,international,Highly Technical Product Managers,Other Kinds of Developers,NA,0.0023830572318099706,0.9931518547211957
+amsterdam,international,Machine Learning Specialists,Other Kinds of Developers,NA,0.04061447002600863,0.9310175543607117
+amsterdam,international,Quality Assurance Engineers,Other Kinds of Developers,NA,0.02304903204315127,1.234223590494543
+amsterdam,international,Systems Administrators,Other Kinds of Developers,NA,0.1048673303352936,0.9835660640580506
+helsinki,international,All Developers,-,NA,1,1
+helsinki,international,Mobile Developers,All Developers,NA,0.04681719984611287,1.0537886293659249
+helsinki,international,Other Kinds of Developers,All Developers,NA,0.35151371667011927,0.9531002140986767
+helsinki,international,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,NA,0.6708591044952799,1.0169854236511464
+helsinki,international,Android Developers,Mobile Developers,NA,0.027285371844574,0.916771805676864
+helsinki,international,iOS Developers,Mobile Developers,NA,0.019650202716699712,1.3399334507269494
+helsinki,international,Back-End Web Developers,Other Kinds of Developers,NA,0.1555443757213459,1.0718720853315107
+helsinki,international,Business Intelligence Developers,Other Kinds of Developers,NA,0.0015388712970909413,1.3802105258071977
+helsinki,international,Data Scientists,Other Kinds of Developers,NA,0.04826729010683318,1.2372416830650945
+helsinki,international,Database Administrators,Other Kinds of Developers,NA,0.053505371252700426,0.9347859494389499
+helsinki,international,Desktop Developers,Other Kinds of Developers,NA,0.034003136929951765,1.1766691825177322
+helsinki,international,Embedded Developers,Other Kinds of Developers,NA,0.040720902015329526,0.6460657768121668
+helsinki,international,Front-End Web Developers,Other Kinds of Developers,NA,0.11008848509958273,1.0579857299707986
+helsinki,international,Full-Stack Web Developers,Other Kinds of Developers,NA,0.6053978870113343,1.0283913317115019
+helsinki,international,Graphics Programmers,Other Kinds of Developers,NA,0.018140925098398982,0.8694191670931717
+helsinki,international,Highly Technical Designers,Other Kinds of Developers,NA,0.018407268207510874,0.8698522829932128
+helsinki,international,Highly Technical Product Managers,Other Kinds of Developers,NA,0.002101151194104939,1.168878388335745
+helsinki,international,Machine Learning Specialists,Other Kinds of Developers,NA,0.047793791246189814,1.216941794720481
+helsinki,international,Quality Assurance Engineers,Other Kinds of Developers,NA,0.024769909147406115,1.0858732840002034
+helsinki,international,Systems Administrators,Other Kinds of Developers,NA,0.12455979402799562,0.9607149575188402
+munich,international,All Developers,-,NA,1,1
+munich,international,Mobile Developers,All Developers,NA,0.0530299890873427,1.0215611378044065
+munich,international,Other Kinds of Developers,All Developers,NA,0.4075255894906966,1.041091389620353
+munich,international,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,NA,0.6117304159241915,0.9544883399105992
+munich,international,Android Developers,Mobile Developers,NA,0.029961460362189715,0.8773531407857333
+munich,international,iOS Developers,Mobile Developers,NA,0.023455306452281298,1.3048190234287027
+munich,international,Back-End Web Developers,Other Kinds of Developers,NA,0.13126959788929868,1.0135667221270126
+munich,international,Business Intelligence Developers,Other Kinds of Developers,NA,7.73555454256627e-4,1.3263073026690166
+munich,international,Data Scientists,Other Kinds of Developers,NA,0.04750459298550965,1.1411526351907066
+munich,international,Database Administrators,Other Kinds of Developers,NA,0.05800284557899244,0.8325315001675851
+munich,international,Desktop Developers,Other Kinds of Developers,NA,0.04340198637989861,1.0774015519691935
+munich,international,Embedded Developers,Other Kinds of Developers,NA,0.08386169933557112,1.135559790319461
+munich,international,Front-End Web Developers,Other Kinds of Developers,NA,0.06832152279916566,0.8538785559012874
+munich,international,Full-Stack Web Developers,Other Kinds of Developers,NA,0.5612973630047104,0.9640351719618907
+munich,international,Graphics Programmers,Other Kinds of Developers,NA,0.01284654593676184,0.8178818611749996
+munich,international,Highly Technical Designers,Other Kinds of Developers,NA,0.024090727003992098,0.8974182237082943
+munich,international,Highly Technical Product Managers,Other Kinds of Developers,NA,0.0018233807136049066,1.2182628812441088
+munich,international,Machine Learning Specialists,Other Kinds of Developers,NA,0.04783611675161963,1.1502652685299697
+munich,international,Quality Assurance Engineers,Other Kinds of Developers,NA,0.01895210862928736,1.147415584139298
+munich,international,Systems Administrators,Other Kinds of Developers,NA,0.12599284461204813,1.0836870146287967
+nyc_metro_area,international,All Developers,-,NA,1,1
+nyc_metro_area,international,Mobile Developers,All Developers,NA,0.051030860072521715,1.0305454755053687
+nyc_metro_area,international,Other Kinds of Developers,All Developers,NA,0.3325482291335736,0.9186574845577252
+nyc_metro_area,international,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,NA,0.6590657625187604,1.0249589342145158
+nyc_metro_area,international,Android Developers,Mobile Developers,NA,0.02324091013660813,0.9187971414255016
+nyc_metro_area,international,iOS Developers,Mobile Developers,NA,0.027644796950144056,1.132851754498015
+nyc_metro_area,international,Back-End Web Developers,Other Kinds of Developers,NA,0.1586083936768073,1.0309612071620171
+nyc_metro_area,international,Business Intelligence Developers,Other Kinds of Developers,NA,0.001739097093653802,1.0361720781109247
+nyc_metro_area,international,Data Scientists,Other Kinds of Developers,NA,0.04006222407239026,1.0198206659287667
+nyc_metro_area,international,Database Administrators,Other Kinds of Developers,NA,0.05300274969052288,0.9701594664911056
+nyc_metro_area,international,Desktop Developers,Other Kinds of Developers,NA,0.039862296375009584,1.0377136062016459
+nyc_metro_area,international,Embedded Developers,Other Kinds of Developers,NA,0.04289133792710581,0.6670318469529942
+nyc_metro_area,international,Front-End Web Developers,Other Kinds of Developers,NA,0.09575167336743973,1.0840281359654458
+nyc_metro_area,international,Full-Stack Web Developers,Other Kinds of Developers,NA,0.5932977662872605,1.0321727719075051
+nyc_metro_area,international,Graphics Programmers,Other Kinds of Developers,NA,0.007827306289232387,0.6798504969626106
+nyc_metro_area,international,Highly Technical Designers,Other Kinds of Developers,NA,0.018467294019696986,0.8487489368260173
+nyc_metro_area,international,Highly Technical Product Managers,Other Kinds of Developers,NA,0.002193727200026292,0.9358849807433252
+nyc_metro_area,international,Machine Learning Specialists,Other Kinds of Developers,NA,0.043869066529364724,1.0373239236000538
+nyc_metro_area,international,Quality Assurance Engineers,Other Kinds of Developers,NA,0.02702584270893814,1.0687894194411554
+nyc_metro_area,international,Systems Administrators,Other Kinds of Developers,NA,0.1020124229045934,0.8736638526428544
+paris,international,All Developers,-,NA,1,1
+paris,international,Mobile Developers,All Developers,NA,0.04929411689856787,0.9547848235142214
+paris,international,Other Kinds of Developers,All Developers,NA,0.37154454475470644,0.9670759121109531
+paris,international,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,NA,0.6773169443755209,0.9954841485888148
+paris,international,Android Developers,Mobile Developers,NA,0.027688177173795483,0.8251492551412781
+paris,international,iOS Developers,Mobile Developers,NA,0.021726821012985197,1.1948478979204624
+paris,international,Back-End Web Developers,Other Kinds of Developers,NA,0.14493030239408572,1.0559532163418488
+paris,international,Business Intelligence Developers,Other Kinds of Developers,NA,9.924989979577423e-4,1.2489065097033305
+paris,international,Data Scientists,Other Kinds of Developers,NA,0.02976224559260461,0.9784566200014874
+paris,international,Database Administrators,Other Kinds of Developers,NA,0.08696454360951526,0.9539936379181368
+paris,international,Desktop Developers,Other Kinds of Developers,NA,0.03654432207864918,1.0949571477775708
+paris,international,Embedded Developers,Other Kinds of Developers,NA,0.05213164608503681,0.8385823214702887
+paris,international,Front-End Web Developers,Other Kinds of Developers,NA,0.0837389218661526,0.9357867643416483
+paris,international,Full-Stack Web Developers,Other Kinds of Developers,NA,0.6198283485707379,0.9990715017892736
+paris,international,Graphics Programmers,Other Kinds of Developers,NA,0.010841142900769186,0.7170222063920003
+paris,international,Highly Technical Designers,Other Kinds of Developers,NA,0.018335782769962908,0.7987353593898242
+paris,international,Highly Technical Product Managers,Other Kinds of Developers,NA,0.0016732515157877324,1.2211434582439027
+paris,international,Machine Learning Specialists,Other Kinds of Developers,NA,0.032249855260562794,1.0101106513155413
+paris,international,Quality Assurance Engineers,Other Kinds of Developers,NA,0.018940189211026918,1.1717334135850686
+paris,international,Systems Administrators,Other Kinds of Developers,NA,0.12718620171905917,1.0127890782527362
+sf_silicon_valley,international,All Developers,-,NA,1,1
+sf_silicon_valley,international,Mobile Developers,All Developers,NA,0.08752908241436057,1.7676108090097962
+sf_silicon_valley,international,Other Kinds of Developers,All Developers,NA,0.36540942364802237,1.0094358428453587
+sf_silicon_valley,international,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,NA,0.6509637391945826,1.0123589151214378
+sf_silicon_valley,international,Android Developers,Mobile Developers,NA,0.04330678873399285,1.7120738154929194
+sf_silicon_valley,international,iOS Developers,Mobile Developers,NA,0.04400854975693722,1.8034193882838314
+sf_silicon_valley,international,Back-End Web Developers,Other Kinds of Developers,NA,0.2030359203283712,1.3197419926307286
+sf_silicon_valley,international,Business Intelligence Developers,Other Kinds of Developers,NA,0.0010081903644995932,0.6006902713638321
+sf_silicon_valley,international,Data Scientists,Other Kinds of Developers,NA,0.02165055705827832,0.551134791643254
+sf_silicon_valley,international,Database Administrators,Other Kinds of Developers,NA,0.04288875858285887,0.7850335197355252
+sf_silicon_valley,international,Desktop Developers,Other Kinds of Developers,NA,0.066281423194053,1.7254684486766882
+sf_silicon_valley,international,Embedded Developers,Other Kinds of Developers,NA,0.05568123782321675,0.8659361237220182
+sf_silicon_valley,international,Front-End Web Developers,Other Kinds of Developers,NA,0.06951784667183687,0.7870285614207225
+sf_silicon_valley,international,Full-Stack Web Developers,Other Kinds of Developers,NA,0.5872642669340042,1.0216761644607524
+sf_silicon_valley,international,Graphics Programmers,Other Kinds of Developers,NA,0.014716174551232338,1.2781917830156846
+sf_silicon_valley,international,Highly Technical Designers,Other Kinds of Developers,NA,0.018922957610607753,0.86969104062982
+sf_silicon_valley,international,Highly Technical Product Managers,Other Kinds of Developers,NA,0.001715626004880171,0.731918084673784
+sf_silicon_valley,international,Machine Learning Specialists,Other Kinds of Developers,NA,0.027253296006960866,0.6444289377812689
+sf_silicon_valley,international,Quality Assurance Engineers,Other Kinds of Developers,NA,0.03477594718822706,1.3752823475705724
+sf_silicon_valley,international,Systems Administrators,Other Kinds of Developers,NA,0.11404467815461442,0.9767115617198852
+singapore,international,All Developers,-,NA,1,1
+singapore,international,Mobile Developers,All Developers,NA,0.07426547599360564,1
+singapore,international,Other Kinds of Developers,All Developers,NA,0.35234413758888705,1
+singapore,international,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,NA,0.6326622016426878,1
+singapore,international,Android Developers,Mobile Developers,NA,0.046434871286037155,1
+singapore,international,iOS Developers,Mobile Developers,NA,0.028340499421200597,1
+singapore,international,Back-End Web Developers,Other Kinds of Developers,NA,0.15305109971886885,1
+singapore,international,Business Intelligence Developers,Other Kinds of Developers,NA,0.001577917424618268,1
+singapore,international,Data Scientists,Other Kinds of Developers,NA,0.02940852213218676,1
+singapore,international,Database Administrators,Other Kinds of Developers,NA,0.0722396780772835,1
+singapore,international,Desktop Developers,Other Kinds of Developers,NA,0.0446709111956342,1
+singapore,international,Embedded Developers,Other Kinds of Developers,NA,0.05897552505374566,1
+singapore,international,Front-End Web Developers,Other Kinds of Developers,NA,0.07587095529463646,1
+singapore,international,Full-Stack Web Developers,Other Kinds of Developers,NA,0.5713094647483601,1
+singapore,international,Graphics Programmers,Other Kinds of Developers,NA,0.011493302464031751,1
+singapore,international,Highly Technical Designers,Other Kinds of Developers,NA,0.02038200760707789,1
+singapore,international,Highly Technical Product Managers,Other Kinds of Developers,NA,0.0019637836943939145,1
+singapore,international,Machine Learning Specialists,Other Kinds of Developers,NA,0.03255746651232016,1
+singapore,international,Quality Assurance Engineers,Other Kinds of Developers,NA,0.0204784741745218,1
+singapore,international,Systems Administrators,Other Kinds of Developers,NA,0.09752769968579461,1
+stockholm,international,All Developers,-,NA,1,1
+stockholm,international,Mobile Developers,All Developers,NA,0.050329040475516555,1.0137846741158822
+stockholm,international,Other Kinds of Developers,All Developers,NA,0.32014223039909423,0.9003850615547635
+stockholm,international,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,NA,0.680282337956411,1.0190534472835036
+stockholm,international,Android Developers,Mobile Developers,NA,0.02336894990093405,0.8367519975778843
+stockholm,international,iOS Developers,Mobile Developers,NA,0.027136994056043022,1.254136824434207
+stockholm,international,Back-End Web Developers,Other Kinds of Developers,NA,0.15217237475233514,1.067567585078951
+stockholm,international,Business Intelligence Developers,Other Kinds of Developers,NA,0.0013090857628078121,1.217126165177762
+stockholm,international,Data Scientists,Other Kinds of Developers,NA,0.03347013869232947,0.9255094524687983
+stockholm,international,Database Administrators,Other Kinds of Developers,NA,0.044650438720634025,0.864164309029359
+stockholm,international,Desktop Developers,Other Kinds of Developers,NA,0.044986555335409004,1.1622065191677877
+stockholm,international,Embedded Developers,Other Kinds of Developers,NA,0.0460833569204642,0.6935174353832084
+stockholm,international,Front-End Web Developers,Other Kinds of Developers,NA,0.10299320690631192,1.0127726541988709
+stockholm,international,Full-Stack Web Developers,Other Kinds of Developers,NA,0.6143857911123691,1.0276876750920532
+stockholm,international,Graphics Programmers,Other Kinds of Developers,NA,0.012683979620718936,0.6795558081290064
+stockholm,international,Highly Technical Designers,Other Kinds of Developers,NA,0.02022006793093688,0.8433317445308292
+stockholm,international,Highly Technical Product Managers,Other Kinds of Developers,NA,0.0021759128219643363,0.9975204110354843
+stockholm,international,Machine Learning Specialists,Other Kinds of Developers,NA,0.033859326351542596,0.9454332839336754
+stockholm,international,Quality Assurance Engineers,Other Kinds of Developers,NA,0.024377299745258988,1.2490234051521303
+stockholm,international,Systems Administrators,Other Kinds of Developers,NA,0.10798188508349844,0.9253609182776853
+sydney,international,All Developers,-,NA,1,1
+sydney,international,Mobile Developers,All Developers,NA,0.04856169882887123,0.9991057415573411
+sydney,international,Other Kinds of Developers,All Developers,NA,0.35958913591184694,0.9816743429087031
+sydney,international,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,NA,0.6444253716880313,1.0037120299406181
+sydney,international,Android Developers,Mobile Developers,NA,0.023145712782745922,0.9844775679524064
+sydney,international,iOS Developers,Mobile Developers,NA,0.02530524100888729,1.006861191909569
+sydney,international,Back-End Web Developers,Other Kinds of Developers,NA,0.13916959679577692,1.0310717408100585
+sydney,international,Business Intelligence Developers,Other Kinds of Developers,NA,0.002122613213728693,1.0441294321244803
+sydney,international,Data Scientists,Other Kinds of Developers,NA,0.030602545290105854,0.8424027975919767
+sydney,international,Database Administrators,Other Kinds of Developers,NA,0.06470278800631246,0.9447712067563996
+sydney,international,Desktop Developers,Other Kinds of Developers,NA,0.03972978210913924,0.9812012917486989
+sydney,international,Embedded Developers,Other Kinds of Developers,NA,0.032586727207287024,0.9112546940276621
+sydney,international,Front-End Web Developers,Other Kinds of Developers,NA,0.10697970597192613,0.9657926543282457
+sydney,international,Full-Stack Web Developers,Other Kinds of Developers,NA,0.5736777503991436,1.0130794656103494
+sydney,international,Graphics Programmers,Other Kinds of Developers,NA,0.011702058934817317,0.8582326470361782
+sydney,international,Highly Technical Designers,Other Kinds of Developers,NA,0.020644720691787334,0.9090575554893492
+sydney,international,Highly Technical Product Managers,Other Kinds of Developers,NA,0.002953200993013834,1.0644640678382133
+sydney,international,Machine Learning Specialists,Other Kinds of Developers,NA,0.0322729496017793,0.8691459008063698
+sydney,international,Quality Assurance Engineers,Other Kinds of Developers,NA,0.029707356239098537,1.180217266799999
+sydney,international,Systems Administrators,Other Kinds of Developers,NA,0.13463827902212133,1.0164531947808495
+tel_aviv,international,All Developers,-,NA,1,1
+tel_aviv,international,Mobile Developers,All Developers,NA,0.07772484287279965,1.0539532586816505
+tel_aviv,international,Other Kinds of Developers,All Developers,NA,0.319756648549509,0.9673661294470888
+tel_aviv,international,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,NA,0.6624281464582075,1.0152380114756137
+tel_aviv,international,Android Developers,Mobile Developers,NA,0.053769934465096515,1.0257857581736312
+tel_aviv,international,iOS Developers,Mobile Developers,NA,0.02377597351763627,1.1139556583060346
+tel_aviv,international,Back-End Web Developers,Other Kinds of Developers,NA,0.17481938759533874,1.053887773007995
+tel_aviv,international,Business Intelligence Developers,Other Kinds of Developers,NA,6.262721152340692e-4,1.056715710543799
+tel_aviv,international,Data Scientists,Other Kinds of Developers,NA,0.018228991925563084,0.8707307424704408
+tel_aviv,international,Database Administrators,Other Kinds of Developers,NA,0.040517569169518444,0.978731709049186
+tel_aviv,international,Desktop Developers,Other Kinds of Developers,NA,0.04168064595495314,1.047983716186348
+tel_aviv,international,Embedded Developers,Other Kinds of Developers,NA,0.08339484220179383,0.954073977657887
+tel_aviv,international,Front-End Web Developers,Other Kinds of Developers,NA,0.08424478292961149,1.0210529840200175
+tel_aviv,international,Full-Stack Web Developers,Other Kinds of Developers,NA,0.6012771477778523,1.0147608394881382
+tel_aviv,international,Graphics Programmers,Other Kinds of Developers,NA,0.007906685454830123,0.9474440043911171
+tel_aviv,international,Highly Technical Designers,Other Kinds of Developers,NA,0.01740141805900378,0.9571623172974763
+tel_aviv,international,Highly Technical Product Managers,Other Kinds of Developers,NA,0.0014091122592766556,1.0535518910511525
+tel_aviv,international,Machine Learning Specialists,Other Kinds of Developers,NA,0.019336151557851886,0.8821085932279665
+tel_aviv,international,Quality Assurance Engineers,Other Kinds of Developers,NA,0.02493905030307097,1.0473981701620398
+tel_aviv,international,Systems Administrators,Other Kinds of Developers,NA,0.09496969290299492,1.0021983456356363
