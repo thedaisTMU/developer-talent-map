@@ -846,6 +846,8 @@ dev_role_groups <- c("all developers", "mobile developers", "web developers",
                      "other kinds of developers")
 unusable_dev_roles <- c("biz intel developers", "highly technical designers",
                         "highly technical product managers", "qa engineers")
+dev_role_traffic_mappings <- read_csv(paste(mappings_dir, "dev-role-traffic-mappings.csv",
+                                            sep = "/"))
 devrole_cities_2017_ca <- devroles_visitors_2017_ca %>%
     filter(!(dev_role %in% unusable_dev_roles)) %>%
     select(dev_role, calgary:waterloo_kitchener_cambridge, victoria_bc) %>%
@@ -861,8 +863,7 @@ devrole_cities_2017_ca <- devroles_visitors_2017_ca %>%
                    mutate(visitors_share_ca = visitors_ca /
                               visitors_ca[dev_role == "all developers"]),
                by = "dev_role") %>%
-    left_join(read_csv(paste(mappings_dir, "dev-role-traffic-mappings.csv", sep = "/")),
-              by = "dev_role") %>% 
+    left_join(dev_role_traffic_mappings, by = "dev_role") %>% 
     mutate(visitors_share = visitors / total_visitors_city,
            location_quotient = visitors_share / visitors_share_ca) %>%
     ungroup()
@@ -920,6 +921,7 @@ bind_rows(devrole_cities_2017_ca %>%
               mutate(region = "canada") %>%
               rename(city = city_consolidated),
           devrole_cities_2017_intl %>%
+              left_join(dev_role_traffic_mappings, by = "dev_role") %>% 
               mutate(region = "international") %>%
               rename(visitors_share = visitors_share_city)) %>%
     mutate(dev_role_parent_group = ifelse(
@@ -930,8 +932,19 @@ bind_rows(devrole_cities_2017_ca %>%
                 dev_role %in% c("android developers", "ios developers"),
                 "mobile developers", ifelse(
                     dev_role %in% c("back-end developers", "front-end developers", "full-stack developers"),
-                    "web developers", "other kinds of developers"))))) %>%
-    select(city, region, dev_role, dev_role_parent_group, visitors,
+                    "web developers", "other kinds of developers")))),
+        dev_role_label = ifelse(dev_role == "all developers",
+                                "All Developers",
+                                ifelse(dev_role == "other kinds of developers",
+                                       "Other Kinds of Developers",
+                                       ifelse(dev_role == "web developers",
+                                              "Web Developers (Front-End, Back-End, or Full-Stack)",
+                                              paste0(dev_role_label, "s")))),
+        dev_role_parent_group_label = ifelse(dev_role_parent_group == "all developers",
+                                             "All Developers",
+                                             toTitleCase(dev_role_parent_group))) %>%
+    select(city, region, dev_role = dev_role_label,
+           dev_role_parent_group = dev_role_parent_group_label, visitors,
            city_visitors_share = visitors_share, location_quotient) %>%
     arrange(region, city, dev_role_parent_group, dev_role) %>%
     write_csv(paste(data_dir, "devroles-city.csv", sep = "/"))
@@ -952,6 +965,7 @@ devroles_visitors_2017_ca %>%
                    mutate(visitors_share_ca = visitors_ca /
                               visitors_ca[dev_role == "all developers"]),
                by = "dev_role") %>%
+    left_join(dev_role_traffic_mappings, by = "dev_role") %>% 
     mutate(visitors_share = visitors / visitors_province,
            location_quotient = visitors_share / visitors_share_ca,
            dev_role_parent_group = ifelse(
@@ -962,8 +976,19 @@ devroles_visitors_2017_ca %>%
                        dev_role %in% c("android developers", "ios developers"),
                        "mobile developers", ifelse(
                            dev_role %in% c("back-end developers", "front-end developers", "full-stack developers"),
-                           "web developers", "other kinds of developers"))))) %>%
-    select(province, dev_role, dev_role_parent_group, visitors,
+                           "web developers", "other kinds of developers")))),
+           dev_role_label = ifelse(dev_role == "all developers",
+                                   "All Developers",
+                                   ifelse(dev_role == "other kinds of developers",
+                                          "Other Kinds of Developers",
+                                          ifelse(dev_role == "web developers",
+                                                 "Web Developers (Front-End, Back-End, or Full-Stack)",
+                                                 paste0(dev_role_label, "s")))),
+           dev_role_parent_group_label = ifelse(dev_role_parent_group == "all developers",
+                                                "All Developers",
+                                                toTitleCase(dev_role_parent_group))) %>%
+    select(province, dev_role = dev_role_label,
+           dev_role_parent_group = dev_role_parent_group_label, visitors,
            province_visitors_share = visitors_share, location_quotient) %>%
     arrange(province, dev_role_parent_group, dev_role) %>%
     write_csv(paste(data_dir, "devroles-province.csv", sep = "/"))
