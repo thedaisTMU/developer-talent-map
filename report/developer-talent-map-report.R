@@ -6,7 +6,7 @@ library(stringi)
 library(stringr)
 library(tools)
 library(scales)
-library(wordcloud)
+# library(wordcloud)
 
 data_dir <- "data"
 mappings_dir <- "mappings"
@@ -30,6 +30,9 @@ plot_colors_2_emphasis <- c("#e24585", "#99daea")
 plot_colors_4_emphasis <- c("#e24585", "#4d8e9e", "#99daea", "#b3f4ff")
 plot_colors_7 <- c("#960039", "#e24585", "#ffabeb", "#4d8e9e", "#99daea",
                    "#b3f4ff", "#0b2b48")
+plot_colors_16 <- c(plot_colors_7, "#490000", "#ff78b8", "#ffdeff",
+                    "#004151", "#e6ffff", "#8aaac7", "#bedefb", "#000015",
+                    "#fff0ff")
 plot_color_hline <- "gray50"
 plot_sizes_4_emphasis <- c(3, 1, 1, 1)
 plot_subtitle_respondents_share <- "% of Survey Respondents"
@@ -383,6 +386,9 @@ country_years %>%
     theme(panel.grid.major.y = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
+# Sample size
+country_years %>% filter(year == 2017) %>% summarise(sum(respondents))
+
 # Plot of top countries by respondents per capita, 2017
 n_top_countries <- 10
 min_n_respondents_country <- 50
@@ -652,7 +658,7 @@ plot_title <- paste("Developers Among Top", n_top_cities, "and Other Canadian Ci
 bind_rows(city_years %>%
               filter(year == 2017) %>%
               top_n(n_top_cities, visitors) %>%
-              mutate(city_group = paste("Top", n_top_cities, "Cities")),
+              mutate(city_group = paste("Top", n_top_cities, "Cities Globally")),
           city_years %>%
               filter(year == 2017 & country == "canada") %>%
               mutate(city_group = paste0("Other Canadian Cities"))) %>%
@@ -771,7 +777,8 @@ devroles_2017_ca_prodevs %>%
                "Embedded Applications/\nDevices Developer",
                ifelse(grepl("web developer", dev_role_label, ignore.case = TRUE),
                       "Web Developer (Front-End,\nBack-End, or Full-Stack)",
-                      dev_role_label))),
+                      ifelse(grepl("mobile developer", dev_role_label, ignore.case = TRUE),
+                      "Mobile Developer\n(Android, iOS, etc.)", dev_role_label)))),
         dev_role_label = factor(dev_role_label, levels = dev_role_label)) %>% 
     ggplot(aes(dev_role_label, respondents_share,
                label = percent(respondents_share))) +
@@ -783,7 +790,7 @@ devroles_2017_ca_prodevs %>%
     labs(x = "", y = plot_ylab_respondents_share, fill = "", title = plot_title,
          subtitle = plot_subtitle_respondents_share) +
     guides(fill = "none") +
-    theme(panel.grid.major.y = element_line(NA))
+    theme(panel.grid.major.y = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 # Plot of number of developer roles
@@ -838,7 +845,7 @@ respondents %>%
                        expand = plot_axis_padding) +
     labs(x = "", y = plot_ylab_respondents_share, fill = "", title = plot_title,
          subtitle = plot_subtitle_respondents_share) +
-    theme(panel.grid.major.y = element_line(NA))
+    theme(panel.grid.major.y = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 # Developers and cities
@@ -870,7 +877,7 @@ devrole_cities_2017_ca <- devroles_visitors_2017_ca %>%
 n_top_cities_dev_role <- 5
 dev_role_label_plot_order <- c(
     "Front-End Web Developer", "Back-End Web Developer", "Full-Stack Web Developer",
-    "Android Developer", "iOS Developer", "Desktop Developer",
+    "Android Mobile Developer", "iOS Mobile Developer", "Desktop Developer",
     "Database Administrator","Systems Administrator", "Embedded Developer",
     "Graphics Programmer", "Data Scientist", "Machine Learning Specialist")
 
@@ -886,17 +893,18 @@ devrole_cities_2017_ca %>%
         dev_role_label = factor(dev_role_label, levels = dev_role_label_plot_order)) %>%
     group_by(dev_role) %>%
     top_n(n_top_cities_dev_role, location_quotient) %>%
-    ggplot(aes(dev_role_city, location_quotient,
+    ggplot(aes(dev_role_city, location_quotient, fill = dev_role_city,
                label = format(round(location_quotient, 2), n.small = 2))) +
     facet_wrap(~ dev_role_label, scales = "free_y", nrow = 4) +
-    geom_col(width = plot_bar_width, fill = plot_color) +
-    geom_text(hjust = 0, nudge_y = 0.005) +
+    geom_col(width = plot_bar_width) +
+    geom_text(hjust = 0, nudge_y = 0.01) +
     geom_hline(yintercept = 1, color = plot_color_hline, linetype = "dashed") +
     coord_flip() +
+    scale_fill_manual(values = plot_colors_16) +
     scale_y_continuous(limits = c(0, 4), expand = plot_axis_padding) +
     labs(x = "", y = "Location Quotient", title = plot_title,
          subtitle = "Location Quotients Based on % of Web Traffic to Stack Overflow") +
-    theme(panel.grid.major.y = element_line(NA),
+    theme(panel.grid.major.y = element_blank(),
           strip.background = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title), plot_height = 6)
 
@@ -1014,29 +1022,29 @@ language_regionscarow_2017_prodevs <- respondents %>%
     ungroup()
 
 # Plot of languages wordcloud
-n_top_languages <- 10
-set.seed(17)
-png(filename = paste("figures/Share of Canadian Professional Developers Using Top",
-                     n_top_languages, "Languages  2017 Wordcloud.png"),
-    width = 1000, height = 1000, res = 300)
-language_regionscarow_2017_prodevs %>%
-    filter(region_carow_label == "Canada") %>%
-    top_n(n_top_languages, respondents_share) %>% 
-    with(wordcloud(
-        language_label, respondents_share, colors = "#0b2b48", rot.per = 0.25,
-        scale = c(max(respondents_share) / min(respondents_share) / 2, 1 / 2)))
-dev.off()
-
-set.seed(17)
-svg(filename = paste("figures/Share of Canadian Professional Developers Using Top",
-                     n_top_languages, "Languages  2017 Wordcloud.svg"))
-language_regionscarow_2017_prodevs %>%
-    filter(region_carow_label == "Canada") %>%
-    top_n(n_top_languages, respondents_share) %>% 
-    with(wordcloud(
-        language_label, respondents_share, colors = "#0b2b48", rot.per = 0.25,
-        scale = c(max(respondents_share) / min(respondents_share) / 2, 1 / 2)))
-dev.off()
+# n_top_languages <- 10
+# set.seed(17)
+# png(filename = paste("figures/Share of Canadian Professional Developers Using Top",
+#                      n_top_languages, "Languages  2017 Wordcloud.png"),
+#     width = 1000, height = 1000, res = 300)
+# language_regionscarow_2017_prodevs %>%
+#     filter(region_carow_label == "Canada") %>%
+#     top_n(n_top_languages, respondents_share) %>% 
+#     with(wordcloud(
+#         language_label, respondents_share, colors = "#0b2b48", rot.per = 0.25,
+#         scale = c(max(respondents_share) / min(respondents_share) / 2, 1 / 2)))
+# dev.off()
+# 
+# set.seed(17)
+# svg(filename = paste("figures/Share of Canadian Professional Developers Using Top",
+#                      n_top_languages, "Languages  2017 Wordcloud.svg"))
+# language_regionscarow_2017_prodevs %>%
+#     filter(region_carow_label == "Canada") %>%
+#     top_n(n_top_languages, respondents_share) %>% 
+#     with(wordcloud(
+#         language_label, respondents_share, colors = "#0b2b48", rot.per = 0.25,
+#         scale = c(max(respondents_share) / min(respondents_share) / 2, 1 / 2)))
+# dev.off()
 
 # Plot of top languages in Canada, 2017
 language_label_plot_order <- language_regionscarow_2017_prodevs %>%
@@ -1065,6 +1073,11 @@ language_regionscarow_2017_prodevs %>%
     theme(panel.grid.major.y = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
+# Sample size
+language_regionscarow_2017_prodevs %>%
+    filter(region_carow_label == "Canada") %>% 
+    distinct(total_respondents)
+
 # Share of Canadian professional developers using JavaScript in 2017
 language_regionscarow_2017_prodevs %>%
     filter(region_carow_label == "Canada" & language == "javascript") %>%
@@ -1092,6 +1105,12 @@ respondents %>%
          title = plot_title, subtitle = plot_subtitle_respondents_share) +
     theme(panel.grid.major.x = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
+
+# Sample size
+respondents %>%
+    filter(year == 2017 & country == "canada" & !is.na(languages) &
+               pro_status == "pro dev") %>%
+    nrow()
 
 # Number of observations removed from previous plot
 respondents %>%
@@ -1171,37 +1190,6 @@ language_years_ca %>%
     filter(language %in% top_languages_ca$language & year == 2017) %>%
     arrange(desc(respondents_share_pc_growth_yoy)) %>%
     select(language, respondents_share, respondents_share_pc_growth_yoy)
-
-# Difference between Canada and ROW in language usage plot
-# min_respondents_language <- 50
-# plot_title <- paste("Difference in Share of Professional Developers Using",
-#                     "Language Between Canada and Rest of World")
-# language_regionscarow_2017_prodevs %>%
-#     select(language, region_carow_label, respondents_share) %>%
-#     spread(region_carow_label, respondents_share) %>%
-#     mutate(respondents_share_pc_diff = Canada / ROW - 1) %>%
-#     inner_join(language_regionscarow_2017_prodevs %>%
-#                    filter(region_carow_label == "Canada" &
-#                               respondents >= min_respondents_language) %>%
-#                    select(language),
-#                by = "language") %>%
-#     left_join(language_metadata, by = "language") %>%
-#     arrange(respondents_share_pc_diff) %>%
-#     ungroup() %>%
-#     mutate(language_label = factor(language_label, levels = language_label)) %>%
-#     ggplot(aes(language_label, respondents_share_pc_diff,
-#                label = percent(respondents_share_pc_diff))) +
-#     geom_col(width = plot_bar_width, fill = plot_color) +
-#     geom_text(hjust = 0, nudge_y = 0.001) +
-#     coord_flip() +
-#     scale_fill_manual(values = plot_colors_2_emphasis) +
-#     scale_y_continuous(limits = c(-0.15, 0.35), labels = percent_format(),
-#                        expand = plot_axis_padding) +
-#     labs(x = "", y = "% Difference", title = plot_title,
-#          subtitle = "% Difference Between Canada and Rest of World in Share of Survey Respondents") +
-#     guides(fill = "none") +
-#     theme(panel.grid.major.y = element_blank())
-# save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 # Plot of difference between Canada and ROW in language usage, 2017
 min_respondents_language <- 50
@@ -1389,6 +1377,11 @@ industry_regionscarow_2017_prodevs %>%
     theme(panel.grid.major.y = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
+# Sample size
+industry_regionscarow_2017_prodevs %>%
+    filter(region_carow_label == "Canada") %>% 
+    summarise(sum(respondents))
+
 # Share working in software or internet/web services
 industry_regionscarow_2017_prodevs %>%
     filter(region_carow_label == "Canada" & industry_original %in% c(
@@ -1487,7 +1480,8 @@ industry_years_20152017_ca <- respondents %>%
     mutate(respondents_share = respondents / sum(respondents)) %>%
     group_by(industry_consolidated) %>%
     mutate(respondents_share_ind = respondents_share /
-               respondents_share[year == min(year)] * 100)
+               respondents_share[year == min(year)] * 100) %>% 
+    ungroup()
 
 # Consulting, government, manufacturing industries omitted
 # because their related survey options have been less consistent over time
@@ -1585,6 +1579,9 @@ employmentstatusoriginal_2017_ca_prodevs %>%
          subtitle = plot_subtitle_respondents_share) +
     theme(panel.grid.major.y = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
+
+# Sample size
+employmentstatusoriginal_2017_ca_prodevs %>% summarise(sum(respondents))
 
 #### Salary ####
 min_n_salary_responses_country <- 20
@@ -2253,7 +2250,6 @@ ethnicities_2017_ca <- respondents %>%
 # Plot of ethnicity shares in Canada, 2017
 plot_title <- "Share of Canadian Developers by Ethnicity, 2017"
 ethnicities_2017_ca %>%
-    filter(ethnicity != "Other") %>%
     arrange(respondents_share) %>%
     mutate(ethnicity_label = factor(
         ethnicity,
@@ -2272,6 +2268,16 @@ ethnicities_2017_ca %>%
          subtitle = plot_subtitle_respondents_share) +
     theme(panel.grid.major.y = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
+
+# Sample size
+respondents %>%
+    mutate(ethnicities = gsub(
+        ";+", ";",
+        gsub("^;|;$", "",
+             gsub("(I don.t know|I prefer not to say)", "", ethnicities)))) %>%
+    filter(year == 2017 & country == "canada" &
+               !is.na(ethnicities) & grepl("[[:alpha:]]", ethnicities)) %>% 
+    summarise(n_distinct(respondent_id))
 
 # Share of East and South Asians
 ethnicities_2017_ca %>%

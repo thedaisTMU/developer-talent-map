@@ -1,10 +1,10 @@
 province,dev_role,dev_role_parent_group,visitors,province_visitors_share,location_quotient
 alberta,All Developers,-,49022,1,1
-alberta,Mobile Developers,All Developers,2164,0.044143445799844964,0.8668100357722438
+alberta,"Mobile Developer (Android, iOS, etc.)s",All Developers,2164,0.044143445799844964,0.8668100357722438
 alberta,Other Kinds of Developers,All Developers,17052,0.3478438252213292,0.9679759048625921
 alberta,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,31550,0.6435885928766676,1.000462387036679
-alberta,Android Developers,Mobile Developers,1212,0.024723593488637754,0.823813636299356
-alberta,iOS Developers,Mobile Developers,960,0.019583044347435845,0.9507667013671113
+alberta,Android Mobile Developers,Mobile Developers,1212,0.024723593488637754,0.823813636299356
+alberta,iOS Mobile Developers,Mobile Developers,960,0.019583044347435845,0.9507667013671113
 alberta,Back-End Web Developers,Other Kinds of Developers,6531,0.13322589857614947,0.9714262352365405
 alberta,Data Scientists,Other Kinds of Developers,1758,0.03586144996124189,0.9514695197424802
 alberta,Database Administrators,Other Kinds of Developers,3251,0.06631716372241035,1.1216652110489427
@@ -16,11 +16,11 @@ alberta,Graphics Programmers,Other Kinds of Developers,794,0.01619680959569173,0
 alberta,Machine Learning Specialists,Other Kinds of Developers,1741,0.03551466688425605,0.9122300985169348
 alberta,Systems Administrators,Other Kinds of Developers,5025,0.1025049977561095,1.012516774868604
 british_columbia,All Developers,-,88840,1,1
-british_columbia,Mobile Developers,All Developers,4768,0.053669518235029266,1.053866008379169
+british_columbia,"Mobile Developer (Android, iOS, etc.)s",All Developers,4768,0.053669518235029266,1.053866008379169
 british_columbia,Other Kinds of Developers,All Developers,32301,0.3635862224223323,1.0117836716546327
 british_columbia,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,57768,0.65024763619991,1.0108139104357712
-british_columbia,Android Developers,Mobile Developers,2396,0.026969833408374607,0.8986604856107079
-british_columbia,iOS Developers,Mobile Developers,2366,0.026632147681224672,1.2930042312095977
+british_columbia,Android Mobile Developers,Mobile Developers,2396,0.026969833408374607,0.8986604856107079
+british_columbia,iOS Mobile Developers,Mobile Developers,2366,0.026632147681224672,1.2930042312095977
 british_columbia,Back-End Web Developers,Other Kinds of Developers,12374,0.13928410625844215,1.015600092902262
 british_columbia,Data Scientists,Other Kinds of Developers,3625,0.04080369203061684,1.0825961945780345
 british_columbia,Database Administrators,Other Kinds of Developers,4827,0.054333633498424135,0.9189799904616721
@@ -32,11 +32,11 @@ british_columbia,Graphics Programmers,Other Kinds of Developers,1358,0.015285907
 british_columbia,Machine Learning Specialists,Other Kinds of Developers,3627,0.040826204412426834,1.048662306043781
 british_columbia,Systems Administrators,Other Kinds of Developers,8260,0.0929761368752814,0.9183932521289274
 manitoba,All Developers,-,11352,1,1
-manitoba,Mobile Developers,All Developers,468,0.0412262156448203,0.8095266876054888
+manitoba,"Mobile Developer (Android, iOS, etc.)s",All Developers,468,0.0412262156448203,0.8095266876054888
 manitoba,Other Kinds of Developers,All Developers,3618,0.3187103594080338,0.8869036221665739
 manitoba,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,7683,0.6767970401691332,1.0520851205899577
-manitoba,Android Developers,Mobile Developers,295,0.025986610288935872,0.8658985566584838
-manitoba,iOS Developers,Mobile Developers,172,0.015151515151515152,0.7356137189775652
+manitoba,Android Mobile Developers,Mobile Developers,295,0.025986610288935872,0.8658985566584838
+manitoba,iOS Mobile Developers,Mobile Developers,172,0.015151515151515152,0.7356137189775652
 manitoba,Back-End Web Developers,Other Kinds of Developers,1627,0.14332276250880902,1.0450482458412789
 manitoba,Data Scientists,Other Kinds of Developers,378,0.033298097251585626,0.8834591081661723
 manitoba,Database Administrators,Other Kinds of Developers,746,0.0657152924594785,1.1114853719353979
@@ -48,11 +48,11 @@ manitoba,Graphics Programmers,Other Kinds of Developers,216,0.019027484143763214
 manitoba,Machine Learning Specialists,Other Kinds of Developers,369,0.03250528541226216,0.8349310951046567
 manitoba,Systems Administrators,Other Kinds of Developers,1061,0.09346370683579985,0.9232093369516553
 new_brunswick,All Developers,-,7301,1,1
-new_brunswick,Mobile Developers,All Developers,255,0.03492672236679907,0.6858285055825583
+new_brunswick,"Mobile Developer (Android, iOS, etc.)s",All Developers,255,0.03492672236679907,0.6858285055825583
 new_brunswick,Other Kinds of Developers,All Developers,2567,0.3515956718257773,0.9784165016146992
 new_brunswick,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,4773,0.6537460621832626,1.0162522349320644
-new_brunswick,Android Developers,Mobile Developers,136,0.018627585262292835,0.6206888475762301
-new_brunswick,iOS Developers,Mobile Developers,120,0.016436104643199563,0.7979811880978382
+new_brunswick,Android Mobile Developers,Mobile Developers,136,0.018627585262292835,0.6206888475762301
+new_brunswick,iOS Mobile Developers,Mobile Developers,120,0.016436104643199563,0.7979811880978382
 new_brunswick,Back-End Web Developers,Other Kinds of Developers,1164,0.15943021503903576,1.1624968961256363
 new_brunswick,Data Scientists,Other Kinds of Developers,271,0.03711820298589234,0.9848134642313792
 new_brunswick,Database Administrators,Other Kinds of Developers,445,0.06095055471853171,1.0308962715606798
@@ -64,11 +64,11 @@ new_brunswick,Graphics Programmers,Other Kinds of Developers,112,0.0153403643336
 new_brunswick,Machine Learning Specialists,Other Kinds of Developers,272,0.03725517052458567,0.9569366929068382
 new_brunswick,Systems Administrators,Other Kinds of Developers,742,0.10162991371045062,1.0038729302264369
 newfoundland_and_labrador,All Developers,-,3560,1,1
-newfoundland_and_labrador,Mobile Developers,All Developers,139,0.03904494382022472,0.766694772832009
+newfoundland_and_labrador,"Mobile Developer (Android, iOS, etc.)s",All Developers,139,0.03904494382022472,0.766694772832009
 newfoundland_and_labrador,Other Kinds of Developers,All Developers,1285,0.3609550561797753,1.004461691674501
 newfoundland_and_labrador,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,2383,0.6693820224719101,1.040558430422681
-newfoundland_and_labrador,Android Developers,Mobile Developers,73,0.02050561797752809,0.6832666828305646
-newfoundland_and_labrador,iOS Developers,Mobile Developers,67,0.018820224719101122,0.9137314228423575
+newfoundland_and_labrador,Android Mobile Developers,Mobile Developers,73,0.02050561797752809,0.6832666828305646
+newfoundland_and_labrador,iOS Mobile Developers,Mobile Developers,67,0.018820224719101122,0.9137314228423575
 newfoundland_and_labrador,Back-End Web Developers,Other Kinds of Developers,572,0.16067415730337078,1.171567190742594
 newfoundland_and_labrador,Data Scientists,Other Kinds of Developers,193,0.054213483146067415,1.438382352869301
 newfoundland_and_labrador,Database Administrators,Other Kinds of Developers,224,0.06292134831460675,1.0642295821366325
@@ -80,11 +80,11 @@ newfoundland_and_labrador,Graphics Programmers,Other Kinds of Developers,82,0.02
 newfoundland_and_labrador,Machine Learning Specialists,Other Kinds of Developers,191,0.05365168539325843,1.3780977423045584
 newfoundland_and_labrador,Systems Administrators,Other Kinds of Developers,322,0.09044943820224718,0.8934352027899828
 northwest_territories,All Developers,-,161,1,1
-northwest_territories,Mobile Developers,All Developers,4,0.024844720496894408,0.4878561850452571
+northwest_territories,"Mobile Developer (Android, iOS, etc.)s",All Developers,4,0.024844720496894408,0.4878561850452571
 northwest_territories,Other Kinds of Developers,All Developers,65,0.40372670807453415,1.1234861660027529
 northwest_territories,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,102,0.6335403726708074,0.9848423675337049
-northwest_territories,Android Developers,Mobile Developers,3,0.018633540372670808,0.6208872775147136
-northwest_territories,iOS Developers,Mobile Developers,1,0.006211180124223602,0.3015559344876975
+northwest_territories,Android Mobile Developers,Mobile Developers,3,0.018633540372670808,0.6208872775147136
+northwest_territories,iOS Mobile Developers,Mobile Developers,1,0.006211180124223602,0.3015559344876975
 northwest_territories,Back-End Web Developers,Other Kinds of Developers,27,0.16770186335403728,1.2228102155906935
 northwest_territories,Data Scientists,Other Kinds of Developers,4,0.024844720496894408,0.6591756413883064
 northwest_territories,Database Administrators,Other Kinds of Developers,24,0.14906832298136646,2.5212892496049766
@@ -96,11 +96,11 @@ northwest_territories,Graphics Programmers,Other Kinds of Developers,1,0.0062111
 northwest_territories,Machine Learning Specialists,Other Kinds of Developers,4,0.024844720496894408,0.6381617459730385
 northwest_territories,Systems Administrators,Other Kinds of Developers,29,0.18012422360248448,1.7792185937278238
 nova_scotia,All Developers,-,9685,1,1
-nova_scotia,Mobile Developers,All Developers,429,0.04429530201342282,0.8697919164917621
+nova_scotia,"Mobile Developer (Android, iOS, etc.)s",All Developers,429,0.04429530201342282,0.8697919164917621
 nova_scotia,Other Kinds of Developers,All Developers,3502,0.3615900877645844,1.0062288504634511
 nova_scotia,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,6412,0.6620547237996902,1.0291681000139743
-nova_scotia,Android Developers,Mobile Developers,188,0.01941146102219928,0.6468083330172208
-nova_scotia,iOS Developers,Mobile Developers,242,0.024987093443469284,1.2131360164697647
+nova_scotia,Android Mobile Developers,Mobile Developers,188,0.01941146102219928,0.6468083330172208
+nova_scotia,iOS Mobile Developers,Mobile Developers,242,0.024987093443469284,1.2131360164697647
 nova_scotia,Back-End Web Developers,Other Kinds of Developers,1437,0.14837377387712958,1.0818780590390487
 nova_scotia,Data Scientists,Other Kinds of Developers,461,0.04759938048528652,1.26289817448326
 nova_scotia,Database Administrators,Other Kinds of Developers,632,0.06525554981930821,1.1037094464197452
@@ -112,11 +112,11 @@ nova_scotia,Graphics Programmers,Other Kinds of Developers,228,0.023541559112028
 nova_scotia,Machine Learning Specialists,Other Kinds of Developers,450,0.04646360351058337,1.193464597205644
 nova_scotia,Systems Administrators,Other Kinds of Developers,914,0.09437274135260712,0.9321885352088162
 nunavut,All Developers,-,33,1,1
-nunavut,Mobile Developers,All Developers,0,0,0
+nunavut,"Mobile Developer (Android, iOS, etc.)s",All Developers,0,0,0
 nunavut,Other Kinds of Developers,All Developers,16,0.48484848484848486,1.349230938752024
 nunavut,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,18,0.5454545454545454,0.8479124126894465
-nunavut,Android Developers,Mobile Developers,0,0,0
-nunavut,iOS Developers,Mobile Developers,0,0,0
+nunavut,Android Mobile Developers,Mobile Developers,0,0,0
+nunavut,iOS Mobile Developers,Mobile Developers,0,0,0
 nunavut,Back-End Web Developers,Other Kinds of Developers,3,0.09090909090909091,0.6628701842090964
 nunavut,Data Scientists,Other Kinds of Developers,6,0.18181818181818182,4.823967193796243
 nunavut,Database Administrators,Other Kinds of Developers,3,0.09090909090909091,1.5376044287363684
@@ -128,11 +128,11 @@ nunavut,Graphics Programmers,Other Kinds of Developers,0,0,0
 nunavut,Machine Learning Specialists,Other Kinds of Developers,6,0.18181818181818182,4.670183686439056
 nunavut,Systems Administrators,Other Kinds of Developers,6,0.18181818181818182,1.7959510569917219
 ontario,All Developers,-,290456,1,1
-ontario,Mobile Developers,All Developers,14893,0.051274547607899304,1.0068378587329245
+ontario,"Mobile Developer (Android, iOS, etc.)s",All Developers,14893,0.051274547607899304,1.0068378587329245
 ontario,Other Kinds of Developers,All Developers,102258,0.3520602087751673,0.9797092098398396
 ontario,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,188283,0.6482324345167598,1.0076812671468758
-ontario,Android Developers,Mobile Developers,8404,0.028933814415952847,0.9641021996649156
-ontario,iOS Developers,Mobile Developers,6443,0.022182361528079984,1.0769648643188017
+ontario,Android Mobile Developers,Mobile Developers,8404,0.028933814415952847,0.9641021996649156
+ontario,iOS Mobile Developers,Mobile Developers,6443,0.022182361528079984,1.0769648643188017
 ontario,Back-End Web Developers,Other Kinds of Developers,41550,0.14305092681851986,1.0430661363262164
 ontario,Data Scientists,Other Kinds of Developers,10278,0.0353857382873826,0.9388480234462631
 ontario,Database Administrators,Other Kinds of Developers,16259,0.05597749745228193,0.9467837279142821
@@ -144,11 +144,11 @@ ontario,Graphics Programmers,Other Kinds of Developers,4e3,0.013771449031867134,
 ontario,Machine Learning Specialists,Other Kinds of Developers,10922,0.037602941581513206,0.9658695438485708
 ontario,Systems Administrators,Other Kinds of Developers,30577,0.10527239926185034,1.0398524219950607
 prince_edward_island,All Developers,-,1518,1,1
-prince_edward_island,Mobile Developers,All Developers,63,0.041501976284584984,0.8149415818369636
+prince_edward_island,"Mobile Developer (Android, iOS, etc.)s",All Developers,63,0.041501976284584984,0.8149415818369636
 prince_edward_island,Other Kinds of Developers,All Developers,519,0.34189723320158105,0.9514277951254083
 prince_edward_island,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,1147,0.7555994729907773,1.1745839823125546
-prince_edward_island,Android Developers,Mobile Developers,21,0.01383399209486166,0.4609617666397116
-prince_edward_island,iOS Developers,Mobile Developers,42,0.02766798418972332,1.34329461726338
+prince_edward_island,Android Mobile Developers,Mobile Developers,21,0.01383399209486166,0.4609617666397116
+prince_edward_island,iOS Mobile Developers,Mobile Developers,42,0.02766798418972332,1.34329461726338
 prince_edward_island,Back-End Web Developers,Other Kinds of Developers,283,0.18642951251646903,1.3593642183418424
 prince_edward_island,Data Scientists,Other Kinds of Developers,22,0.014492753623188406,0.38451912414317874
 prince_edward_island,Database Administrators,Other Kinds of Developers,172,0.11330698287220026,1.9164345053815603
@@ -160,11 +160,11 @@ prince_edward_island,Graphics Programmers,Other Kinds of Developers,27,0.0177865
 prince_edward_island,Machine Learning Specialists,Other Kinds of Developers,25,0.016469038208168644,0.4230238846412188
 prince_edward_island,Systems Administrators,Other Kinds of Developers,128,0.08432147562582346,0.8329048380251464
 quebec,All Developers,-,154502,1,1
-quebec,Mobile Developers,All Developers,8293,0.05367568057371425,1.053987013364602
+quebec,"Mobile Developer (Android, iOS, etc.)s",All Developers,8293,0.05367568057371425,1.053987013364602
 quebec,Other Kinds of Developers,All Developers,54967,0.3557688573610698,0.9900295956292728
 quebec,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,100692,0.651719718838591,1.013102271862482
-quebec,Android Developers,Mobile Developers,5753,0.0372357639383309,1.2407310492513275
-quebec,iOS Developers,Mobile Developers,2502,0.016193965126665027,0.7862251921800578
+quebec,Android Mobile Developers,Mobile Developers,5753,0.0372357639383309,1.2407310492513275
+quebec,iOS Mobile Developers,Mobile Developers,2502,0.016193965126665027,0.7862251921800578
 quebec,Back-End Web Developers,Other Kinds of Developers,20052,0.12978472770579022,0.9463346899805104
 quebec,Data Scientists,Other Kinds of Developers,6251,0.0404590231841659,1.0734515029340184
 quebec,Database Administrators,Other Kinds of Developers,9871,0.06388914059364928,1.0805984807745117
@@ -176,11 +176,11 @@ quebec,Graphics Programmers,Other Kinds of Developers,3067,0.019850875716819198,
 quebec,Machine Learning Specialists,Other Kinds of Developers,6278,0.0406337782035184,1.0437196444644996
 quebec,Systems Administrators,Other Kinds of Developers,14669,0.09494375477340099,0.9378288520702878
 saskatchewan,All Developers,-,8260,1,1
-saskatchewan,Mobile Developers,All Developers,279,0.0337772397094431,0.6632570210668253
+saskatchewan,"Mobile Developer (Android, iOS, etc.)s",All Developers,279,0.0337772397094431,0.6632570210668253
 saskatchewan,Other Kinds of Developers,All Developers,3471,0.4202179176755448,1.1693777195632042
 saskatchewan,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,4852,0.587409200968523,0.9131311801868672
-saskatchewan,Android Developers,Mobile Developers,148,0.01791767554479419,0.5970339809774252
-saskatchewan,iOS Developers,Mobile Developers,131,0.01585956416464891,0.7699898564503665
+saskatchewan,Android Mobile Developers,Mobile Developers,148,0.01791767554479419,0.5970339809774252
+saskatchewan,iOS Mobile Developers,Mobile Developers,131,0.01585956416464891,0.7699898564503665
 saskatchewan,Back-End Web Developers,Other Kinds of Developers,1056,0.12784503631961258,0.9321912905294023
 saskatchewan,Data Scientists,Other Kinds of Developers,307,0.037167070217917673,0.9861100008141592
 saskatchewan,Database Administrators,Other Kinds of Developers,592,0.07167070217917676,1.212213079894822
@@ -192,11 +192,11 @@ saskatchewan,Graphics Programmers,Other Kinds of Developers,156,0.01888619854721
 saskatchewan,Machine Learning Specialists,Other Kinds of Developers,305,0.036924939467312345,0.9484543745764545
 saskatchewan,Systems Administrators,Other Kinds of Developers,1051,0.12723970944309929,1.2568395986610954
 yukon,All Developers,-,194,1,1
-yukon,Mobile Developers,All Developers,2,0.010309278350515464,0.20243516956774843
+yukon,"Mobile Developer (Android, iOS, etc.)s",All Developers,2,0.010309278350515464,0.20243516956774843
 yukon,Other Kinds of Developers,All Developers,95,0.4896907216494845,1.3627058611429108
 yukon,"Web Developers (Front-End, Back-End, or Full-Stack)",All Developers,112,0.5773195876288659,0.8974468148053248
-yukon,Android Developers,Mobile Developers,2,0.010309278350515464,0.3435149542263536
-yukon,iOS Developers,Mobile Developers,1,0.005154639175257732,0.2502603373841201
+yukon,Android Mobile Developers,Mobile Developers,2,0.010309278350515464,0.3435149542263536
+yukon,iOS Mobile Developers,Mobile Developers,1,0.005154639175257732,0.2502603373841201
 yukon,Back-End Web Developers,Other Kinds of Developers,25,0.12886597938144329,0.9396355703994922
 yukon,Data Scientists,Other Kinds of Developers,12,0.061855670103092786,1.6411434783018144
 yukon,Database Administrators,Other Kinds of Developers,28,0.14432989690721648,2.4411451755195945
