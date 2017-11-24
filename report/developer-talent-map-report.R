@@ -6,7 +6,6 @@ library(stringi)
 library(stringr)
 library(tools)
 library(scales)
-# library(wordcloud)
 
 data_dir <- "data"
 mappings_dir <- "mappings"
@@ -30,9 +29,6 @@ plot_colors_2_emphasis <- c("#e24585", "#99daea")
 plot_colors_4_emphasis <- c("#e24585", "#4d8e9e", "#99daea", "#b3f4ff")
 plot_colors_7 <- c("#960039", "#e24585", "#ffabeb", "#4d8e9e", "#99daea",
                    "#b3f4ff", "#0b2b48")
-plot_colors_16 <- c(plot_colors_7, "#490000", "#ff78b8", "#ffdeff",
-                    "#004151", "#e6ffff", "#8aaac7", "#bedefb", "#000015",
-                    "#fff0ff")
 plot_color_hline <- "gray50"
 plot_sizes_4_emphasis <- c(3, 1, 1, 1)
 plot_subtitle_respondents_share <- "% of Survey Respondents"
@@ -47,7 +43,6 @@ save_plot <- function (file_name, file_path = "figures/",
                width = plot_width, height = plot_height, scale = plot_scale)
     }
 }
-
 
 #### Load and Tidy Data ####
 # Unzip data
@@ -793,23 +788,8 @@ devroles_2017_ca_prodevs %>%
     theme(panel.grid.major.y = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
-# Plot of number of developer roles
-plot_title <- "Share of Canadian Professional Developers by Number of Roles, 2017"
-respondent_devroles_2017_ca_prodevs %>%
-    group_by(respondent_id) %>%
-    summarise(n_dev_roles = n()) %>%
-    group_by(n_dev_roles) %>% 
-    summarise(n_dev_roles_share = n() / nrow(.)) %>% 
-    ggplot(aes(n_dev_roles, n_dev_roles_share, label = percent(n_dev_roles_share))) +
-    geom_col(width = plot_bar_width, fill = plot_color) +
-    geom_text(vjust = 0, nudge_y = 0.005) +
-    scale_x_continuous(limits = c(0.5, 8.5), breaks = seq(1, 8)) +
-    scale_y_continuous(limits = c(0, 0.5), labels = percent_format(),
-                       expand = plot_axis_padding) +
-    labs(x = "Number of Roles", y = plot_ylab_respondents_share, 
-         title = plot_title, subtitle = plot_subtitle_respondents_share) +
-    theme(panel.grid.major.x = element_line(NA))
-save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
+# Sample size
+respondent_devroles_2017_ca_prodevs %>% distinct(respondent_id) %>% nrow()
 
 # Desktop or mobile developer
 respondent_devroles_2017_ca_prodevs %>%
@@ -847,6 +827,12 @@ respondents %>%
          subtitle = plot_subtitle_respondents_share) +
     theme(panel.grid.major.y = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
+
+# Sample size
+respondents %>%
+    filter(year == 2017 & country == "canada" & !is.na(web_dev_role) &
+               pro_status == "pro dev") %>% 
+    nrow()
 
 # Developers and cities
 dev_role_groups <- c("all developers", "mobile developers", "web developers",
@@ -893,10 +879,10 @@ devrole_cities_2017_ca %>%
         dev_role_label = factor(dev_role_label, levels = dev_role_label_plot_order)) %>%
     group_by(dev_role) %>%
     top_n(n_top_cities_dev_role, location_quotient) %>%
-    ggplot(aes(dev_role_city, location_quotient, fill = dev_role_city,
+    ggplot(aes(dev_role_city, location_quotient,
                label = format(round(location_quotient, 2), n.small = 2))) +
     facet_wrap(~ dev_role_label, scales = "free_y", nrow = 4) +
-    geom_col(width = plot_bar_width) +
+    geom_col(width = plot_bar_width, fill = plot_colors_2_emphasis[2]) +
     geom_text(hjust = 0, nudge_y = 0.01) +
     geom_hline(yintercept = 1, color = plot_color_hline, linetype = "dashed") +
     coord_flip() +
@@ -1021,32 +1007,8 @@ language_regionscarow_2017_prodevs <- respondents %>%
     mutate(respondents_share = respondents / total_respondents) %>% 
     ungroup()
 
-# Plot of languages wordcloud
-# n_top_languages <- 10
-# set.seed(17)
-# png(filename = paste("figures/Share of Canadian Professional Developers Using Top",
-#                      n_top_languages, "Languages  2017 Wordcloud.png"),
-#     width = 1000, height = 1000, res = 300)
-# language_regionscarow_2017_prodevs %>%
-#     filter(region_carow_label == "Canada") %>%
-#     top_n(n_top_languages, respondents_share) %>% 
-#     with(wordcloud(
-#         language_label, respondents_share, colors = "#0b2b48", rot.per = 0.25,
-#         scale = c(max(respondents_share) / min(respondents_share) / 2, 1 / 2)))
-# dev.off()
-# 
-# set.seed(17)
-# svg(filename = paste("figures/Share of Canadian Professional Developers Using Top",
-#                      n_top_languages, "Languages  2017 Wordcloud.svg"))
-# language_regionscarow_2017_prodevs %>%
-#     filter(region_carow_label == "Canada") %>%
-#     top_n(n_top_languages, respondents_share) %>% 
-#     with(wordcloud(
-#         language_label, respondents_share, colors = "#0b2b48", rot.per = 0.25,
-#         scale = c(max(respondents_share) / min(respondents_share) / 2, 1 / 2)))
-# dev.off()
-
 # Plot of top languages in Canada, 2017
+n_top_languages <- 10
 language_label_plot_order <- language_regionscarow_2017_prodevs %>%
     select(language_label, respondents_share, region_carow_label) %>%
     spread(region_carow_label, respondents_share) %>%
@@ -1256,8 +1218,8 @@ companytype_regionscarow_2017_prodevs <- respondents %>%
                                     company_type_label))))) %>% 
     ungroup()
 
-# Plot of company type and Canada v. ROW, 2017
-plot_title <- "Share of Professional Developers by Company Type, 2017"
+# Plot of organization type and Canada v. ROW, 2017
+plot_title <- "Share of Professional Developers by Organization Type, 2017"
 companytype_regionscarow_2017_prodevs %>%
     filter(company_type != "other") %>%
     arrange(respondents_share) %>%
@@ -1297,8 +1259,8 @@ company_sizes <- c("fewer than 10", "10 to 19", "20 to 99", "100 to 499",
                    "500 to 999", "1,000 to 4,999", "5,000 to 9,999",
                    "10,000 or more")
 
-# Plot of company size by region
-plot_title <- "Share of Professional Developers by Company Size, 2017"
+# Plot of organization size by region
+plot_title <- "Share of Professional Developers by Organization Size, 2017"
 companysize_regions_2017_prodevs %>%
     mutate(company_size = factor(
         company_size, levels = company_sizes,
@@ -1347,13 +1309,14 @@ industry_regionscarow_2017_prodevs <- respondents %>%
                       "Finance, Banking,\nor Insurance",
                       ifelse(grepl("military", industry_original),
                              "Government\n(Including Military)",
-                             toTitleCase(industry_original))))) %>%
+                             ifelse(grepl("other", industry_original),
+                                    "Other", toTitleCase(industry_original)))))) %>%
     ungroup()
 
 # Plot of industry respondent shares
 n_top_industries_ca <- 10
 top_industry_labels_2017_ca_prodevs <- industry_regionscarow_2017_prodevs %>%
-    filter(region_carow_label == "Canada" & !grepl("other", industry_original)) %>%
+    filter(region_carow_label == "Canada") %>%
     top_n(n_top_industries_ca, respondents_share) %>%
     arrange(respondents_share) %>%
     pull(industry_original_label)
@@ -1421,28 +1384,6 @@ industry_2017_prodevs <- industry_regionscarow_2017_prodevs %>%
            pc_diff_median_salary_carow = median_salary_cad_ca /
                median_salary_cad_row - 1,
            diff_median_salary_carow = median_salary_cad_ca - median_salary_cad_row) 
-
-# % diff between CA and ROW
-# min_respondents_industry <- 50
-# plot_title <- paste("Difference in Share of Professional Developers by",
-#                     "Industry\nBetween Canada and Rest of the World, 2017")
-# industry_2017_prodevs %>%
-#     filter(respondents_ca >= min_respondents_industry &
-#                !grepl("Other", industry_original_label)) %>%
-#     arrange(pc_diff_carow) %>%
-#     mutate(industry_original_label = factor(
-#         industry_original_label, levels = industry_original_label)) %>%
-#     ggplot(aes(industry_original_label, pc_diff_carow, label = percent(pc_diff_carow))) +
-#     geom_col(width = plot_bar_width, fill = plot_color) +
-#     geom_text(hjust = 0, nudge_y = 0.005) +
-#     coord_flip() +
-#     scale_y_continuous(limits = c(-0.25, 1.05), labels = percent_format(),
-#                        expand = plot_axis_padding) +
-#     labs(x = "", y = "% Difference", title = plot_title,
-#          subtitle = paste("% Difference Between Canada and Rest of World in",
-#                           "Share of Survey Respondents")) +
-#     theme(panel.grid.major.y = element_line(NA))
-# save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
 # Plot of ratio of Canadian to ROW professional developers shares by industry, 2017
 min_respondents_industry <- 50
@@ -1704,28 +1645,6 @@ country_years_prodevs %>%
          filter(year == 2017 & !is.na(salary_usd) & !is.na(country)) %>%
          nrow())
 
-# Plot of salaries by company type in Canada, 2017
-min_n_salaries_company_type <- 20
-plot_title <- "Average Salary of Canadian Professional Developers by Company Type, 2017"
-companytype_regionscarow_2017_prodevs %>%
-    filter(region_carow_label == "Canada" &
-               n_salary_responses >= min_n_salaries_company_type) %>%
-    arrange(median_salary_cad) %>%
-    mutate(company_type_label = factor(
-        company_type_label, levels = company_type_label)) %>%
-    ggplot(aes(company_type_label, median_salary_cad,
-               label = paste0("C$", comma(median_salary_cad)))) +
-    geom_col(width = plot_bar_width, fill = plot_color) +
-    geom_text(hjust = 0, nudge_y = 200) +
-    coord_flip() +
-    scale_y_continuous(limits = c(0, 105000), breaks = seq(0, 120000, by = 20000),
-                       labels = paste0("C$", comma(seq(0, 120000, by = 20000))),
-                       expand = plot_axis_padding) +
-    labs(x = "", y = "C$", title = plot_title,
-         subtitle = "Median Annual Salary in C$ of Survey Respondents") +
-    theme(panel.grid.major.y = element_blank())
-save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
-
 # Median salary for pro devs in industries in Canada, 2017
 min_n_salaries_industry <- 20
 omit_industries <- c("other (please specify)")
@@ -1746,6 +1665,28 @@ industry_regionscarow_2017_prodevs %>%
                        labels = paste0("C$", comma(seq(0, 120000, by = 20000))),
                        expand = plot_axis_padding) +
     labs(x = "", y = "C$", fill = "", title = plot_title,
+         subtitle = "Median Annual Salary in C$ of Survey Respondents") +
+    theme(panel.grid.major.y = element_blank())
+save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
+
+# Plot of salaries by company type in Canada, 2017
+min_n_salaries_company_type <- 20
+plot_title <- "Average Salary of Canadian Professional Developers by Company Type, 2017"
+companytype_regionscarow_2017_prodevs %>%
+    filter(region_carow_label == "Canada" &
+               n_salary_responses >= min_n_salaries_company_type) %>%
+    arrange(median_salary_cad) %>%
+    mutate(company_type_label = factor(
+        company_type_label, levels = company_type_label)) %>%
+    ggplot(aes(company_type_label, median_salary_cad,
+               label = paste0("C$", comma(median_salary_cad)))) +
+    geom_col(width = plot_bar_width, fill = plot_color) +
+    geom_text(hjust = 0, nudge_y = 200) +
+    coord_flip() +
+    scale_y_continuous(limits = c(0, 105000), breaks = seq(0, 120000, by = 20000),
+                       labels = paste0("C$", comma(seq(0, 120000, by = 20000))),
+                       expand = plot_axis_padding) +
+    labs(x = "", y = "C$", title = plot_title,
          subtitle = "Median Annual Salary in C$ of Survey Respondents") +
     theme(panel.grid.major.y = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
@@ -1862,6 +1803,10 @@ jobdiscoverychannels_2017_ca_prodevs %>%
     theme(panel.grid.major.y = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
+# Sample size
+jobdiscoverychannels_2017_ca_prodevs %>% 
+    summarise(sum(respondents))
+
 # Channels included under "job board"
 jobdiscoverychannels_2017_ca_prodevs %>%
     filter(grepl("job board", job_discovery_channel)) %>%
@@ -1871,75 +1816,6 @@ jobdiscoverychannels_2017_ca_prodevs %>%
 jobdiscoverychannels_2017_ca_prodevs %>%
     filter(grepl("recruiter|contacted directly", job_discovery_channel)) %>%
     summarise(sum(respondents_share))
-
-#### Experience ####
-# Years of experience by region
-proexperiencebin_regions_2017_prodevs <- respondents %>%
-    filter(year == 2017 & !is.na(region) & !is.na(pro_experience) &
-               pro_status == "pro dev") %>%
-    group_by(pro_experience_bin, pro_experience_bin_above_15, region) %>%
-    summarise(respondents = n()) %>%
-    group_by(region) %>%
-    mutate(respondents_share = respondents / sum(respondents))
-
-# Plot of years experience by region, 2017
-plot_title <- "Share of Professional Developers by Years of Experience, 2017"
-proexperiencebin_regions_2017_prodevs %>%
-    ggplot(aes(pro_experience_bin, respondents_share, fill = region)) +
-    geom_col(position = position_dodge(), width = plot_bar_width) +
-    scale_fill_manual(values = plot_colors_4_emphasis) +
-    scale_y_continuous(limits = c(0, 0.6), labels = percent_format(),
-                       expand = plot_axis_padding) +
-    labs(x = "Years of Experience", y = plot_ylab_respondents_share, fill = "",
-         title = plot_title, subtitle = plot_subtitle_respondents_share) +
-    theme(panel.grid.major.x = element_blank(),
-          legend.position = "right")
-save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
-
-# Share of developers with over 15 years experience by region, 2017
-proexperiencebin_regions_2017_prodevs %>%
-    group_by(region, pro_experience_bin_above_15) %>%
-    summarise(respondents_share = sum(respondents_share))
-
-# Plot of top countries with share of devs over 15 years of experience, 2017
-min_respondents_country <- 50
-n_top_countries_proexperience <- 20
-plot_title <- paste("Share of Professional Developers With Over 15 Years",
-                    "of Programming Experience\nAmong Top",
-                    n_top_countries_proexperience, "Countries, 2017")
-respondents %>%
-    filter(year == 2017 & !is.na(country) & !is.na(pro_experience_bin) &
-               pro_status == "pro dev") %>%
-    group_by(country) %>%
-    summarise(pro_experience_bin_above_15_share = sum(pro_experience_bin_above_15) / n(),
-              respondents = n()) %>%
-    filter(respondents >= min_respondents_country) %>%
-    top_n(n_top_countries_proexperience, pro_experience_bin_above_15_share) %>%
-    arrange(pro_experience_bin_above_15_share) %>%
-    mutate(country_label = factor(country, levels = country,
-                                  labels = toTitleCase(country))) %>%
-    ggplot(aes(country_label, pro_experience_bin_above_15_share,
-               fill = country != "canada")) +
-    geom_col(width = plot_bar_width) +
-    coord_flip() +
-    scale_fill_manual(values = plot_colors_2_emphasis) +
-    scale_y_continuous(limits = c(0, 0.32), labels = percent_format(),
-                       expand = plot_axis_padding) +
-    labs(x = "", y = plot_ylab_respondents_share, title = plot_title,
-         subtitle = plot_subtitle_respondents_share) +
-    theme(panel.grid.major.y = element_blank())
-save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
-
-# Canada's rank
-respondents %>%
-    filter(year == 2017 & !is.na(country) & !is.na(pro_experience_bin) &
-               pro_status == "pro dev") %>%
-    group_by(country) %>%
-    summarise(pro_experience_bin_above_15_share = sum(pro_experience_bin_above_15) / n(),
-              respondents = n()) %>%
-    filter(respondents >= min_respondents_country) %>%
-    mutate(rank = rank(-pro_experience_bin_above_15_share)) %>%
-    filter(country == "canada")
 
 #### Formal Education ####
 # Education level by region, 2017
@@ -2081,6 +1957,12 @@ respondents %>%
     theme(panel.grid.major.x = element_blank())
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
 
+# Sample size
+respondents %>%
+    filter(year == 2017 & country == "canada" &
+               !is.na(unemployed_time_post_bootcamp)) %>% 
+    nrow()
+
 #### Gender ####
 gender_country_years <- respondents %>%
     filter(!is.na(country) & !is.na(gender) & gender != "prefer not to disclose") %>%
@@ -2130,6 +2012,14 @@ gender_country_years %>%
           legend.position = "right") +
     guides(fill = guide_legend(reverse = TRUE))
 save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
+
+# Sample size
+gender_country_years %>%
+    filter(year == 2017) %>%
+    group_by(country) %>%
+    summarise(respondents = sum(respondents)) %>%
+    filter(respondents >= min_respondents_country_gender) %>% 
+    nrow()
 
 # Canada's rank in female representation
 gender_country_years %>%
