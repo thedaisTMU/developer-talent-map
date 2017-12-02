@@ -43,29 +43,28 @@ metric <- c(
   "Location quotient" = "loc_quo"
 )
 
+#Create help modal
+help_modal <-
+  bs_modal(
+    id = "help_modal",
+    title = "Help - StackOverflow Developer Talent Map",
+    body = includeMarkdown("help.md"),
+    size = "medium"
+  )
+
 #DefineUI ===================
 ui <- function(request) {
   fillPage(title= "Developer Talent Map - StackOverflow + BII+E", theme = "styles.css",
-               #title = "Stack Overflow Canadian Developer Talent Map",
     div(style = "width: 100%; height: 100%;",
         leafletOutput("map", width = "100%", height = "100%"),
+        help_modal,
         absolutePanel(id = "controls", class = "panel panel-default", draggable = TRUE, fixed = TRUE,
                       top = 85, left = 10, right = "auto", bottom = "auto", 
                       width = "200px", height = "auto",
                       h1("Canadian Developer Talent Map"),
-                      selectInput("metric", "Metric", metric, selectize = FALSE) %>% #Draggable and selectize seem incompatible for scrolling
-                        shinyInput_label_embed( #Move all help text into one modal with markdown with title https://ijlyttle.shinyapps.io/tooltip_popover_modal/#
-                          shiny_iconlink(name = "question-circle", class = "fa-2x") %>%
-                            bs_embed_popover(
-                              title = "'Visitors' are visitors to Stack Overflow. 'Share of local...' is the number of visitors from a selected role divided by total traffic from the city/province. Location quotient is the share of a city or province's Stack Overflow visitors in a particular role divided by the share of that same role nationally.",
-                              placement = "right")),
-                      selectInput("role", "Developer Role", list("Role Groups" = rolegroups, "Roles" = role), selectize=FALSE) %>%
-                        shinyInput_label_embed(
-                          shiny_iconlink() %>%
-                            bs_embed_popover(
-                              title = "Developer Role Help",
-                              content = "Select the developer role you'd like to view the metrics for. Groups are aggreated from other roles.",
-                              placement = "right")),
+                      tags$div(id = "helpmodal", shiny_iconlink(name = "question-circle"), " Help") %>% bs_attach_modal(id_modal = "help_modal"),
+                      selectInput("metric", "Metric", metric, selectize = FALSE), #Draggable and selectize seem incompatible for scrolling
+                      selectInput("role", "Developer Role", list("Role Groups" = rolegroups, "Roles" = role), selectize=FALSE),
                       radioButtons("juris", "Jurisdiction", choices = c("Cities", "Provinces"), selected = "Cities", inline = TRUE),
                       bookmarkButton(label = "Share your selections", title = "Save your selections to a URL you can share")
                       ),
@@ -79,17 +78,7 @@ ui <- function(request) {
                  tags$a(href="https://www.facebook.com/BrookfieldIIE/", icon("facebook-square", "fa-2x")),
                  tags$a(href="https://www.youtube.com/channel/UC7yVYTU2QPmY8OYh85ym-2w", icon("youtube-square", "fa-2x")),
                  tags$a(href="https://www.linkedin.com/company/the-brookfield-institute-for-innovation-entrepreneurship", icon("linkedin-square", "fa-2x"))
-                 ),
-        tags$div(id="cite", #Set links
-                 'Wondering what this map is for? Read the ',
-                 tags$a(href="", "full report"),
-                 "by David Rubinger and Creig Lamb. ",
-                 "This map is open source - ",
-                 tags$a(href="https://github.com/BrookfieldIIE/developer-talent-map","contribute on GitHub. "),
-                 'App developed by Asher Zafar',
-                 " for the ",
-                 tags$a(href="http://brookfieldinstitute.ca/"," Brookfield Institute for Innovation + Entrepreneurship (BII+E).")
-        )
+                 )
     ),
     use_bs_popover(),
     use_bs_tooltip()
