@@ -38,14 +38,14 @@ role <- unique(cities$dev_role)
 role <- role[(!role %in% rolegroups)]
 
 metric <- c(
-  "Visitors" = "visitors",
-  "% Local developers in role" = "share",
+  "Stack Overflow visitors" = "visitors",
+  "Share of local Stack Overflow visitors in role" = "share",
   "Location quotient" = "loc_quo"
 )
 
 #DefineUI ===================
 ui <- function(request) {
-  fillPage(theme = "styles.css",
+  fillPage(title= "Developer Talent Map - StackOverflow + BII+E", theme = "styles.css",
                #title = "Stack Overflow Canadian Developer Talent Map",
     div(style = "width: 100%; height: 100%;",
         leafletOutput("map", width = "100%", height = "100%"),
@@ -53,22 +53,21 @@ ui <- function(request) {
                       top = 85, left = 10, right = "auto", bottom = "auto", 
                       width = "200px", height = "auto",
                       h1("Canadian Developer Talent Map"),
-                      selectInput("metric", "Web Traffic Metric", metric, selectize = FALSE) %>% #Draggable and selectize seem incompatible for scrolling
-                        shinyInput_label_embed(
-                          shiny_iconlink() %>%
-                            bs_embed_tooltip(
-                              title = "'Visitors' are visitors to Stack Overflow.
-'% Local Developers' is the number of visitors from a selected role divided by traffic from city/province.
-Location quotient is share of a city/province's developers in a role relative to other cities/province.",
-                              placement = "left")),
+                      selectInput("metric", "Metric", metric, selectize = FALSE) %>% #Draggable and selectize seem incompatible for scrolling
+                        shinyInput_label_embed( #Move all help text into one modal with markdown with title https://ijlyttle.shinyapps.io/tooltip_popover_modal/#
+                          shiny_iconlink(name = "question-circle", class = "fa-2x") %>%
+                            bs_embed_popover(
+                              title = "'Visitors' are visitors to Stack Overflow. 'Share of local...' is the number of visitors from a selected role divided by total traffic from the city/province. Location quotient is the share of a city or province's Stack Overflow visitors in a particular role divided by the share of that same role nationally.",
+                              placement = "right")),
                       selectInput("role", "Developer Role", list("Role Groups" = rolegroups, "Roles" = role), selectize=FALSE) %>%
                         shinyInput_label_embed(
                           shiny_iconlink() %>%
-                            bs_embed_tooltip(
-                              title = "Select the developer role you'd like to view the metrics for. Groups are aggreated from other roles.",
-                              placement = "left")),
+                            bs_embed_popover(
+                              title = "Developer Role Help",
+                              content = "Select the developer role you'd like to view the metrics for. Groups are aggreated from other roles.",
+                              placement = "right")),
                       radioButtons("juris", "Jurisdiction", choices = c("Cities", "Provinces"), selected = "Cities", inline = TRUE),
-                      bookmarkButton(title = "Bookmark your selections and get a URL to share")
+                      bookmarkButton(label = "Share your selections", title = "Save your selections to a URL you can share")
                       ),
         tags$div(id="icons",
                  tags$a(href="http://brookfieldinstitute.ca/", img(src='brookfield_institute_esig_small.png', hspace = "5px", align = "left")),
@@ -82,12 +81,18 @@ Location quotient is share of a city/province's developers in a role relative to
                  tags$a(href="https://www.linkedin.com/company/the-brookfield-institute-for-innovation-entrepreneurship", icon("linkedin-square", "fa-2x"))
                  ),
         tags$div(id="cite", #Set links
-                 'Developed by Asher Zafar',
+                 'Wondering what this map is for? Read the ',
+                 tags$a(href="", "full report"),
+                 "by David Rubinger and Creig Lamb. ",
+                 "This map is open source - ",
+                 tags$a(href="https://github.com/BrookfieldIIE/developer-talent-map","contribute on GitHub. "),
+                 'App developed by Asher Zafar',
                  " for the ",
-                 tags$a(href="http://brookfieldinstitute.ca/"," Brookfield Institute for Innovation + Entrepreneurship (BII+E)."),
-                 tags$a(href="", "Full report"),
-                  "by David Rubinger and Creig Lamb")
-    )
+                 tags$a(href="http://brookfieldinstitute.ca/"," Brookfield Institute for Innovation + Entrepreneurship (BII+E).")
+        )
+    ),
+    use_bs_popover(),
+    use_bs_tooltip()
   )
 }
                 
@@ -136,7 +141,7 @@ server <- function(input, output, session) {
        
        #Create color palette based on metrics - put in its own observe function later
        metricpal.c <- colorBin(
-         palette = c("#F48EBD","#79133E"),
+         palette = c("#FFD5F0","#79133E"),
          domain = c(min(citymetric), max(citymetric)),
          pretty=TRUE)
        

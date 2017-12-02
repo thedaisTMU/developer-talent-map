@@ -22,7 +22,10 @@ provincedev <- left_join(provincedev, provincelookup)
 provinces <- sp::merge(provinces, provincedev)
 
 provinces$dev_role <- toTitleCase(provinces$dev_role)
-provinces$dev_role[provinces$dev_role=="Ios Developers"] <- "iOS Developers"
+provinces$dev_role[provinces$dev_role=="Ios Developers"] <- "iOS Mobile"
+provinces$dev_role[provinces$dev_role=="Android Developers"]  <- "Android Mobile"
+provinces$dev_role[provinces$dev_role=="Desktop Developers"] <- "Desktop"
+provinces$dev_role[provinces$dev_role=="Embedded Developers"]  <- "Embedded"
 provinces$dev_role[provinces$dev_role=="all Developers"] <- "All Developers"
 
 #Simplify province polygons
@@ -42,7 +45,10 @@ cities <- filter(cities, !(dev_role %in% c("biz intel developers", "highly techn
 
 #Proper names for developer roles
 cities$dev_role <- toTitleCase(cities$dev_role)
-cities$dev_role[cities$dev_role=="Ios Developers"] <- "iOS Developers"
+cities$dev_role[cities$dev_role=="Ios Developers"] <- "iOS Mobile"
+cities$dev_role[cities$dev_role=="Android Developers"] <- "Android Mobile"
+cities$dev_role[cities$dev_role=="Desktop Developers"] <- "Desktop"
+cities$dev_role[cities$dev_role=="Embedded Developers"] <- "Embedded"
 cities$dev_role[cities$dev_role=="all Developers"] <- "All Developers"
 #cities <- cities[complete.cases(cities),]
 
