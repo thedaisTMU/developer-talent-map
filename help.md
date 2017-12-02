@@ -8,5 +8,5 @@
 Using the 'Developer Role' input, a group of developer roles can be selected, or a more specific role within those groups.
 
 #### Want to know more or have a comment?
-* Read the full report, [Stacking Up](http://brookfieldinstitute.ca/), by the [David Rubinger](david@polar.me) and [Creig Lamb](creig.lamb@ryerson.ca) from the [Brookfield Institute for Innovation + Entrepreneurship](http://brookfieldinstitute.ca/)
-* This map was developed by [Asher Zafar](mailto: asher.zafar@ryerson.ca). The [code is available on GitHub](https://github.com/BrookfieldIIE/developer-talent-map) and open source under the MIT License. Take a look, make a suggestion, or contribute!
+* Read the full report, [Stacking Up](http://brookfieldinstitute.ca/), by the [David Rubinger](http://brookfieldinstitute.ca/our-team/david-rubinger/) and [Creig Lamb](http://brookfieldinstitute.ca/our-team/creig-lamb/) from the [Brookfield Institute for Innovation + Entrepreneurship](http://brookfieldinstitute.ca/)
+* This map was developed by [Asher Zafar](http://brookfieldinstitute.ca/our-team/asher-zafar/). The [code is available on GitHub](https://github.com/BrookfieldIIE/developer-talent-map) and open source under the MIT License. Take a look, make a suggestion, or contribute!
