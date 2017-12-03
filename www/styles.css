@@ -43,7 +43,7 @@ h1, h2, h3, h4 {
   transition-delay: 0;
 }
 
-/* unvisited link
+/* unvisited link - disabled in workaround. Links showing up with different colors
 a:link {
     color: #14365D !important;
 }*/
