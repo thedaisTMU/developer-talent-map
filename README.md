@@ -1,11 +1,11 @@
 # Stack Overflow Canadian Developer Talent Map
 This map visualizes the number and concentration of developers in different Canadian cities and provinces based on an analysis of data from StackOverflow, a popular Q&A website for developers. This code is open source under the MIT license. Feel free to contact us if you have any questions, comments or ideas. We welcome improvements or ideas for this project.
 
-Ths visualization can be viewed here: https://github.com/BrookfieldIIE/developer-talent-map/
+View the map here: https://github.com/BrookfieldIIE/developer-talent-map/
 
 # Developer Talent Map Report
 
-The full written report can be viewed at http://brookfieldinstitute.ca
+Read the full report here: http://brookfieldinstitute.ca/research-analysis/stacking-up-canadas-developer-talent
 
 ## Data Sources
 
