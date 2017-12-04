@@ -76,7 +76,7 @@ helpmodal {font-size: 1.5em;} /*2.75vw*/
   font-family: 'rooneysansmed', Verdana, Georgia;
   background-color: rgba(220,221,222);
   padding: 20px;
-  font-size: 1em;
+  font-size: .8em;
 }
 
 /* If not using map tiles, show a white background */

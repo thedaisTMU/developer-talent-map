@@ -59,14 +59,14 @@ ui <- function(request) {
         leafletOutput("map", width = "100%", height = "100%"),
         help_modal,
         absolutePanel(id = "controls", class = "panel panel-default", draggable = TRUE, fixed = TRUE,
-                      top = 85, left = 10, right = "auto", bottom = "auto", 
+                      top = "30%", left = 10, right = "auto", bottom = "auto", 
                       width = "200px", height = "auto",
                       h1("Canadian Developer Talent Map"),
-                      tags$div(id = "helpmodal", shiny_iconlink(name = "question-circle"), " Help") %>% bs_attach_modal(id_modal = "help_modal"),
                       selectInput("metric", "Metric", metric, selectize = FALSE), #Draggable and selectize seem incompatible for scrolling
                       selectInput("role", "Developer Role", list("Role Groups" = rolegroups, "Roles" = role), selectize=FALSE),
                       radioButtons("juris", "Jurisdiction", choices = c("Cities", "Provinces"), selected = "Cities", inline = TRUE),
-                      bookmarkButton(label = "Share your selections", title = "Save your selections to a URL you can share")
+                      bookmarkButton(label = "Share your selections", title = "Save your selections to a URL you can share"),
+                      h1(shiny_iconlink(name = "question-circle"), " Help") %>% bs_attach_modal(id_modal = "help_modal")
                       ),
         tags$div(id="icons",
                  tags$a(href="http://brookfieldinstitute.ca/research-analysis/stacking-up-canadas-developer-talent", img(src='brookfield_institute_esig_small.png', hspace = "5px", align = "left")),
@@ -106,7 +106,7 @@ server <- function(input, output, session) {
                  lat1 = 42, 
                  lng2 = -63, 
                  lat2 = 54) %>%
-       addProviderTiles(providers$Stamen.TonerLite) #CartoDB Positron looks good, too, but a little busier
+       addProviderTiles(providers$Stamen.TonerLite)
      })
    
    #Select and filter city data for role and metric
@@ -128,10 +128,11 @@ server <- function(input, output, session) {
        citymetric <- cities.c[[input$metric]]
        cityrad <- (citymetric/mean(citymetric)*100)^.55 #300^.5
        
-       #Create color palette based on metrics - put in its own observe function later
+       #Create color palette based on metrics
        metricpal.c <- colorBin(
          palette = c("#FFD5F0","#79133E"),
          domain = c(min(citymetric), max(citymetric)),
+         bins=4,
          pretty=TRUE)
        
        #Draw city markers
@@ -144,12 +145,13 @@ server <- function(input, output, session) {
            fillColor = ~metricpal.c(citymetric),
            fillOpacity = .8,
            label = ~paste0(cities.c$cities," - ", labelmetric, ": ", citymetric),
-           labelOptions = labelOptions(style = list(
+           labelOptions = labelOptions(
+             style = list(
              "font-family" = "rooneysansmed",
              "box-shadow" = "3px 3px rgba(0,0,0,0.25)",
              "border-width" = "1px",
              "border-color" = "rgba(0,0,0,0.5)")))%>%
-         #Add legend - put in own observe function later
+         #Add legend
          clearControls() %>%
          addLegend("bottomright", pal = metricpal.c, values = citymetric,
                    title = labelmetric)
@@ -167,7 +169,7 @@ server <- function(input, output, session) {
          provmetric <- provinces.p[[input$metric]]
          
          
-         #Create color palette based on metrics - put in its own observe function later
+         #Create color palette based on metrics
          metricpal.p <- colorBin(
            palette = c("#F48EBD","#79133E"),
            domain = c(min(provmetric), max(provmetric)),
@@ -185,7 +187,7 @@ server <- function(input, output, session) {
                            "border-width" = "1px",
                            "border-color" = "rgba(0,0,0,0.5)"))) %>%
            
-           #Add legend - put in own observe function later
+           #Add legend
            clearControls() %>%
            addLegend("bottomright", pal = metricpal.p, values = provmetric,
                      title = labelmetric)
