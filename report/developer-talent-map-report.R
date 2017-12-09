@@ -151,9 +151,9 @@ respondents_2017_private <- respondents_2017_private_raw %>%
            salary_usd = current_salary_USD, local_currency_per_usd = salary_conversion,
            local_currency = q0063, local_currency_other = q0063_other,
            contains("q0029"), job_seeking_status = q0041, job_discovery_channel = q0061,
-           educ_level = q0018,
-           educ_level_group = ed_level, major = ed_major,
-           unemployed_time_post_bootcamp = q0071, pro_experience = q0027) %>%
+           educ_level = q0018, educ_level_group = ed_level, major = ed_major,
+           unemployed_time_post_bootcamp = q0071, pro_experience = q0027,
+           province = q0011, province_group = Canada_region) %>%
     mutate_all(funs(stri_trans_general(., "latin-ascii"))) %>%
     mutate_at(vars(respondent_id, salary_usd, local_currency_per_usd), funs(as.numeric)) %>%
     left_join(respondent_devroles_2017, by = "respondent_id") %>%
@@ -193,7 +193,7 @@ respondents <- bind_rows(
                    industry, company_size, company_type, languages, 
                    educ_level, job_seeking_status, job_discovery_channel,
                    educ_level_group, unemployed_time_post_bootcamp,
-                   pro_experience, major, gender),
+                   pro_experience, major, gender, province),
               funs(tolower)) %>%
     mutate(local_currency = trimws(gsub("\\(.*\\)", "", local_currency))) %>%
     left_join(country_label_corrections,
@@ -2173,3 +2173,120 @@ respondents %>%
 ethnicities_2017_ca %>%
     filter(grepl("asian", ethnicity, ignore.case = TRUE)) %>%
     summarise(sum(respondents_share))
+
+#### Major ####
+# Plot of respondents share among select countries, 2017
+plot_title <- "Share of Developers by Major Among Select Countries, 2017"
+respondents %>% 
+    filter(year == 2017 &
+               country %in% c("canada", "germany", "united states", "israel",
+                              "south korea", "singapore") &
+               !(is.na(major) | major == "i never declared a major")) %>%
+    mutate(
+        major_group = ifelse(
+            major %in% c("computer science or software engineering",
+                         "computer engineering or electrical/electronics engineering",
+                         "computer programming or web development",
+                         "i never declared a major"),
+            major, "other"),
+        major_group2 = ifelse(
+            major %in% c("computer science or software engineering",
+                         "computer engineering or electrical/electronics engineering",
+                         "computer programming or web development"),
+            paste0("computer science, software engineering, computer engineering,\n",
+                   "electrical/electronics engineering, computer programming, ",
+                   "or web development"),
+            ifelse(major %in% c("i never declared a major"),
+                   major,
+                   "other"))) %>% 
+    group_by(country, major_group2) %>%
+    summarise(respondents = n()) %>%
+    group_by(country) %>%
+    mutate(respondents_share = respondents / sum(respondents)) %>%
+    ungroup() %>%
+    ggplot(aes(x = country, y = respondents_share, fill = country,
+               label = percent(respondents_share))) +
+    facet_wrap(~ major_group2) +
+    geom_col() +
+    geom_text(vjust = 0) +
+    scale_fill_manual(values = plot_colors_7) +
+    scale_y_continuous(limits = c(0, 1), labels = percent_format()) +
+    labs(y = plot_ylab_respondents_share, title = plot_title) +
+    theme(panel.grid.major.x = element_blank())
+save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
+
+# Plot of respondents share among countries/region, 2017
+plot_title <- "Share of Developers by Major and Country/Region, 2017"
+respondents %>% 
+    filter(year == 2017 &
+               !(is.na(region) | is.na(major) | major == "i never declared a major")) %>%
+    mutate(
+        major_group = ifelse(
+            major %in% c("computer science or software engineering",
+                         "computer engineering or electrical/electronics engineering",
+                         "computer programming or web development",
+                         "i never declared a major"),
+            major, "other"),
+        major_group2 = ifelse(
+            major %in% c("computer science or software engineering",
+                         "computer engineering or electrical/electronics engineering",
+                         "computer programming or web development"),
+            paste0("computer science, software engineering, computer engineering,\n",
+                   "electrical/electronics engineering, computer programming, ",
+                   "or web development"),
+            ifelse(major %in% c("i never declared a major"),
+                   major,
+                   "other"))) %>% 
+    group_by(region, major_group2) %>%
+    summarise(respondents = n()) %>%
+    group_by(region) %>%
+    mutate(respondents_share = respondents / sum(respondents)) %>%
+    ungroup() %>%
+    ggplot(aes(x = region, y = respondents_share, fill = region,
+               label = percent(respondents_share))) +
+    facet_wrap(~ major_group2) +
+    geom_col() +
+    geom_text(vjust = 0) +
+    scale_fill_manual(values = plot_colors_7) +
+    scale_y_continuous(limits = c(0, 1), labels = percent_format()) +
+    labs(y = plot_ylab_respondents_share, title = plot_title) +
+    theme(panel.grid.major.x = element_blank())
+save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
+
+# Plot of respondents share among province groups, 2017
+plot_title <- "Share of Developers by Major and Canadian Region, 2017"
+respondents %>% 
+    filter(year == 2017 &
+               !(is.na(province_group) | is.na(major) | major == "i never declared a major")) %>%
+    mutate(
+        major_group = ifelse(
+            major %in% c("computer science or software engineering",
+                         "computer engineering or electrical/electronics engineering",
+                         "computer programming or web development",
+                         "i never declared a major"),
+            major, "other"),
+        major_group2 = ifelse(
+            major %in% c("computer science or software engineering",
+                         "computer engineering or electrical/electronics engineering",
+                         "computer programming or web development"),
+            paste0("computer science, software engineering, computer engineering,\n",
+                   "electrical/electronics engineering, computer programming, ",
+                   "or web development"),
+            ifelse(major %in% c("i never declared a major"),
+                   major,
+                   "other"))) %>% 
+    group_by(province_group, major_group2) %>%
+    summarise(respondents = n()) %>%
+    group_by(province_group) %>%
+    mutate(respondents_share = respondents / sum(respondents)) %>%
+    ungroup() %>%
+    ggplot(aes(x = province_group, y = respondents_share, fill = province_group,
+               label = percent(respondents_share))) +
+    facet_wrap(~ major_group2) +
+    geom_col() +
+    geom_text(vjust = 0) +
+    scale_fill_manual(values = plot_colors_7) +
+    scale_y_continuous(limits = c(0, 1), labels = percent_format()) +
+    labs(y = plot_ylab_respondents_share, title = plot_title) +
+    theme(panel.grid.major.x = element_blank())
+save_plot(file_name = gsub("[[:punct:]]", " ", plot_title))
